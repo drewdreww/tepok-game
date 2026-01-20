@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://cyffio1abqiu6"]
+
+[ext_resource type="Script" uid="uid://b33rqkpnm1fy0" path="res://Scripts/player.gd" id="1_y0qk3"]
+[ext_resource type="Script" uid="uid://cvrxhc3q1sw4y" path="res://Scripts/first_pov.gd" id="2_3y5cq"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ojbdc"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_y0qk3"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_3y5cq"]
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_y0qk3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_ojbdc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_y0qk3")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5082488, 0)
+
+[node name="FirstPOV" type="Camera3D" parent="Head"]
+script = ExtResource("2_3y5cq")
+
+[node name="InteractRay" type="RayCast3D" parent="Head/FirstPOV"]
+target_position = Vector3(0, 0, -2)
+
+[node name="DeathRagdoll" type="RigidBody3D" parent="."]
+freeze_mode = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DeathRagdoll"]
+shape = SubResource("SphereShape3D_3y5cq")

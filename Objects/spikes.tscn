@@ -1,0 +1,64 @@
+[gd_scene load_steps=11 format=3 uid="uid://bn6khnb8kd311"]
+
+[ext_resource type="Texture2D" uid="uid://bspjvywnobhth" path="res://Assets/PNG/Green/texture_08.png" id="1_jpolu"]
+[ext_resource type="Texture2D" uid="uid://bs1dkkmnjo61l" path="res://Assets/PNG/Green/texture_09.png" id="2_b0leg"]
+[ext_resource type="Script" uid="uid://bv46boxcxsrwr" path="res://Scripts/spikes.gd" id="3_b0leg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_egaaa"]
+albedo_texture = ExtResource("1_jpolu")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f82o5"]
+albedo_texture = ExtResource("1_jpolu")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ayfux"]
+albedo_texture = ExtResource("1_jpolu")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6a14c"]
+albedo_texture = ExtResource("1_jpolu")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_punwt"]
+albedo_texture = ExtResource("2_b0leg")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qiy1m"]
+size = Vector3(9.159302, 0.7480469, 1.9831543)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jpolu"]
+size = Vector3(9.21228, 0.868103, 2.1304321)
+
+[node name="Spikes" type="Node3D"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CSGTorus3D" type="CSGTorus3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.745074, 0, 0)
+material_override = SubResource("StandardMaterial3D_egaaa")
+
+[node name="CSGTorus3D2" type="CSGTorus3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8349212, 0, 0)
+material_override = SubResource("StandardMaterial3D_f82o5")
+
+[node name="CSGTorus3D3" type="CSGTorus3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04575336, 0, 0)
+material_override = SubResource("StandardMaterial3D_ayfux")
+
+[node name="CSGTorus3D4" type="CSGTorus3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.7135854, 0, 0)
+material_override = SubResource("StandardMaterial3D_6a14c")
+
+[node name="CSGTorus3D5" type="CSGTorus3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6937547, 0, 0)
+material_override = SubResource("StandardMaterial3D_punwt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.018615723, -0.12597656, -0.0037841797)
+shape = SubResource("BoxShape3D_qiy1m")
+
+[node name="Area3D" type="Area3D" parent="."]
+script = ExtResource("3_b0leg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.010070801, -0.06594849, -0.050445557)
+shape = SubResource("BoxShape3D_jpolu")
+
+[connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]
