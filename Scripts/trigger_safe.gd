@@ -1,7 +1,7 @@
 extends Area3D
 
-@export var platform_to_slide: Node3D
-@export var passenger_detector: Area3D 
+@onready var platform_to_slide: CSGBox3D = $"../CSGCombiner3D/HideSafePlatform"
+@onready var passenger_detector: Area3D = $"../CSGCombiner3D/HideSafePlatform/PassengerDetector"
 
 @export var start_offset: Vector3 = Vector3(0, 0, -8) 
 @export var up_offset: Vector3 = Vector3(0, 10, 0) 

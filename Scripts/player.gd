@@ -58,7 +58,7 @@ func _physics_process(delta: float) -> void:
 	
 func _handle_movement(delta: float) -> void:
 	if not is_on_floor():
-		velocity += get_gravity() * delta
+		velocity += get_gravity() * delta * GameSettings.gravity_multiplier
 
 	if Input.is_action_just_pressed("space") and is_on_floor():
 		velocity.y = JUMP_VELOCITY

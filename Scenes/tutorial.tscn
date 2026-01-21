@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://ccdic65j8q5lq"]
 
-[ext_resource type="Script" uid="uid://xsbe0w8qyq4c" path="res://Scripts/level_settings.gd" id="1_p1f1o"]
+[ext_resource type="Script" uid="uid://xsbe0w8qyq4c" path="res://Scripts/tutorial.gd" id="1_p1f1o"]
 [ext_resource type="Texture2D" uid="uid://dyso7rrc2gh0u" path="res://Assets/PNG/Light/texture_08.png" id="1_p8jf4"]
 [ext_resource type="PackedScene" uid="uid://bn6khnb8kd311" path="res://Objects/spikes.tscn" id="2_feyax"]
 [ext_resource type="Texture2D" uid="uid://bo44bapdnf5co" path="res://Assets/PNG/Orange/texture_03.png" id="2_p8jf4"]
@@ -67,6 +67,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25146484, -37.437817)
 size = Vector3(10, 0.497, 22.958496)
 material = SubResource("StandardMaterial3D_h2ono")
 
+[node name="SpotLight3D" type="SpotLight3D" parent="CSGCombiner3D/CSGBox3D2"]
+transform = Transform3D(1, 0, 0, 0, 0.692584, 0.7213373, 0, -0.7213373, 0.692584, 0, 6.9854136, 3.603817)
+spot_range = 49.259014
+
 [node name="CSGBox3D5" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 5.170293, -3.9405093, -24.129711)
 size = Vector3(20.976563, 0.497, 49.574707)
@@ -107,9 +111,5 @@ script = ExtResource("5_p8jf4")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ResetZone"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.021484375, 0.49529982, -1.1877441)
 shape = SubResource("BoxShape3D_i6t4g")
-
-[node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.93618846, 0.35149854, 0, -0.35149854, 0.93618846, 0, 5.292687, -3.424632)
-spot_range = 49.259014
 
 [connection signal="body_entered" from="ResetZone" to="ResetZone" method="_on_body_entered"]
