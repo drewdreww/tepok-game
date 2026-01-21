@@ -99,48 +99,90 @@ func _handle_fov(delta):
 	var target_fov = BASE_FOV + FOV_CHANGE * velocity_clamped
 	camera.fov = lerp(camera.fov, target_fov, delta * 8.0)
 	
+# --- Updated Die Function ---
 func die():
 	if is_dead: return
 	is_dead = true
 	print("Player Died!")
 	
+	# Disable Player
 	set_physics_process(false)
 	player_collider.disabled = true 
 	velocity = Vector3.ZERO
 	
-	# Activate Ragdoll
+	# Enable Ragdoll
 	death_ragdoll.process_mode = Node.PROCESS_MODE_INHERIT
 	death_ragdoll.freeze = false 
-	
-	death_ragdoll.lock_rotation = false 
+	death_ragdoll.lock_rotation = false # Allow tumbling
 	ragdoll_collider.disabled = false 
 	
+	# Move Camera
 	death_ragdoll.global_position = camera.global_position 
 	death_ragdoll.linear_velocity = velocity 
-	
-	# Random Spin for Realistic Crash
+	# Spin effect
 	death_ragdoll.angular_velocity = Vector3(randf_range(-5,5), randf_range(-5,5), randf_range(-5,5))
 	
 	camera.reparent(death_ragdoll)
 	
-	await get_tree().create_timer(4.0).timeout
+	await get_tree().create_timer(3.0).timeout
+	
+	# Next Level or Respawn?
+	_try_load_next_level()
+
+func _try_load_next_level():
+	var world = get_parent()
+	
+	var current_level_node = null
+	
+	for child in world.get_children():
+		if child.get("next_level_path") != null:
+			current_level_node = child
+			break
+	
+	if current_level_node and current_level_node.next_level_path != "":
+		print("Swapping Level to: ", current_level_node.next_level_path)
+		
+		# Call the swap function safely
+		call_deferred("_perform_level_swap", world, current_level_node, current_level_node.next_level_path)
+		
+	else:
+		print("No next level found. Respawning in current level.")
+		respawn()
+
+# Level Swap
+func _perform_level_swap(world_node, old_level_node, new_level_path):
+	# Load the new level
+	var new_level_resource = load(new_level_path)
+	var new_level_instance = new_level_resource.instantiate()
+	
+	# Add it to the world
+	world_node.add_child(new_level_instance)
+	
+	# Delete the old level
+	old_level_node.queue_free()
+	
 	respawn()
+	
+	print("Level Swapped Successfully!")
 	
 	
 func respawn():
 	# Reset Camera to Head
 	camera.reparent(head)
-	
 	camera.position = initial_camera_pos 
-	camera.rotation = Vector3.ZERO
+	
+	camera.rotation = Vector3.ZERO 
+	head.rotation = Vector3.ZERO
+	
+	rotation = Vector3.ZERO
 	
 	# Kill Ragdoll
 	death_ragdoll.freeze = true
 	ragdoll_collider.disabled = true 
 	death_ragdoll.process_mode = Node.PROCESS_MODE_DISABLED
-	death_ragdoll.position = Vector3(0, 10, 0) # Move it away
+	death_ragdoll.position = Vector3(0, 10, 0) 
 	
-	# Reset Player
+	# Reset Player Position
 	global_position = start_position
 	velocity = Vector3.ZERO
 	
