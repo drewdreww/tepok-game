@@ -1,9 +1,11 @@
 extends Area3D
 
-@onready var platform_to_slide: CSGBox3D = $"../CSGCombiner3D/HideSafePlatform"
+@onready var platform_to_slide: MeshInstance3D = $"../CSGCombiner3D/HideSafePlatform"
 @onready var passenger_detector: Area3D = $"../CSGCombiner3D/HideSafePlatform/PassengerDetector"
+@onready var platform_collider: CollisionShape3D = $"../Platform/MeshInstance3D/StaticBody3D/CollisionShape3D"
+@onready var parent_node: Node3D = $".."
 
-@export var start_offset: Vector3 = Vector3(0, 0, -8) 
+@export var start_offset: Vector3 = Vector3(0, 0, -10) 
 @export var up_offset: Vector3 = Vector3(0, 10, 0) 
 
 @export var slide_duration: float = 0.3
@@ -29,6 +31,8 @@ func _on_body_entered(body: Node3D) -> void:
 	if body.has_method("respawn") and not has_triggered:
 		print("Player detected! Starting sequence...")
 		has_triggered = true
+		
+		parent_node.current_jumps = 0
 		
 		slide_platform_in()
 		await get_tree().create_timer(3.0).timeout
@@ -65,6 +69,8 @@ func slide_platform_in():
 
 func slide_platform_up():
 	if platform_to_slide:
+		platform_collider.set_deferred("disabled", true)
+		
 		_kill_tween()
 		active_tween = create_tween().set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 		var destination = target_position + up_offset
@@ -72,6 +78,8 @@ func slide_platform_up():
 
 func slide_platform_reset():
 	if platform_to_slide:
+		platform_collider.set_deferred("disabled", false)
+		
 		_kill_tween()
 		active_tween = create_tween().set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 		active_tween.tween_property(platform_to_slide, "position", hidden_position, drop_speed)
