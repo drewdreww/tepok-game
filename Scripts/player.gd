@@ -17,7 +17,6 @@ var t_bob = 0.0
 @onready var head = $Head
 @onready var camera = $Head/FirstPOV
 @onready var start_position: Vector3 = global_position
-# NEW: Variable to remember where the camera should be height-wise
 var initial_camera_pos: Vector3 
 
 # --- Death Ragdoll ---
@@ -52,9 +51,15 @@ func _unhandled_input(event: InputEvent):
 		get_tree().quit()
 		
 func _physics_process(delta: float) -> void:
-	if is_dead: return
+	var was_on_floor = is_on_floor()
+	
 	_handle_movement(delta)
 	_handle_fov(delta)
+	
+	if is_on_floor() and not was_on_floor:
+		if has_meta("spike_combo"):
+			set_meta("spike_combo", 0)
+			print("Touched ground - Combo Reset!")
 	
 func _handle_movement(delta: float) -> void:
 	if not is_on_floor():
@@ -83,7 +88,6 @@ func _handle_movement(delta: float) -> void:
 
 	t_bob += delta * velocity.length() * float(is_on_floor())
 	
-	# Use the initial pos as the base, then add the bob
 	camera.position = initial_camera_pos + _headBob(t_bob)
 	
 	move_and_slide()
@@ -99,7 +103,7 @@ func _handle_fov(delta):
 	var target_fov = BASE_FOV + FOV_CHANGE * velocity_clamped
 	camera.fov = lerp(camera.fov, target_fov, delta * 8.0)
 	
-# --- Updated Die Function ---
+# --- Die Function ---
 func die():
 	if is_dead: return
 	is_dead = true
@@ -126,7 +130,7 @@ func die():
 	
 	await get_tree().create_timer(3.0).timeout
 	
-	# Next Level or Respawn?
+	# Next Level or Respawn
 	_try_load_next_level()
 
 func _try_load_next_level():

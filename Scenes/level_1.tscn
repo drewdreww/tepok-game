@@ -19,20 +19,6 @@ uv1_triplanar = true
 albedo_texture = ExtResource("1_6444e")
 uv1_triplanar = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wrinw"]
-albedo_texture = ExtResource("2_xrdnt")
-uv1_triplanar = true
-
-[sub_resource type="BoxMesh" id="BoxMesh_xrdnt"]
-lightmap_size_hint = Vector2i(154, 116)
-size = Vector3(20, 0.5, 10)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_lsmp6"]
-size = Vector3(19.963623, 1, 7.9416656)
-
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_wrinw"]
-points = PackedVector3Array(-10, -0.5, -5, -10, 0.5, -5, 10, -0.5, -5, -10, -0.5, 5, -10, 0.5, 5, 10, 0.5, -5, 10, -0.5, 5, 10, 0.5, 5)
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uy8f0"]
 albedo_texture = ExtResource("1_6444e")
 uv1_triplanar = true
@@ -56,7 +42,21 @@ height = 0.44836426
 radius = 1.1738281
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_evi0p"]
-size = Vector3(22, 1, 6.8726196)
+size = Vector3(22, 1, 7.9793167)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wrinw"]
+albedo_texture = ExtResource("2_xrdnt")
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_xrdnt"]
+lightmap_size_hint = Vector2i(154, 116)
+size = Vector3(20, 0.5, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lsmp6"]
+size = Vector3(19.963623, 1, 7.9416656)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_wrinw"]
+points = PackedVector3Array(-10, -0.5, -5, -10, 0.5, -5, 10, -0.5, -5, -10, -0.5, 5, -10, 0.5, 5, 10, 0.5, -5, 10, -0.5, 5, 10, 0.5, 5)
 
 [node name="Level1" type="Node3D"]
 script = ExtResource("1_wrinw")
@@ -139,23 +139,6 @@ material = SubResource("StandardMaterial3D_af3po")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19833374, -13.2384815, -24.05822)
 size = Vector3(23.005798, 0.497, 12.689331)
 material = SubResource("StandardMaterial3D_af3po")
-
-[node name="HideSafePlatform" type="MeshInstance3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.22518921, -10.338903, -23.129599)
-material_override = SubResource("StandardMaterial3D_wrinw")
-mesh = SubResource("BoxMesh_xrdnt")
-
-[node name="PassengerDetector" type="Area3D" parent="CSGCombiner3D/HideSafePlatform"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7702532, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGCombiner3D/HideSafePlatform/PassengerDetector"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07019043, 0, 1.0573502)
-shape = SubResource("BoxShape3D_lsmp6")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="CSGCombiner3D/HideSafePlatform"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGCombiner3D/HideSafePlatform/StaticBody3D"]
-shape = SubResource("ConvexPolygonShape3D_wrinw")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25146484, -37.437023)
@@ -285,23 +268,42 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.003718257, 0)
 shape = SubResource("CylinderShape3D_wrinw")
 
 [node name="TriggerSafe" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6420444, -5.4838905, -22.632893)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6420444, -5.4838905, -22.244354)
 script = ExtResource("7_lsmp6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TriggerSafe"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6257323, 0, 0.13900757)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6257323, 0, 0.24962234)
 shape = SubResource("BoxShape3D_evi0p")
 
-[node name="Spikes4" type="Node3D" parent="."]
+[node name="Spikes" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -12.714907, -22.169819)
 
-[node name="Spikes" parent="Spikes4" instance=ExtResource("3_lsmp6")]
-transform = Transform3D(2.4529662, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0.16656017, -12.13348, -22.288813)
+[node name="Spikes1" parent="Spikes" instance=ExtResource("3_lsmp6")]
+transform = Transform3D(2.4529662, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, -2.5486755)
 
-[node name="Spikes3" parent="Spikes4" instance=ExtResource("3_lsmp6")]
-transform = Transform3D(2.4529662, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0.16656017, -12.13348, -24.838686)
+[node name="Spikes3" parent="Spikes" instance=ExtResource("3_lsmp6")]
+transform = Transform3D(2.4529662, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 2.7627296)
 
-[node name="Spikes2" parent="Spikes4" instance=ExtResource("3_lsmp6")]
-transform = Transform3D(2.4529662, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0.16656017, -12.13348, -19.492807)
+[node name="Spikes2" parent="Spikes" instance=ExtResource("3_lsmp6")]
+transform = Transform3D(2.4529662, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+
+[node name="HideSafePlatform" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.22518921, -10.338903, -23.129599)
+material_override = SubResource("StandardMaterial3D_wrinw")
+mesh = SubResource("BoxMesh_xrdnt")
+skeleton = NodePath("../CSGCombiner3D")
+
+[node name="PassengerDetector" type="Area3D" parent="HideSafePlatform"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7702532, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HideSafePlatform/PassengerDetector"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07019043, 0, 1.0573502)
+shape = SubResource("BoxShape3D_lsmp6")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="HideSafePlatform"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HideSafePlatform/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_wrinw")
 
 [connection signal="body_entered" from="ResetZone" to="ResetZone" method="_on_body_entered"]
 [connection signal="body_entered" from="TriggerSafe" to="TriggerSafe" method="_on_body_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://b4on05tkph3dv"]
+[gd_scene load_steps=24 format=3 uid="uid://b4on05tkph3dv"]
 
 [ext_resource type="Texture2D" uid="uid://dyso7rrc2gh0u" path="res://Assets/PNG/Light/texture_08.png" id="1_2mgoq"]
 [ext_resource type="Script" uid="uid://dth7nkxxcvn83" path="res://Scenes/level_2.gd" id="1_cggpd"]
@@ -48,15 +48,15 @@ albedo_texture = ExtResource("6_vcilj")
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_uhnj4"]
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_42uki"]
-height = 0.4
-radius = 1.5
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_42uki"]
+points = PackedVector3Array(-0.21418296, -0.94802845, -0.4511285, 0.022731654, 0.9521457, 0.49888662, 0.17148845, 0.9519953, 0.46901843, -0.12593445, 0.9526843, -0.48329136, 0.49966258, -0.95367396, -0.0068888306, -0.3876465, -0.9379602, 0.31565303, -0.48329246, 0.9526857, -0.12593003, 0.37509736, 0.9401282, -0.3298157, 0.17148845, -0.9519953, 0.46901843, 0.14078338, -0.9454848, -0.47957912, 0.4690145, 0.9520113, 0.17149934, -0.3876465, 0.9379602, 0.31565303, -0.48329246, -0.9526857, -0.12593003, -0.18351147, -0.9430759, 0.46469846, 0.40741244, -0.9469937, 0.2889825, 0.37509736, -0.9401282, -0.3298157, -0.39515373, 0.9557608, -0.3055234, -0.479555, 0.9454372, 0.1408799, 0.46469817, 0.94309926, -0.18351227, 0.14078338, 0.9454848, -0.47957912, -0.24320284, 0.9459547, 0.43649116, -0.479555, -0.9454372, 0.1408799, 0.2889712, 0.9469877, 0.4074208, -0.39515373, -0.9557608, -0.3055234, -0.006990604, -0.953641, 0.4996576, 0.49966258, 0.95367396, -0.0068888306, -0.27194828, 0.943071, -0.41921657, 0.46469817, -0.94309926, -0.18351227, -0.12593445, -0.9526843, -0.48329136, 0.31564754, 0.93797344, -0.38765055, 0.4690145, -0.9520113, 0.17149934, 0.40741244, 0.9469937, 0.2889825)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_t7v2y"]
+height = 0.44836426
+radius = 1.1738281
 
 [node name="Level2" type="Node3D"]
 script = ExtResource("1_cggpd")
-
-[node name="Fan" parent="." instance=ExtResource("3_v36qu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6216011, 10.479364, -11.133338)
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
 use_collision = true
@@ -219,6 +219,9 @@ operation = 2
 radius = 2.025879
 height = 0.8203125
 
+[node name="Fan" parent="CSGCombiner3D" instance=ExtResource("3_v36qu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6216011, 10.479364, -10.784351)
+
 [node name="Door" parent="." instance=ExtResource("4_t7v2y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05274141, 1.1654887, -44.58361)
 
@@ -251,7 +254,7 @@ transform = Transform3D(2.4529662, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, -2.8082447)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.27949238, 0)
 
 [node name="Area3D" type="Area3D" parent="Spikes/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9696245, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.014297485, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Spikes/StaticBody3D/Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.48150635, 0, 0)
@@ -265,16 +268,23 @@ shape = SubResource("BoxShape3D_uhnj4")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3537035, -0.48773336, -21.937551)
 script = ExtResource("8_uhnj4")
 
-[node name="AnimatableBody3D" type="AnimatableBody3D" parent="Platform"]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Platform/AnimatableBody3D"]
-transform = Transform3D(3, 0, 0, 0, 0.14062095, 0, 0, 0, 3, 0, 0, 0)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Platform"]
+transform = Transform3D(2.456642, 0, 0, 0, 0.09012991, 0, 0, 0, 2.6655738, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_2mgoq")
 mesh = SubResource("CylinderMesh_uhnj4")
-skeleton = NodePath("../..")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Platform/AnimatableBody3D"]
-shape = SubResource("CylinderShape3D_42uki")
+[node name="StaticBody3D" type="AnimatableBody3D" parent="Platform/MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Platform/MeshInstance3D/StaticBody3D"]
+transform = Transform3D(0.9999994, 0, 0, 0, 0.9999996, 0, 0, 0, 0.9999999, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_42uki")
+
+[node name="JumpDetector" type="Area3D" parent="Platform"]
+transform = Transform3D(0.99999976, 0, 0, 0, 0.99999976, 0, 0, 0, 0.99999976, 0.031226039, 0.3403805, 0.0028095245)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Platform/JumpDetector"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.003718257, 0)
+shape = SubResource("CylinderShape3D_t7v2y")
 
 [connection signal="body_entered" from="ResetZone" to="ResetZone" method="_on_body_entered"]
 [connection signal="body_entered" from="Spikes/StaticBody3D/Area3D" to="Spikes" method="_on_body_entered"]

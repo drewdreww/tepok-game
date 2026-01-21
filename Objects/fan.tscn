@@ -1,8 +1,24 @@
-[gd_scene load_steps=11 format=4 uid="uid://d3snu2sbpkn6c"]
+[gd_scene load_steps=13 format=4 uid="uid://d3snu2sbpkn6c"]
 
 [ext_resource type="Texture2D" uid="uid://bq5ncfl4jj2p3" path="res://Assets/rusty_radiator_fan_wcljdev_low_0.jpg" id="1_70f2c"]
+[ext_resource type="Script" uid="uid://bv46boxcxsrwr" path="res://Objects/spikes.gd" id="1_84rcl"]
 [ext_resource type="Texture2D" uid="uid://dcylxbhrwpmyc" path="res://Assets/rusty_radiator_fan_wcljdev_low_1.jpg" id="2_84rcl"]
 [ext_resource type="Texture2D" uid="uid://dwel2211k2njd" path="res://Assets/rusty_radiator_fan_wcljdev_low_2.jpg" id="3_emj7n"]
+
+[sub_resource type="Animation" id="Animation_70f2c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FanHolder:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(2.220446e-16, 1.5707964, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_cqa6a"]
 resource_name = "on"
@@ -19,21 +35,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0, -1.5707964, 0), Vector3(6.2831855, -1.5707964, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_70f2c"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("FanHolder:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(2.220446e-16, 1.5707964, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_75enp"]
@@ -93,6 +94,9 @@ shadow_mesh = SubResource("ArrayMesh_omcon")
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_nvuy5"]
 points = PackedVector3Array(-3.8410115, -30.346844, -8.364143, -4.799537, -29.382778, -11.242161, -0.0057821274, 11.8413315, -27.548923, -9.593292, 28.153542, 3.1299014, -8.634767, -12.118334, 26.154041, 1.9112692, -2.530919, 17.525997, -8.634767, -0.61461884, -27.548923, 0.95274353, -11.160184, -28.504257, -9.593292, -26.508327, 9.847279, -1.92396, -22.669813, 20.404015, 0.95274353, 21.440577, -5.4861255, -0.9654343, -0.61461884, 30.954742, -7.676241, 17.596148, 24.237366, -7.676241, 20.482426, -22.75423, -1.92396, 30.075756, -7.4088097, -0.0057821274, -26.508327, -3.5694501, -8.634767, -25.550179, -15.08152, -6.716589, -3.489069, -30.42694, -4.799537, -27.466478, 14.64798, -1.124801, 23.870592, 16.569319, -2.8824859, 25.27909, 18.48133, -6.716589, -10.202034, 29.032059, -1.92396, 15.685761, -27.548923, 0.95274353, -0.61461884, 26.154041, -7.676241, 30.075756, 0.26390076, 0.95274353, -20.753513, -2.6081083, -0.9654343, -29.382778, -4.530792, -0.0057821274, -17.873148, 16.564655, -0.9654343, -11.160184, -29.4656, -8.634767, 20.482426, -20.831547, -9.593292, 28.153542, 5.052585, -4.799537, -24.592028, 19.442673)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_84rcl"]
+size = Vector3(3.701767, 1.2784424, 3.6245117)
+
 [node name="Fan" type="Node3D"]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -112,3 +116,13 @@ skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FanHolder/FanMesh/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_nvuy5")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.057843328)
+script = ExtResource("1_84rcl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.039405823, 0.026123049, 0.08867204)
+shape = SubResource("BoxShape3D_84rcl")
+
+[connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]
