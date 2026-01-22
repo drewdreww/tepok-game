@@ -1,10 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://bmns60sack8yh"]
+[gd_scene load_steps=13 format=3 uid="uid://bmns60sack8yh"]
 
 [ext_resource type="Texture2D" uid="uid://dyso7rrc2gh0u" path="res://Assets/PNG/Light/texture_08.png" id="1_vwg62"]
 [ext_resource type="Texture2D" uid="uid://bo44bapdnf5co" path="res://Assets/PNG/Orange/texture_03.png" id="2_qf6rc"]
 [ext_resource type="PackedScene" uid="uid://bjxwqe64spwid" path="res://Objects/door.tscn" id="3_53xsp"]
 [ext_resource type="Script" uid="uid://btb8exwohefpc" path="res://Scripts/reset_zone.gd" id="4_5e78q"]
 [ext_resource type="PackedScene" uid="uid://drbgdtyd40fuj" path="res://Objects/lasers.tscn" id="5_l4wr6"]
+[ext_resource type="PackedScene" uid="uid://bt4o3k003ubho" path="res://Objects/drone.tscn" id="7_5e78q"]
+
+[sub_resource type="GDScript" id="GDScript_qf6rc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5rvg2"]
 albedo_texture = ExtResource("1_vwg62")
@@ -25,6 +28,7 @@ albedo_texture = ExtResource("2_qf6rc")
 size = Vector3(5.5410156, 1, 3.3754883)
 
 [node name="Level3" type="Node3D"]
+script = SubResource("GDScript_qf6rc")
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
 use_collision = true
@@ -113,5 +117,8 @@ transform = Transform3D(-3.9591406e-08, 0.16881621, -12.019969, 5.0312856e-09, 0
 
 [node name="Lasers8" parent="." instance=ExtResource("5_l4wr6")]
 transform = Transform3D(-3.908615e-08, -0.15960556, -12.038668, -8.066368e-09, 0.98718095, -1.9463892, 1, 1.7246038e-09, -4.862456e-07, -0.13571107, 1.7080536, -35.946648)
+
+[node name="Drone" parent="." instance=ExtResource("7_5e78q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -25.342865)
 
 [connection signal="body_entered" from="ResetZone" to="ResetZone" method="_on_body_entered"]

@@ -51,15 +51,9 @@ func _unhandled_input(event: InputEvent):
 		get_tree().quit()
 		
 func _physics_process(delta: float) -> void:
-	var was_on_floor = is_on_floor()
-	
 	_handle_movement(delta)
 	_handle_fov(delta)
 	
-	if is_on_floor() and not was_on_floor:
-		if has_meta("spike_combo"):
-			set_meta("spike_combo", 0)
-			print("Touched ground - Combo Reset!")
 	
 func _handle_movement(delta: float) -> void:
 	if not is_on_floor():
@@ -117,14 +111,14 @@ func die():
 	# Enable Ragdoll
 	death_ragdoll.process_mode = Node.PROCESS_MODE_INHERIT
 	death_ragdoll.freeze = false 
-	death_ragdoll.lock_rotation = false # Allow tumbling
+	death_ragdoll.lock_rotation = false 
 	ragdoll_collider.disabled = false 
 	
 	# Move Camera
 	death_ragdoll.global_position = camera.global_position 
 	death_ragdoll.linear_velocity = velocity 
 	# Spin effect
-	death_ragdoll.angular_velocity = Vector3(randf_range(-5,5), randf_range(-5,5), randf_range(-5,5))
+	death_ragdoll.angular_velocity = Vector3(randf_range(-4,4), randf_range(-4,4), randf_range(-4,4))
 	
 	camera.reparent(death_ragdoll)
 	
@@ -146,7 +140,6 @@ func _try_load_next_level():
 	if current_level_node and current_level_node.next_level_path != "":
 		print("Swapping Level to: ", current_level_node.next_level_path)
 		
-		# Call the swap function safely
 		call_deferred("_perform_level_swap", world, current_level_node, current_level_node.next_level_path)
 		
 	else:
