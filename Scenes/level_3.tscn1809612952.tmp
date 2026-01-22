@@ -1,8 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://bmns60sack8yh"]
+[gd_scene load_steps=15 format=3 uid="uid://bmns60sack8yh"]
 
 [ext_resource type="Texture2D" uid="uid://dyso7rrc2gh0u" path="res://Assets/PNG/Light/texture_08.png" id="1_vwg62"]
 [ext_resource type="Texture2D" uid="uid://bo44bapdnf5co" path="res://Assets/PNG/Orange/texture_03.png" id="2_qf6rc"]
-[ext_resource type="Script" uid="uid://c1070xnylfgha" path="res://Scenes/lasers.gd" id="3_5e78q"]
 [ext_resource type="PackedScene" uid="uid://bjxwqe64spwid" path="res://Objects/door.tscn" id="3_53xsp"]
 [ext_resource type="Script" uid="uid://btb8exwohefpc" path="res://Scripts/reset_zone.gd" id="4_5e78q"]
 [ext_resource type="PackedScene" uid="uid://drbgdtyd40fuj" path="res://Objects/lasers.tscn" id="5_l4wr6"]
@@ -10,16 +9,6 @@
 [ext_resource type="Script" uid="uid://dtoll3hui00h8" path="res://Objects/drone_trigger.gd" id="7_53xsp"]
 
 [sub_resource type="GDScript" id="GDScript_qf6rc"]
-script/source = "extends Node3D
-
-@export_file(\"*.tscn\") var next_level_path: String = \"res://Scenes/level_4.tscn\"
-"
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_fxnjf"]
-size = Vector3(5.5410156, 1, 3.3754883)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_qf6rc"]
-size = Vector3(14.264557, 7.1171036, 30.284286)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5rvg2"]
 albedo_texture = ExtResource("1_vwg62")
@@ -36,61 +25,14 @@ uv1_triplanar = true
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n4vm5"]
 albedo_texture = ExtResource("2_qf6rc")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_5e78q"]
-size = Vector3(13.908318, 7.0267334, 9.199772)
+[sub_resource type="BoxShape3D" id="BoxShape3D_fxnjf"]
+size = Vector3(5.5410156, 1, 3.3754883)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_l4wr6"]
-size = Vector3(13.104996, 7.0209045, 10.528687)
+[sub_resource type="BoxShape3D" id="BoxShape3D_qf6rc"]
+size = Vector3(10.549072, 4.034729, 10.589325)
 
 [node name="Level3" type="Node3D"]
 script = SubResource("GDScript_qf6rc")
-
-[node name="ResetZone" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -45.50666)
-script = ExtResource("4_5e78q")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ResetZone"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.021484375, 0.49529982, -1.1877441)
-shape = SubResource("BoxShape3D_fxnjf")
-
-[node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.692584, 0.7213373, 0, -0.7213373, 0.692584, 0, 6.9854136, -32.933556)
-spot_range = 49.259014
-
-[node name="Drone" parent="." instance=ExtResource("7_5e78q")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 4.1501923, -36.251053)
-
-[node name="Lasers" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5969384, -31.17417)
-script = ExtResource("3_5e78q")
-
-[node name="Lasers2" parent="Lasers" instance=ExtResource("5_l4wr6")]
-transform = Transform3D(-3.7371993e-08, -0.3101124, -11.593785, -1.4004545e-08, 0.9506999, -3.7818203, 1, 1.7246027e-09, -4.8624554e-07, 1.2721452e-08, 0, 3.675476)
-
-[node name="Lasers3" parent="Lasers" instance=ExtResource("5_l4wr6")]
-transform = Transform3D(-4.305575e-08, -0.012164742, -12.1940975, -2.7979008e-09, 0.999926, -0.14834833, 1, 2.2739313e-09, -5.25441e-07, 1.2721452e-08, -0.80739427, 1.7893467)
-
-[node name="Lasers4" parent="Lasers" instance=ExtResource("5_l4wr6")]
-transform = Transform3D(-4.302007e-08, 0.20300946, -11.941059, 6.795167e-09, 0.9791769, 2.4757001, 1, 2.079811e-09, -5.30528e-07, 1.2721452e-08, 0, -3.9836597)
-
-[node name="Lasers5" parent="Lasers" instance=ExtResource("5_l4wr6")]
-transform = Transform3D(-4.3486814e-08, 0.0042935014, -12.194886, -1.1662333e-09, 0.99999094, 0.052359343, 1, 1.3529334e-09, -5.3025565e-07, 1.2721452e-08, 0, -2.4432812)
-
-[node name="Lasers6" parent="Lasers" instance=ExtResource("5_l4wr6")]
-transform = Transform3D(-4.1975394e-08, -0.1305089, -12.090696, -6.6271175e-09, 0.99144727, -1.5915555, 1, 1.0922748e-09, -5.1805904e-07, 1.2721452e-08, 0, -1.0734806)
-
-[node name="Lasers7" parent="Lasers" instance=ExtResource("5_l4wr6")]
-transform = Transform3D(-4.2068056e-08, 0.27303588, -11.731636, 9.575269e-09, 0.962004, 3.3296719, 1, 2.2746418e-09, -5.254095e-07, 1.2721452e-08, 0, -5.6473103)
-
-[node name="Lasers8" parent="Lasers" instance=ExtResource("5_l4wr6")]
-transform = Transform3D(-4.3025874e-08, -0.053346865, -12.177631, -3.4948053e-09, 0.99857605, -0.6505648, 1, 1.1945329e-09, -5.2622687e-07, 1.2721452e-08, 0.88885045, 0.5595665)
-
-[node name="DroneTrigger" type="Area3D" parent="."]
-script = ExtResource("7_53xsp")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DroneTrigger"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3176117, 3.0585518, -29.264767)
-shape = SubResource("BoxShape3D_qf6rc")
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
 use_collision = true
@@ -145,19 +87,61 @@ material = SubResource("StandardMaterial3D_jtv8s")
 [node name="Door" parent="." instance=ExtResource("3_53xsp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05274141, 1.1654887, -44.58361)
 
-[node name="KillZone" type="Area3D" parent="."]
+[node name="ResetZone" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -45.50666)
+script = ExtResource("4_5e78q")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="KillZone"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.287632, 3.0133667, -32.40674)
-shape = SubResource("BoxShape3D_5e78q")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ResetZone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.021484375, 0.49529982, -1.1877441)
+shape = SubResource("BoxShape3D_fxnjf")
 
-[node name="ScannerZone" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -27.497578)
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.692584, 0.7213373, 0, -0.7213373, 0.692584, 0, 6.9854136, -32.933556)
+spot_range = 49.259014
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ScannerZone"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.12680817, 3.0104523, -4.7643433)
-shape = SubResource("BoxShape3D_l4wr6")
+[node name="Drone" parent="." instance=ExtResource("7_5e78q")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 3.8454502, -38.224022)
+
+[node name="Lasers" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5969384, -31.17417)
+
+[node name="Lasers2" parent="Lasers" instance=ExtResource("5_l4wr6")]
+transform = Transform3D(-3.7371993e-08, -0.3101124, -11.593785, -1.4004545e-08, 0.9506999, -3.7818203, 1, 1.7246027e-09, -4.8624554e-07, 1.2721452e-08, 0, 3.1281738)
+
+[node name="Lasers3" parent="Lasers" instance=ExtResource("5_l4wr6")]
+transform = Transform3D(-4.207368e-08, 0.27269998, -11.732798, 9.561967e-09, 0.9620991, 3.3255763, 1, 2.2739304e-09, -5.2544095e-07, 1.2721452e-08, 0, 2.3454285)
+
+[node name="Lasers4" parent="Lasers" instance=ExtResource("5_l4wr6")]
+transform = Transform3D(-4.302007e-08, 0.20300946, -11.941059, 6.795167e-09, 0.9791769, 2.4757001, 1, 2.079811e-09, -5.30528e-07, 1.2721452e-08, 0, -0.18066025)
+
+[node name="Lasers5" parent="Lasers" instance=ExtResource("5_l4wr6")]
+transform = Transform3D(-4.3486814e-08, 0.0042935014, -12.194886, -1.1662333e-09, 0.99999094, 0.052359343, 1, 1.3529334e-09, -5.3025565e-07, 1.2721452e-08, 0, -0.80726624)
+
+[node name="Lasers6" parent="Lasers" instance=ExtResource("5_l4wr6")]
+transform = Transform3D(-4.1975394e-08, -0.1305089, -12.090696, -6.6271175e-09, 0.99144727, -1.5915555, 1, 1.0922748e-09, -5.1805904e-07, 1.2721452e-08, 0, 0.73615074)
+
+[node name="Lasers7" parent="Lasers" instance=ExtResource("5_l4wr6")]
+transform = Transform3D(-4.2068056e-08, 0.27303588, -11.731636, 9.575269e-09, 0.962004, 3.3296719, 1, 2.2746418e-09, -5.254095e-07, 1.2721452e-08, 0, -1.8054409)
+
+[node name="Lasers8" parent="Lasers" instance=ExtResource("5_l4wr6")]
+transform = Transform3D(-4.3025874e-08, -0.053346865, -12.177631, -3.4948053e-09, 0.99857605, -0.6505648, 1, 1.1945329e-09, -5.2622687e-07, 1.2721452e-08, 0, 1.4863014)
+
+[node name="DroneTrigger" type="Area3D" parent="."]
+script = ExtResource("7_53xsp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DroneTrigger"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.030883789, 1.5173645, -24.125303)
+shape = SubResource("BoxShape3D_qf6rc")
+
+[node name="DroneTrigger2" type="Area3D" parent="."]
+script = ExtResource("7_53xsp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DroneTrigger2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.030883789, 1.5173645, -24.125303)
+shape = SubResource("BoxShape3D_qf6rc")
 
 [connection signal="body_entered" from="ResetZone" to="ResetZone" method="_on_body_entered"]
 [connection signal="body_entered" from="DroneTrigger" to="DroneTrigger" method="_on_body_entered"]
 [connection signal="body_exited" from="DroneTrigger" to="DroneTrigger" method="_on_body_exited"]
+[connection signal="body_entered" from="DroneTrigger2" to="DroneTrigger2" method="_on_body_entered"]
+[connection signal="body_exited" from="DroneTrigger2" to="DroneTrigger2" method="_on_body_exited"]

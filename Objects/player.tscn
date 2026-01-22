@@ -33,3 +33,5 @@ freeze_mode = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DeathRagdoll"]
 shape = SubResource("SphereShape3D_3y5cq")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]

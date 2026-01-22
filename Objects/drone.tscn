@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bt4o3k003ubho"]
+[gd_scene load_steps=13 format=3 uid="uid://bt4o3k003ubho"]
 
 [ext_resource type="Script" uid="uid://cs7ffly06olbm" path="res://Objects/drone.gd" id="1_qtiyw"]
 [ext_resource type="Texture2D" uid="uid://b48vsauwr344q" path="res://Assets/PNG/Dark/texture_04.png" id="2_isdyx"]
@@ -21,19 +21,67 @@ emission_energy_multiplier = 10.0
 [sub_resource type="CylinderMesh" id="CylinderMesh_qtiyw"]
 material = SubResource("StandardMaterial3D_isdyx")
 
+[sub_resource type="Animation" id="Animation_isdyx"]
+resource_name = "idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DroneMesh:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.097034395, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_yeay5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DroneMesh:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yeay5"]
+_data = {
+&"RESET": SubResource("Animation_yeay5"),
+&"idle": SubResource("Animation_isdyx")
+}
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_isdyx"]
 
 [node name="Drone" type="CharacterBody3D" groups=["drone"]]
 script = ExtResource("1_qtiyw")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="DroneMesh" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="DroneMesh"]
 material_override = SubResource("StandardMaterial3D_nrc82")
 mesh = SubResource("SphereMesh_qtiyw")
+skeleton = NodePath("../..")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="DroneMesh"]
 transform = Transform3D(0.87766117, 0, 0, 0, 0.07152188, 0, 0, 0, 0.9158227, 0, 0.10169983, -0.14184046)
 material_override = SubResource("StandardMaterial3D_j2i4t")
 mesh = SubResource("CylinderMesh_qtiyw")
+skeleton = NodePath("../..")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_yeay5")
+}
+autoplay = "idle"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_isdyx")
