@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 GameSettings="*res://Scripts/GameSettings.gd"
 
+[dotnet]
+
+project/assembly_name="Tepok"
+
 [input]
 
 left={
