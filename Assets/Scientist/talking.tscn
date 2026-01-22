@@ -1,0 +1,83 @@
+[gd_scene load_steps=24 format=3 uid="uid://hppqah2a1r76"]
+
+[ext_resource type="PackedScene" uid="uid://bbg4odde5o2ix" path="res://Assets/Scientist/Talking.fbx" id="1_k77ha"]
+[ext_resource type="Texture2D" uid="uid://b0xh8e1p0gy7i" path="res://Assets/Scientist/Scientist Male 1_Body_diffuse.png" id="2_4mfxl"]
+[ext_resource type="Texture2D" uid="uid://1evvl0naiv2b" path="res://Assets/Scientist/Scientist Male 1_Body_normal.png" id="3_w7dhq"]
+[ext_resource type="Texture2D" uid="uid://dc5pthq56si2" path="res://Assets/Scientist/Scientist Male 1_Body_gloss.png" id="4_iqg2f"]
+[ext_resource type="Texture2D" uid="uid://cc6j3yr53mlev" path="res://Assets/Scientist/Scientist Male 1_Bottom_diffuse.png" id="5_nmk8r"]
+[ext_resource type="Texture2D" uid="uid://3ebub1u8gqlh" path="res://Assets/Scientist/Scientist Male 1_Bottom_normal.png" id="6_ggqrk"]
+[ext_resource type="Texture2D" uid="uid://bnd2dn3klsg8w" path="res://Assets/Scientist/Scientist Male 1_Bottom_gloss.png" id="7_wc52f"]
+[ext_resource type="Texture2D" uid="uid://1agpo650nbd5" path="res://Assets/Scientist/Scientist Male 1_Shoes_diffuse.png" id="8_uro3p"]
+[ext_resource type="Texture2D" uid="uid://xw4qgd8wj3sn" path="res://Assets/Scientist/Scientist Male 1_Shoes_normal.png" id="9_i7wex"]
+[ext_resource type="Texture2D" uid="uid://dquo2tm7un7b7" path="res://Assets/Scientist/Scientist Male 1_Shoes_gloss.png" id="10_2nblq"]
+[ext_resource type="Texture2D" uid="uid://slrhun4aja3v" path="res://Assets/Scientist/Scientist Male 1_Hair_diffuse.png" id="11_odpxy"]
+[ext_resource type="Texture2D" uid="uid://c3yit640dh0p1" path="res://Assets/Scientist/Scientist Male 1_Hair_normal.png" id="12_3w0t2"]
+[ext_resource type="Texture2D" uid="uid://c5y7f7tr0d6cs" path="res://Assets/Scientist/Scientist Male 1_Hair_gloss.png" id="13_b7os8"]
+[ext_resource type="Texture2D" uid="uid://bti2hx7m224mf" path="res://Assets/Scientist/Scientist_Male_1_Top_diffuse.png" id="14_51rtq"]
+[ext_resource type="Texture2D" uid="uid://bsg8ejw1rsevv" path="res://Assets/Scientist/Scientist Male 1_Top_normal.png" id="15_bsy1o"]
+[ext_resource type="Texture2D" uid="uid://dvg604xbqrdv5" path="res://Assets/Scientist/Scientist Male 1_Top_gloss.png" id="16_74qg4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o173u"]
+albedo_texture = ExtResource("2_4mfxl")
+roughness_texture = ExtResource("4_iqg2f")
+normal_enabled = true
+normal_texture = ExtResource("3_w7dhq")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hgcl5"]
+albedo_texture = ExtResource("2_4mfxl")
+roughness_texture = ExtResource("4_iqg2f")
+normal_enabled = true
+normal_texture = ExtResource("3_w7dhq")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tjhhg"]
+albedo_texture = ExtResource("2_4mfxl")
+roughness_texture = ExtResource("4_iqg2f")
+normal_enabled = true
+normal_texture = ExtResource("3_w7dhq")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1aqll"]
+albedo_texture = ExtResource("5_nmk8r")
+roughness_texture = ExtResource("7_wc52f")
+normal_enabled = true
+normal_texture = ExtResource("6_ggqrk")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uyrxo"]
+albedo_texture = ExtResource("8_uro3p")
+roughness_texture = ExtResource("10_2nblq")
+normal_enabled = true
+normal_texture = ExtResource("9_i7wex")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ph7wk"]
+albedo_texture = ExtResource("11_odpxy")
+roughness_texture = ExtResource("13_b7os8")
+normal_enabled = true
+normal_texture = ExtResource("12_3w0t2")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8ecun"]
+albedo_texture = ExtResource("14_51rtq")
+roughness_texture = ExtResource("16_74qg4")
+normal_enabled = true
+normal_texture = ExtResource("15_bsy1o")
+
+[node name="Talking" instance=ExtResource("1_k77ha")]
+
+[node name="Body" parent="Skeleton3D" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_o173u")
+
+[node name="Eyes" parent="Skeleton3D" index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_hgcl5")
+
+[node name="Eyelashes" parent="Skeleton3D" index="2"]
+surface_material_override/0 = SubResource("StandardMaterial3D_tjhhg")
+
+[node name="Bottoms" parent="Skeleton3D" index="3"]
+surface_material_override/0 = SubResource("StandardMaterial3D_1aqll")
+
+[node name="Shoes" parent="Skeleton3D" index="4"]
+surface_material_override/0 = SubResource("StandardMaterial3D_uyrxo")
+
+[node name="Hair" parent="Skeleton3D" index="5"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ph7wk")
+
+[node name="Tops" parent="Skeleton3D" index="6"]
+surface_material_override/0 = SubResource("StandardMaterial3D_8ecun")

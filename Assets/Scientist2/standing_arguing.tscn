@@ -1,0 +1,135 @@
+[gd_scene load_steps=24 format=3 uid="uid://c4p1bf1phcirm"]
+
+[ext_resource type="PackedScene" uid="uid://dk1mx3hbhxmx3" path="res://Assets/Scientist2/Standing Arguing.fbx" id="1_2kbix"]
+[ext_resource type="Texture2D" uid="uid://xcso8neokkbb" path="res://Assets/Scientist2/Scientist Female 1_Body_diffuse.png" id="2_0ntaa"]
+[ext_resource type="Texture2D" uid="uid://bcv3jpo5pqvuu" path="res://Assets/Scientist2/Scientist Female 1_Body_normal.png" id="3_2fd1f"]
+[ext_resource type="Texture2D" uid="uid://djw3qppiaynpb" path="res://Assets/Scientist2/Scientist Female 1_Body_gloss.png" id="4_xnxjt"]
+[ext_resource type="Texture2D" uid="uid://cxunl7qg0nmbk" path="res://Assets/Scientist2/Scientist Female 1_Bottom_diffuse.png" id="5_ndvu3"]
+[ext_resource type="Texture2D" uid="uid://cqpqtbf4ducqu" path="res://Assets/Scientist2/Scientist Female 1_Bottom_normal.png" id="6_i5wgk"]
+[ext_resource type="Texture2D" uid="uid://btx61wt0gu3j4" path="res://Assets/Scientist2/Scientist Female 1_Bottom_gloss.png" id="7_6s1w2"]
+[ext_resource type="Texture2D" uid="uid://cq66b4d748t5k" path="res://Assets/Scientist2/Scientist Female 1_Shoes_diffuse.png" id="8_1qmoi"]
+[ext_resource type="Texture2D" uid="uid://bgganxp0jjm15" path="res://Assets/Scientist2/Scientist Female 1_Shoes_normal.png" id="9_7yd0s"]
+[ext_resource type="Texture2D" uid="uid://cu7xoblw3w6kd" path="res://Assets/Scientist2/Scientist Female 1_Shoes_gloss.png" id="10_k4h5x"]
+[ext_resource type="Texture2D" uid="uid://c55obyhv14bi6" path="res://Assets/Scientist2/Scientist Female 1_Top_diffuse.png" id="11_ktgp2"]
+[ext_resource type="Texture2D" uid="uid://c8iptbqgmsxnb" path="res://Assets/Scientist2/Scientist Female 1_Top_normal.png" id="12_jrg8a"]
+[ext_resource type="Texture2D" uid="uid://dc2j6wcjjhmvc" path="res://Assets/Scientist2/Scientist Female 1_Top_gloss.png" id="13_1wqn0"]
+[ext_resource type="Texture2D" uid="uid://dw27savf17ebk" path="res://Assets/Scientist2/Scientist Female 1_Hair_diffuse.png" id="14_7r31u"]
+[ext_resource type="Texture2D" uid="uid://co2dmhgffxiuk" path="res://Assets/Scientist2/Scientist Female 1_Hair_normal.png" id="15_1qh0d"]
+[ext_resource type="Texture2D" uid="uid://y8hv1rkwsaiw" path="res://Assets/Scientist2/Scientist Female 1_Hair_gloss.png" id="16_dmjc0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2qm8o"]
+albedo_texture = ExtResource("2_0ntaa")
+roughness_texture = ExtResource("4_xnxjt")
+normal_enabled = true
+normal_texture = ExtResource("3_2fd1f")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pudfx"]
+albedo_texture = ExtResource("2_0ntaa")
+roughness_texture = ExtResource("4_xnxjt")
+normal_enabled = true
+normal_texture = ExtResource("3_2fd1f")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w20yj"]
+albedo_texture = ExtResource("2_0ntaa")
+roughness_texture = ExtResource("4_xnxjt")
+normal_enabled = true
+normal_texture = ExtResource("3_2fd1f")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_je557"]
+albedo_texture = ExtResource("5_ndvu3")
+roughness_texture = ExtResource("7_6s1w2")
+normal_enabled = true
+normal_texture = ExtResource("6_i5wgk")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4mxlf"]
+albedo_texture = ExtResource("8_1qmoi")
+roughness_texture = ExtResource("10_k4h5x")
+normal_enabled = true
+normal_texture = ExtResource("9_7yd0s")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nmt0w"]
+albedo_texture = ExtResource("11_ktgp2")
+roughness_texture = ExtResource("13_1wqn0")
+normal_enabled = true
+normal_texture = ExtResource("12_jrg8a")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1q27o"]
+albedo_texture = ExtResource("14_7r31u")
+roughness_texture = ExtResource("16_dmjc0")
+normal_enabled = true
+normal_texture = ExtResource("15_1qh0d")
+
+[node name="Standing Arguing" instance=ExtResource("1_2kbix")]
+
+[node name="Skeleton3D" parent="." index="0"]
+bones/2/position = Vector3(-1.7347235e-18, 0.11004403, -1.3828203e-09)
+bones/4/position = Vector3(1.7347235e-18, 0.14148507, -1.277967e-08)
+bones/8/position = Vector3(2.5811298e-12, 0.12848854, 6.941603e-11)
+bones/9/position = Vector3(-1.2185633e-10, 0.20013197, 2.2526514e-10)
+bones/10/position = Vector3(1.8047511e-10, 0.25882834, -1.15743415e-10)
+bones/12/position = Vector3(-0.0012302607, 0.039356224, -8.35521e-10)
+bones/12/rotation = Quaternion(0.07839303, 8.700398e-19, 4.1761887e-17, 0.99692255)
+bones/13/position = Vector3(0.0030375288, 0.03501016, -1.1919332e-09)
+bones/13/rotation = Quaternion(-0.030801266, 6.942188e-18, -1.3884375e-17, 0.99952555)
+bones/16/rotation = Quaternion(0.02368013, -1.7352104e-17, -3.4704205e-18, 0.99971956)
+bones/17/position = Vector3(7.5355965e-05, 0.030391628, 6.941381e-11)
+bones/17/rotation = Quaternion(-0.028654646, -6.941744e-18, -6.941744e-18, 0.9995894)
+bones/20/position = Vector3(-7.7022414e-05, 0.035518743, -2.8956726e-10)
+bones/20/rotation = Quaternion(0.016903788, -6.939886e-18, 1.7349714e-18, 0.9998571)
+bones/21/position = Vector3(2.3032215e-05, 0.034085788, -4.928087e-10)
+bones/21/rotation = Quaternion(0.00631027, -6.939032e-18, 4.336895e-19, 0.9999801)
+bones/24/position = Vector3(-0.00032810203, 0.03153614, -4.471321e-10)
+bones/24/rotation = Quaternion(0.053333282, 1.54294e-33, 7.7147e-34, 0.99857676)
+bones/25/position = Vector3(-2.8015063e-05, 0.029708251, -1.2099899e-10)
+bones/25/rotation = Quaternion(0.08272872, 1.3925526e-17, 5.222071e-18, 0.9965721)
+bones/28/position = Vector3(-2.5268157e-05, 0.03222843, 3.376146e-10)
+bones/28/rotation = Quaternion(0.002439532, 6.9389146e-18, -1.3877829e-17, 0.999997)
+bones/29/position = Vector3(-8.661676e-06, 0.02561368, 1.8623014e-10)
+bones/29/rotation = Quaternion(0.009050107, 2.0817535e-17, 1.0408768e-16, 0.99995905)
+bones/32/position = Vector3(-2.2481239e-11, 0.12848854, 6.57252e-11)
+bones/33/position = Vector3(-2.1439903e-10, 0.20021772, -6.499601e-11)
+bones/34/position = Vector3(-4.7511617e-10, 0.25890285, -1.5451973e-10)
+bones/36/position = Vector3(0.001962484, 0.041013274, 4.7485327e-10)
+bones/36/rotation = Quaternion(0.042010788, -8.464252e-18, 4.1670163e-17, 0.99911714)
+bones/37/position = Vector3(-0.0005989266, 0.034586422, -5.875398e-10)
+bones/37/rotation = Quaternion(-0.044168808, -3.798414e-18, 4.167403e-17, 0.9990241)
+bones/40/position = Vector3(0.00012769036, 0.032174516, 7.348755e-10)
+bones/40/rotation = Quaternion(0.0121976035, 2.081823e-17, 6.939411e-18, 0.9999256)
+bones/41/position = Vector3(1.4613085e-05, 0.030096622, -2.9015168e-10)
+bones/41/rotation = Quaternion(0.026893055, 6.4646866e-27, 6.941404e-18, 0.9996383)
+bones/44/position = Vector3(0.00011427495, 0.033884432, 5.9812155e-12)
+bones/44/rotation = Quaternion(0.017753258, 6.9399874e-18, 0, 0.9998424)
+bones/45/position = Vector3(-6.3610955e-06, 0.03304133, -1.9368507e-11)
+bones/45/rotation = Quaternion(0.01731914, 6.9399345e-18, -3.2316587e-26, 0.99985003)
+bones/48/position = Vector3(0.00044553154, 0.03205296, -1.8214541e-11)
+bones/48/rotation = Quaternion(0.09294895, -5.192357e-26, -1.04535976e-17, 0.99567086)
+bones/49/position = Vector3(-0.00014085829, 0.029780712, 5.541039e-10)
+bones/52/position = Vector3(0.00014872929, 0.031428486, -2.260907e-10)
+bones/52/rotation = Quaternion(0.019065978, 1.9390571e-26, -6.9401545e-18, 0.99981827)
+bones/53/position = Vector3(2.5547388e-05, 0.025217423, 4.7214077e-10)
+bones/53/rotation = Quaternion(0.045660898, -6.946138e-18, 6.946139e-18, 0.998957)
+bones/56/position = Vector3(8.918977e-12, 0.44337666, 6.3636113e-10)
+bones/57/position = Vector3(-4.4186488e-11, 0.40339002, 9.726144e-10)
+bones/61/position = Vector3(-1.1066287e-11, 0.4435901, -2.1715123e-10)
+bones/62/position = Vector3(2.3157398e-10, 0.4032331, 3.3007275e-10)
+
+[node name="Body" parent="Skeleton3D" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_2qm8o")
+
+[node name="Eyes" parent="Skeleton3D" index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_pudfx")
+
+[node name="Eyelashes" parent="Skeleton3D" index="2"]
+surface_material_override/0 = SubResource("StandardMaterial3D_w20yj")
+
+[node name="Bottoms" parent="Skeleton3D" index="3"]
+surface_material_override/0 = SubResource("StandardMaterial3D_je557")
+
+[node name="Shoes" parent="Skeleton3D" index="4"]
+surface_material_override/0 = SubResource("StandardMaterial3D_4mxlf")
+
+[node name="Tops" parent="Skeleton3D" index="5"]
+surface_material_override/0 = SubResource("StandardMaterial3D_nmt0w")
+
+[node name="Hair" parent="Skeleton3D" index="6"]
+surface_material_override/0 = SubResource("StandardMaterial3D_1q27o")
