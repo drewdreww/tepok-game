@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://b4on05tkph3dv"]
+[gd_scene load_steps=28 format=3 uid="uid://b4on05tkph3dv"]
 
 [ext_resource type="Texture2D" uid="uid://dyso7rrc2gh0u" path="res://Assets/PNG/Light/texture_08.png" id="1_2mgoq"]
 [ext_resource type="Script" uid="uid://dth7nkxxcvn83" path="res://Scenes/level_2.gd" id="1_cggpd"]
@@ -10,6 +10,9 @@
 [ext_resource type="Script" uid="uid://p0vglt8j4xgh" path="res://Scenes/spikes_lvl2.gd" id="7_42uki"]
 [ext_resource type="PackedScene" uid="uid://bn6khnb8kd311" path="res://Objects/spikes.tscn" id="8_q0ycs"]
 [ext_resource type="Script" uid="uid://dxfpubnayh5fs" path="res://Scenes/platform_lvl2.gd" id="8_uhnj4"]
+[ext_resource type="Script" uid="uid://bqoyapihothbd" path="res://Scripts/TriggerScript/area_3d.gd" id="11_vcilj"]
+[ext_resource type="AudioStream" uid="uid://bl0bmw0lv55gc" path="res://Scripts/VoiceLine/Video_Ready_For_Viewing.mp3" id="12_bl0du"]
+[ext_resource type="Script" uid="uid://cxclgywxgc8k7" path="res://Scripts/TriggerScript/area_3d_3.gd" id="13_q0ycs"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hj5x7"]
 albedo_texture = ExtResource("1_2mgoq")
@@ -51,6 +54,12 @@ albedo_texture = ExtResource("6_vcilj")
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_42uki"]
 height = 0.4
 radius = 1.5
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hj5x7"]
+size = Vector3(9.710327, 5.0469055, 9.374268)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yvrk7"]
+size = Vector3(2.441986, 2.2086182, 1.3613281)
 
 [node name="Level2" type="Node3D"]
 script = ExtResource("1_cggpd")
@@ -276,5 +285,38 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Platform/AnimatableBody3D"]
 shape = SubResource("CylinderShape3D_42uki")
 
+[node name="IntroArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2.139081, 0, 1.1777285, -0.83177567)
+script = ExtResource("11_vcilj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="IntroArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.06512451, 1.2002412, -0.21984863)
+shape = SubResource("BoxShape3D_hj5x7")
+
+[node name="IntroVoice" type="AudioStreamPlayer3D" parent="IntroArea"]
+stream = ExtResource("12_bl0du")
+
+[node name="DoorArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -47.226902)
+script = ExtResource("13_q0ycs")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DoorArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.005479276, 1.3658918, 1.4370232)
+shape = SubResource("BoxShape3D_yvrk7")
+
+[node name="FailedVoice" type="AudioStreamPlayer3D" parent="DoorArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.007870436, 0.9416851, 0.2707138)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 96.0
+offset_top = 558.0
+offset_right = 335.0
+offset_bottom = 581.0
+metadata/_edit_use_anchors_ = true
+
 [connection signal="body_entered" from="ResetZone" to="ResetZone" method="_on_body_entered"]
 [connection signal="body_entered" from="Spikes/StaticBody3D/Area3D" to="Spikes" method="_on_body_entered"]
+[connection signal="body_entered" from="IntroArea" to="IntroArea" method="_on_body_entered"]
+[connection signal="body_entered" from="DoorArea" to="DoorArea" method="_on_body_entered"]
