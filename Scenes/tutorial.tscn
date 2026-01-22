@@ -6,10 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://bjxwqe64spwid" path="res://Objects/door.tscn" id="3_omtrn"]
 [ext_resource type="Script" uid="uid://btb8exwohefpc" path="res://Scripts/reset_zone.gd" id="5_p8jf4"]
 [ext_resource type="PackedScene" uid="uid://d3snu2sbpkn6c" path="res://Objects/fan.tscn" id="7_ys4pu"]
-[ext_resource type="Script" uid="uid://bqoyapihothbd" path="res://Scenes/area_3d.gd" id="8_h2ono"]
+[ext_resource type="Script" uid="uid://bqoyapihothbd" path="res://Scripts/TriggerScript/area_3d.gd" id="8_h2ono"]
 [ext_resource type="AudioStream" uid="uid://bl0bmw0lv55gc" path="res://Scripts/VoiceLine/Video_Ready_For_Viewing.mp3" id="9_on4kn"]
-[ext_resource type="Script" uid="uid://cxclgywxgc8k7" path="res://Scenes/area_3d_3.gd" id="10_8va2t"]
-[ext_resource type="Script" uid="uid://b005fjwfhpcla" path="res://Scenes/area_3d_2.gd" id="10_70gml"]
+[ext_resource type="Script" uid="uid://cxclgywxgc8k7" path="res://Scripts/TriggerScript/area_3d_3.gd" id="10_8va2t"]
+[ext_resource type="Script" uid="uid://b005fjwfhpcla" path="res://Scripts/TriggerScript/area_3d_2.gd" id="10_70gml"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ys4pu"]
 albedo_texture = ExtResource("1_p8jf4")
@@ -277,7 +277,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -11.414957, -24.352901)
 script = ExtResource("10_70gml")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SpikeArea"]
-transform = Transform3D(6.2222633, 0, 0, 0, 1.3613386, 0, 0, 0, 3.2823236, 0.43189, -0.64178276, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.43189, -0.64178276, 0)
 shape = SubResource("BoxShape3D_8va2t")
 
 [node name="DeathVoicee" type="AudioStreamPlayer3D" parent="SpikeArea"]
