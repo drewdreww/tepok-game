@@ -1,0 +1,190 @@
+[gd_scene load_steps=8 format=3 uid="uid://d1onfybck4xec"]
+
+[ext_resource type="Texture2D" uid="uid://crjq8kggmpbht" path="res://Assets/Textures/rusty_metal_04_disp_1k.png" id="1_0bhgn"]
+[ext_resource type="Texture2D" uid="uid://ogm834oqjdrx" path="res://Assets/Textures/rusty_metal_04_diff_1k.jpg" id="2_jotsw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3kljf"]
+albedo_texture = ExtResource("1_0bhgn")
+metallic = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yqwjw"]
+albedo_texture = ExtResource("2_jotsw")
+
+[sub_resource type="Animation" id="Animation_0bhgn"]
+resource_name = "on"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Holder:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(6.2831855, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_jotsw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Holder:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3kljf"]
+_data = {
+&"RESET": SubResource("Animation_jotsw"),
+&"on": SubResource("Animation_0bhgn")
+}
+
+[node name="Blades" type="Node3D"]
+
+[node name="Holder" type="Node3D" parent="."]
+
+[node name="CSGTorus3D" type="CSGTorus3D" parent="Holder"]
+transform = Transform3D(-4.3711385e-08, 0.99999994, 0, -0.99999994, -4.3711385e-08, 0, 0, 0, 0.99999994, 0.82711, 0, 0)
+inner_radius = 0.001
+outer_radius = 0.27
+sides = 7
+ring_sides = 3
+smooth_faces = false
+material = SubResource("StandardMaterial3D_3kljf")
+
+[node name="CSGTorus3D2" type="CSGTorus3D" parent="Holder"]
+transform = Transform3D(-4.3711385e-08, 0.99999994, 0, -0.99999994, -4.3711385e-08, 0, 0, 0, 0.99999994, 0.55542153, 0, 0)
+inner_radius = 0.001
+outer_radius = 0.27
+sides = 7
+ring_sides = 3
+smooth_faces = false
+material = SubResource("StandardMaterial3D_3kljf")
+
+[node name="CSGTorus3D3" type="CSGTorus3D" parent="Holder"]
+transform = Transform3D(-4.3711385e-08, 0.99999994, 0, -0.99999994, -4.3711385e-08, 0, 0, 0, 0.99999994, 0.2788615, 0, 0)
+inner_radius = 0.001
+outer_radius = 0.27
+sides = 7
+ring_sides = 3
+smooth_faces = false
+material = SubResource("StandardMaterial3D_3kljf")
+
+[node name="CSGTorus3D4" type="CSGTorus3D" parent="Holder"]
+transform = Transform3D(-4.3711385e-08, 0.99999994, 0, -0.99999994, -4.3711385e-08, 0, 0, 0, 0.99999994, 0.021454332, 0, 0)
+inner_radius = 0.001
+outer_radius = 0.27
+sides = 7
+ring_sides = 3
+smooth_faces = false
+material = SubResource("StandardMaterial3D_3kljf")
+
+[node name="CSGTorus3D5" type="CSGTorus3D" parent="Holder"]
+transform = Transform3D(-4.3711385e-08, 0.99999994, 0, -0.99999994, -4.3711385e-08, 0, 0, 0, 0.99999994, -0.23773716, 0, 0)
+inner_radius = 0.001
+outer_radius = 0.27
+sides = 7
+ring_sides = 3
+smooth_faces = false
+material = SubResource("StandardMaterial3D_3kljf")
+
+[node name="CSGTorus3D6" type="CSGTorus3D" parent="Holder"]
+transform = Transform3D(-4.3711385e-08, 0.99999994, 0, -0.99999994, -4.3711385e-08, 0, 0, 0, 0.99999994, -0.5094256, 0, 0)
+inner_radius = 0.001
+outer_radius = 0.27
+sides = 7
+ring_sides = 3
+smooth_faces = false
+material = SubResource("StandardMaterial3D_3kljf")
+
+[node name="CSGTorus3D9" type="CSGTorus3D" parent="Holder"]
+transform = Transform3D(-4.3711385e-08, 0.99999994, 0, -0.99999994, -4.3711385e-08, 0, 0, 0, 0.99999994, 0.82711, 0, 0)
+inner_radius = 0.001
+outer_radius = 0.27
+sides = 7
+ring_sides = 3
+smooth_faces = false
+material = SubResource("StandardMaterial3D_3kljf")
+
+[node name="CSGTorus3D10" type="CSGTorus3D" parent="Holder"]
+transform = Transform3D(-4.3711385e-08, 0.99999994, 0, -0.99999994, -4.3711385e-08, 0, 0, 0, 0.99999994, 0.55542153, 0, 0)
+inner_radius = 0.001
+outer_radius = 0.27
+sides = 7
+ring_sides = 3
+smooth_faces = false
+material = SubResource("StandardMaterial3D_3kljf")
+
+[node name="CSGTorus3D11" type="CSGTorus3D" parent="Holder"]
+transform = Transform3D(-4.3711385e-08, 0.99999994, 0, -0.99999994, -4.3711385e-08, 0, 0, 0, 0.99999994, 0.2788615, 0, 0)
+inner_radius = 0.001
+outer_radius = 0.27
+sides = 7
+ring_sides = 3
+smooth_faces = false
+material = SubResource("StandardMaterial3D_3kljf")
+
+[node name="CSGTorus3D12" type="CSGTorus3D" parent="Holder"]
+transform = Transform3D(-4.3711385e-08, 0.99999994, 0, -0.99999994, -4.3711385e-08, 0, 0, 0, 0.99999994, 0.021454332, 0, 0)
+inner_radius = 0.001
+outer_radius = 0.27
+sides = 7
+ring_sides = 3
+smooth_faces = false
+material = SubResource("StandardMaterial3D_3kljf")
+
+[node name="CSGTorus3D13" type="CSGTorus3D" parent="Holder"]
+transform = Transform3D(-4.3711385e-08, 0.99999994, 0, -0.99999994, -4.3711385e-08, 0, 0, 0, 0.99999994, -0.23773716, 0, 0)
+inner_radius = 0.001
+outer_radius = 0.27
+sides = 7
+ring_sides = 3
+smooth_faces = false
+material = SubResource("StandardMaterial3D_3kljf")
+
+[node name="CSGTorus3D14" type="CSGTorus3D" parent="Holder"]
+transform = Transform3D(-4.3711385e-08, 0.99999994, 0, -0.99999994, -4.3711385e-08, 0, 0, 0, 0.99999994, -0.5094256, 0, 0)
+inner_radius = 0.001
+outer_radius = 0.27
+sides = 7
+ring_sides = 3
+smooth_faces = false
+material = SubResource("StandardMaterial3D_3kljf")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Holder"]
+transform = Transform3D(-4.3711385e-08, -0.99999994, 0, 0.99999994, -4.3711385e-08, 0, 0, 0, 0.99999994, -0.075410835, -1.880825e-08, 0)
+radius = 0.06542969
+height = 2.2662659
+material = SubResource("StandardMaterial3D_yqwjw")
+
+[node name="CSGTorus3D15" type="CSGTorus3D" parent="Holder"]
+transform = Transform3D(-4.3711385e-08, 0.99999994, 0, -0.99999994, -4.3711385e-08, 0, 0, 0, 0.99999994, -0.7859859, 0, 0)
+inner_radius = 0.001
+outer_radius = 0.27
+sides = 7
+ring_sides = 3
+smooth_faces = false
+material = SubResource("StandardMaterial3D_3kljf")
+
+[node name="CSGTorus3D16" type="CSGTorus3D" parent="Holder"]
+transform = Transform3D(-4.3711385e-08, 0.99999994, 0, -0.99999994, -4.3711385e-08, 0, 0, 0, 0.99999994, -1.043393, 0, 0)
+inner_radius = 0.001
+outer_radius = 0.27
+sides = 7
+ring_sides = 3
+smooth_faces = false
+material = SubResource("StandardMaterial3D_3kljf")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_3kljf")
+}
