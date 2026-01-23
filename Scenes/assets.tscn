@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://chheoevylqetn" path="res://Assets/minimal house textures/housePlantLeaf.png" id="7_fshla"]
 [ext_resource type="Texture2D" uid="uid://br8r2d53mryqx" path="res://Assets/minimal house textures/Rug3.png" id="8_c3dsa"]
 [ext_resource type="Texture2D" uid="uid://dc4r4gtoblaol" path="res://Assets/minimal house textures/WoodPlanks.png" id="9_ooj1h"]
-[ext_resource type="Texture2D" uid="uid://dysrlcdq4ibof" path="res://Assets/minimal house textures/BookBlock.png" id="10_tfkqs"]
+[ext_resource type="Texture2D" uid="uid://dysrlcdq4ibof" path="res://Assets/BookBlock.png" id="10_tfkqs"]
 [ext_resource type="Texture2D" uid="uid://ykbb37xoyj7l" path="res://Assets/minimal house textures/whiteTiles.png" id="11_r6k80"]
 [ext_resource type="Texture2D" uid="uid://ba0crwwyuxmtx" path="res://Assets/minimal house textures/pantedBricks.png" id="12_n2k65"]
 [ext_resource type="Texture2D" uid="uid://db2au1r5gli5l" path="res://Assets/minimal house textures/glasssCube.png" id="13_scv50"]
