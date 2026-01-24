@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://lfmqx8w7ufxn"]
+[gd_scene load_steps=39 format=3 uid="uid://lfmqx8w7ufxn"]
 
 [ext_resource type="Texture2D" uid="uid://dyso7rrc2gh0u" path="res://Assets/PNG/Light/texture_08.png" id="1_6444e"]
 [ext_resource type="Script" uid="uid://d3op4vm6ecw7w" path="res://Scenes/level_1.gd" id="1_wrinw"]
@@ -10,10 +10,11 @@
 [ext_resource type="Script" uid="uid://btb8exwohefpc" path="res://Scripts/reset_zone.gd" id="5_wrinw"]
 [ext_resource type="Script" uid="uid://c4xxklbns0623" path="res://Scripts/trigger_safe.gd" id="7_lsmp6"]
 [ext_resource type="Texture2D" uid="uid://wec7pnmmu2uw" path="res://Assets/PNG/Orange/texture_05.png" id="8_wrinw"]
-[ext_resource type="Script" uid="uid://bqoyapihothbd" path="res://Scripts/TriggerScript/area_3d.gd" id="11_6ioyp"]
+[ext_resource type="Script" path="res://Scripts/TriggerScript/door_area_level_1.gd" id="12_8i23i"]
 [ext_resource type="AudioStream" uid="uid://bl0bmw0lv55gc" path="res://Scripts/VoiceLine/Video_Ready_For_Viewing.mp3" id="12_oovug"]
-[ext_resource type="Script" uid="uid://b005fjwfhpcla" path="res://Scripts/TriggerScript/area_3d_2.gd" id="13_8i23i"]
-[ext_resource type="Script" uid="uid://cxclgywxgc8k7" path="res://Scripts/TriggerScript/area_3d_3.gd" id="14_8yhm2"]
+[ext_resource type="Script" path="res://Scripts/TriggerScript/label.gd" id="13_8yhm2"]
+[ext_resource type="FontFile" uid="uid://cuan3t5utbm2a" path="res://Scripts/Space_Grotesk/SpaceGrotesk-VariableFont_wght.ttf" id="14_pjppf"]
+[ext_resource type="Script" path="res://Scripts/TriggerScript/spike_area_level_1.gd" id="15_yltlr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_chwpn"]
 albedo_texture = ExtResource("1_6444e")
@@ -62,14 +63,115 @@ size = Vector3(19.963623, 1, 7.9416656)
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_wrinw"]
 points = PackedVector3Array(-10, -0.5, -5, -10, 0.5, -5, 10, -0.5, -5, -10, -0.5, 5, -10, 0.5, 5, 10, 0.5, -5, 10, -0.5, 5, 10, 0.5, 5)
 
+[sub_resource type="GDScript" id="GDScript_ijtdf"]
+script/source = "extends Area3D
+
+@onready var narration = $IntroVoice
+@onready var subtitle_label = $\"../CanvasLayer/Label\"
+
+var triggered := false
+
+func _ready() -> void:
+	await get_tree().process_frame
+	for body in get_overlapping_bodies():
+		if body is CharacterBody3D:
+			_trigger(body)
+			break
+
+func _on_body_entered(body: Node3D) -> void:
+	if body is CharacterBody3D:
+		_trigger(body)
+
+func _trigger(body: Node3D) -> void:
+	if triggered:
+		return
+	triggered = true
+
+	narration.play()
+	subtitle_label.visible = true
+
+	subtitle_label.text = \"Dr. Aris: Initiating Unit 77 stress test. Remember, this prototype cost six billion credits. Let’s not break it in the first five minutes.\"
+	await get_tree().create_timer(4.0).timeout
+
+	subtitle_label.text = \"Dr. Ben: Relax. I’ve enabled S.A.F.E. protocols. The lab will practically play the game for it. Unit 77, please proceed to the exit.\"
+	await get_tree().create_timer(4.0).timeout
+
+	subtitle_label.visible = false
+	body_entered.disconnect(_on_body_entered)
+"
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_pjppf"]
 size = Vector3(9.710327, 4.6895905, 9.374268)
+
+[sub_resource type="GDScript" id="GDScript_6ssoq"]
+script/source = "extends Area3D
+
+@onready var narration = $DeathVoicee
+@onready var subtitle_label = $\"../CanvasLayer/Label\"
+
+func _ready() -> void:
+	body_entered.connect(_on_body_entered)
+
+func _on_body_entered(body: Node3D) -> void:
+	if body is CharacterBody3D:
+		_play_sequence()
+
+func _play_sequence() -> void:
+	narration.stop()
+	narration.play()
+
+	subtitle_label.visible = true
+
+	subtitle_label.text = \"Dr. Aris: Initiating Unit 77 stress test. Remember, this prototype cost six billion credits. Let’s not break it in the first five minutes.\"
+	await get_tree().create_timer(4.0).timeout
+
+	subtitle_label.text = \"Dr. Ben: Relax. I’ve enabled S.A.F.E. protocols. The lab will practically play the game for it. Unit 77, please proceed to the exit.\"
+	await get_tree().create_timer(4.0).timeout
+
+	subtitle_label.visible = false
+"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yltlr"]
 size = Vector3(20.595917, 0.8696289, 7.877014)
 
+[sub_resource type="GDScript" id="GDScript_c5xoi"]
+script/source = "extends Area3D
+
+@onready var narration = $FailedVoice
+@onready var subtitle_label = $\"../CanvasLayer/Label\"
+
+func _ready() -> void:
+	body_entered.connect(_on_body_entered)
+
+func _on_body_entered(body: Node3D) -> void:
+	if body is CharacterBody3D:
+		_play_sequence()
+
+func _play_sequence() -> void:
+	narration.stop()
+	narration.play()
+
+	subtitle_label.visible = true
+
+	subtitle_label.text = \"Dr. Aris: Initiating Unit 77 stress test. Remember, this prototype cost six billion credits. Let’s not break it in the first five minutes.\"
+	await get_tree().create_timer(4.0).timeout
+
+	subtitle_label.text = \"Dr. Ben: Relax. I’ve enabled S.A.F.E. protocols. The lab will practically play the game for it. Unit 77, please proceed to the exit.\"
+	await get_tree().create_timer(4.0).timeout
+
+	subtitle_label.visible = false
+"
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_6ssoq"]
 size = Vector3(2.441986, 2.2086182, 1.3613281)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_imks0"]
+size = Vector3(2.441986, 2.2086182, 1.3613281)
+
+[sub_resource type="Theme" id="Theme_dlmop"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sda17"]
+size = Vector3(20.023163, 1, 7.9718018)
 
 [node name="Level1" type="Node3D"]
 script = ExtResource("1_wrinw")
@@ -320,7 +422,7 @@ shape = SubResource("ConvexPolygonShape3D_wrinw")
 
 [node name="IntroArea" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1777285, -0.83177567)
-script = ExtResource("11_6ioyp")
+script = SubResource("GDScript_ijtdf")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="IntroArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.04796505, 1.0215837, -0.2097826)
@@ -331,7 +433,7 @@ stream = ExtResource("12_oovug")
 
 [node name="SpikeArea" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7.858904, -22.170385)
-script = ExtResource("13_8i23i")
+script = SubResource("GDScript_6ssoq")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SpikeArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.270864, -1.7689953, 0.18462563)
@@ -341,7 +443,7 @@ shape = SubResource("BoxShape3D_yltlr")
 
 [node name="DoorArea" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -47.226902)
-script = ExtResource("14_8yhm2")
+script = SubResource("GDScript_c5xoi")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DoorArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.005479276, 1.3658918, 1.4370232)
@@ -359,8 +461,44 @@ offset_right = 335.0
 offset_bottom = 581.0
 metadata/_edit_use_anchors_ = true
 
+[node name="DoorArea2" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -47.226902)
+script = ExtResource("12_8i23i")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DoorArea2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.005479276, 1.3658918, 1.4370232)
+shape = SubResource("BoxShape3D_imks0")
+
+[node name="FailedVoice" type="AudioStreamPlayer3D" parent="DoorArea2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.007870436, 0.9416851, 0.2707138)
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer2"]
+offset_left = 96.0
+offset_top = 558.0
+offset_right = 335.0
+offset_bottom = 581.0
+theme = SubResource("Theme_dlmop")
+theme_override_fonts/font = ExtResource("14_pjppf")
+theme_override_font_sizes/font_size = 16
+script = ExtResource("13_8yhm2")
+metadata/_edit_use_anchors_ = true
+
+[node name="SpikeArea2" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8.753637, -21.995079)
+script = ExtResource("15_yltlr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SpikeArea2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.41532898, 0, -0.023864746)
+shape = SubResource("BoxShape3D_sda17")
+
+[node name="DeathVoicee" type="AudioStreamPlayer3D" parent="SpikeArea2"]
+
 [connection signal="body_entered" from="ResetZone" to="ResetZone" method="_on_body_entered"]
 [connection signal="body_entered" from="TriggerSafe" to="TriggerSafe" method="_on_body_entered"]
 [connection signal="body_entered" from="IntroArea" to="IntroArea" method="_on_body_entered"]
 [connection signal="body_entered" from="SpikeArea" to="SpikeArea" method="_on_body_entered2"]
 [connection signal="body_entered" from="DoorArea" to="DoorArea" method="_on_body_entered"]
+[connection signal="body_entered" from="DoorArea2" to="DoorArea2" method="_on_body_entered"]
+[connection signal="body_entered" from="SpikeArea2" to="SpikeArea2" method="_on_body_entered"]

@@ -16,10 +16,7 @@ func _play_sequence() -> void:
 
 	subtitle_label.visible = true
 
-	subtitle_label.text = "Dr. Aris: Initiating Unit 77 stress test. Remember, this prototype cost six billion credits. Let’s not break it in the first five minutes."
-	await get_tree().create_timer(4.0).timeout
-
-	subtitle_label.text = "Dr. Ben: Relax. I’ve enabled S.A.F.E. protocols. The lab will practically play the game for it. Unit 77, please proceed to the exit."
+	subtitle_label.text = "Test subject failure detected. Repairing unit."
 	await get_tree().create_timer(4.0).timeout
 
 	subtitle_label.visible = false
