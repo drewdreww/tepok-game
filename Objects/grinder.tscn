@@ -1,10 +1,14 @@
-[gd_scene load_steps=17 format=3 uid="uid://d0to541w0gvdm"]
+[gd_scene load_steps=28 format=3 uid="uid://d0to541w0gvdm"]
 
+[ext_resource type="PackedScene" uid="uid://d1onfybck4xec" path="res://Objects/blades.tscn" id="1_45m41"]
 [ext_resource type="Texture2D" uid="uid://ogm834oqjdrx" path="res://Assets/Textures/rusty_metal_04_diff_1k.jpg" id="1_q5a2n"]
 [ext_resource type="Texture2D" uid="uid://ctq0o3t1eebmn" path="res://Assets/Textures/rusty_metal_02_diff_1k.jpg" id="2_5m3xw"]
 [ext_resource type="Texture2D" uid="uid://cqk88vkssjy3m" path="res://Assets/Textures/rusty_metal_05_diff_1k.jpg" id="3_10j7p"]
-[ext_resource type="Texture2D" uid="uid://crjq8kggmpbht" path="res://Assets/Textures/rusty_metal_04_disp_1k.png" id="4_n7wur"]
 [ext_resource type="Texture2D" uid="uid://bx5eqy7qwvqkg" path="res://Assets/Textures/blue_metal_plate_diff_1k.jpg" id="5_10j7p"]
+[ext_resource type="Texture2D" uid="uid://oue8layiucgh" path="res://Assets/Textures/grey_tiles_disp_1k.png" id="6_10j7p"]
+[ext_resource type="Texture2D" uid="uid://behiffkghc6cv" path="res://Assets/PNG/Green/texture_01.png" id="7_45m41"]
+[ext_resource type="Texture2D" uid="uid://fv5hdicjki5d" path="res://Assets/Textures/plastered_wall_05_diff_1k.jpg" id="8_nwwrl"]
+[ext_resource type="Texture2D" uid="uid://dtxoir10t20is" path="res://Assets/Textures/interior_tiles_diff_1k.jpg" id="9_er2sb"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_t5nig"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -35,12 +39,8 @@ albedo_texture = ExtResource("2_5m3xw")
 metallic = 1.0
 uv1_triplanar = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_salk0"]
-albedo_texture = ExtResource("4_n7wur")
-metallic = 1.0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xbf1b"]
-albedo_texture = ExtResource("1_q5a2n")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bvjkk"]
+albedo_texture = ExtResource("6_10j7p")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n7wur"]
 albedo_texture = ExtResource("5_10j7p")
@@ -48,7 +48,171 @@ albedo_texture = ExtResource("5_10j7p")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_retj2"]
 albedo_texture = ExtResource("5_10j7p")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dfhu8"]
+albedo_texture = ExtResource("3_10j7p")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nb33q"]
+albedo_texture = ExtResource("7_45m41")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kupj8"]
+albedo_texture = ExtResource("8_nwwrl")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_okqyt"]
+albedo_texture = ExtResource("9_er2sb")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s88vt"]
+albedo_texture = ExtResource("8_nwwrl")
+
+[sub_resource type="Animation" id="Animation_45m41"]
+resource_name = "on"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Blades:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(6.2831855, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Blades5:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(6.2831855, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Blades2:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-6.2831855, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Blades3:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(6.2831855, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Blades4:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-6.2831855, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_nwwrl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Blades:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Blades5:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Blades2:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Blades3:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Blades4:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_er2sb"]
+_data = {
+&"RESET": SubResource("Animation_nwwrl"),
+&"on": SubResource("Animation_45m41")
+}
+
 [node name="Grinder" type="Node3D"]
+
+[node name="Blades" parent="." instance=ExtResource("1_45m41")]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0.08498001, 0, 0)
+
+[node name="Blades5" parent="." instance=ExtResource("1_45m41")]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0.08498001, 0, 0.9940697)
+
+[node name="Blades2" parent="." instance=ExtResource("1_45m41")]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, -0.053289294, 0.20268512, 0.51557636)
+
+[node name="Blades3" parent="." instance=ExtResource("1_45m41")]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0.08498001, 0, -1.010052)
+
+[node name="Blades4" parent="." instance=ExtResource("1_45m41")]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, -0.053289294, 0.20268512, -0.4944756)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 5.5544558, 0)
@@ -58,6 +222,7 @@ shadow_enabled = true
 environment = SubResource("Environment_qcqj1")
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+transform = Transform3D(1.1999999, 0, 0, 0, 1.1999139, 0.01438095, 0, -0.01438095, 1.1999139, 0, 0, -0.01566264)
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="CSGCombiner3D"]
 transform = Transform3D(1.6541364, 0, 0, 0, 1.1363671, 0, 0, 0, 1, -0.8954001, 0.03951907, 1.2925968)
@@ -74,1001 +239,44 @@ polygon = PackedVector2Array(0.09003675, -0.70878035, -0.68986416, 0.723027, 1.6
 depth = 2.34
 material = SubResource("StandardMaterial3D_er2sb")
 
-[node name="Grind" type="Node3D" parent="CSGCombiner3D"]
-
-[node name="CSGTorus3D" type="CSGTorus3D" parent="CSGCombiner3D/Grind"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.82711005, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D2" type="CSGTorus3D" parent="CSGCombiner3D/Grind"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.5554216, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D3" type="CSGTorus3D" parent="CSGCombiner3D/Grind"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.27886152, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D4" type="CSGTorus3D" parent="CSGCombiner3D/Grind"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.021454334, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D5" type="CSGTorus3D" parent="CSGCombiner3D/Grind"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -0.23773718, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D6" type="CSGTorus3D" parent="CSGCombiner3D/Grind"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -0.50942564, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D9" type="CSGTorus3D" parent="CSGCombiner3D/Grind"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.82711005, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D10" type="CSGTorus3D" parent="CSGCombiner3D/Grind"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.5554216, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D11" type="CSGTorus3D" parent="CSGCombiner3D/Grind"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.27886152, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D12" type="CSGTorus3D" parent="CSGCombiner3D/Grind"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.021454334, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D13" type="CSGTorus3D" parent="CSGCombiner3D/Grind"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -0.23773718, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D14" type="CSGTorus3D" parent="CSGCombiner3D/Grind"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -0.50942564, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D/Grind"]
-transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -0.07541084, -1.8808251e-08, -0.87784505)
-radius = 0.06542969
-height = 2.2662659
-material = SubResource("StandardMaterial3D_xbf1b")
-
-[node name="CSGTorus3D15" type="CSGTorus3D" parent="CSGCombiner3D/Grind"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -0.78598595, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D16" type="CSGTorus3D" parent="CSGCombiner3D/Grind"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -1.0433931, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D7" type="CSGTorus3D" parent="CSGCombiner3D/Grind"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -0.78598595, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D8" type="CSGTorus3D" parent="CSGCombiner3D/Grind"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -1.0433931, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="Grind2" type="Node3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.11697006, 0.09629148, 0.39768052)
-
-[node name="CSGTorus3D" type="CSGTorus3D" parent="CSGCombiner3D/Grind2"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.82711005, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D7" type="CSGTorus3D" parent="CSGCombiner3D/Grind2"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 1.0836768, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D2" type="CSGTorus3D" parent="CSGCombiner3D/Grind2"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.5554216, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D3" type="CSGTorus3D" parent="CSGCombiner3D/Grind2"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.27886152, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D4" type="CSGTorus3D" parent="CSGCombiner3D/Grind2"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.021454334, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D5" type="CSGTorus3D" parent="CSGCombiner3D/Grind2"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -0.23773718, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D6" type="CSGTorus3D" parent="CSGCombiner3D/Grind2"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -0.50942564, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D9" type="CSGTorus3D" parent="CSGCombiner3D/Grind2"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.82711005, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D10" type="CSGTorus3D" parent="CSGCombiner3D/Grind2"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.5554216, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D11" type="CSGTorus3D" parent="CSGCombiner3D/Grind2"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.27886152, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D12" type="CSGTorus3D" parent="CSGCombiner3D/Grind2"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.021454334, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D13" type="CSGTorus3D" parent="CSGCombiner3D/Grind2"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -0.23773718, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D14" type="CSGTorus3D" parent="CSGCombiner3D/Grind2"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -0.50942564, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D/Grind2"]
-transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0.0052394867, -2.2351742e-08, -0.87784505)
-radius = 0.06542969
-height = 2.4275665
-material = SubResource("StandardMaterial3D_xbf1b")
-
-[node name="CSGTorus3D15" type="CSGTorus3D" parent="CSGCombiner3D/Grind2"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -0.7642857, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D16" type="CSGTorus3D" parent="CSGCombiner3D/Grind2"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -1.0126067, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="Grind3" type="Node3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.83918524)
-
-[node name="CSGTorus3D" type="CSGTorus3D" parent="CSGCombiner3D/Grind3"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.82711005, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D2" type="CSGTorus3D" parent="CSGCombiner3D/Grind3"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.5554216, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D3" type="CSGTorus3D" parent="CSGCombiner3D/Grind3"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.27886152, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D4" type="CSGTorus3D" parent="CSGCombiner3D/Grind3"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.021454334, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D5" type="CSGTorus3D" parent="CSGCombiner3D/Grind3"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -0.23773718, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D6" type="CSGTorus3D" parent="CSGCombiner3D/Grind3"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -0.50942564, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D9" type="CSGTorus3D" parent="CSGCombiner3D/Grind3"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.82711005, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D10" type="CSGTorus3D" parent="CSGCombiner3D/Grind3"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.5554216, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D11" type="CSGTorus3D" parent="CSGCombiner3D/Grind3"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.27886152, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D12" type="CSGTorus3D" parent="CSGCombiner3D/Grind3"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.021454334, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D13" type="CSGTorus3D" parent="CSGCombiner3D/Grind3"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -0.23773718, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D14" type="CSGTorus3D" parent="CSGCombiner3D/Grind3"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -0.50942564, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D/Grind3"]
-transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -0.07541084, -1.8808251e-08, -0.87784505)
-radius = 0.06542969
-height = 2.2662659
-material = SubResource("StandardMaterial3D_xbf1b")
-
-[node name="CSGTorus3D15" type="CSGTorus3D" parent="CSGCombiner3D/Grind3"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -0.78598595, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D16" type="CSGTorus3D" parent="CSGCombiner3D/Grind3"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -1.0433931, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="Grind4" type="Node3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.11697006, 0.09629148, 1.2368658)
-
-[node name="CSGTorus3D" type="CSGTorus3D" parent="CSGCombiner3D/Grind4"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.82711005, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D7" type="CSGTorus3D" parent="CSGCombiner3D/Grind4"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 1.0836768, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D2" type="CSGTorus3D" parent="CSGCombiner3D/Grind4"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.5554216, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D3" type="CSGTorus3D" parent="CSGCombiner3D/Grind4"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.27886152, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D4" type="CSGTorus3D" parent="CSGCombiner3D/Grind4"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.021454334, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D5" type="CSGTorus3D" parent="CSGCombiner3D/Grind4"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -0.23773718, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D6" type="CSGTorus3D" parent="CSGCombiner3D/Grind4"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -0.50942564, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D9" type="CSGTorus3D" parent="CSGCombiner3D/Grind4"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.82711005, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D10" type="CSGTorus3D" parent="CSGCombiner3D/Grind4"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.5554216, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D11" type="CSGTorus3D" parent="CSGCombiner3D/Grind4"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.27886152, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D12" type="CSGTorus3D" parent="CSGCombiner3D/Grind4"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.021454334, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D13" type="CSGTorus3D" parent="CSGCombiner3D/Grind4"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -0.23773718, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D14" type="CSGTorus3D" parent="CSGCombiner3D/Grind4"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -0.50942564, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D/Grind4"]
-transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0.0052394867, -2.2351742e-08, -0.87784505)
-radius = 0.06542969
-height = 2.4275665
-material = SubResource("StandardMaterial3D_xbf1b")
-
-[node name="CSGTorus3D15" type="CSGTorus3D" parent="CSGCombiner3D/Grind4"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -0.7642857, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D16" type="CSGTorus3D" parent="CSGCombiner3D/Grind4"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -1.0126067, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="Grind5" type="Node3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.83918524)
-
-[node name="CSGTorus3D" type="CSGTorus3D" parent="CSGCombiner3D/Grind5"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.82711005, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D2" type="CSGTorus3D" parent="CSGCombiner3D/Grind5"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.5554216, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D3" type="CSGTorus3D" parent="CSGCombiner3D/Grind5"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.27886152, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D4" type="CSGTorus3D" parent="CSGCombiner3D/Grind5"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.021454334, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D5" type="CSGTorus3D" parent="CSGCombiner3D/Grind5"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -0.23773718, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D6" type="CSGTorus3D" parent="CSGCombiner3D/Grind5"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -0.50942564, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D9" type="CSGTorus3D" parent="CSGCombiner3D/Grind5"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.82711005, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D10" type="CSGTorus3D" parent="CSGCombiner3D/Grind5"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.5554216, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D11" type="CSGTorus3D" parent="CSGCombiner3D/Grind5"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.27886152, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D12" type="CSGTorus3D" parent="CSGCombiner3D/Grind5"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.021454334, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D13" type="CSGTorus3D" parent="CSGCombiner3D/Grind5"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -0.23773718, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D14" type="CSGTorus3D" parent="CSGCombiner3D/Grind5"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -0.50942564, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D/Grind5"]
-transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -0.07541084, -1.8808251e-08, -0.87784505)
-radius = 0.06542969
-height = 2.2662659
-material = SubResource("StandardMaterial3D_xbf1b")
-
-[node name="CSGTorus3D15" type="CSGTorus3D" parent="CSGCombiner3D/Grind5"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -0.78598595, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D16" type="CSGTorus3D" parent="CSGCombiner3D/Grind5"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -1.0433931, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="Grind7" type="Node3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.7259947)
-
-[node name="CSGTorus3D" type="CSGTorus3D" parent="CSGCombiner3D/Grind7"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.82711005, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D2" type="CSGTorus3D" parent="CSGCombiner3D/Grind7"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.5554216, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D3" type="CSGTorus3D" parent="CSGCombiner3D/Grind7"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.27886152, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D4" type="CSGTorus3D" parent="CSGCombiner3D/Grind7"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.021454334, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D5" type="CSGTorus3D" parent="CSGCombiner3D/Grind7"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -0.23773718, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D6" type="CSGTorus3D" parent="CSGCombiner3D/Grind7"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -0.50942564, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D9" type="CSGTorus3D" parent="CSGCombiner3D/Grind7"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.82711005, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D10" type="CSGTorus3D" parent="CSGCombiner3D/Grind7"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.5554216, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D11" type="CSGTorus3D" parent="CSGCombiner3D/Grind7"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.27886152, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D12" type="CSGTorus3D" parent="CSGCombiner3D/Grind7"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.021454334, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D13" type="CSGTorus3D" parent="CSGCombiner3D/Grind7"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -0.23773718, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D14" type="CSGTorus3D" parent="CSGCombiner3D/Grind7"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -0.50942564, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D/Grind7"]
-transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -0.07541084, -1.8808251e-08, -0.87784505)
-radius = 0.06542969
-height = 2.2662659
-material = SubResource("StandardMaterial3D_xbf1b")
-
-[node name="CSGTorus3D15" type="CSGTorus3D" parent="CSGCombiner3D/Grind7"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -0.78598595, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D16" type="CSGTorus3D" parent="CSGCombiner3D/Grind7"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -1.0433931, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="Grind6" type="Node3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.11697006, 0.09629148, 1.2368658)
-
-[node name="CSGTorus3D" type="CSGTorus3D" parent="CSGCombiner3D/Grind6"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.82711005, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D7" type="CSGTorus3D" parent="CSGCombiner3D/Grind6"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 1.0836768, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D2" type="CSGTorus3D" parent="CSGCombiner3D/Grind6"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.5554216, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D3" type="CSGTorus3D" parent="CSGCombiner3D/Grind6"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.27886152, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D4" type="CSGTorus3D" parent="CSGCombiner3D/Grind6"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.021454334, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D5" type="CSGTorus3D" parent="CSGCombiner3D/Grind6"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -0.23773718, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D6" type="CSGTorus3D" parent="CSGCombiner3D/Grind6"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -0.50942564, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D9" type="CSGTorus3D" parent="CSGCombiner3D/Grind6"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.82711005, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D10" type="CSGTorus3D" parent="CSGCombiner3D/Grind6"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.5554216, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D11" type="CSGTorus3D" parent="CSGCombiner3D/Grind6"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.27886152, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D12" type="CSGTorus3D" parent="CSGCombiner3D/Grind6"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.021454334, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D13" type="CSGTorus3D" parent="CSGCombiner3D/Grind6"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -0.23773718, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D14" type="CSGTorus3D" parent="CSGCombiner3D/Grind6"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -0.50942564, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D/Grind6"]
-transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0.0052394867, -2.2351742e-08, -0.87784505)
-radius = 0.06542969
-height = 2.4275665
-material = SubResource("StandardMaterial3D_xbf1b")
-
-[node name="CSGTorus3D15" type="CSGTorus3D" parent="CSGCombiner3D/Grind6"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -0.7642857, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
-
-[node name="CSGTorus3D16" type="CSGTorus3D" parent="CSGCombiner3D/Grind6"]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -1.0126067, 0, -0.8820839)
-inner_radius = 0.001
-outer_radius = 0.27
-sides = 7
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_salk0")
+[node name="CSGPolygon3D3" type="CSGPolygon3D" parent="CSGCombiner3D"]
+transform = Transform3D(1.2499999, 0, 0, 0, 1.2499999, 0, 0, 0, 1.2499999, -2.5540724, -1.1578823, 1.1402757)
+polygon = PackedVector2Array(0.86374104, 0.28493667, 0.63834405, 1.3799535, 0.99522984, 0.9647374, 1.0063379, 0.3050696)
+depth = 0.26
+material = SubResource("StandardMaterial3D_bvjkk")
+
+[node name="CSGPolygon3D4" type="CSGPolygon3D" parent="CSGCombiner3D"]
+transform = Transform3D(1.2499999, 0, 0, 0, 1.2499999, 0, 0, 0, 1.2499999, -2.5540724, -1.1578823, -0.6344912)
+polygon = PackedVector2Array(0.86374104, 0.28493667, 0.63834405, 1.3799535, 0.9837816, 0.966691, 1.0063379, 0.3050696)
+depth = 0.26
+material = SubResource("StandardMaterial3D_bvjkk")
+
+[node name="CSGPolygon3D5" type="CSGPolygon3D" parent="CSGCombiner3D"]
+transform = Transform3D(-1.2499999, 0, 1.0927845e-07, 0, 1.2499999, 0, -1.0927845e-07, 0, -1.2499999, 2.4581938, -1.1578823, -0.81634355)
+polygon = PackedVector2Array(0.86374104, 0.28493667, 0.63834405, 1.3799535, 1, 1, 1.0063379, 0.3050696)
+depth = 0.26
+material = SubResource("StandardMaterial3D_bvjkk")
+
+[node name="CSGPolygon3D6" type="CSGPolygon3D" parent="CSGCombiner3D"]
+transform = Transform3D(-1.2499999, 0, 1.0927845e-07, 0, 1.2499999, 0, -1.0927845e-07, 0, -1.2499999, 2.4631696, -1.1578823, 0.5774299)
+polygon = PackedVector2Array(0.86374104, 0.28493667, 0.63834405, 1.3799535, 1, 1, 1.0063379, 0.3050696)
+depth = 0.26
+material = SubResource("StandardMaterial3D_bvjkk")
 
 [node name="CSGCombiner3D2" type="CSGCombiner3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -0.06609678, 0, 0)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.034680724, -1.3601484, 0.014721394)
 material_override = SubResource("StandardMaterial3D_n7wur")
 size = Vector3(2.277069, 1.5629883, 2.7982178)
+material = SubResource("StandardMaterial3D_retj2")
+
+[node name="CSGBox3D14" type="CSGBox3D" parent="CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.036118984, -1.2423584, 0.026451588)
+material_override = SubResource("StandardMaterial3D_n7wur")
+operation = 2
+size = Vector3(1.931694, 1.5629883, 2.3894577)
 material = SubResource("StandardMaterial3D_retj2")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D2"]
@@ -1154,3 +362,52 @@ material_override = SubResource("StandardMaterial3D_n7wur")
 operation = 2
 size = Vector3(0.70379424, 1.3953552, 0.1441803)
 material = SubResource("StandardMaterial3D_retj2")
+
+[node name="CSGCombiner3D3" type="CSGCombiner3D" parent="."]
+transform = Transform3D(-0.024843203, 0, 1.2997625, 0, 1.3, 0, -1.2997625, 0, -0.024843203, -2.9728549, -1.7260194, -6.585603)
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="CSGCombiner3D3"]
+transform = Transform3D(0.9846127, 0.1747506, -0.00029410236, -0.17475058, 0.9846071, -0.0033401207, -0.00029410422, 0.0033401207, 0.9999943, -5.4371696, -0.0905149, 0.2717141)
+polygon = PackedVector2Array(-0.31665468, -0.05428505, -0.26971292, 1.1257286, 0.97444916, 0.92409813, 0.9620285, 0.17848015)
+material = SubResource("StandardMaterial3D_dfhu8")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D3"]
+transform = Transform3D(0.9846127, -0.00029411167, -0.1747506, -0.17475055, -0.0033401635, -0.98460704, -0.00029410608, 0.9999943, -0.0033401644, -5.6747828, 0.48851085, -0.22406173)
+material_override = SubResource("StandardMaterial3D_nb33q")
+radius = 0.7026367
+height = 0.99279785
+material = SubResource("StandardMaterial3D_dfhu8")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="CSGCombiner3D3"]
+transform = Transform3D(0.9846127, -0.00029411167, -0.1747506, -0.17475055, -0.0033401635, -0.98460704, -0.00029410608, 0.9999943, -0.0033401644, -4.3550286, 0.26506782, -0.22441912)
+radius = 0.42138672
+height = 0.99279785
+material = SubResource("StandardMaterial3D_dfhu8")
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="CSGCombiner3D3"]
+transform = Transform3D(0.9846127, -0.00029411167, -0.1747506, -0.17475055, -0.0033401635, -0.98460704, -0.00029410608, 0.9999943, -0.0033401644, -4.3581166, 0.30336058, -0.44906116)
+radius = 0.16210938
+height = 0.99279785
+material = SubResource("StandardMaterial3D_kupj8")
+
+[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="CSGCombiner3D3"]
+transform = Transform3D(0.9846127, -0.00029411167, -0.1747506, -0.17475055, -0.0033401635, -0.98460704, -0.00029410608, 0.9999943, -0.0033401644, -4.333589, 0.3048004, -1.0915842)
+radius = 0.18261719
+height = 0.13067627
+material = SubResource("StandardMaterial3D_okqyt")
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="CSGCombiner3D3"]
+transform = Transform3D(0.9846127, -0.00029411167, -0.1747506, -0.17475055, -0.0033401635, -0.98460704, -0.00029410608, 0.9999943, -0.0033401644, -4.340864, 0.30216765, -0.99993086)
+radius = 0.40234375
+height = 0.27853394
+material = SubResource("StandardMaterial3D_kupj8")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.181485, -0.59942675, -0.3315189)
+size = Vector3(2.5498657, 1, 1.7548828)
+material = SubResource("StandardMaterial3D_s88vt")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_er2sb")
+}

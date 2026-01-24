@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
-@export var follow_speed: float = 10.0
-@export var return_speed: float = 5.0 
+@export var follow_speed: float = 7.0
+@export var return_speed: float = 2.0 
 @export var offset: Vector3 = Vector3(0, 1.7, -2.7)
 
 var player: CharacterBody3D
