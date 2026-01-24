@@ -5,13 +5,13 @@
 [ext_resource type="Texture2D" uid="uid://bkitcegkvcc1m" path="res://Assets/Laboratory/lowpoly-map-karlson_style_0.png" id="2_8mnmb"]
 [ext_resource type="PackedScene" uid="uid://bn6khnb8kd311" path="res://Objects/spikes.tscn" id="2_feyax"]
 [ext_resource type="Texture2D" uid="uid://bo44bapdnf5co" path="res://Assets/PNG/Orange/texture_03.png" id="2_p8jf4"]
-[ext_resource type="PackedScene" uid="uid://bjxwqe64spwid" path="res://Objects/door.tscn" id="3_omtrn"]
 [ext_resource type="Script" uid="uid://btb8exwohefpc" path="res://Scripts/reset_zone.gd" id="5_p8jf4"]
 [ext_resource type="PackedScene" uid="uid://d3snu2sbpkn6c" path="res://Objects/fan.tscn" id="7_ys4pu"]
 [ext_resource type="Script" uid="uid://bqoyapihothbd" path="res://Scripts/TriggerScript/area_3d.gd" id="8_h2ono"]
 [ext_resource type="AudioStream" uid="uid://bl0bmw0lv55gc" path="res://Scripts/VoiceLine/Video_Ready_For_Viewing.mp3" id="9_on4kn"]
 [ext_resource type="Script" uid="uid://cxclgywxgc8k7" path="res://Scripts/TriggerScript/area_3d_3.gd" id="10_8va2t"]
 [ext_resource type="Script" uid="uid://b005fjwfhpcla" path="res://Scripts/TriggerScript/area_3d_2.gd" id="10_70gml"]
+[ext_resource type="PackedScene" uid="uid://cm753tf0hibsn" path="res://Objects/sliding_door.tscn" id="12_8mnmb"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_on4kn"]
 albedo_texture = ExtResource("2_8mnmb")
@@ -90,15 +90,15 @@ transform = Transform3D(1, 0, 0, 0, 0.692584, 0.7213373, 0, -0.7213373, 0.692584
 spot_range = 49.259014
 
 [node name="CSGBox3D9" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1.9106855e-15, 4.371139e-08, -1, 1, -4.371139e-08, 0, -4.371139e-08, -1, -4.371139e-08, 0.053466797, 4.8404493, -44.716305)
+transform = Transform3D(1.9106855e-15, 4.371139e-08, -1, 1, -4.371139e-08, 0, -4.371139e-08, -1, -4.371139e-08, 0.053192973, 4.844062, -44.71746)
 material_override = SubResource("StandardMaterial3D_p1f1o")
 size = Vector3(10, 0.497, 11.024902)
 material = SubResource("StandardMaterial3D_ka2pi")
 
 [node name="CSGBox3D10" type="CSGBox3D" parent="CSGCombiner3D/CSGBox3D9"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7460403, 0, 0.032561302)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7536793, 0, 0.18043804)
 operation = 2
-size = Vector3(2.5079193, 0.497, 1.0902405)
+size = Vector3(2.4926414, 0.497, 2.3943863)
 material = SubResource("StandardMaterial3D_ka2pi")
 
 [node name="CSGBox3D12" type="CSGBox3D" parent="CSGCombiner3D"]
@@ -238,9 +238,6 @@ transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3.0783477, -12.13348, 
 [node name="Spikes2" parent="." instance=ExtResource("2_feyax")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 11.045977, -12.13348, -24.339252)
 
-[node name="Door" parent="." instance=ExtResource("3_omtrn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05274141, 1.1654887, -44.58361)
-
 [node name="ResetZone" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -45.50666)
 script = ExtResource("5_p8jf4")
@@ -294,6 +291,9 @@ shape = SubResource("BoxShape3D_8mnmb")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.007870436, 0.9416851, 0.2707138)
 
 [node name="Floors" type="Node3D" parent="."]
+
+[node name="Door" parent="." instance=ExtResource("12_8mnmb")]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0.06409983, 1.1656678, -44.81016)
 
 [connection signal="body_entered" from="ResetZone" to="ResetZone" method="_on_body_entered"]
 [connection signal="body_entered" from="IntroArea" to="IntroArea" method="_on_body_entered"]

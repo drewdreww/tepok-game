@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://d1onfybck4xec"]
+[gd_scene load_steps=5 format=3 uid="uid://d1onfybck4xec"]
 
 [ext_resource type="Texture2D" uid="uid://crjq8kggmpbht" path="res://Assets/Textures/rusty_metal_04_disp_1k.png" id="1_0bhgn"]
 [ext_resource type="Texture2D" uid="uid://ogm834oqjdrx" path="res://Assets/Textures/rusty_metal_04_diff_1k.jpg" id="2_jotsw"]
@@ -9,44 +9,6 @@ metallic = 1.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yqwjw"]
 albedo_texture = ExtResource("2_jotsw")
-
-[sub_resource type="Animation" id="Animation_0bhgn"]
-resource_name = "on"
-length = 0.5
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Holder:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = false
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(6.2831855, 0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_jotsw"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Holder:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_3kljf"]
-_data = {
-&"RESET": SubResource("Animation_jotsw"),
-&"on": SubResource("Animation_0bhgn")
-}
 
 [node name="Blades" type="Node3D"]
 
@@ -183,8 +145,3 @@ sides = 7
 ring_sides = 3
 smooth_faces = false
 material = SubResource("StandardMaterial3D_3kljf")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_3kljf")
-}
