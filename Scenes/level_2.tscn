@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://b4on05tkph3dv"]
+[gd_scene load_steps=37 format=3 uid="uid://b4on05tkph3dv"]
 
 [ext_resource type="Texture2D" uid="uid://dyso7rrc2gh0u" path="res://Assets/PNG/Light/texture_08.png" id="1_2mgoq"]
 [ext_resource type="Script" uid="uid://dth7nkxxcvn83" path="res://Scenes/level_2.gd" id="1_cggpd"]
@@ -10,9 +10,12 @@
 [ext_resource type="Script" uid="uid://p0vglt8j4xgh" path="res://Scenes/spikes_lvl2.gd" id="7_42uki"]
 [ext_resource type="PackedScene" uid="uid://bn6khnb8kd311" path="res://Objects/spikes.tscn" id="8_q0ycs"]
 [ext_resource type="Script" uid="uid://dxfpubnayh5fs" path="res://Scenes/platform_lvl2.gd" id="8_uhnj4"]
-[ext_resource type="Script" uid="uid://bqoyapihothbd" path="res://Scripts/TriggerScript/area_3d.gd" id="11_vcilj"]
 [ext_resource type="AudioStream" uid="uid://bl0bmw0lv55gc" path="res://Scripts/VoiceLine/Video_Ready_For_Viewing.mp3" id="12_bl0du"]
-[ext_resource type="Script" uid="uid://cxclgywxgc8k7" path="res://Scripts/TriggerScript/area_3d_3.gd" id="13_q0ycs"]
+[ext_resource type="Script" path="res://Scripts/TriggerScript/label.gd" id="12_hj5x7"]
+[ext_resource type="Script" path="res://Scripts/TriggerScript/intro_area_level_2.gd" id="13_yvrk7"]
+[ext_resource type="Script" path="res://Scripts/TriggerScript/door_area_level_2.gd" id="14_fhuy1"]
+[ext_resource type="FontFile" uid="uid://cuan3t5utbm2a" path="res://Scripts/Space_Grotesk/SpaceGrotesk-VariableFont_wght.ttf" id="15_i6dbo"]
+[ext_resource type="Script" path="res://Scripts/TriggerScript/spike_area_level_2.gd" id="16_e2piv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hj5x7"]
 albedo_texture = ExtResource("1_2mgoq")
@@ -55,11 +58,87 @@ albedo_texture = ExtResource("6_vcilj")
 height = 0.4
 radius = 1.5
 
+[sub_resource type="GDScript" id="GDScript_ijtdf"]
+script/source = "extends Area3D
+
+@onready var narration = $IntroVoice
+@onready var subtitle_label = $\"../CanvasLayer/Label\"
+
+var triggered := false
+
+func _ready() -> void:
+	await get_tree().process_frame
+	for body in get_overlapping_bodies():
+		if body is CharacterBody3D:
+			_trigger(body)
+			break
+
+func _on_body_entered(body: Node3D) -> void:
+	if body is CharacterBody3D:
+		_trigger(body)
+
+func _trigger(body: Node3D) -> void:
+	if triggered:
+		return
+	triggered = true
+
+	narration.play()
+	subtitle_label.visible = true
+
+	subtitle_label.text = \"Dr. Aris: Initiating Unit 77 stress test. Remember, this prototype cost six billion credits. Let’s not break it in the first five minutes.\"
+	await get_tree().create_timer(4.0).timeout
+
+	subtitle_label.text = \"Dr. Ben: Relax. I’ve enabled S.A.F.E. protocols. The lab will practically play the game for it. Unit 77, please proceed to the exit.\"
+	await get_tree().create_timer(4.0).timeout
+
+	subtitle_label.visible = false
+	body_entered.disconnect(_on_body_entered)
+"
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_hj5x7"]
 size = Vector3(9.710327, 5.0469055, 13.307251)
 
+[sub_resource type="GDScript" id="GDScript_c5xoi"]
+script/source = "extends Area3D
+
+@onready var narration = $FailedVoice
+@onready var subtitle_label = $\"../CanvasLayer/Label\"
+
+func _ready() -> void:
+	body_entered.connect(_on_body_entered)
+
+func _on_body_entered(body: Node3D) -> void:
+	if body is CharacterBody3D:
+		_play_sequence()
+
+func _play_sequence() -> void:
+	narration.stop()
+	narration.play()
+
+	subtitle_label.visible = true
+
+	subtitle_label.text = \"Dr. Aris: Initiating Unit 77 stress test. Remember, this prototype cost six billion credits. Let’s not break it in the first five minutes.\"
+	await get_tree().create_timer(4.0).timeout
+
+	subtitle_label.text = \"Dr. Ben: Relax. I’ve enabled S.A.F.E. protocols. The lab will practically play the game for it. Unit 77, please proceed to the exit.\"
+	await get_tree().create_timer(4.0).timeout
+
+	subtitle_label.visible = false
+"
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_yvrk7"]
 size = Vector3(2.441986, 2.2086182, 1.3613281)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sfey3"]
+size = Vector3(9.710327, 5.0469055, 9.374268)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4k5rq"]
+size = Vector3(2.441986, 2.2086182, 1.3613281)
+
+[sub_resource type="Theme" id="Theme_5jii6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d42f2"]
+size = Vector3(20.595917, 0.8696289, 7.877014)
 
 [node name="Level2" type="Node3D"]
 script = ExtResource("1_cggpd")
@@ -287,7 +366,7 @@ shape = SubResource("CylinderShape3D_42uki")
 
 [node name="IntroArea" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1777285, -0.83177567)
-script = ExtResource("11_vcilj")
+script = SubResource("GDScript_ijtdf")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="IntroArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.06512451, 1.2002412, -2.1863403)
@@ -298,7 +377,7 @@ stream = ExtResource("12_bl0du")
 
 [node name="DoorArea" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -47.226902)
-script = ExtResource("13_q0ycs")
+script = SubResource("GDScript_c5xoi")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DoorArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.005479276, 1.3658918, 1.4370232)
@@ -308,6 +387,7 @@ shape = SubResource("BoxShape3D_yvrk7")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.007870436, 0.9416851, 0.2707138)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("12_hj5x7")
 
 [node name="Label" type="Label" parent="CanvasLayer"]
 offset_left = 96.0
@@ -316,7 +396,56 @@ offset_right = 335.0
 offset_bottom = 581.0
 metadata/_edit_use_anchors_ = true
 
+[node name="IntroArea2" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1777285, -0.83177567)
+script = ExtResource("13_yvrk7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="IntroArea2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.06512451, 1.2002412, -0.21984863)
+shape = SubResource("BoxShape3D_sfey3")
+
+[node name="IntroVoice" type="AudioStreamPlayer3D" parent="IntroArea2"]
+stream = ExtResource("12_bl0du")
+
+[node name="DoorArea2" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -47.226902)
+script = ExtResource("14_fhuy1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DoorArea2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.005479276, 1.3658918, 1.4370232)
+shape = SubResource("BoxShape3D_4k5rq")
+
+[node name="FailedVoice" type="AudioStreamPlayer3D" parent="DoorArea2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.007870436, 0.9416851, 0.2707138)
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer2"]
+offset_left = 96.0
+offset_top = 558.0
+offset_right = 335.0
+offset_bottom = 581.0
+theme = SubResource("Theme_5jii6")
+theme_override_fonts/font = ExtResource("15_i6dbo")
+theme_override_font_sizes/font_size = 16
+script = ExtResource("12_hj5x7")
+metadata/_edit_use_anchors_ = true
+
+[node name="SpikeArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.057715, -22.170385)
+script = ExtResource("16_e2piv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SpikeArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.270864, -0.47843075, 0.18462563)
+shape = SubResource("BoxShape3D_d42f2")
+
+[node name="DeathVoicee" type="AudioStreamPlayer3D" parent="SpikeArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2.449111, 0, 0, 0)
+
 [connection signal="body_entered" from="ResetZone" to="ResetZone" method="_on_body_entered"]
 [connection signal="body_entered" from="Spikes/StaticBody3D/Area3D" to="Spikes" method="_on_body_entered"]
 [connection signal="body_entered" from="IntroArea" to="IntroArea" method="_on_body_entered"]
 [connection signal="body_entered" from="DoorArea" to="DoorArea" method="_on_body_entered"]
+[connection signal="body_entered" from="IntroArea2" to="IntroArea2" method="_on_body_entered"]
+[connection signal="body_entered" from="DoorArea2" to="DoorArea2" method="_on_body_entered"]
+[connection signal="body_entered" from="SpikeArea" to="SpikeArea" method="_on_body_entered"]

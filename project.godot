@@ -23,6 +23,10 @@ GameSettings="*res://Scripts/GameSettings.gd"
 
 window/stretch/mode="canvas_items"
 
+[dotnet]
+
+project/assembly_name="Tepok"
+
 [input]
 
 left={
