@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=4 uid="uid://pruv1vv2l1in"]
+[gd_scene load_steps=54 format=4 uid="uid://pruv1vv2l1in"]
 
 [ext_resource type="PackedScene" uid="uid://d23cd011e2xqi" path="res://Assets/Lab Map (w texture)/labbbbbbb.glb" id="1_ykkii"]
 [ext_resource type="Material" uid="uid://bnbys67daxjo6" path="res://Assets/Lab Map (w texture)/wall texture/metalwall.tres" id="2_ebao1"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://bqf3xmk2mmiqt" path="res://Assets/Lab Map (w texture)/labbbbbbb_WASHO.png" id="14_koxo7"]
 [ext_resource type="Texture2D" uid="uid://b0akktbkq5adu" path="res://Assets/Lab Map (w texture)/labbbbbbb_1046.jpg" id="14_ydjyn"]
 [ext_resource type="Texture2D" uid="uid://lkpvnfxwt4ht" path="res://Assets/Lab Map (w texture)/labbbbbbb_photo-stone-texture-pattern.jpg" id="15_r2tne"]
+[ext_resource type="Texture2D" uid="uid://b3n806ljrdndy" path="res://Assets/Lab Map (w texture)/labbbbbbb_6056955.jpg" id="20_wl22u"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_igloy"]
 resource_name = "wall_mat"
@@ -149,6 +150,21 @@ albedo_color = Color(0, 0.27450982, 0.47058824, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_snq2m"]
 albedo_color = Color(0.06469653, 0.06469653, 0.06469653, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6revg"]
+albedo_texture = ExtResource("20_wl22u")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0jnq5"]
+albedo_texture = ExtResource("20_wl22u")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u5vd5"]
+albedo_texture = ExtResource("20_wl22u")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ydjyn"]
+albedo_texture = ExtResource("20_wl22u")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r2tne"]
+albedo_color = Color(0.14767182, 0.14767179, 0.14767179, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bfopf"]
 albedo_texture = ExtResource("14_ydjyn")
@@ -1216,6 +1232,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_koxo7")
 
 [node name="bld_sml_wall_33__base_mat_0" parent="Sketchfab_model/9bb07206f624456f80d22ad72d691806_fbx/RootNode/bld_sml_wall_33_" index="0"]
 material_override = SubResource("StandardMaterial3D_153le")
+surface_material_override/0 = SubResource("StandardMaterial3D_koxo7")
 
 [node name="bld_sml_wall_door_03__base_mat_0" parent="Sketchfab_model/9bb07206f624456f80d22ad72d691806_fbx/RootNode/bld_sml_wall_door_03_/Object_334" index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_gt5lh")
@@ -1369,6 +1386,9 @@ surface_material_override/0 = SubResource("StandardMaterial3D_koxo7")
 [node name="Object013_base_mat_0" parent="Sketchfab_model/9bb07206f624456f80d22ad72d691806_fbx/RootNode/Object013/Object_543" index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_h0n88")
 
+[node name="Object024_base_mat_0" parent="Sketchfab_model/9bb07206f624456f80d22ad72d691806_fbx/RootNode/Object024/Object_1433" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_koxo7")
+
 [node name="Object034_base_mat_0" parent="Sketchfab_model/9bb07206f624456f80d22ad72d691806_fbx/RootNode/Object034" index="0"]
 surface_material_override/0 = ExtResource("2_ebao1")
 
@@ -1443,6 +1463,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, -3.410605e-13, 0, 1, -0.18786621, 0.19
 surface_material_override/0 = SubResource("StandardMaterial3D_koxo7")
 
 [node name="Plane032_base_mat_0" parent="Sketchfab_model/9bb07206f624456f80d22ad72d691806_fbx/RootNode/Plane032" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_koxo7")
+
+[node name="Plane084_base_mat_0" parent="Sketchfab_model/9bb07206f624456f80d22ad72d691806_fbx/RootNode/Plane084" index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_koxo7")
 
 [node name="props_med_capsule_002_base_mat_0" parent="Sketchfab_model/9bb07206f624456f80d22ad72d691806_fbx/RootNode/props_med_capsule_002/Object_82" index="0"]
@@ -1724,6 +1747,27 @@ surface_material_override/0 = SubResource("StandardMaterial3D_quwh7")
 
 [node name="stoika_base_mat_0_001" parent="Sketchfab_model/9bb07206f624456f80d22ad72d691806_fbx/RootNode/props_sml_info_table_04/stoika_001" index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_uev2j")
+
+[node name="props_sml_mini_table_01__base_mat_0" parent="Sketchfab_model/9bb07206f624456f80d22ad72d691806_fbx/RootNode/props_sml_mini_table_01_/Object_130" index="0"]
+material_override = SubResource("StandardMaterial3D_6revg")
+
+[node name="props_sml_mini_table_01_001_base_mat_0" parent="Sketchfab_model/9bb07206f624456f80d22ad72d691806_fbx/RootNode/props_sml_mini_table_01_001/Object_124" index="0"]
+material_override = SubResource("StandardMaterial3D_0jnq5")
+
+[node name="props_sml_mini_table_01_002_base_mat_0" parent="Sketchfab_model/9bb07206f624456f80d22ad72d691806_fbx/RootNode/props_sml_mini_table_01_002/Object_121" index="0"]
+material_override = SubResource("StandardMaterial3D_u5vd5")
+
+[node name="props_sml_mini_table_02_base_mat_0" parent="Sketchfab_model/9bb07206f624456f80d22ad72d691806_fbx/RootNode/props_sml_mini_table_02/Object_127" index="0"]
+material_override = SubResource("StandardMaterial3D_ydjyn")
+
+[node name="props_sml_monitor_03__base_mat_0" parent="Sketchfab_model/9bb07206f624456f80d22ad72d691806_fbx/RootNode/props_sml_monitor_03_/Object_112" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_r2tne")
+
+[node name="props_sml_monitor_03_001_base_mat_0" parent="Sketchfab_model/9bb07206f624456f80d22ad72d691806_fbx/RootNode/props_sml_monitor_03_001/Object_109" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_r2tne")
+
+[node name="props_sml_monitor_03_002_base_mat_0" parent="Sketchfab_model/9bb07206f624456f80d22ad72d691806_fbx/RootNode/props_sml_monitor_03_002/Object_106" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_r2tne")
 
 [node name="props_sml_table_04_170x70_base_mat_0" parent="Sketchfab_model/9bb07206f624456f80d22ad72d691806_fbx/RootNode/props_sml_table_04_170x70/Object_468" index="0"]
 material_override = SubResource("StandardMaterial3D_bfopf")
