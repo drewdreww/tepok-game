@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://b4on05tkph3dv"]
+[gd_scene load_steps=39 format=3 uid="uid://b4on05tkph3dv"]
 
 [ext_resource type="Texture2D" uid="uid://dyso7rrc2gh0u" path="res://Assets/PNG/Light/texture_08.png" id="1_2mgoq"]
 [ext_resource type="Script" uid="uid://dth7nkxxcvn83" path="res://Scenes/level_2.gd" id="1_cggpd"]
@@ -12,10 +12,13 @@
 [ext_resource type="Script" uid="uid://dxfpubnayh5fs" path="res://Scenes/platform_lvl2.gd" id="8_uhnj4"]
 [ext_resource type="AudioStream" uid="uid://bl0bmw0lv55gc" path="res://Scripts/VoiceLine/Video_Ready_For_Viewing.mp3" id="12_bl0du"]
 [ext_resource type="Script" uid="uid://bb1rdf30itqv0" path="res://Scripts/TriggerScript/label.gd" id="12_hj5x7"]
-[ext_resource type="Script" path="res://Scripts/TriggerScript/intro_area_level_2.gd" id="13_yvrk7"]
-[ext_resource type="Script" path="res://Scripts/TriggerScript/door_area_level_2.gd" id="14_fhuy1"]
-[ext_resource type="FontFile" uid="uid://cuan3t5utbm2a" path="res://Scripts/Space_Grotesk/SpaceGrotesk-VariableFont_wght.ttf" id="15_i6dbo"]
-[ext_resource type="Script" path="res://Scripts/TriggerScript/spike_area_level_2.gd" id="16_e2piv"]
+[ext_resource type="FontFile" uid="uid://s756v0yn0c5v" path="res://Scripts/Font/wheaton-capitals/wheaton capitals.otf" id="12_i6dbo"]
+[ext_resource type="Script" uid="uid://nxudpdnmvlaa" path="res://Scripts/color_rect.gd" id="13_hj5x7"]
+[ext_resource type="Script" uid="uid://cwux6qjmdsw3i" path="res://Scenes/area_3d.gd" id="15_fhuy1"]
+[ext_resource type="AudioStream" uid="uid://c50opam7yod65" path="res://Scripts/VoiceLine/Ratchet Wrench - Sound Effect - onlysounds.mp3" id="15_yvrk7"]
+[ext_resource type="Script" uid="uid://16d62wowxcbk" path="res://Scripts/TriggerScript/spike_area_level_2.gd" id="16_e2piv"]
+[ext_resource type="AudioStream" uid="uid://cij3gnspv1eik" path="res://Scripts/VoiceLine/Impact Wrench - Sound Effect - onlysounds.mp3" id="16_fhuy1"]
+[ext_resource type="Script" uid="uid://crvnact13sk8f" path="res://Scripts/TriggerScript/interact_door.gd" id="18_fhuy1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hj5x7"]
 albedo_texture = ExtResource("1_2mgoq")
@@ -129,16 +132,14 @@ func _play_sequence() -> void:
 [sub_resource type="BoxShape3D" id="BoxShape3D_yvrk7"]
 size = Vector3(2.441986, 2.2086182, 1.3613281)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_sfey3"]
-size = Vector3(9.710327, 5.0469055, 9.374268)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_4k5rq"]
-size = Vector3(2.441986, 2.2086182, 1.3613281)
-
-[sub_resource type="Theme" id="Theme_5jii6"]
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_d42f2"]
 size = Vector3(20.595917, 0.8696289, 7.877014)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i6dbo"]
+size = Vector3(5.4168015, 4.4197693, 3.7712555)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e2piv"]
+size = Vector3(3.1660843, 3.746338, 2.4358368)
 
 [node name="Level2" type="Node3D"]
 script = ExtResource("1_cggpd")
@@ -393,42 +394,17 @@ offset_left = 96.0
 offset_top = 558.0
 offset_right = 335.0
 offset_bottom = 581.0
-metadata/_edit_use_anchors_ = true
-
-[node name="IntroArea2" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1777285, -0.83177567)
-script = ExtResource("13_yvrk7")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="IntroArea2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.06512451, 1.2002412, -0.21984863)
-shape = SubResource("BoxShape3D_sfey3")
-
-[node name="IntroVoice" type="AudioStreamPlayer3D" parent="IntroArea2"]
-stream = ExtResource("12_bl0du")
-
-[node name="DoorArea2" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -47.226902)
-script = ExtResource("14_fhuy1")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DoorArea2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.005479276, 1.3658918, 1.4370232)
-shape = SubResource("BoxShape3D_4k5rq")
-
-[node name="FailedVoice" type="AudioStreamPlayer3D" parent="DoorArea2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.007870436, 0.9416851, 0.2707138)
-
-[node name="CanvasLayer2" type="CanvasLayer" parent="."]
-
-[node name="Label" type="Label" parent="CanvasLayer2"]
-offset_left = 96.0
-offset_top = 558.0
-offset_right = 335.0
-offset_bottom = 581.0
-theme = SubResource("Theme_5jii6")
-theme_override_fonts/font = ExtResource("15_i6dbo")
-theme_override_font_sizes/font_size = 16
+theme_override_fonts/font = ExtResource("12_i6dbo")
 script = ExtResource("12_hj5x7")
 metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(0.10747976, 0.10747973, 0.10747973, 1)
+offset_right = 1156.0
+offset_bottom = 659.0
+color = Color(0, 0, 0, 1)
+script = ExtResource("13_hj5x7")
 
 [node name="SpikeArea" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.057715, -22.170385)
@@ -441,10 +417,34 @@ shape = SubResource("BoxShape3D_d42f2")
 [node name="DeathVoicee" type="AudioStreamPlayer3D" parent="SpikeArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2.449111, 0, 0, 0)
 
+[node name="CutSCreen" type="Area3D" parent="."]
+script = ExtResource("15_fhuy1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CutSCreen"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7375655, 10.662106, -10.032397)
+shape = SubResource("BoxShape3D_i6dbo")
+
+[node name="Ratchet" type="AudioStreamPlayer3D" parent="CutSCreen"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.691496, -8.6479435)
+stream = ExtResource("15_yvrk7")
+
+[node name="Impact" type="AudioStreamPlayer3D" parent="CutSCreen"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.476672, -9.136835)
+stream = ExtResource("16_fhuy1")
+
+[node name="Interact Door" type="Area3D" parent="."]
+transform = Transform3D(-0.056344263, 0, 0.9984114, 0, 1, 0, -0.9984114, 0, -0.056344263, 0.6289325, 0, -44.41427)
+script = ExtResource("18_fhuy1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interact Door"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.48756027, 1.7033012, -0.77576494)
+shape = SubResource("BoxShape3D_e2piv")
+
 [connection signal="body_entered" from="ResetZone" to="ResetZone" method="_on_body_entered"]
 [connection signal="body_entered" from="Spikes/StaticBody3D/Area3D" to="Spikes" method="_on_body_entered"]
 [connection signal="body_entered" from="IntroArea" to="IntroArea" method="_on_body_entered"]
 [connection signal="body_entered" from="DoorArea" to="DoorArea" method="_on_body_entered"]
-[connection signal="body_entered" from="IntroArea2" to="IntroArea2" method="_on_body_entered"]
-[connection signal="body_entered" from="DoorArea2" to="DoorArea2" method="_on_body_entered"]
 [connection signal="body_entered" from="SpikeArea" to="SpikeArea" method="_on_body_entered"]
+[connection signal="body_entered" from="CutSCreen" to="CutSCreen" method="_on_body_entered"]
+[connection signal="body_entered" from="Interact Door" to="Interact Door" method="_on_body_entered"]
+[connection signal="body_exited" from="Interact Door" to="Interact Door" method="_on_body_exited"]

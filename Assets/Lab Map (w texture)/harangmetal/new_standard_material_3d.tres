@@ -1,0 +1,21 @@
+[gd_resource type="StandardMaterial3D" load_steps=6 format=3 uid="uid://cx5iestvcle8"]
+
+[ext_resource type="Texture2D" uid="uid://cute4civv0n8i" path="res://Assets/Lab Map (w texture)/harangmetal/Metal038_4K-JPG_Color.jpg" id="1_huknt"]
+[ext_resource type="Texture2D" uid="uid://bgkvhyma4k8fj" path="res://Assets/Lab Map (w texture)/harangmetal/Metal038_4K-JPG_Displacement.jpg" id="2_aasa8"]
+[ext_resource type="Texture2D" uid="uid://b4a6gyqserhpl" path="res://Assets/Lab Map (w texture)/harangmetal/Metal038_4K-JPG_Metalness.jpg" id="3_0m7em"]
+[ext_resource type="Texture2D" uid="uid://5a2vfkoowumr" path="res://Assets/Lab Map (w texture)/harangmetal/Metal038_4K-JPG_NormalGL.jpg" id="4_nw1db"]
+[ext_resource type="Texture2D" uid="uid://bf0lscbj7ywq1" path="res://Assets/Lab Map (w texture)/harangmetal/Metal038_4K-JPG_Roughness.jpg" id="5_wlb3g"]
+
+[resource]
+albedo_texture = ExtResource("1_huknt")
+metallic = 1.0
+metallic_texture = ExtResource("3_0m7em")
+metallic_texture_channel = 4
+roughness = 0.0
+roughness_texture = ExtResource("5_wlb3g")
+roughness_texture_channel = 4
+normal_enabled = true
+normal_texture = ExtResource("4_nw1db")
+heightmap_enabled = true
+heightmap_scale = 1.0
+heightmap_texture = ExtResource("2_aasa8")
