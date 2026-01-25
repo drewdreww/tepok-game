@@ -1,11 +1,32 @@
-[gd_scene load_steps=6 format=3 uid="uid://cyffio1abqiu6"]
+[gd_scene load_steps=9 format=3 uid="uid://cyffio1abqiu6"]
 
 [ext_resource type="Script" uid="uid://b33rqkpnm1fy0" path="res://Scripts/player.gd" id="1_y0qk3"]
 [ext_resource type="Script" uid="uid://cvrxhc3q1sw4y" path="res://Scripts/first_pov.gd" id="2_3y5cq"]
+[ext_resource type="Shader" uid="uid://xtxdfwhekj8h" path="res://Shader/player.gdshader" id="3_2i4gt"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ojbdc"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_y0qk3"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_0ad8t"]
+size = Vector2(2, 2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x20fu"]
+render_priority = 0
+shader = ExtResource("3_2i4gt")
+shader_parameter/brightness = 1.0
+shader_parameter/contrast = 1.30000001425
+shader_parameter/vignette_intensity = 1.10000005225
+shader_parameter/pixel_factor = 2.0000000475
+shader_parameter/glitch_strength = 0.0010000000475
+shader_parameter/left_glitch_color = Color(1, 0, 1, 0.5)
+shader_parameter/right_glitch_color = Color(0, 1, 0, 0.5)
+shader_parameter/glitch_power = 0.034000001615
+shader_parameter/glitch_rate = 0.1030000048925
+shader_parameter/idle_shake_power = 0.01
+shader_parameter/idle_shake_speed = 1.50000007125
+shader_parameter/block_size = 5.0
+shader_parameter/block_rate = 0.0400000019
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_3y5cq"]
 
@@ -27,6 +48,12 @@ script = ExtResource("2_3y5cq")
 
 [node name="InteractRay" type="RayCast3D" parent="Head/FirstPOV"]
 target_position = Vector3(0, 0, -2)
+
+[node name="Shader" type="MeshInstance3D" parent="Head/FirstPOV"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.59885895)
+extra_cull_margin = 16380.0
+mesh = SubResource("QuadMesh_0ad8t")
+surface_material_override/0 = SubResource("ShaderMaterial_x20fu")
 
 [node name="DeathRagdoll" type="RigidBody3D" parent="."]
 freeze_mode = 1

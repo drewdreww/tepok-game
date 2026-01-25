@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://d0to541w0gvdm"]
+[gd_scene load_steps=32 format=3 uid="uid://d0to541w0gvdm"]
 
 [ext_resource type="PackedScene" uid="uid://d1onfybck4xec" path="res://Objects/blades.tscn" id="1_45m41"]
 [ext_resource type="Texture2D" uid="uid://ogm834oqjdrx" path="res://Assets/Textures/rusty_metal_04_diff_1k.jpg" id="1_q5a2n"]
@@ -9,19 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://behiffkghc6cv" path="res://Assets/PNG/Green/texture_01.png" id="7_45m41"]
 [ext_resource type="Texture2D" uid="uid://fv5hdicjki5d" path="res://Assets/Textures/plastered_wall_05_diff_1k.jpg" id="8_nwwrl"]
 [ext_resource type="Texture2D" uid="uid://dtxoir10t20is" path="res://Assets/Textures/interior_tiles_diff_1k.jpg" id="9_er2sb"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_t5nig"]
-sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-
-[sub_resource type="Sky" id="Sky_upcgg"]
-sky_material = SubResource("ProceduralSkyMaterial_t5nig")
-
-[sub_resource type="Environment" id="Environment_qcqj1"]
-background_mode = 2
-sky = SubResource("Sky_upcgg")
-tonemap_mode = 2
-glow_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_desfx"]
 albedo_texture = ExtResource("1_q5a2n")
@@ -62,6 +49,69 @@ albedo_texture = ExtResource("9_er2sb")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s88vt"]
 albedo_texture = ExtResource("8_nwwrl")
+
+[sub_resource type="Animation" id="Animation_nwwrl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Blades:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Blades5:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Blades2:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Blades3:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Blades4:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_45m41"]
 resource_name = "on"
@@ -128,74 +178,32 @@ tracks/4/keys = {
 "values": [Vector3(0, 0, 0), Vector3(-6.2831855, 0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_nwwrl"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Blades:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Blades5:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Blades2:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Blades3:rotation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Blades4:rotation")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_er2sb"]
 _data = {
 &"RESET": SubResource("Animation_nwwrl"),
 &"on": SubResource("Animation_45m41")
 }
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_45m41"]
+size = Vector3(3.4988403, 2.4132538, 4.191223)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nwwrl"]
+size = Vector3(3.3735352, 1.1668701, 3.128418)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_er2sb"]
+size = Vector3(4.5631104, 0.662796, 0.1739502)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_salk0"]
+size = Vector3(0.0897522, 1.7715454, 3.0916748)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xbf1b"]
+size = Vector3(2.3198853, 1.6116486, 3.3784103)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_retj2"]
+size = Vector3(1.3921585, 1.8071289, 3.0924835)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bvjkk"]
+size = Vector3(0.62861633, 1, 0.9569092)
 
 [node name="Grinder" type="Node3D"]
 
@@ -213,13 +221,6 @@ transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0.08498001, 0, -1.01
 
 [node name="Blades4" parent="." instance=ExtResource("1_45m41")]
 transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, -0.053289294, 0.20268512, -0.4944756)
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 5.5544558, 0)
-shadow_enabled = true
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_qcqj1")
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
 transform = Transform3D(1.1999999, 0, 0, 0, 1.1999139, 0.01438095, 0, -0.01438095, 1.1999139, 0, 0, -0.01566264)
@@ -411,3 +412,41 @@ material = SubResource("StandardMaterial3D_s88vt")
 libraries = {
 &"": SubResource("AnimationLibrary_er2sb")
 }
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.118927, -2.0680814, 0.027557373)
+shape = SubResource("BoxShape3D_45m41")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1706543, -0.17414641, -0.02709961)
+shape = SubResource("BoxShape3D_nwwrl")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.101623535, 0.75355, 1.4638388)
+shape = SubResource("BoxShape3D_er2sb")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.101623535, 0.75355, -1.5005746)
+shape = SubResource("BoxShape3D_er2sb")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(0.7534142, -0.65754616, 0, 0.65754616, 0.7534142, 0, 0, 0, 1, -1.8954557, 0.42581502, 0.003595829)
+shape = SubResource("BoxShape3D_salk0")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(-0.75341415, 0.6575462, 1.0430813e-07, 0.6575462, 0.75341433, 0, -2.9802322e-08, 4.4703484e-08, -0.99999994, 1.623325, 0.42581502, 0.003595829)
+shape = SubResource("BoxShape3D_salk0")
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(0.99973744, 0, 0.022914167, 0, 1, 0, -0.022914167, 0, 0.99973744, -3.2949972, -2.3746815, 0.16779508)
+shape = SubResource("BoxShape3D_xbf1b")
+
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(0.99960226, -0.00820368, 0.026981171, 0, 0.9567528, 0.29090258, -0.028200785, -0.2907869, 0.95637226, -3.1510959, -1.4119003, 0.21650524)
+shape = SubResource("BoxShape3D_retj2")
+
+[node name="CollisionShape3D9" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.073306, -1.3233973, -0.9718287)
+shape = SubResource("BoxShape3D_bvjkk")
