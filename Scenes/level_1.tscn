@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://wec7pnmmu2uw" path="res://Assets/PNG/Orange/texture_05.png" id="8_wrinw"]
 [ext_resource type="Script" path="res://Scripts/TriggerScript/door_area_level_1.gd" id="12_8i23i"]
 [ext_resource type="AudioStream" uid="uid://bl0bmw0lv55gc" path="res://Scripts/VoiceLine/Video_Ready_For_Viewing.mp3" id="12_oovug"]
-[ext_resource type="Script" path="res://Scripts/TriggerScript/label.gd" id="13_8yhm2"]
+[ext_resource type="Script" uid="uid://bb1rdf30itqv0" path="res://Scripts/TriggerScript/label.gd" id="13_8yhm2"]
 [ext_resource type="FontFile" uid="uid://cuan3t5utbm2a" path="res://Scripts/Space_Grotesk/SpaceGrotesk-VariableFont_wght.ttf" id="14_pjppf"]
 [ext_resource type="Script" path="res://Scripts/TriggerScript/spike_area_level_1.gd" id="15_yltlr"]
 

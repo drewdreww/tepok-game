@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bn6khnb8kd311" path="res://Objects/spikes.tscn" id="8_q0ycs"]
 [ext_resource type="Script" uid="uid://dxfpubnayh5fs" path="res://Scenes/platform_lvl2.gd" id="8_uhnj4"]
 [ext_resource type="AudioStream" uid="uid://bl0bmw0lv55gc" path="res://Scripts/VoiceLine/Video_Ready_For_Viewing.mp3" id="12_bl0du"]
-[ext_resource type="Script" path="res://Scripts/TriggerScript/label.gd" id="12_hj5x7"]
+[ext_resource type="Script" uid="uid://bb1rdf30itqv0" path="res://Scripts/TriggerScript/label.gd" id="12_hj5x7"]
 [ext_resource type="Script" path="res://Scripts/TriggerScript/intro_area_level_2.gd" id="13_yvrk7"]
 [ext_resource type="Script" path="res://Scripts/TriggerScript/door_area_level_2.gd" id="14_fhuy1"]
 [ext_resource type="FontFile" uid="uid://cuan3t5utbm2a" path="res://Scripts/Space_Grotesk/SpaceGrotesk-VariableFont_wght.ttf" id="15_i6dbo"]
@@ -387,7 +387,6 @@ shape = SubResource("BoxShape3D_yvrk7")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.007870436, 0.9416851, 0.2707138)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-script = ExtResource("12_hj5x7")
 
 [node name="Label" type="Label" parent="CanvasLayer"]
 offset_left = 96.0
