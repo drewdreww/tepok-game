@@ -51,6 +51,7 @@ target_position = Vector3(0, 0, -2)
 
 [node name="Shader" type="MeshInstance3D" parent="Head/FirstPOV"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.59885895)
+visible = false
 extra_cull_margin = 16380.0
 mesh = SubResource("QuadMesh_0ad8t")
 surface_material_override/0 = SubResource("ShaderMaterial_x20fu")
