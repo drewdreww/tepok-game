@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=4 uid="uid://pruv1vv2l1in"]
+[gd_scene load_steps=48 format=4 uid="uid://pruv1vv2l1in"]
 
 [ext_resource type="PackedScene" uid="uid://d23cd011e2xqi" path="res://Assets/Lab Map (w texture)/labbbbbbb.glb" id="1_ykkii"]
 [ext_resource type="Material" uid="uid://bnbys67daxjo6" path="res://Assets/Lab Map (w texture)/wall texture/metalwall.tres" id="2_ebao1"]
@@ -146,6 +146,9 @@ albedo_color = Color(0.2231029, 0.2231029, 0.22310287, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uev2j"]
 albedo_color = Color(0, 0.27450982, 0.47058824, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_snq2m"]
+albedo_color = Color(0.06469653, 0.06469653, 0.06469653, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bfopf"]
 albedo_texture = ExtResource("14_ydjyn")
@@ -1363,6 +1366,9 @@ surface_material_override/0 = ExtResource("2_ebao1")
 [node name="Object010_base_mat_0" parent="Sketchfab_model/9bb07206f624456f80d22ad72d691806_fbx/RootNode/Object010/Object_486" index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_koxo7")
 
+[node name="Object013_base_mat_0" parent="Sketchfab_model/9bb07206f624456f80d22ad72d691806_fbx/RootNode/Object013/Object_543" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_h0n88")
+
 [node name="Object034_base_mat_0" parent="Sketchfab_model/9bb07206f624456f80d22ad72d691806_fbx/RootNode/Object034" index="0"]
 surface_material_override/0 = ExtResource("2_ebao1")
 
@@ -1530,6 +1536,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 2.842171e-14, 0, -2.842171e-14, 1, 0, -1.
 surface_material_override/0 = SubResource("StandardMaterial3D_koxo7")
 
 [node name="props_med_stairs_004_base_mat_0" parent="Sketchfab_model/9bb07206f624456f80d22ad72d691806_fbx/RootNode/props_med_stairs_004/Object_1654" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_h0n88")
+
+[node name="props_med_stairs_009_base_mat_0" parent="Sketchfab_model/9bb07206f624456f80d22ad72d691806_fbx/RootNode/props_med_stairs_009/Object_742" index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_h0n88")
 
 [node name="props_med_stairs_01_base_mat_0" parent="Sketchfab_model/9bb07206f624456f80d22ad72d691806_fbx/RootNode/props_med_stairs_01/Object_1185" index="0"]
@@ -1706,6 +1715,9 @@ surface_material_override/0 = SubResource("StandardMaterial3D_quwh7")
 
 [node name="stoika003_base_mat_0" parent="Sketchfab_model/9bb07206f624456f80d22ad72d691806_fbx/RootNode/props_sml_info_table_017/stoika003" index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_uev2j")
+
+[node name="props_sml_info_table_03_base_mat_0_001" parent="Sketchfab_model/9bb07206f624456f80d22ad72d691806_fbx/RootNode/props_sml_info_table_03_001/props_sml_info_table_03_002/Object_1192" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_snq2m")
 
 [node name="glass_32_glass_0" parent="Sketchfab_model/9bb07206f624456f80d22ad72d691806_fbx/RootNode/props_sml_info_table_04/glass_32_001" index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_quwh7")
