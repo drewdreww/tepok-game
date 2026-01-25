@@ -38,8 +38,7 @@ func _play_sequence() -> void:
 
 	# Fade black screen out
 	await _fade_out(1.0)
-
-
+	await _fade_out_audio(1.0, [narration1, narration2])
 
 func _fade_to_black(time: float) -> void:
 	black_screen.visible = true
@@ -52,3 +51,11 @@ func _fade_out(time: float) -> void:
 	tween.tween_property(black_screen, "modulate:a", 0.0, time)
 	await tween.finished
 	black_screen.visible = false
+	
+func _fade_out_audio(time: float, players: Array) -> void:
+	var tween = get_tree().create_tween()
+	for player in players:
+		tween.tween_property(player, "volume_db", -80.0, time)  # fade to silence
+	await tween.finished
+	for player in players:
+		player.stop()  # stop completely after fade

@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://noxcsnowlsdh"
-path="res://.godot/imported/SpaceGrotesk-Medium.ttf-597eb410bbfaf5b37cc8d262826314d9.fontdata"
+uid="uid://s756v0yn0c5v"
+path="res://.godot/imported/wheaton capitals.otf-d415aa2f0b009ee1cfd8c0e3c91b915e.fontdata"
 
 [deps]
 
-source_file="res://Scripts/Space_Grotesk/static/SpaceGrotesk-Medium.ttf"
-dest_files=["res://.godot/imported/SpaceGrotesk-Medium.ttf-597eb410bbfaf5b37cc8d262826314d9.fontdata"]
+source_file="res://Scripts/Font/wheaton-capitals/wheaton capitals.otf"
+dest_files=["res://.godot/imported/wheaton capitals.otf-d415aa2f0b009ee1cfd8c0e3c91b915e.fontdata"]
 
 [params]
 

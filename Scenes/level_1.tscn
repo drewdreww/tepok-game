@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://lfmqx8w7ufxn"]
+[gd_scene load_steps=40 format=3 uid="uid://lfmqx8w7ufxn"]
 
 [ext_resource type="Texture2D" uid="uid://dyso7rrc2gh0u" path="res://Assets/PNG/Light/texture_08.png" id="1_6444e"]
 [ext_resource type="Script" uid="uid://d3op4vm6ecw7w" path="res://Scenes/level_1.gd" id="1_wrinw"]
@@ -12,10 +12,12 @@
 [ext_resource type="Texture2D" uid="uid://wec7pnmmu2uw" path="res://Assets/PNG/Orange/texture_05.png" id="8_wrinw"]
 [ext_resource type="AudioStream" uid="uid://c50opam7yod65" path="res://Scripts/VoiceLine/Ratchet Wrench - Sound Effect - onlysounds.mp3" id="12_8i23i"]
 [ext_resource type="AudioStream" uid="uid://bl0bmw0lv55gc" path="res://Scripts/VoiceLine/Video_Ready_For_Viewing.mp3" id="12_oovug"]
+[ext_resource type="FontFile" uid="uid://s756v0yn0c5v" path="res://Scripts/Font/wheaton-capitals/wheaton capitals.otf" id="12_pjppf"]
 [ext_resource type="Script" uid="uid://bb1rdf30itqv0" path="res://Scripts/TriggerScript/label.gd" id="13_8yhm2"]
 [ext_resource type="AudioStream" uid="uid://cij3gnspv1eik" path="res://Scripts/VoiceLine/Impact Wrench - Sound Effect - onlysounds.mp3" id="13_pjppf"]
 [ext_resource type="Script" uid="uid://cwux6qjmdsw3i" path="res://Scenes/area_3d.gd" id="14_8i23i"]
 [ext_resource type="Script" uid="uid://nxudpdnmvlaa" path="res://Scripts/color_rect.gd" id="15_yltlr"]
+[ext_resource type="Script" uid="uid://crvnact13sk8f" path="res://Scripts/TriggerScript/interact_door.gd" id="17_8yhm2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_chwpn"]
 albedo_texture = ExtResource("1_6444e")
@@ -109,27 +111,28 @@ script/source = "extends Area3D
 
 @onready var narration = $DeathVoicee
 @onready var subtitle_label = $\"../CanvasLayer/Label\"
-@onready var black_screen = $\"../CanvasLayer/ColorRect\"
-
-var triggered := false
 
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)
 
 func _on_body_entered(body: Node3D) -> void:
-	if body is CharacterBody3D and not triggered:
-		triggered = true
+	if body is CharacterBody3D:
 		_play_sequence()
 
 func _play_sequence() -> void:
-
 	narration.stop()
 	narration.play()
-
+	
 	subtitle_label.visible = true
-	subtitle_label.text = \"Test subject failure detected. Repairing unit.\"
 
-	await get_tree().create_timer(4.0).timeout
+	subtitle_label.text = \"S.A.F.E.: Spike hazard detected. Impact absorbed by safety platform.\"
+	await get_tree().create_timer(3.0).timeout
+
+	subtitle_label.text = \"S.A.F.E.: Unit 77 remains intact. Metrics stable.\"
+	await get_tree().create_timer(3.0).timeout
+
+	subtitle_label.text = \"S.A.F.E.: Warning — repeated misuse of safety systems may trigger unintended failure.\"
+	await get_tree().create_timer(2.5).timeout
 
 	subtitle_label.visible = false
 "
@@ -167,6 +170,9 @@ func _play_sequence() -> void:
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6ssoq"]
 size = Vector3(2.441986, 2.2086182, 1.3613281)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_imks0"]
+size = Vector3(3.1660843, 3.746338, 2.4358368)
 
 [node name="Level1" type="Node3D"]
 script = ExtResource("1_wrinw")
@@ -455,6 +461,7 @@ offset_left = 96.0
 offset_top = 558.0
 offset_right = 335.0
 offset_bottom = 581.0
+theme_override_fonts/font = ExtResource("12_pjppf")
 script = ExtResource("13_8yhm2")
 metadata/_edit_use_anchors_ = true
 
@@ -481,9 +488,19 @@ stream = ExtResource("12_8i23i")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9.890163, -22.735157)
 stream = ExtResource("13_pjppf")
 
+[node name="Interact Door" type="Area3D" parent="."]
+transform = Transform3D(-0.056344263, 0, 0.9984114, 0, 1, 0, -0.9984114, 0, -0.056344263, 0.6289325, 0, -44.41427)
+script = ExtResource("17_8yhm2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interact Door"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.48756027, 1.7033012, -0.77576494)
+shape = SubResource("BoxShape3D_imks0")
+
 [connection signal="body_entered" from="ResetZone" to="ResetZone" method="_on_body_entered"]
 [connection signal="body_entered" from="TriggerSafe" to="TriggerSafe" method="_on_body_entered"]
 [connection signal="body_entered" from="IntroArea" to="IntroArea" method="_on_body_entered"]
 [connection signal="body_entered" from="SpikeArea" to="SpikeArea" method="_on_body_entered2"]
 [connection signal="body_entered" from="DoorArea" to="DoorArea" method="_on_body_entered"]
 [connection signal="body_entered" from="CutSCreen" to="CutSCreen" method="_on_body_entered"]
+[connection signal="body_entered" from="Interact Door" to="Interact Door" method="_on_body_entered"]
+[connection signal="body_exited" from="Interact Door" to="Interact Door" method="_on_body_exited"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://b4on05tkph3dv"]
+[gd_scene load_steps=39 format=3 uid="uid://b4on05tkph3dv"]
 
 [ext_resource type="Texture2D" uid="uid://dyso7rrc2gh0u" path="res://Assets/PNG/Light/texture_08.png" id="1_2mgoq"]
 [ext_resource type="Script" uid="uid://dth7nkxxcvn83" path="res://Scenes/level_2.gd" id="1_cggpd"]
@@ -12,11 +12,13 @@
 [ext_resource type="Script" uid="uid://dxfpubnayh5fs" path="res://Scenes/platform_lvl2.gd" id="8_uhnj4"]
 [ext_resource type="AudioStream" uid="uid://bl0bmw0lv55gc" path="res://Scripts/VoiceLine/Video_Ready_For_Viewing.mp3" id="12_bl0du"]
 [ext_resource type="Script" uid="uid://bb1rdf30itqv0" path="res://Scripts/TriggerScript/label.gd" id="12_hj5x7"]
+[ext_resource type="FontFile" uid="uid://s756v0yn0c5v" path="res://Scripts/Font/wheaton-capitals/wheaton capitals.otf" id="12_i6dbo"]
 [ext_resource type="Script" uid="uid://nxudpdnmvlaa" path="res://Scripts/color_rect.gd" id="13_hj5x7"]
 [ext_resource type="Script" uid="uid://cwux6qjmdsw3i" path="res://Scenes/area_3d.gd" id="15_fhuy1"]
 [ext_resource type="AudioStream" uid="uid://c50opam7yod65" path="res://Scripts/VoiceLine/Ratchet Wrench - Sound Effect - onlysounds.mp3" id="15_yvrk7"]
 [ext_resource type="Script" uid="uid://16d62wowxcbk" path="res://Scripts/TriggerScript/spike_area_level_2.gd" id="16_e2piv"]
 [ext_resource type="AudioStream" uid="uid://cij3gnspv1eik" path="res://Scripts/VoiceLine/Impact Wrench - Sound Effect - onlysounds.mp3" id="16_fhuy1"]
+[ext_resource type="Script" uid="uid://crvnact13sk8f" path="res://Scripts/TriggerScript/interact_door.gd" id="18_fhuy1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hj5x7"]
 albedo_texture = ExtResource("1_2mgoq")
@@ -135,6 +137,9 @@ size = Vector3(20.595917, 0.8696289, 7.877014)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i6dbo"]
 size = Vector3(5.4168015, 4.4197693, 3.7712555)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e2piv"]
+size = Vector3(3.1660843, 3.746338, 2.4358368)
 
 [node name="Level2" type="Node3D"]
 script = ExtResource("1_cggpd")
@@ -389,6 +394,7 @@ offset_left = 96.0
 offset_top = 558.0
 offset_right = 335.0
 offset_bottom = 581.0
+theme_override_fonts/font = ExtResource("12_i6dbo")
 script = ExtResource("12_hj5x7")
 metadata/_edit_use_anchors_ = true
 
@@ -426,9 +432,19 @@ stream = ExtResource("15_yvrk7")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.476672, -9.136835)
 stream = ExtResource("16_fhuy1")
 
+[node name="Interact Door" type="Area3D" parent="."]
+transform = Transform3D(-0.056344263, 0, 0.9984114, 0, 1, 0, -0.9984114, 0, -0.056344263, 0.6289325, 0, -44.41427)
+script = ExtResource("18_fhuy1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interact Door"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.48756027, 1.7033012, -0.77576494)
+shape = SubResource("BoxShape3D_e2piv")
+
 [connection signal="body_entered" from="ResetZone" to="ResetZone" method="_on_body_entered"]
 [connection signal="body_entered" from="Spikes/StaticBody3D/Area3D" to="Spikes" method="_on_body_entered"]
 [connection signal="body_entered" from="IntroArea" to="IntroArea" method="_on_body_entered"]
 [connection signal="body_entered" from="DoorArea" to="DoorArea" method="_on_body_entered"]
 [connection signal="body_entered" from="SpikeArea" to="SpikeArea" method="_on_body_entered"]
 [connection signal="body_entered" from="CutSCreen" to="CutSCreen" method="_on_body_entered"]
+[connection signal="body_entered" from="Interact Door" to="Interact Door" method="_on_body_entered"]
+[connection signal="body_exited" from="Interact Door" to="Interact Door" method="_on_body_exited"]

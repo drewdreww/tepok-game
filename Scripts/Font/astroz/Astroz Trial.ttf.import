@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://bl2gvmsco2804"
-path="res://.godot/imported/SpaceGrotesk-Bold.ttf-8d338ab30dd305b95be5fb080ec18f77.fontdata"
+uid="uid://bhk8yit20f3qw"
+path="res://.godot/imported/Astroz Trial.ttf-b822c8672db0525b908c97a011705a21.fontdata"
 
 [deps]
 
-source_file="res://Scripts/Space_Grotesk/static/SpaceGrotesk-Bold.ttf"
-dest_files=["res://.godot/imported/SpaceGrotesk-Bold.ttf-8d338ab30dd305b95be5fb080ec18f77.fontdata"]
+source_file="res://Scripts/Font/astroz/Astroz Trial.ttf"
+dest_files=["res://.godot/imported/Astroz Trial.ttf-b822c8672db0525b908c97a011705a21.fontdata"]
 
 [params]
 

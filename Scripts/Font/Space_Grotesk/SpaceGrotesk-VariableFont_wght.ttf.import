@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://bef5tl34kr2tb"
-path="res://.godot/imported/SpaceGrotesk-SemiBold.ttf-413d7be731f970c51e30524fa9ca16ce.fontdata"
+uid="uid://cuan3t5utbm2a"
+path="res://.godot/imported/SpaceGrotesk-VariableFont_wght.ttf-0a5882be0a1b7b1ec98971def802c4d7.fontdata"
 
 [deps]
 
-source_file="res://Scripts/Space_Grotesk/static/SpaceGrotesk-SemiBold.ttf"
-dest_files=["res://.godot/imported/SpaceGrotesk-SemiBold.ttf-413d7be731f970c51e30524fa9ca16ce.fontdata"]
+source_file="res://Scripts/Font/Space_Grotesk/SpaceGrotesk-VariableFont_wght.ttf"
+dest_files=["res://.godot/imported/SpaceGrotesk-VariableFont_wght.ttf-0a5882be0a1b7b1ec98971def802c4d7.fontdata"]
 
 [params]
 
