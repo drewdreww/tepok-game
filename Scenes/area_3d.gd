@@ -1,9 +1,7 @@
 extends Area3D
 
-@onready var narration = $DeathVoicee
 @onready var narration1 = $Ratchet
 @onready var narration2 = $Impact
-@onready var subtitle_label = $"../CanvasLayer/Label"
 @onready var black_screen = $"../CanvasLayer/ColorRect"
 
 var triggered := false
@@ -15,29 +13,33 @@ func _ready() -> void:
 	black_screen.visible = false
 
 func _on_body_entered(body: Node3D) -> void:
-	if body is CharacterBody3D and not triggered:
-		triggered = true
+	if body is CharacterBody3D:
 		_play_sequence()
 
 func _play_sequence() -> void:
-	await _fade_to_black(1.0)
+	if triggered:
+		return
 
-	narration.stop()
+	triggered = true
+
+	# Stop all audios first
 	narration1.stop()
 	narration2.stop()
-	
-	narration.play()
-	narration1.play(5.0)
-	narration2.play(5.0)
 
-	subtitle_label.visible = true
-	subtitle_label.text = "Test subject failure detected. Repairing unit."
+	# Play audios immediately
+	narration1.play(2.0)
+	narration2.play(2.0)
 
-	await get_tree().create_timer(4.0).timeout
+	# Fade black screen in
+	await _fade_to_black(1.0)
 
-	subtitle_label.visible = false
+	# Keep black screen fully opaque for 5 seconds
+	await get_tree().create_timer(5.0).timeout
 
+	# Fade black screen out
 	await _fade_out(1.0)
+
+
 
 func _fade_to_black(time: float) -> void:
 	black_screen.visible = true
