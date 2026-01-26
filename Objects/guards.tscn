@@ -21,8 +21,12 @@ shape = SubResource("CapsuleShape3D_m1bp6")
 mesh = SubResource("CapsuleMesh_hy5ab")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D"]
-transform = Transform3D(0.58859724, 0, 0, 0, 0.14227933, 0, 0, 0, 0.71581364, 0, 0.5235919, 0.1758675)
+transform = Transform3D(0.58859724, 0, 0, 0, 0.14227933, 0, 0, 0, 0.71581364, 0, 0.5235919, -0.17711371)
 material_override = SubResource("StandardMaterial3D_m1bp6")
 mesh = SubResource("BoxMesh_e5slm")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4636302, 0)
+target_position = Vector3(0, 0, -1.5)
