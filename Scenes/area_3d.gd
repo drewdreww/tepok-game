@@ -7,7 +7,6 @@ extends Area3D
 var triggered := false
 
 func _ready() -> void:
-	body_entered.connect(_on_body_entered)
 	# Ensure black screen starts transparent
 	black_screen.modulate.a = 0.0
 	black_screen.visible = false

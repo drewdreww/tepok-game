@@ -7,10 +7,6 @@ extends Node3D
 @onready var trigger_area: Area3D = $StaticBody3D/Area3D
 @onready var mesh: Node3D = $"."
 
-func _ready() -> void:
-	if trigger_area:
-		trigger_area.body_entered.connect(_on_body_entered)
-
 func _on_body_entered(body: Node3D) -> void:
 	if body.name == "Player" or body.has_method("respawn"):
 		var combo_count = 0

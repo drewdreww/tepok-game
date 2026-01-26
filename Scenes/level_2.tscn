@@ -16,7 +16,7 @@
 [ext_resource type="Script" uid="uid://nxudpdnmvlaa" path="res://Scripts/color_rect.gd" id="13_hj5x7"]
 [ext_resource type="Script" uid="uid://cwux6qjmdsw3i" path="res://Scenes/area_3d.gd" id="15_fhuy1"]
 [ext_resource type="AudioStream" uid="uid://c50opam7yod65" path="res://Scripts/VoiceLine/Ratchet Wrench - Sound Effect - onlysounds.mp3" id="15_yvrk7"]
-[ext_resource type="Script" path="res://Scripts/TriggerScript/spike_area_level_2.gd" id="16_e2piv"]
+[ext_resource type="Script" uid="uid://16d62wowxcbk" path="res://Scripts/TriggerScript/spike_area_level_2.gd" id="16_e2piv"]
 [ext_resource type="AudioStream" uid="uid://cij3gnspv1eik" path="res://Scripts/VoiceLine/Impact Wrench - Sound Effect - onlysounds.mp3" id="16_fhuy1"]
 [ext_resource type="Script" uid="uid://crvnact13sk8f" path="res://Scripts/TriggerScript/interact_door.gd" id="18_fhuy1"]
 
@@ -106,9 +106,6 @@ script/source = "extends Area3D
 
 @onready var narration = $FailedVoice
 @onready var subtitle_label = $\"../CanvasLayer/Label\"
-
-func _ready() -> void:
-	body_entered.connect(_on_body_entered)
 
 func _on_body_entered(body: Node3D) -> void:
 	if body is CharacterBody3D:
@@ -342,22 +339,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3845749, 0, 0.053344727)
 shape = SubResource("BoxShape3D_uhnj4")
 
 [node name="Spikes2" parent="Spikes" instance=ExtResource("8_i6dbo")]
-transform = Transform3D(0.00019530933, -2.8571454e-05, -0.24999993, 3.6334277e-05, 0.25, -2.8543076e-05, 0.24999993, -3.6311965e-05, 0.00019531348, -0.28998494, -0.5547304, -2.8904343)
+transform = Transform3D(0.00019530933, -2.8571454e-05, -0.24999993, 3.6334277e-05, 0.25, -2.8543076e-05, 0.24999993, -3.6311965e-05, 0.00019531348, -0.28998494, 0.039232254, -2.8904343)
 
 [node name="Spikes3" parent="Spikes" instance=ExtResource("8_i6dbo")]
-transform = Transform3D(0.00019530933, -2.8571454e-05, -0.24999993, 3.6334277e-05, 0.25, -2.8543076e-05, 0.24999993, -3.6311965e-05, 0.00019531348, 11.210506, -0.5547304, -2.8904343)
+transform = Transform3D(0.00019530933, -2.8571454e-05, -0.24999993, 3.6334277e-05, 0.25, -2.8543076e-05, 0.24999993, -3.6311965e-05, 0.00019531348, 11.210506, 0.039232254, -2.8904343)
 
 [node name="Spikes4" parent="Spikes" instance=ExtResource("8_i6dbo")]
-transform = Transform3D(0.00019530933, -2.8571454e-05, -0.24999993, 3.6334277e-05, 0.25, -2.8543076e-05, 0.24999993, -3.6311965e-05, 0.00019531348, -0.28998494, -0.5547304, -0.061710358)
+transform = Transform3D(0.00019530933, -2.8571454e-05, -0.24999993, 3.6334277e-05, 0.25, -2.8543076e-05, 0.24999993, -3.6311965e-05, 0.00019531348, -0.28998494, 0.039232254, -0.061710358)
 
 [node name="Spikes5" parent="Spikes" instance=ExtResource("8_i6dbo")]
-transform = Transform3D(0.00019530933, -2.8571454e-05, -0.24999993, 3.6334277e-05, 0.25, -2.8543076e-05, 0.24999993, -3.6311965e-05, 0.00019531348, 11.210506, -0.5547304, -0.061710358)
+transform = Transform3D(0.00019530933, -2.8571454e-05, -0.24999993, 3.6334277e-05, 0.25, -2.8543076e-05, 0.24999993, -3.6311965e-05, 0.00019531348, 11.210506, 0.039232254, -0.061710358)
 
 [node name="Spikes6" parent="Spikes" instance=ExtResource("8_i6dbo")]
-transform = Transform3D(0.00019530933, -2.8571454e-05, -0.24999993, 3.6334277e-05, 0.25, -2.8543076e-05, 0.24999993, -3.6311965e-05, 0.00019531348, -0.28998494, -0.5547304, 2.778614)
+transform = Transform3D(0.00019530933, -2.8571454e-05, -0.24999993, 3.6334277e-05, 0.25, -2.8543076e-05, 0.24999993, -3.6311965e-05, 0.00019531348, -0.28998494, 0.039232254, 2.778614)
 
 [node name="Spikes7" parent="Spikes" instance=ExtResource("8_i6dbo")]
-transform = Transform3D(0.00019530933, -2.8571454e-05, -0.24999993, 3.6334277e-05, 0.25, -2.8543076e-05, 0.24999993, -3.6311965e-05, 0.00019531348, 11.210506, -0.5547304, 2.778614)
+transform = Transform3D(0.00019530933, -2.8571454e-05, -0.24999993, 3.6334277e-05, 0.25, -2.8543076e-05, 0.24999993, -3.6311965e-05, 0.00019531348, 11.210506, 0.039232254, 2.778614)
 
 [node name="Platform" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3537035, -0.48773336, -21.937551)
