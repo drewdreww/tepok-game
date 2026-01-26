@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://cbebei52scxk1"]
+
+[ext_resource type="Script" uid="uid://dkvlekjsp2365" path="res://Scripts/guards.gd" id="1_hy5ab"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_m1bp6"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_hy5ab"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m1bp6"]
+albedo_color = Color(0.66446775, 0.100728415, 0.25086644, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_e5slm"]
+
+[node name="Guards" type="CharacterBody3D"]
+script = ExtResource("1_hy5ab")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_m1bp6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_hy5ab")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(0.58859724, 0, 0, 0, 0.14227933, 0, 0, 0, 0.71581364, 0, 0.5235919, 0.1758675)
+material_override = SubResource("StandardMaterial3D_m1bp6")
+mesh = SubResource("BoxMesh_e5slm")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
