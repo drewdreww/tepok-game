@@ -282,7 +282,7 @@ size = Vector3(20.606201, 0.497, 12)
 material = SubResource("StandardMaterial3D_cv7sw")
 
 [node name="CSGBox3D15" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19833374, -13.2384815, -26.412926)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19833374, -12.472863, -26.412926)
 size = Vector3(23.005798, 0.497, 7.9799194)
 material = SubResource("StandardMaterial3D_gyc06")
 

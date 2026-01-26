@@ -4,7 +4,6 @@
 [ext_resource type="Script" uid="uid://d3op4vm6ecw7w" path="res://Scenes/level_1.gd" id="1_wrinw"]
 [ext_resource type="Texture2D" uid="uid://bo44bapdnf5co" path="res://Assets/PNG/Orange/texture_03.png" id="2_evi0p"]
 [ext_resource type="Texture2D" uid="uid://dlu5a08hh0c75" path="res://Assets/PNG/Orange/texture_10.png" id="2_xrdnt"]
-[ext_resource type="PackedScene" uid="uid://bn6khnb8kd311" path="res://Objects/spikes.tscn" id="3_lsmp6"]
 [ext_resource type="Material" uid="uid://bnbys67daxjo6" path="res://Assets/Lab Map (w texture)/wall texture/metalwall.tres" id="3_yltlr"]
 [ext_resource type="PackedScene" uid="uid://bjxwqe64spwid" path="res://Objects/door.tscn" id="4_xrdnt"]
 [ext_resource type="PackedScene" uid="uid://d3snu2sbpkn6c" path="res://Objects/fan.tscn" id="5_chwpn"]
@@ -19,6 +18,7 @@
 [ext_resource type="Script" uid="uid://cwux6qjmdsw3i" path="res://Scenes/area_3d.gd" id="14_8i23i"]
 [ext_resource type="Script" uid="uid://nxudpdnmvlaa" path="res://Scripts/color_rect.gd" id="15_yltlr"]
 [ext_resource type="Script" uid="uid://crvnact13sk8f" path="res://Scripts/TriggerScript/interact_door.gd" id="17_8yhm2"]
+[ext_resource type="PackedScene" uid="uid://dfapk031fuvah" path="res://Objects/spikesssss.tscn" id="19_yltlr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_chwpn"]
 albedo_texture = ExtResource("1_6444e")
@@ -395,15 +395,6 @@ shape = SubResource("BoxShape3D_evi0p")
 [node name="Spikes" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -12.714907, -22.169819)
 
-[node name="Spikes1" parent="Spikes" instance=ExtResource("3_lsmp6")]
-transform = Transform3D(2.4529662, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, -2.5486755)
-
-[node name="Spikes3" parent="Spikes" instance=ExtResource("3_lsmp6")]
-transform = Transform3D(2.4529662, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 2.7627296)
-
-[node name="Spikes2" parent="Spikes" instance=ExtResource("3_lsmp6")]
-transform = Transform3D(2.4529662, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
-
 [node name="HideSafePlatform" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.22518921, -10.338903, -23.129599)
 material_override = SubResource("StandardMaterial3D_wrinw")
@@ -496,6 +487,24 @@ script = ExtResource("17_8yhm2")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Interact Door"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.48756027, 1.7033012, -0.77576494)
 shape = SubResource("BoxShape3D_imks0")
+
+[node name="Spikes2" parent="." instance=ExtResource("19_yltlr")]
+transform = Transform3D(0.00019530933, -2.8571454e-05, -0.24999993, 3.6334277e-05, 0.25, -2.8543076e-05, 0.24999993, -3.6311965e-05, 0.00019531348, -0.28998494, -12.925853, -24.451717)
+
+[node name="Spikes3" parent="." instance=ExtResource("19_yltlr")]
+transform = Transform3D(0.00019530933, -2.8571454e-05, -0.24999993, 3.6334277e-05, 0.25, -2.8543076e-05, 0.24999993, -3.6311965e-05, 0.00019531348, 11.210506, -12.925853, -24.451717)
+
+[node name="Spikes4" parent="." instance=ExtResource("19_yltlr")]
+transform = Transform3D(0.00019530933, -2.8571454e-05, -0.24999993, 3.6334277e-05, 0.25, -2.8543076e-05, 0.24999993, -3.6311965e-05, 0.00019531348, -0.28998494, -12.925853, -21.622992)
+
+[node name="Spikes5" parent="." instance=ExtResource("19_yltlr")]
+transform = Transform3D(0.00019530933, -2.8571454e-05, -0.24999993, 3.6334277e-05, 0.25, -2.8543076e-05, 0.24999993, -3.6311965e-05, 0.00019531348, 11.210506, -12.925853, -21.622992)
+
+[node name="Spikes6" parent="." instance=ExtResource("19_yltlr")]
+transform = Transform3D(0.00019530933, -2.8571454e-05, -0.24999993, 3.6334277e-05, 0.25, -2.8543076e-05, 0.24999993, -3.6311965e-05, 0.00019531348, -0.28998494, -12.925853, -18.78267)
+
+[node name="Spikes7" parent="." instance=ExtResource("19_yltlr")]
+transform = Transform3D(0.00019530933, -2.8571454e-05, -0.24999993, 3.6334277e-05, 0.25, -2.8543076e-05, 0.24999993, -3.6311965e-05, 0.00019531348, 11.210506, -12.925853, -18.78267)
 
 [connection signal="body_entered" from="ResetZone" to="ResetZone" method="_on_body_entered"]
 [connection signal="body_entered" from="TriggerSafe" to="TriggerSafe" method="_on_body_entered"]

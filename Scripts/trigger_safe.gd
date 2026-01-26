@@ -2,7 +2,7 @@ extends Area3D
 
 @onready var platform_to_slide: MeshInstance3D = $"../HideSafePlatform"
 @onready var passenger_detector: Area3D = $"../HideSafePlatform/PassengerDetector"
-@onready var platform_collider: CollisionShape3D = $"../HideSafePlatform/PassengerDetector/CollisionShape3D"
+@onready var platform_collider: CollisionShape3D = $"../Platform/MeshInstance3D/StaticBody3D/CollisionShape3D"
 @onready var parent_node: Node3D = $".."
 
 @export var start_offset: Vector3 = Vector3(0, 0, -10) 
@@ -35,11 +35,11 @@ func _on_body_entered(body: Node3D) -> void:
 		parent_node.current_jumps = 0
 		
 		slide_platform_in()
-		await get_tree().create_timer(3.0).timeout
+		await get_tree().create_timer(2.0).timeout
 		
 		print("Going up!")
 		slide_platform_up()
-		await get_tree().create_timer(5.0).timeout
+		await get_tree().create_timer(3.0).timeout
 		
 		if is_player_on_platform(body):
 			print("Player is riding. Waiting for them to leave...")
