@@ -156,13 +156,13 @@ albedo_texture = ExtResource("14_ydjyn")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dn43y"]
 albedo_texture = ExtResource("15_r2tne")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jgv7l"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0rx1m"]
 resource_name = "Material.001"
 cull_mode = 2
 albedo_texture = ExtResource("14_koxo7")
 roughness = 0.5
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_ltpwt"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_snq2m"]
 _surfaces = [{
 "aabb": AABB(-1, 0, -1, 2, 1e-05, 2),
 "format": 34896613377,
@@ -184,7 +184,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 6,
 "index_data": PackedByteArray("AAABAAIAAAADAAEA"),
-"material": SubResource("StandardMaterial3D_jgv7l"),
+"material": SubResource("StandardMaterial3D_0rx1m"),
 "name": "Material.001",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -192,7 +192,7 @@ _surfaces = [{
 "vertex_data": PackedByteArray("AAAAAP///7///wAAAAD/v///AAD///+/AAAAAAAA/7////9/////f////3////9/")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_ltpwt")
+shadow_mesh = SubResource("ArrayMesh_snq2m")
 
 [node name="labbbbbbb" instance=ExtResource("1_ykkii")]
 
