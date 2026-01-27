@@ -1,0 +1,100 @@
+[gd_scene load_steps=8 format=3 uid="uid://crn1fufwtnct"]
+
+[ext_resource type="Script" uid="uid://bfa5qoytit2iq" path="res://Scripts/UI SCRIPT/main_menu.gd" id="1_f40uw"]
+[ext_resource type="VideoStream" uid="uid://jahe3glyfgt7" path="res://Assets/Videos/MenuBG.ogv" id="2_8ctay"]
+[ext_resource type="FontFile" uid="uid://cjv430sio2rok" path="res://Assets/Videos/Angora-1G3BB.otf" id="3_ev3b6"]
+[ext_resource type="AudioStream" uid="uid://ctraab4js74nj" path="res://Assets/Videos/AudioBG.mp3" id="4_k0a0m"]
+[ext_resource type="FontFile" uid="uid://d3yq727ihrghs" path="res://Assets/Videos/TarrgetAcademyItalic-qzmx.otf" id="5_2mudq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rcf31"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fluo8"]
+font = ExtResource("5_2mudq")
+font_size = 109
+font_color = Color(0, 0, 0, 1)
+
+[node name="Main Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_f40uw")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -14.0
+offset_top = -3.0
+offset_right = 8.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("2_8ctay")
+autoplay = true
+expand = true
+loop = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.035
+anchor_bottom = 0.062000003
+offset_left = 376.0
+offset_top = 257.0
+offset_right = 756.68
+offset_bottom = 376.824
+theme_override_constants/separation = 32
+
+[node name="StartButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.40982172, 0.8718304, 0.7597758, 1)
+theme_override_colors/font_hover_color = Color(0.5890881, 0.8329736, 0.90688515, 1)
+theme_override_fonts/font = ExtResource("3_ev3b6")
+theme_override_font_sizes/font_size = 38
+theme_override_styles/normal = SubResource("StyleBoxEmpty_rcf31")
+text = "START GAME"
+
+[node name="SettingsButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.40982172, 0.8718304, 0.7597758, 1)
+theme_override_colors/font_hover_color = Color(0.5890881, 0.8329736, 0.90688515, 1)
+theme_override_fonts/font = ExtResource("3_ev3b6")
+theme_override_font_sizes/font_size = 38
+theme_override_styles/normal = SubResource("StyleBoxEmpty_rcf31")
+text = "SETTINGS"
+
+[node name="CreditsButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.40982172, 0.8718304, 0.7597758, 1)
+theme_override_colors/font_hover_color = Color(0.5890881, 0.8329736, 0.90688515, 1)
+theme_override_fonts/font = ExtResource("3_ev3b6")
+theme_override_font_sizes/font_size = 38
+theme_override_styles/normal = SubResource("StyleBoxEmpty_rcf31")
+text = "CREDITS"
+
+[node name="ExitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.40982172, 0.8718304, 0.7597758, 1)
+theme_override_colors/font_hover_color = Color(0.5890881, 0.8329736, 0.90688515, 1)
+theme_override_fonts/font = ExtResource("3_ev3b6")
+theme_override_font_sizes/font_size = 38
+theme_override_styles/normal = SubResource("StyleBoxEmpty_rcf31")
+text = "Exit"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_k0a0m")
+autoplay = true
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 319.0
+offset_top = 73.0
+offset_right = 856.0
+offset_bottom = 191.0
+text = "TEPOK"
+label_settings = SubResource("LabelSettings_fluo8")
+vertical_alignment = 1

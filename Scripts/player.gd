@@ -8,6 +8,7 @@ var SENSITIVITY = GameSettings.sensitivity
 const BASE_FOV = 75.0
 const FOV_CHANGE = 1.5
 
+
 # --- Bob Config ---
 const BOB_FREQ = 2.00
 const BOB_AMP = 0.08
@@ -27,6 +28,8 @@ var is_dead: bool = false
 
 
 func _ready() -> void:
+	GameSettings.load_settings()
+	add_to_group("player")
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
 	# Saves Camera Position
@@ -40,15 +43,19 @@ func _ready() -> void:
 
 func _unhandled_input(event: InputEvent):
 	if event is InputEventMouseMotion:
-		head.rotate_y(-event.relative.x * SENSITIVITY)
-		camera.rotate_x(-event.relative.y * SENSITIVITY)
+		# Always use GameSettings.sensitivity
+		head.rotate_y(-event.relative.x * GameSettings.sensitivity)
+		camera.rotate_x(-event.relative.y * GameSettings.sensitivity)
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-80), deg_to_rad(80))
-		
+
 	if Input.is_action_just_pressed("interact"):
-		camera.try_interact()
-		
+		if camera.has_method("try_interact"):
+			camera.try_interact()
+
 	if Input.is_action_just_pressed("escape"):
-		get_tree().quit()
+		get_tree().change_scene_to_file("res://UI/Pause.tscn")
+
+
 		
 func _physics_process(delta: float) -> void:
 	_handle_movement(delta)
@@ -122,7 +129,7 @@ func die():
 	
 	camera.reparent(death_ragdoll)
 	
-	await get_tree().create_timer(3.0).timeout
+	await get_tree().create_timer(5.0).timeout
 	
 	# Next Level or Respawn
 	_try_load_next_level()
@@ -190,3 +197,7 @@ func respawn():
 	player_collider.disabled = false
 	is_dead = false
 	set_physics_process(true)
+
+func set_sensitivity(value):
+	SENSITIVITY = value
+	

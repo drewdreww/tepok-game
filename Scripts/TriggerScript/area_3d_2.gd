@@ -37,7 +37,7 @@ func _play_sequence() -> void:
 
 	subtitle_label.visible = false
 
-	await _fade_out(1.0)
+	await _fade_out(5.0)
 
 func _fade_to_black(time: float) -> void:
 	black_screen.visible = true
