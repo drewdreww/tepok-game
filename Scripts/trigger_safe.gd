@@ -2,7 +2,7 @@ extends Area3D
 
 @onready var platform_to_slide: MeshInstance3D = $"../HideSafePlatform"
 @onready var passenger_detector: Area3D = $"../HideSafePlatform/PassengerDetector"
-@onready var platform_collider: CollisionShape3D = $"../Platform/MeshInstance3D/StaticBody3D/CollisionShape3D"
+@onready var platform_collider: CollisionShape3D = $"../Platform/StaticBody3D/CollisionShape3D"
 @onready var parent_node: Node3D = $".."
 
 @export var start_offset: Vector3 = Vector3(0, 0, -10) 
