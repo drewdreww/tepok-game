@@ -1,0 +1,102 @@
+[gd_scene load_steps=7 format=3 uid="uid://dxd4txm0cgkx8"]
+
+[ext_resource type="Script" uid="uid://54i0lf2ckdgx" path="res://Scripts/UI SCRIPT/h_slider.gd" id="1_hnc8t"]
+[ext_resource type="VideoStream" uid="uid://jahe3glyfgt7" path="res://Assets/Videos/MenuBG.ogv" id="1_vbc7n"]
+[ext_resource type="FontFile" uid="uid://d3yq727ihrghs" path="res://Assets/Videos/TarrgetAcademyItalic-qzmx.otf" id="2_wgjsl"]
+[ext_resource type="FontFile" uid="uid://s756v0yn0c5v" path="res://Scripts/Font/wheaton-capitals/wheaton capitals.otf" id="4_fb0e8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_hnc8t"]
+font = ExtResource("2_wgjsl")
+font_size = 109
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fb0e8"]
+
+[node name="Settings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hnc8t")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -14.0
+offset_top = -3.0
+offset_right = 8.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("1_vbc7n")
+autoplay = true
+expand = true
+loop = true
+
+[node name="Title" type="Label" parent="VideoStreamPlayer"]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 26.0
+offset_right = 972.0
+offset_bottom = 144.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.34781694, 0.34781697, 0.3478169, 1)
+text = "Settings"
+label_settings = SubResource("LabelSettings_hnc8t")
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 177.0
+offset_right = 289.0
+offset_bottom = 237.0
+theme_override_colors/font_color = Color(0, 1.0180593, 1.0307004, 1)
+theme_override_fonts/font = ExtResource("4_fb0e8")
+theme_override_font_sizes/font_size = 38
+theme_override_styles/normal = SubResource("StyleBoxEmpty_fb0e8")
+text = "SENSITIVITY"
+
+[node name="Label" type="Label" parent="Label"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 58.0
+offset_right = 213.0
+offset_bottom = 118.0
+theme_override_colors/font_color = Color(0, 1.0180593, 1.0307004, 1)
+theme_override_fonts/font = ExtResource("4_fb0e8")
+theme_override_font_sizes/font_size = 38
+theme_override_styles/normal = SubResource("StyleBoxEmpty_fb0e8")
+text = "VOLUME"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 314.0
+offset_top = 207.0
+offset_right = 977.0
+offset_bottom = 243.0
+
+[node name="SensitivitySlider" type="HSlider" parent="VBoxContainer"]
+layout_mode = 2
+min_value = 0.01
+max_value = 0.1
+step = 0.001
+value = 0.01
+
+[node name="VolumeSlider" type="HSlider" parent="VBoxContainer"]
+layout_mode = 2
+min_value = 0.1
+max_value = 10.0
+value = 0.1
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 76.0
+offset_top = 69.0
+offset_right = 221.0
+offset_bottom = 100.0
+text = "back"
