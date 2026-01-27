@@ -6,6 +6,7 @@ extends CharacterBody3D
 @export var speed: float = 4.0
 @export var rotation_speed: float = 10.0
 @export var jump_force: float = 4.5
+@export var is_active: bool = false
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
@@ -16,6 +17,10 @@ var last_position: Vector3 = Vector3.ZERO
 func _physics_process(delta: float):
 	if not is_on_floor():
 		velocity.y -= gravity * delta
+	
+	if not is_active:
+		move_and_slide() 
+		return
 	
 	if jump_cooldown > 0:
 		jump_cooldown -= delta

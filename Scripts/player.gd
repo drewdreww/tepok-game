@@ -18,6 +18,7 @@ var t_bob = 0.0
 @onready var camera = $Head/FirstPOV
 @onready var start_position: Vector3 = global_position
 var initial_camera_pos: Vector3 
+var is_cutscene: bool = false
 
 # --- Death Ragdoll ---
 @onready var ragdoll_collider = $DeathRagdoll/CollisionShape3D
@@ -39,6 +40,9 @@ func _ready() -> void:
 	print("Game Ready. Camera Height Saved:", initial_camera_pos)
 
 func _unhandled_input(event: InputEvent):
+	if is_cutscene and event is InputEventMouseMotion:
+		return
+		
 	if event is InputEventMouseMotion:
 		head.rotate_y(-event.relative.x * SENSITIVITY)
 		camera.rotate_x(-event.relative.y * SENSITIVITY)
@@ -51,6 +55,9 @@ func _unhandled_input(event: InputEvent):
 		get_tree().quit()
 		
 func _physics_process(delta: float) -> void:
+	if is_cutscene:
+		return
+		
 	_handle_movement(delta)
 	_handle_fov(delta)
 	
