@@ -7,6 +7,8 @@ var triggered := false
 
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)
+	# Ensure the audio pauses when the game is paused
+	narration.process_mode = Node.PROCESS_MODE_PAUSABLE
 
 func _on_body_entered(body: Node3D) -> void:
 	if body is CharacterBody3D and not triggered:
@@ -19,12 +21,13 @@ func _play_death() -> void:
 	subtitle_label.visible = true
 
 	subtitle_label.text = "S.A.F.E.: Wind Tunnel airflow exceeds safe vertical limits."
-	await get_tree().create_timer(3.0).timeout
+	# FIX: Second argument 'false' means it will NOT ignore the pause state
+	await get_tree().create_timer(3.0, false).timeout
 
 	subtitle_label.text = "S.A.F.E.: Safety rebound not designed for sustained lift."
-	await get_tree().create_timer(3.0).timeout
+	await get_tree().create_timer(3.0, false).timeout
 
 	subtitle_label.text = "S.A.F.E.: Critical failure. Unit 77 integrity compromised."
-	await get_tree().create_timer(3.0).timeout
+	await get_tree().create_timer(3.0, false).timeout
 
 	subtitle_label.visible = false

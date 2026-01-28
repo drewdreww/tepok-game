@@ -6,6 +6,9 @@ extends Area3D
 var triggered := false
 
 func _ready() -> void:
+	# Ensure the narration stops if the game pauses
+	narration.process_mode = Node.PROCESS_MODE_PAUSABLE
+	
 	await get_tree().process_frame
 	for body in get_overlapping_bodies():
 		if body is CharacterBody3D:
@@ -25,10 +28,14 @@ func _trigger(_body: Node3D) -> void:
 	subtitle_label.visible = true
 
 	subtitle_label.text = "Dr. Aris: Initiating Unit 77 stress test. Remember, this prototype cost six billion credits. Let’s not break it in the first five minutes."
-	await get_tree().create_timer(4.0).timeout
+	
+	# FIX: The second argument 'false' tells the timer to PAUSE when the game pauses
+	await get_tree().create_timer(4.0, false).timeout
 
 	subtitle_label.text = "Dr. Ben: Relax. I’ve enabled S.A.F.E. protocols. The lab will practically play the game for it. Unit 77, please proceed to the exit."
-	await get_tree().create_timer(4.0).timeout
+	
+	# FIX: Use 'false' here as well
+	await get_tree().create_timer(4.0, false).timeout
 
 	subtitle_label.visible = false
 	body_entered.disconnect(_on_body_entered)

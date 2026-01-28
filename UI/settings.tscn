@@ -10,7 +10,7 @@ font = ExtResource("2_wgjsl")
 font_size = 109
 font_color = Color(0, 0, 0, 1)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fb0e8"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hnc8t"]
 
 [node name="Settings" type="Control"]
 layout_mode = 3

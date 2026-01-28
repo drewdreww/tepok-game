@@ -52,9 +52,6 @@ func _unhandled_input(event: InputEvent):
 		if camera.has_method("try_interact"):
 			camera.try_interact()
 
-	if Input.is_action_just_pressed("escape"):
-		get_tree().change_scene_to_file("res://UI/Pause.tscn")
-
 
 		
 func _physics_process(delta: float) -> void:

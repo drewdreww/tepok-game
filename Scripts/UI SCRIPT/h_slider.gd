@@ -1,8 +1,8 @@
 extends Control
 
 @onready var back_button = $BackButton
-@onready var sens_slider = $VBoxContainer/SensitivitySlider
-@onready var volume_slider = $VBoxContainer/VolumeSlider
+@onready var sens_slider = $VBoxContainer3/SensitivitySlider
+@onready var volume_slider = $VBoxContainer4/VolumeSlider
 
 var cfg := ConfigFile.new()
 
