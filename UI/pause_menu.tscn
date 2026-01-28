@@ -1,0 +1,88 @@
+[gd_scene load_steps=8 format=3 uid="uid://dliw2ju7h2c4x"]
+
+[ext_resource type="Script" uid="uid://denr33vu5vowo" path="res://Scripts/UI SCRIPT/pause.gd" id="1_pqlge"]
+[ext_resource type="FontFile" uid="uid://cjv430sio2rok" path="res://Assets/Videos/Angora-1G3BB.otf" id="3_xv4gp"]
+[ext_resource type="AudioStream" uid="uid://ctraab4js74nj" path="res://Assets/Videos/AudioBG.mp3" id="4_mxjhc"]
+[ext_resource type="FontFile" uid="uid://d3yq727ihrghs" path="res://Assets/Videos/TarrgetAcademyItalic-qzmx.otf" id="5_k6dah"]
+[ext_resource type="PackedScene" uid="uid://bpwft51e6sgtj" path="res://UI/Settings_Pause.tscn" id="5_pqlge"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_pwekk"]
+font = ExtResource("5_k6dah")
+font_size = 109
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fu28r"]
+
+[node name="PauseMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pqlge")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1150.0
+offset_bottom = 654.0
+color = Color(0.1584723, 0.15847233, 0.1584723, 0.3019608)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 1140.0
+offset_bottom = 654.0
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="Title" type="Label" parent="MarginContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "TEPOK"
+label_settings = SubResource("LabelSettings_pwekk")
+vertical_alignment = 1
+
+[node name="ResumeButton" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+theme_override_colors/font_color = Color(0.40982172, 0.8718304, 0.7597758, 1)
+theme_override_colors/font_hover_color = Color(0.5890881, 0.8329736, 0.90688515, 1)
+theme_override_fonts/font = ExtResource("3_xv4gp")
+theme_override_font_sizes/font_size = 38
+theme_override_styles/normal = SubResource("StyleBoxEmpty_fu28r")
+text = "RESUME GAME"
+
+[node name="SettingsButton" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.40982172, 0.8718304, 0.7597758, 1)
+theme_override_colors/font_hover_color = Color(0.5890881, 0.8329736, 0.90688515, 1)
+theme_override_fonts/font = ExtResource("3_xv4gp")
+theme_override_font_sizes/font_size = 38
+theme_override_styles/normal = SubResource("StyleBoxEmpty_fu28r")
+text = "SETTINGS"
+
+[node name="ExitButton" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.40982172, 0.8718304, 0.7597758, 1)
+theme_override_colors/font_hover_color = Color(0.5890881, 0.8329736, 0.90688515, 1)
+theme_override_fonts/font = ExtResource("3_xv4gp")
+theme_override_font_sizes/font_size = 38
+theme_override_styles/normal = SubResource("StyleBoxEmpty_fu28r")
+text = "Exit"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="MarginContainer"]
+stream = ExtResource("4_mxjhc")
+autoplay = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="SettingsPause" parent="CanvasLayer" instance=ExtResource("5_pqlge")]
+
+[connection signal="pressed" from="MarginContainer/CenterContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="MarginContainer/CenterContainer/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="MarginContainer/CenterContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

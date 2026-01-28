@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://cvrxhc3q1sw4y" path="res://Scripts/first_pov.gd" id="2_3y5cq"]
 [ext_resource type="Shader" uid="uid://xtxdfwhekj8h" path="res://Shader/player.gdshader" id="3_2i4gt"]
 [ext_resource type="Script" uid="uid://f74y5giohtwd" path="res://Scripts/player_scripts/cross_hair.gd" id="4_0ad8t"]
+[ext_resource type="PackedScene" uid="uid://dliw2ju7h2c4x" path="res://UI/pause_menu.tscn" id="4_0ad8t"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ojbdc"]
 
@@ -99,3 +100,10 @@ freeze_mode = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DeathRagdoll"]
 shape = SubResource("SphereShape3D_3y5cq")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("4_0ad8t")]
+visible = false

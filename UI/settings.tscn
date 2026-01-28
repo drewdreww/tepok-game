@@ -10,7 +10,7 @@ font = ExtResource("2_wgjsl")
 font_size = 109
 font_color = Color(0, 0, 0, 1)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fb0e8"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hnc8t"]
 
 [node name="Settings" type="Control"]
 layout_mode = 3
@@ -49,54 +49,55 @@ text = "Settings"
 label_settings = SubResource("LabelSettings_hnc8t")
 vertical_alignment = 1
 
-[node name="Label" type="Label" parent="."]
+[node name="BackButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 56.0
-offset_top = 177.0
-offset_right = 289.0
-offset_bottom = 237.0
+offset_left = 62.0
+offset_top = 72.0
+offset_right = 186.0
+offset_bottom = 103.0
+theme_override_colors/icon_normal_color = Color(0.57519066, 0.57519066, 0.57519066, 0.5411765)
+theme_override_colors/icon_hover_color = Color(1, 1, 1, 1)
+text = "<"
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 73.0
+offset_top = 180.0
+offset_right = 977.0
+offset_bottom = 249.0
+
+[node name="Label" type="Label" parent="VBoxContainer3"]
+layout_mode = 2
 theme_override_colors/font_color = Color(0, 1.0180593, 1.0307004, 1)
 theme_override_fonts/font = ExtResource("4_fb0e8")
 theme_override_font_sizes/font_size = 38
-theme_override_styles/normal = SubResource("StyleBoxEmpty_fb0e8")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_hnc8t")
 text = "SENSITIVITY"
 
-[node name="Label" type="Label" parent="Label"]
-layout_mode = 0
-offset_left = 15.0
-offset_top = 58.0
-offset_right = 213.0
-offset_bottom = 118.0
-theme_override_colors/font_color = Color(0, 1.0180593, 1.0307004, 1)
-theme_override_fonts/font = ExtResource("4_fb0e8")
-theme_override_font_sizes/font_size = 38
-theme_override_styles/normal = SubResource("StyleBoxEmpty_fb0e8")
-text = "VOLUME"
-
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 0
-offset_left = 314.0
-offset_top = 207.0
-offset_right = 977.0
-offset_bottom = 243.0
-
-[node name="SensitivitySlider" type="HSlider" parent="VBoxContainer"]
+[node name="SensitivitySlider" type="HSlider" parent="VBoxContainer3"]
 layout_mode = 2
 min_value = 0.01
 max_value = 0.1
 step = 0.001
 value = 0.01
 
-[node name="VolumeSlider" type="HSlider" parent="VBoxContainer"]
+[node name="VBoxContainer4" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 75.0
+offset_top = 313.0
+offset_right = 977.0
+offset_bottom = 475.0
+
+[node name="Label2" type="Label" parent="VBoxContainer4"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1.0180593, 1.0307004, 1)
+theme_override_fonts/font = ExtResource("4_fb0e8")
+theme_override_font_sizes/font_size = 38
+theme_override_styles/normal = SubResource("StyleBoxEmpty_hnc8t")
+text = "VOLUME"
+
+[node name="VolumeSlider" type="HSlider" parent="VBoxContainer4"]
 layout_mode = 2
 min_value = 0.1
 max_value = 10.0
 value = 0.1
-
-[node name="BackButton" type="Button" parent="."]
-layout_mode = 0
-offset_left = 76.0
-offset_top = 69.0
-offset_right = 221.0
-offset_bottom = 100.0
-text = "back"

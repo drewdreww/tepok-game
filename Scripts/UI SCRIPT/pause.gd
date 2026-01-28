@@ -1,28 +1,53 @@
 extends Control
 
-@onready var resume_button: Button = $VBoxContainer/ResumeButton
-@onready var settings_button: Button = $VBoxContainer/SettingsButton
-@onready var exit_button: Button = $VBoxContainer/ExitButton # Added reference
+# UI References
+@onready var main_container = $MarginContainer
+@onready var settings_panel = $CanvasLayer/SettingsPause 
+@onready var resume_button = $MarginContainer/CenterContainer/VBoxContainer/ResumeButton
+@onready var settings_button = $MarginContainer/CenterContainer/VBoxContainer/SettingsButton
 
 func _ready() -> void:
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	resume_button.pressed.connect(_on_resume_pressed)
+	hide()
+	settings_panel.hide()
+	process_mode = Node.PROCESS_MODE_ALWAYS 
+	
+	# Connect buttons
 	settings_button.pressed.connect(_on_settings_pressed)
-	exit_button.pressed.connect(_on_exit_pressed) # Connected signal
+	resume_button.pressed.connect(_on_resume_button_pressed)
 
-func _on_resume_pressed() -> void:
-	get_tree().paused = false
-	hide() 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_cancel"):
+		if settings_panel.visible:
+			_show_main_pause() # Go back to main pause if in settings
+		else:
+			toggle_pause()
+
+func toggle_pause() -> void:
+	var is_pausing = !get_tree().paused
+	get_tree().paused = is_pausing
+	visible = is_pausing
+	
+	if is_pausing:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		_show_main_pause()
+	else:
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
+func _show_main_pause() -> void:
+	settings_panel.hide()
+	main_container.show()
+	resume_button.grab_focus()
 
 func _on_settings_pressed() -> void:
-	# Replace with your actual path
-	var settings_scene = load("res://UI/Settings_Pause.tscn").instantiate()
-	get_tree().root.add_child(settings_scene)
-
-func _on_exit_pressed() -> void:
-	# Option A: Close the game window immediately
-	get_tree().quit() 
+	main_container.hide()
+	settings_panel.show()
 	
-	# Option B: Go back to a Main Menu (Uncomment below if needed)
-	# get_tree().paused = false # Must unpause or the menu will be frozen!
-	# get_tree().change_scene_to_file("res://MainMenu.tscn")
+	# Tell the settings panel to focus its own back button
+	if settings_panel.has_method("focus_back_button"):
+		settings_panel.focus_back_button()
+
+func _on_resume_button_pressed() -> void:
+	toggle_pause()
+
+func _on_exit_button_pressed() -> void:
+	get_tree().quit()
