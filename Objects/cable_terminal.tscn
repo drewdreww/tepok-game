@@ -18,7 +18,7 @@ transform = Transform3D(0.27625865, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("BoxMesh_jjgbg")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.20328031, -8.885666e-09, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.11249642, -4.917375e-09, 0)
 shape = SubResource("SphereShape3D_ljdjv")
 
 [node name="Node3D" type="Node3D" parent="."]

@@ -8,7 +8,7 @@ extends Node3D
 @export var player: CharacterBody3D     
 @export var desired_angle: Marker3D       
 
-var target_pos: Vector3 = Vector3(0, -6.083, 0)
+var target_pos: Vector3 = Vector3(0, 6.181, 0)
 var scientists_active: bool = false
 
 @export var duration: float = 2.0

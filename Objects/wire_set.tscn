@@ -1,0 +1,70 @@
+[gd_scene load_steps=7 format=3 uid="uid://co1rcacaoyobh"]
+
+[ext_resource type="PackedScene" uid="uid://dwc12gvyl1kto" path="res://Objects/cable_terminal.tscn" id="1_c3voq"]
+[ext_resource type="Script" uid="uid://5juwywk0ujfw" path="res://Scripts/pluggable_cable.gd" id="2_1wlry"]
+[ext_resource type="PackedScene" uid="uid://7fbmk1lqs0gp" path="res://Objects/mesh_instance_3d.tscn" id="3_ppnnt"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_06y5l"]
+uv1_triplanar = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_pi4t5"]
+radius = 0.1
+height = 0.2
+radial_segments = 6
+rings = 5
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_y2y1c"]
+radius = 0.1
+
+[node name="WireSet" type="Node3D"]
+
+[node name="Pillar" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 2, -8)
+use_collision = true
+size = Vector3(2, 3, 2)
+material = SubResource("StandardMaterial3D_06y5l")
+
+[node name="Pillar3" type="CSGBox3D" parent="Pillar"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, 0)
+use_collision = true
+size = Vector3(0.2, 1, 1)
+material = SubResource("StandardMaterial3D_06y5l")
+
+[node name="Pillar2" type="CSGBox3D" parent="Pillar"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0)
+use_collision = true
+size = Vector3(2, 3, 2)
+material = SubResource("StandardMaterial3D_06y5l")
+
+[node name="Pillar4" type="CSGBox3D" parent="Pillar/Pillar2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9210119, -0.5, 0)
+use_collision = true
+size = Vector3(0.3, 1, 1)
+material = SubResource("StandardMaterial3D_06y5l")
+
+[node name="CableTerminal" parent="Pillar/Pillar2/Pillar4" instance=ExtResource("1_c3voq")]
+transform = Transform3D(-0.3, 4.5298744e-08, 0, -4.5298744e-08, -0.3, 0, 0, 0, 0.3, -0.19999981, 0, 0)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." groups=["Cable", "Grabbable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.7, 2.4, -8)
+collision_layer = 12
+collision_mask = 13
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+linear_damp = 1.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+mesh = SubResource("SphereMesh_pi4t5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("SphereShape3D_y2y1c")
+
+[node name="PluggableCable" type="Node3D" parent="." node_paths=PackedStringArray("start_point", "end_point")]
+script = ExtResource("2_1wlry")
+start_point = NodePath("")
+end_point = NodePath("")
+number_of_segments = 7
+cable_length = 10.0
+cable_gravity_amp = 1.0
+cable_mesh = ExtResource("3_ppnnt")

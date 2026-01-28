@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://d1onfybck4xec"]
+[gd_scene load_steps=7 format=3 uid="uid://d1onfybck4xec"]
 
 [ext_resource type="Texture2D" uid="uid://crjq8kggmpbht" path="res://Assets/Textures/rusty_metal_04_disp_1k.png" id="1_0bhgn"]
 [ext_resource type="Texture2D" uid="uid://ogm834oqjdrx" path="res://Assets/Textures/rusty_metal_04_diff_1k.jpg" id="2_jotsw"]
+[ext_resource type="Script" uid="uid://bv46boxcxsrwr" path="res://Objects/spikes.gd" id="3_jotsw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3kljf"]
 albedo_texture = ExtResource("1_0bhgn")
@@ -9,6 +10,10 @@ metallic = 1.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yqwjw"]
 albedo_texture = ExtResource("2_jotsw")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0bhgn"]
+radius = 0.3046875
+height = 2.2824707
 
 [node name="Blades" type="Node3D"]
 
@@ -145,3 +150,12 @@ sides = 7
 ring_sides = 3
 smooth_faces = false
 material = SubResource("StandardMaterial3D_3kljf")
+
+[node name="Area3D" type="Area3D" parent="."]
+script = ExtResource("3_jotsw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -0.07702637, 3.3669296e-09, 0)
+shape = SubResource("CapsuleShape3D_0bhgn")
+
+[connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]

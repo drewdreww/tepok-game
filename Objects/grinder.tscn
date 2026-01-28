@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://d0to541w0gvdm"]
+[gd_scene load_steps=40 format=3 uid="uid://d0to541w0gvdm"]
 
 [ext_resource type="PackedScene" uid="uid://d1onfybck4xec" path="res://Objects/blades.tscn" id="1_45m41"]
 [ext_resource type="Script" uid="uid://8n2ikofwavnh" path="res://Objects/grinder.gd" id="1_nwwrl"]
@@ -10,6 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://behiffkghc6cv" path="res://Assets/PNG/Green/texture_01.png" id="7_45m41"]
 [ext_resource type="Texture2D" uid="uid://fv5hdicjki5d" path="res://Assets/Textures/plastered_wall_05_diff_1k.jpg" id="8_nwwrl"]
 [ext_resource type="Texture2D" uid="uid://dtxoir10t20is" path="res://Assets/Textures/interior_tiles_diff_1k.jpg" id="9_er2sb"]
+[ext_resource type="PackedScene" uid="uid://dwc12gvyl1kto" path="res://Objects/cable_terminal.tscn" id="11_xbf1b"]
+[ext_resource type="Script" uid="uid://5juwywk0ujfw" path="res://Scripts/pluggable_cable.gd" id="12_retj2"]
+[ext_resource type="PackedScene" path="res://Scenes/mesh_instance_3d.tscn" id="13_xbf1b"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_desfx"]
 albedo_texture = ExtResource("1_q5a2n")
@@ -56,7 +59,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Blades:rotation")
+tracks/0/path = NodePath("BladesHolder/Blades:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -68,7 +71,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Blades5:rotation")
+tracks/1/path = NodePath("BladesHolder/Blades5:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -80,7 +83,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Blades2:rotation")
+tracks/2/path = NodePath("BladesHolder/Blades2:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -92,7 +95,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Blades3:rotation")
+tracks/3/path = NodePath("BladesHolder/Blades3:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -104,7 +107,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Blades4:rotation")
+tracks/4/path = NodePath("BladesHolder/Blades4:rotation")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -112,6 +115,18 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(0, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CSGCombiner3D:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.011984411, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_45m41"]
@@ -121,7 +136,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Blades:rotation")
+tracks/0/path = NodePath("BladesHolder/Blades:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = false
 tracks/0/keys = {
@@ -133,7 +148,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Blades5:rotation")
+tracks/1/path = NodePath("BladesHolder/Blades5:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -145,7 +160,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Blades2:rotation")
+tracks/2/path = NodePath("BladesHolder/Blades2:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -157,7 +172,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Blades3:rotation")
+tracks/3/path = NodePath("BladesHolder/Blades3:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -169,7 +184,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Blades4:rotation")
+tracks/4/path = NodePath("BladesHolder/Blades4:rotation")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -178,21 +193,111 @@ tracks/4/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(-6.2831855, 0, 0)]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CSGCombiner3D:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.10556673, 0.15556674, 0.20556673, 0.21388158, 0.2638816, 0.31388158, 0.33333334, 0.38333336, 0.43333334, 0.44006988, 0.4900699),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.011984411, 0, 0), Vector3(0.04712389, 0.017453292, -0.017453292), Vector3(-0.040142573, -0.017453292, 0.017453292), Vector3(-0.011984411, 0, 0), Vector3(0.04712389, 0.017453292, -0.017453292), Vector3(-0.040142573, -0.017453292, 0.017453292), Vector3(-0.011984411, 0, 0), Vector3(0.04712389, 0.017453292, -0.017453292), Vector3(-0.040142573, -0.017453292, 0.017453292), Vector3(-0.011984411, 0, 0), Vector3(0.04712389, 0.017453292, -0.017453292), Vector3(-0.040142573, -0.017453292, 0.017453292), Vector3(-0.011984411, 0, 0), Vector3(0.04712389, 0.017453292, -0.017453292)]
+}
+
+[sub_resource type="Animation" id="Animation_xbf1b"]
+resource_name = "shake"
+length = 0.1
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CSGCombiner3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.011984411, 0, 0), Vector3(-0.04712389, 0.017453292, -0.017453292), Vector3(-0.04712389, -0.017453292, 0.017453292)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BladesHolder/Blades:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.050178308, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.034906585, 0.017453292, -0.017453292), Vector3(-0.034906585, -0.017453292, 0.017453292)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BladesHolder/Blades5:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.050178308, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.034906585, 0.017453292, -0.017453292), Vector3(-0.034906585, -0.017453292, 0.017453292)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BladesHolder/Blades2:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.050178308, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.034906585, 0.017453292, -0.017453292), Vector3(-0.034906585, -0.017453292, 0.017453292)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("BladesHolder/Blades3:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.050178308, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.034906585, 0.017453292, -0.017453292), Vector3(-0.034906585, -0.017453292, 0.017453292)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("BladesHolder/Blades4:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.050178308, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.034906585, 0.017453292, -0.017453292), Vector3(-0.034906585, -0.017453292, 0.017453292)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_er2sb"]
 _data = {
 &"RESET": SubResource("Animation_nwwrl"),
-&"on": SubResource("Animation_45m41")
+&"on": SubResource("Animation_45m41"),
+&"shake": SubResource("Animation_xbf1b")
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_45m41"]
 size = Vector3(3.4988403, 2.4132538, 4.191223)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nwwrl"]
-size = Vector3(3.3735352, 1.1668701, 3.128418)
+size = Vector3(3.039978, 0.9282837, 3.128418)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_er2sb"]
-size = Vector3(4.5631104, 0.662796, 0.1739502)
+size = Vector3(4.5631104, 0.24663162, 0.1739502)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_salk0"]
 size = Vector3(0.0897522, 1.7715454, 3.0916748)
@@ -206,26 +311,40 @@ size = Vector3(1.3921585, 1.8071289, 3.0924835)
 [sub_resource type="BoxShape3D" id="BoxShape3D_bvjkk"]
 size = Vector3(0.62861633, 1, 0.9569092)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xbf1b"]
+uv1_triplanar = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_retj2"]
+radius = 0.1
+height = 0.2
+radial_segments = 6
+rings = 5
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_bvjkk"]
+radius = 0.1
+
 [node name="Grinder" type="Node3D"]
 script = ExtResource("1_nwwrl")
 
-[node name="Blades" parent="." instance=ExtResource("1_45m41")]
+[node name="BladesHolder" type="Node3D" parent="."]
+
+[node name="Blades" parent="BladesHolder" instance=ExtResource("1_45m41")]
 transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0.08498001, 0, 0)
 
-[node name="Blades5" parent="." instance=ExtResource("1_45m41")]
+[node name="Blades5" parent="BladesHolder" instance=ExtResource("1_45m41")]
 transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0.08498001, 0, 0.9940697)
 
-[node name="Blades2" parent="." instance=ExtResource("1_45m41")]
+[node name="Blades2" parent="BladesHolder" instance=ExtResource("1_45m41")]
 transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, -0.053289294, 0.20268512, 0.51557636)
 
-[node name="Blades3" parent="." instance=ExtResource("1_45m41")]
+[node name="Blades3" parent="BladesHolder" instance=ExtResource("1_45m41")]
 transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0.08498001, 0, -1.010052)
 
-[node name="Blades4" parent="." instance=ExtResource("1_45m41")]
+[node name="Blades4" parent="BladesHolder" instance=ExtResource("1_45m41")]
 transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, -0.053289294, 0.20268512, -0.4944756)
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
-transform = Transform3D(1.1999999, 0, 0, 0, 1.1999139, 0.01438095, 0, -0.01438095, 1.1999139, 0, 0, -0.01566264)
+transform = Transform3D(1.1999999, 0, 0, 0, 1.1999137, 0.01438095, 0, -0.014380948, 1.1999139, 0, 0, -0.01566264)
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="CSGCombiner3D"]
 transform = Transform3D(1.6541364, 0, 0, 0, 1.1363671, 0, 0, 0, 1, -0.8954001, 0.03951907, 1.2925968)
@@ -367,7 +486,7 @@ size = Vector3(0.70379424, 1.3953552, 0.1441803)
 material = SubResource("StandardMaterial3D_retj2")
 
 [node name="CSGCombiner3D3" type="CSGCombiner3D" parent="."]
-transform = Transform3D(-0.024843203, 0, 1.2997625, 0, 1.3, 0, -1.2997625, 0, -0.024843203, -2.9728549, -1.7260194, -6.585603)
+transform = Transform3D(-0.0248432, 0, 1.2997624, 0, 1.3, 0, -1.2997624, 0, -0.0248432, -2.9728549, -1.7260194, -6.585603)
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="CSGCombiner3D3"]
 transform = Transform3D(0.9846127, 0.1747506, -0.00029410236, -0.17475058, 0.9846071, -0.0033401207, -0.00029410422, 0.0033401207, 0.9999943, -5.4371696, -0.0905149, 0.2717141)
@@ -422,7 +541,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.118927, -2.0680814, 0.0275
 shape = SubResource("BoxShape3D_45m41")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1706543, -0.17414641, -0.02709961)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19619751, -0.29343963, -0.02709961)
 shape = SubResource("BoxShape3D_nwwrl")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D"]
@@ -430,7 +549,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.101623535, 0.75355, 1.4638
 shape = SubResource("BoxShape3D_er2sb")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.101623535, 0.75355, -1.5005746)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.101623535, 0.9616322, -1.5005746)
 shape = SubResource("BoxShape3D_er2sb")
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="StaticBody3D"]
@@ -446,12 +565,59 @@ transform = Transform3D(0.99973744, 0, 0.022914167, 0, 1, 0, -0.022914167, 0, 0.
 shape = SubResource("BoxShape3D_xbf1b")
 
 [node name="CollisionShape3D8" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(0.99960226, -0.00820368, 0.026981171, 0, 0.9567528, 0.29090258, -0.028200785, -0.2907869, 0.95637226, -3.1510959, -1.4119003, 0.21650524)
+transform = Transform3D(0.99960226, -0.008203682, 0.026981173, 0, 0.9567528, 0.29090258, -0.028200783, -0.29078692, 0.95637214, -3.1510959, -1.4119003, 0.21650524)
 shape = SubResource("BoxShape3D_retj2")
 
 [node name="CollisionShape3D9" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.073306, -1.3233973, -0.9718287)
 shape = SubResource("BoxShape3D_bvjkk")
 
-[node name="GrinderSocketPos" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2245407, -2.6128013, 1.8593311)
+[node name="Pillar3" type="CSGBox3D" parent="."]
+transform = Transform3D(-6.119594e-08, 0, -1.4, 0, 1.4, 0, 1.4, 0, -6.119594e-08, -3.198031, -2.5216377, 1.8486402)
+use_collision = true
+size = Vector3(0.2, 0.63549805, 0.7236328)
+material = SubResource("StandardMaterial3D_xbf1b")
+
+[node name="Pillar2" type="CSGBox3D" parent="."]
+transform = Transform3D(-6.119594e-08, 0, -1.4, 0, 1.4, 0, 1.4, 0, -6.119594e-08, -4.26182, -1.92184, 12.952555)
+use_collision = true
+size = Vector3(1.2479248, 1.9405365, 1.312439)
+material = SubResource("StandardMaterial3D_xbf1b")
+
+[node name="Pillar4" type="CSGBox3D" parent="Pillar2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5945778, 0.21265888, 0)
+use_collision = true
+size = Vector3(0.3, 1, 1)
+material = SubResource("StandardMaterial3D_xbf1b")
+
+[node name="CableTerminal" parent="Pillar2/Pillar4" node_paths=PackedStringArray("blades_parent") instance=ExtResource("11_xbf1b")]
+transform = Transform3D(-0.3, 4.5298744e-08, 0, -4.5298744e-08, -0.3, 0, 0, 0, 0.3, -0.19999981, 0, 0)
+blades_parent = NodePath("../../../BladesHolder")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." groups=["Cable", "Grabbable"]]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -4.2486095, -0.7115092, 11.595687)
+collision_layer = 12
+collision_mask = 13
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+linear_damp = 1.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+transform = Transform3D(1.7, 0, 0, 0, 1.7, 0, 0, 0, 1.7, 0.18146706, 0, 0)
+mesh = SubResource("SphereMesh_retj2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1.7, 0, 0, 0, 1.7, 0, 0, 0, 1.7, 0.19309807, 0, 0)
+shape = SubResource("SphereShape3D_bvjkk")
+
+[node name="PluggableCable" type="Node3D" parent="." node_paths=PackedStringArray("start_point", "end_point")]
+transform = Transform3D(-6.119594e-08, 0, -1.4, 0, 1.4, 0, 1.4, 0, -6.119594e-08, -12.24861, -3.1115093, 6.895686)
+script = ExtResource("12_retj2")
+start_point = NodePath("../Pillar3")
+end_point = NodePath("../RigidBody3D")
+number_of_segments = 8
+cable_length = 25.0
+cable_gravity_amp = 1.0
+cable_thickness = 0.08
+cable_mesh = ExtResource("13_xbf1b")
