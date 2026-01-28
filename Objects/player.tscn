@@ -56,8 +56,11 @@ extra_cull_margin = 16380.0
 mesh = SubResource("QuadMesh_0ad8t")
 surface_material_override/0 = SubResource("ShaderMaterial_x20fu")
 
-[node name="HandHoldPos" type="Marker3D" parent="Head/FirstPOV"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0, -0.5)
+[node name="Hand" type="Node3D" parent="Head/FirstPOV"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.122591615, 0)
+
+[node name="HoldPosition" type="Node3D" parent="Head/FirstPOV/Hand"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.1402225)
 
 [node name="DeathRagdoll" type="RigidBody3D" parent="."]
 freeze_mode = 1
