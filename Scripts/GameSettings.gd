@@ -1,6 +1,6 @@
 extends Node
 
-var sensitivity: float = 0.002
+var sensitivity: float = 0.0015
 var master_volume: float = 1.0
 var gravity_multiplier: float = 1.0
 var global_position: Vector3

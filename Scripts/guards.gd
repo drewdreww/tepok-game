@@ -3,7 +3,7 @@ extends CharacterBody3D
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
 @onready var door_raycast: RayCast3D = $RayCast3D
 
-@export var speed: float = 4.0
+@export var speed: float = 5.3
 @export var rotation_speed: float = 10.0
 @export var jump_force: float = 4.5
 @export var is_active: bool = false

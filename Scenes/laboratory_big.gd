@@ -57,7 +57,7 @@ func look_at_scientist() -> void:
 			func(new_basis: Basis): player_cam.global_transform.basis = new_basis,
 			player_cam.global_transform.basis,
 			desired_angle.global_transform.basis,
-			0.5 
+			0.5
 		)
 		
 		tween.tween_interval(2.0)
@@ -66,7 +66,7 @@ func look_at_scientist() -> void:
 			func(new_basis: Basis): player_cam.transform.basis = new_basis,
 			player_cam.transform.basis,
 			Basis(),
-			0.5
+			1.0
 		)
 		
 		tween.tween_callback(func():

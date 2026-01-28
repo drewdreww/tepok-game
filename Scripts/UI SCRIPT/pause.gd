@@ -16,7 +16,7 @@ func _on_resume_pressed() -> void:
 
 func _on_settings_pressed() -> void:
 	# Replace with your actual path
-	var settings_scene = load("res://Settings_pause.tscn").instantiate()
+	var settings_scene = load("res://UI/Settings_Pause.tscn").instantiate()
 	get_tree().root.add_child(settings_scene)
 
 func _on_exit_pressed() -> void:

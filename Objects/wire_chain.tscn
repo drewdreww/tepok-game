@@ -1,0 +1,70 @@
+[gd_scene load_steps=8 format=3 uid="uid://ceoqdoaqn1cdd"]
+
+[ext_resource type="Script" uid="uid://c5c03h00y3dcf" path="res://Objects/wire_plug.gd" id="1_yftoo"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1abcs"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_yftoo"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wcyla"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w4vgg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eqruo"]
+albedo_color = Color(0.8901961, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_j2d15"]
+
+[node name="WireSystem" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_1abcs")
+
+[node name="Link1" type="RigidBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Link1"]
+mesh = SubResource("CapsuleMesh_yftoo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Link1"]
+shape = SubResource("CapsuleShape3D_wcyla")
+
+[node name="PinJoint3D" type="PinJoint3D" parent="Link1"]
+node_a = NodePath("../../StaticBody3D")
+node_b = NodePath("..")
+
+[node name="Link2" type="RigidBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Link2"]
+mesh = SubResource("CapsuleMesh_yftoo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Link2"]
+shape = SubResource("CapsuleShape3D_wcyla")
+
+[node name="PinJoint3D" type="PinJoint3D" parent="Link2"]
+node_a = NodePath("../../Link1")
+node_b = NodePath("..")
+
+[node name="Link3" type="RigidBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Link3"]
+mesh = SubResource("CapsuleMesh_yftoo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Link3"]
+shape = SubResource("CapsuleShape3D_wcyla")
+
+[node name="PinJoint3D" type="PinJoint3D" parent="Link3"]
+node_a = NodePath("../../Link2")
+node_b = NodePath("..")
+
+[node name="Plug" type="RigidBody3D" parent="."]
+script = ExtResource("1_yftoo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plug"]
+shape = SubResource("BoxShape3D_w4vgg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Plug"]
+material_override = SubResource("StandardMaterial3D_eqruo")
+mesh = SubResource("BoxMesh_j2d15")

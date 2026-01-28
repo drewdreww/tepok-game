@@ -2,12 +2,13 @@ extends CharacterBody3D
 
 # --- Config ---
 const WALK_SPEED = 5.0
-const SPRINT_SPEED = 9.0
+const SPRINT_SPEED = 7.0
 const JUMP_VELOCITY = 4.5
 var SENSITIVITY = GameSettings.sensitivity
 const BASE_FOV = 75.0
 const FOV_CHANGE = 1.5
 
+var can_sprint: bool = false
 
 # --- Bob Config ---
 const BOB_FREQ = 2.00
@@ -42,14 +43,15 @@ func _ready() -> void:
 	start_position = global_position
 	print("Game Ready. Camera Height Saved:", initial_camera_pos)
 
+	_check_zone_for_sprint()
+
 func _unhandled_input(event: InputEvent):
 	if is_cutscene and event is InputEventMouseMotion:
 		return
 		
 	if event is InputEventMouseMotion:
-		# Always use GameSettings.sensitivity
-		head.rotate_y(-event.relative.x * GameSettings.sensitivity)
-		camera.rotate_x(-event.relative.y * GameSettings.sensitivity)
+		head.rotate_y(-event.relative.x * SENSITIVITY)
+		camera.rotate_x(-event.relative.y * SENSITIVITY)
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-80), deg_to_rad(80))
 
 	if Input.is_action_just_pressed("interact"):
@@ -58,7 +60,6 @@ func _unhandled_input(event: InputEvent):
 
 	if Input.is_action_just_pressed("escape"):
 		get_tree().change_scene_to_file("res://UI/Pause.tscn")
-
 
 		
 func _physics_process(delta: float) -> void:
@@ -77,6 +78,10 @@ func _handle_movement(delta: float) -> void:
 		velocity.y = JUMP_VELOCITY
 
 	var speed = WALK_SPEED
+	
+	if can_sprint and Input.is_action_pressed("sprint"):
+		speed = SPRINT_SPEED
+		
 	var input_dir := Input.get_vector("left", "right", "up", "down")
 	
 	var direction = (head.transform.basis * Vector3(input_dir.x, 0, input_dir.y))
@@ -99,6 +104,23 @@ func _handle_movement(delta: float) -> void:
 	camera.position = initial_camera_pos + _headBob(t_bob)
 	
 	move_and_slide()
+	
+func _check_zone_for_sprint():
+	can_sprint = false 
+	
+	var parent = get_parent()
+	if not parent: return
+	
+	if parent.scene_file_path.contains("laboratory_big"):
+		can_sprint = true
+		print("Sprint Enabled: Inside Laboratory Big")
+		return
+
+	for child in parent.get_children():
+		if child.scene_file_path and child.scene_file_path.contains("laboratory_big"):
+			can_sprint = true
+			print("Sprint Enabled: Laboratory Big detected nearby")
+			return
 	
 func _headBob(time) -> Vector3:
 	var pos = Vector3.ZERO

@@ -30,7 +30,7 @@ func _on_volume_changed(value):
 	cfg.save("user://settings.cfg")
 
 func _load_sens():
-	sens_slider.value = cfg.get_value("controls", "mouse_sensitivity", 1.5)
+	sens_slider.value = cfg.get_value("controls", "mouse_sensitivity", 0.0015)
 
 func _load_volume():
 	volume_slider.value = cfg.get_value("audio", "master_volume", 100)
