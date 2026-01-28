@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://dwc12gvyl1kto"]
+
+[ext_resource type="Script" uid="uid://dhj7wbso1h3f0" path="res://Scripts/cable_terminal.gd" id="1_ljdjv"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_jjgbg"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ljdjv"]
+radius = 0.285241
+
+[node name="CableTerminal" type="Area3D"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+collision_layer = 12
+collision_mask = 12
+script = ExtResource("1_ljdjv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.27625865, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_jjgbg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.20328031, -8.885666e-09, 0)
+shape = SubResource("SphereShape3D_ljdjv")
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.21606296, -9.444414e-09, 0)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

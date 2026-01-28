@@ -16,18 +16,18 @@ size = Vector2(2, 2)
 render_priority = 0
 shader = ExtResource("3_2i4gt")
 shader_parameter/brightness = 1.0
-shader_parameter/contrast = 1.30000001425
+shader_parameter/contrast = 1.0
 shader_parameter/vignette_intensity = 1.10000005225
-shader_parameter/pixel_factor = 2.0000000475
+shader_parameter/pixel_factor = 1.0
 shader_parameter/glitch_strength = 0.0010000000475
-shader_parameter/left_glitch_color = Color(1, 0, 1, 0.5)
-shader_parameter/right_glitch_color = Color(0, 1, 0, 0.5)
-shader_parameter/glitch_power = 0.034000001615
+shader_parameter/left_glitch_color = Color(1, 1, 1, 1)
+shader_parameter/right_glitch_color = Color(1, 1, 1, 1)
+shader_parameter/glitch_power = 0.002000000095
 shader_parameter/glitch_rate = 0.1030000048925
 shader_parameter/idle_shake_power = 0.01
 shader_parameter/idle_shake_speed = 1.50000007125
 shader_parameter/block_size = 5.0
-shader_parameter/block_rate = 0.0400000019
+shader_parameter/block_rate = 0.02000000095
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_3y5cq"]
 
@@ -56,6 +56,12 @@ visible = false
 extra_cull_margin = 16380.0
 mesh = SubResource("QuadMesh_0ad8t")
 surface_material_override/0 = SubResource("ShaderMaterial_x20fu")
+
+[node name="Hand" type="Node3D" parent="Head/FirstPOV"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.122591615, 0)
+
+[node name="HoldPosition" type="Node3D" parent="Head/FirstPOV/Hand"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.1402225)
 
 [node name="DeathRagdoll" type="RigidBody3D" parent="."]
 freeze_mode = 1

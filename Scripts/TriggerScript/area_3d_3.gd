@@ -8,7 +8,7 @@ func _ready() -> void:
 	narration.unit_size = 1.0  
 	narration.attenuation_filter_cutoff_hz = 5000
 	narration.max_distance = 10000
-
+	
 	# FIX: Ensure audio pauses when the game menu is open
 	narration.process_mode = Node.PROCESS_MODE_PAUSABLE
 

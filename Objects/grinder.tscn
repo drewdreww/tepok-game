@@ -1,6 +1,7 @@
-[gd_scene load_steps=32 format=3 uid="uid://d0to541w0gvdm"]
+[gd_scene load_steps=33 format=3 uid="uid://d0to541w0gvdm"]
 
 [ext_resource type="PackedScene" uid="uid://d1onfybck4xec" path="res://Objects/blades.tscn" id="1_45m41"]
+[ext_resource type="Script" uid="uid://8n2ikofwavnh" path="res://Objects/grinder.gd" id="1_nwwrl"]
 [ext_resource type="Texture2D" uid="uid://ogm834oqjdrx" path="res://Assets/Textures/rusty_metal_04_diff_1k.jpg" id="1_q5a2n"]
 [ext_resource type="Texture2D" uid="uid://ctq0o3t1eebmn" path="res://Assets/Textures/rusty_metal_02_diff_1k.jpg" id="2_5m3xw"]
 [ext_resource type="Texture2D" uid="uid://cqk88vkssjy3m" path="res://Assets/Textures/rusty_metal_05_diff_1k.jpg" id="3_10j7p"]
@@ -206,6 +207,7 @@ size = Vector3(1.3921585, 1.8071289, 3.0924835)
 size = Vector3(0.62861633, 1, 0.9569092)
 
 [node name="Grinder" type="Node3D"]
+script = ExtResource("1_nwwrl")
 
 [node name="Blades" parent="." instance=ExtResource("1_45m41")]
 transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0.08498001, 0, 0)
@@ -450,3 +452,6 @@ shape = SubResource("BoxShape3D_retj2")
 [node name="CollisionShape3D9" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.073306, -1.3233973, -0.9718287)
 shape = SubResource("BoxShape3D_bvjkk")
+
+[node name="GrinderSocketPos" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2245407, -2.6128013, 1.8593311)
