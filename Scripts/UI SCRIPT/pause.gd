@@ -11,7 +11,6 @@ func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
 	settings_button.pressed.connect(_on_settings_pressed)
-	resume_button.pressed.connect(_on_resume_button_pressed)
 	
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
