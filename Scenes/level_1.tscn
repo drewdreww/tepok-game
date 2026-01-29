@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://lfmqx8w7ufxn"]
+[gd_scene load_steps=53 format=3 uid="uid://lfmqx8w7ufxn"]
 
 [ext_resource type="Texture2D" uid="uid://dyso7rrc2gh0u" path="res://Assets/PNG/Light/texture_08.png" id="1_6444e"]
 [ext_resource type="Script" uid="uid://d3op4vm6ecw7w" path="res://Scenes/level_1.gd" id="1_wrinw"]
@@ -22,7 +22,6 @@
 [ext_resource type="AudioStream" uid="uid://cij3gnspv1eik" path="res://Scripts/VoiceLine/Impact Wrench - Sound Effect - onlysounds.mp3" id="13_pjppf"]
 [ext_resource type="Script" uid="uid://cwux6qjmdsw3i" path="res://Scenes/area_3d.gd" id="14_8i23i"]
 [ext_resource type="Script" uid="uid://nxudpdnmvlaa" path="res://Scripts/color_rect.gd" id="15_yltlr"]
-[ext_resource type="Script" uid="uid://crvnact13sk8f" path="res://Scripts/TriggerScript/interact_door.gd" id="17_8yhm2"]
 [ext_resource type="PackedScene" uid="uid://dfapk031fuvah" path="res://Objects/spikesssss.tscn" id="19_yltlr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1f27d"]
@@ -230,9 +229,6 @@ script/source = "extends Area3D
 @onready var narration = $FailedVoice
 @onready var subtitle_label = $\"../CanvasLayer/Label\"
 
-func _ready() -> void:
-	body_entered.connect(_on_body_entered)
-
 func _on_body_entered(body: Node3D) -> void:
 	if body is CharacterBody3D:
 		_play_sequence()
@@ -254,9 +250,6 @@ func _play_sequence() -> void:
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6ssoq"]
 size = Vector3(2.441986, 2.2086182, 1.3613281)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_imks0"]
-size = Vector3(3.1660843, 3.746338, 2.4358368)
 
 [sub_resource type="Gradient" id="Gradient_1fal7"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
@@ -464,7 +457,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.021484375, 0.49529982, -1.1
 shape = SubResource("BoxShape3D_6ioyp")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.692584, 0.7213373, 0, -0.7213373, 0.692584, 0, 6.9854136, -32.933556)
+transform = Transform3D(1, 0, 0, 0, 0.692584, 0.7213373, 0, -0.7213373, 0.692584, 0, 6.187128, -32.933556)
 spot_range = 49.259014
 
 [node name="Platform" type="Node3D" parent="."]
@@ -583,14 +576,6 @@ stream = ExtResource("12_8i23i")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9.890163, -22.735157)
 stream = ExtResource("13_pjppf")
 
-[node name="Interact Door" type="Area3D" parent="."]
-transform = Transform3D(-0.056344263, 0, 0.9984114, 0, 1, 0, -0.9984114, 0, -0.056344263, 0.6289325, 0, -44.41427)
-script = ExtResource("17_8yhm2")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Interact Door"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.48756027, 1.7033012, -0.77576494)
-shape = SubResource("BoxShape3D_imks0")
-
 [node name="Spikes2" parent="." instance=ExtResource("19_yltlr")]
 transform = Transform3D(0.00019530933, -2.8571454e-05, -0.24999993, 3.6334277e-05, 0.25, -2.8543076e-05, 0.24999993, -3.6311965e-05, 0.00019531348, -0.28998494, -12.925853, -24.451717)
 
@@ -621,5 +606,3 @@ mesh = SubResource("QuadMesh_vr6f4")
 [connection signal="body_entered" from="SpikeArea" to="SpikeArea" method="_on_body_entered2"]
 [connection signal="body_entered" from="DoorArea" to="DoorArea" method="_on_body_entered"]
 [connection signal="body_entered" from="CutSCreen" to="CutSCreen" method="_on_body_entered"]
-[connection signal="body_entered" from="Interact Door" to="Interact Door" method="_on_body_entered"]
-[connection signal="body_exited" from="Interact Door" to="Interact Door" method="_on_body_exited"]

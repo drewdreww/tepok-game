@@ -1,0 +1,44 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://btk5tdyemewjo"
+path.s3tc="res://.godot/imported/ammo_box_-_game_asset_4.png-1f89bd7c0b7840b1f6a69da8b91669c9.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "6bd528cd9a4df86ef03c6dffa45e8d2f"
+}
+
+[deps]
+
+source_file="res://Assets/Laboratory/ammo_box_-_game_asset_4.png"
+dest_files=["res://.godot/imported/ammo_box_-_game_asset_4.png-1f89bd7c0b7840b1f6a69da8b91669c9.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/uastc_level=0
+compress/rdo_quality_loss=0.0
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/channel_remap/red=0
+process/channel_remap/green=1
+process/channel_remap/blue=2
+process/channel_remap/alpha=3
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

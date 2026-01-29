@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://vlw07mise2uh"]
+[gd_scene load_steps=48 format=3 uid="uid://vlw07mise2uh"]
 
 [ext_resource type="Script" uid="uid://xsbe0w8qyq4c" path="res://Scripts/tutorial.gd" id="1_koko0"]
 [ext_resource type="Texture2D" uid="uid://dyso7rrc2gh0u" path="res://Assets/PNG/Light/texture_08.png" id="1_p8jf4"]
@@ -23,6 +23,7 @@
 [ext_resource type="Script" uid="uid://bb1rdf30itqv0" path="res://Scripts/TriggerScript/label.gd" id="12_koko0"]
 [ext_resource type="FontFile" uid="uid://s756v0yn0c5v" path="res://Scripts/Font/wheaton-capitals/wheaton capitals.otf" id="14_2nb4t"]
 [ext_resource type="Script" uid="uid://nxudpdnmvlaa" path="res://Scripts/color_rect.gd" id="14_lsb8r"]
+[ext_resource type="PackedScene" uid="uid://dt22p4bwdc78d" path="res://Objects/cctv.tscn" id="24_djl3p"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0upaw"]
 albedo_texture = ExtResource("2_1cu4j")
@@ -454,6 +455,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -11.454205, -24.474218)
 visible = false
 material_override = SubResource("StandardMaterial3D_lh8ri")
 mesh = SubResource("QuadMesh_a2i7a")
+
+[node name="CCTV" parent="." instance=ExtResource("24_djl3p")]
+transform = Transform3D(0.95367056, -0.081898816, -0.28949022, 0.24022163, 0.78658897, 0.5688332, 0.18112342, -0.6120214, 0.7698215, -9.022495, 13.950185, -12.17897)
+
+[node name="CCTV2" parent="." instance=ExtResource("24_djl3p")]
+transform = Transform3D(-0.9435103, -0.026431642, 0.33028656, 0.18003276, 0.79594016, 0.5779855, -0.27816567, 0.60479784, -0.7462199, 9.42691, 13.950185, -32.806236)
 
 [connection signal="body_entered" from="ResetZone" to="ResetZone" method="_on_body_entered"]
 [connection signal="body_entered" from="IntroArea" to="IntroArea" method="_on_body_entered"]
