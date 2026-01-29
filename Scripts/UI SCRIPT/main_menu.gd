@@ -10,6 +10,7 @@ func _ready():
 	start_button.pressed.connect(_on_start_pressed)
 	settings_button.pressed.connect(_on_settings_pressed)
 	exit_button.pressed.connect(_on_exit_pressed)
+	
 
 func _on_start_pressed():
 	get_tree().change_scene_to_file("res://Cutscene/IntroSequence/control.tscn")

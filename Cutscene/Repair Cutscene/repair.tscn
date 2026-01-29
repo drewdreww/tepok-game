@@ -1,6 +1,6 @@
 [gd_scene load_steps=43 format=4 uid="uid://bi6gknvh6525p"]
 
-[ext_resource type="PackedScene" uid="uid://hx7cttyfutt3" path="res://Assets/Science Lab/ScienceLab.tscn" id="1_epkew"]
+[ext_resource type="PackedScene" path="res://Assets/Science Lab/ScienceLab.tscn" id="1_epkew"]
 [ext_resource type="Texture2D" uid="uid://bhu4lnr6hcyki" path="res://Assets/Science Lab/sci-fi_lab_17.png" id="2_4s0cg"]
 [ext_resource type="Texture2D" uid="uid://dl6uxbcqkngw" path="res://Assets/Science Lab/sci-fi_lab_19.png" id="3_xh78d"]
 [ext_resource type="Texture2D" uid="uid://blwtri6vnrxh3" path="res://Assets/Science Lab/sci-fi_lab_18.png" id="4_4qoxr"]
@@ -21,11 +21,11 @@
 [ext_resource type="Texture2D" uid="uid://hfpyhfs84l42" path="res://Assets/Science Lab/sci-fi_lab_68.png" id="19_76tj0"]
 [ext_resource type="Texture2D" uid="uid://bhdcvi5qs4uhs" path="res://Assets/Science Lab/sci-fi_lab_69.png" id="20_1nwuf"]
 [ext_resource type="PackedScene" uid="uid://hppqah2a1r76" path="res://Assets/Scientist/talking.tscn" id="21_xh78d"]
-[ext_resource type="Script" uid="uid://bqb4hv4mwwx2h" path="res://Cutscene/Repair Cutscene/camera_3d.gd" id="23_cn1ug"]
+[ext_resource type="Script" path="res://Cutscene/Repair Cutscene/camera_3d.gd" id="23_cn1ug"]
 [ext_resource type="PackedScene" uid="uid://bu6maequdxb7a" path="res://Objects/robotzz.tscn" id="23_ljvmh"]
-[ext_resource type="PackedScene" uid="uid://3nc541ergdtj" path="res://Assets/Scientist2/using_a_filing_cabinet.tscn" id="23_xh78d"]
+[ext_resource type="PackedScene" uid="uid://qh4fscoq5kuf" path="res://Assets/Scientist2/using_a_filing_cabinet.tscn" id="23_xh78d"]
 [ext_resource type="AudioStream" uid="uid://du6766i7n25ki" path="res://Cutscene/Repair Cutscene/rachet-click.mp3" id="24_ljvmh"]
-[ext_resource type="Script" uid="uid://bcy7uufvoc57k" path="res://Cutscene/Repair Cutscene/color_rect.gd" id="27_2yhc6"]
+[ext_resource type="Script" path="res://Cutscene/Repair Cutscene/color_rect.gd" id="27_2yhc6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oa31s"]
 resource_name = "SCIANA_MAA"

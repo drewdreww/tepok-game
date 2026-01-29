@@ -105,7 +105,7 @@ func start_cutscene():
 
 	# --- ENDING ---
 	subtitle_label.text = ""
-	await get_tree().create_timer(1.0).timeout
+	await get_tree().create_timer(0.2).timeout
 	if next_scene:
 		get_tree().change_scene_to_packed(next_scene)
 
