@@ -28,6 +28,7 @@ var is_cutscene: bool = false
 @onready var player_collider = $CollisionShape3D
 var is_dead: bool = false
 
+# --- For Wire Plug ---
 @onready var raycast := $Head/FirstPOV/InteractRay
 var held_object : RigidBody3D = null
 var holding_object = false
@@ -36,8 +37,19 @@ var holding_object = false
 @onready var crosshair : Control = $Head/FirstPOV/PlayerHUD/CrossHair
 var ray_col : Object
 
+# --- NIGHT VISION SETTINGS ---
+@onready var nv_layer = $Head/FirstPOV/NightVisionLayer/ColorRect
+@onready var nv_bar = $Head/FirstPOV/NightVisionLayer/ProgressBar
+#@onready var nv_sound = $NightVisionSound
+
+var max_battery : float = 5.0
+var current_battery : float = 5.0
+var is_nv_on : bool = false
+var recharge_speed : float = 0.5
+
 func _ready() -> void:
 	GameSettings.load_settings()
+	nv_layer.visible = false
 	add_to_group("player")
 	add_to_group("Player")
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -56,6 +68,15 @@ func _ready() -> void:
 func _unhandled_input(event: InputEvent):
 	if is_cutscene and event is InputEventMouseMotion:
 		return
+		
+	if Input.is_action_just_pressed("tab"):
+		if is_nv_on:
+			_turn_off_nv()
+		else:
+			if current_battery > 0.0:
+				_turn_on_nv()
+			else:
+				print("Low Battery!") 
 		
 	if event is InputEventMouseMotion:
 		head.rotate_y(-event.relative.x * SENSITIVITY)
@@ -80,6 +101,9 @@ func _process(delta: float) -> void:
 		if Input.is_action_pressed("secondary_action"):
 			held_object.global_rotation = lerp(held_object.global_rotation, hold_point.global_rotation, 15.0 * delta)
 
+	_handle_night_vision_battery(delta)
+	
+	
 func _physics_process(delta: float) -> void:
 	if is_cutscene:
 		return
@@ -308,3 +332,32 @@ func respawn():
 func set_sensitivity(value):
 	SENSITIVITY = value
 	
+
+func _handle_night_vision_battery(delta):
+	if is_nv_on:
+		current_battery -= delta
+		
+		if current_battery <= 0:
+			current_battery = 0
+			_turn_off_nv()
+			print("Battery Empty - NV Disabled")
+	else:
+		if current_battery < max_battery:
+			current_battery += delta * recharge_speed
+			if current_battery > max_battery:
+				current_battery = max_battery
+	
+	nv_bar.value = current_battery
+	
+func _turn_on_nv():
+	is_nv_on = true
+	nv_layer.visible = true
+	nv_bar.visible = true
+	
+	get_tree().call_group("Dangerous", "toggle_xray", true)
+
+func _turn_off_nv():
+	is_nv_on = false
+	nv_layer.visible = false
+	
+	get_tree().call_group("Dangerous", "toggle_xray", false)

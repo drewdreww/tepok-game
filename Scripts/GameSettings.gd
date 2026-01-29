@@ -5,7 +5,7 @@ var master_volume: float = 1.0
 var gravity_multiplier: float = 1.0
 var global_position: Vector3
 
-var cfg := ConfigFile.new()
+var cfg := ConfigFile.new()	
 
 func load_settings():
 	if cfg.load("user://settings.cfg") == OK:

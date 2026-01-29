@@ -79,7 +79,7 @@ layout_mode = 2
 min_value = 0.001
 max_value = 0.1
 step = 0.01
-value = 0.009999999999999998
+value = 0.011
 
 [node name="VBoxContainer4" type="VBoxContainer" parent="."]
 layout_mode = 0

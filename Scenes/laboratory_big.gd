@@ -60,7 +60,7 @@ func look_at_scientist() -> void:
 			0.5
 		)
 		
-		tween.tween_interval(2.0)
+		tween.tween_interval(3.0)
 		
 		tween.tween_method(
 			func(new_basis: Basis): player_cam.transform.basis = new_basis,

@@ -1,10 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://cyffio1abqiu6"]
+[gd_scene load_steps=12 format=3 uid="uid://cyffio1abqiu6"]
 
 [ext_resource type="Script" uid="uid://b33rqkpnm1fy0" path="res://Scripts/player.gd" id="1_y0qk3"]
 [ext_resource type="Script" uid="uid://cvrxhc3q1sw4y" path="res://Scripts/first_pov.gd" id="2_3y5cq"]
 [ext_resource type="Shader" uid="uid://xtxdfwhekj8h" path="res://Shader/player.gdshader" id="3_2i4gt"]
 [ext_resource type="Script" uid="uid://f74y5giohtwd" path="res://Scripts/player_scripts/cross_hair.gd" id="4_0ad8t"]
-[ext_resource type="PackedScene" path="res://UI/pause_menu.tscn" id="5_x20fu"]
+[ext_resource type="Shader" uid="uid://dht7ai5qkov64" path="res://Shader/night_vision.gdshader" id="5_x20fu"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ojbdc"]
 
@@ -29,6 +29,15 @@ shader_parameter/idle_shake_power = 0.01
 shader_parameter/idle_shake_speed = 1.50000007125
 shader_parameter/block_size = 9.6550002211125
 shader_parameter/block_rate = 0.010000000475
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0ar0x"]
+shader = ExtResource("5_x20fu")
+shader_parameter/night_vision_color = Color(0.1, 1, 0.1, 1)
+shader_parameter/brightness_boost = 2.0
+shader_parameter/noise_amount = 0.2
+shader_parameter/scanline_count = 200.0
+shader_parameter/vignette_strength = 1.0
+shader_parameter/white_hot_threshold = 1.5
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_3y5cq"]
 
@@ -94,16 +103,32 @@ mouse_filter = 2
 expand_mode = 1
 script = ExtResource("4_0ad8t")
 
+[node name="NightVisionLayer" type="CanvasLayer" parent="Head/FirstPOV"]
+
+[node name="ColorRect" type="ColorRect" parent="Head/FirstPOV/NightVisionLayer"]
+material = SubResource("ShaderMaterial_0ar0x")
+offset_right = 1152.0
+offset_bottom = 648.0
+mouse_filter = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="Head/FirstPOV/NightVisionLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -192.0
+offset_top = 19.0
+offset_right = 195.0
+offset_bottom = 59.0
+grow_horizontal = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.39607844, 1, 0.39607844, 1)
+max_value = 5.0
+value = 5.0
+
 [node name="DeathRagdoll" type="RigidBody3D" parent="."]
 collision_layer = 2
 freeze_mode = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DeathRagdoll"]
 shape = SubResource("SphereShape3D_3y5cq")
-
-[node name="RayCast3D" type="RayCast3D" parent="."]
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("5_x20fu")]
-visible = false

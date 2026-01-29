@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://vlw07mise2uh"]
+[gd_scene load_steps=49 format=3 uid="uid://vlw07mise2uh"]
 
 [ext_resource type="Script" uid="uid://xsbe0w8qyq4c" path="res://Scripts/tutorial.gd" id="1_koko0"]
 [ext_resource type="Texture2D" uid="uid://dyso7rrc2gh0u" path="res://Assets/PNG/Light/texture_08.png" id="1_p8jf4"]
@@ -17,6 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://bl0bmw0lv55gc" path="res://Scripts/VoiceLine/Video_Ready_For_Viewing.mp3" id="9_on4kn"]
 [ext_resource type="Script" uid="uid://cxclgywxgc8k7" path="res://Scripts/TriggerScript/area_3d_3.gd" id="10_8va2t"]
 [ext_resource type="Script" uid="uid://b005fjwfhpcla" path="res://Scripts/TriggerScript/area_3d_2.gd" id="10_70gml"]
+[ext_resource type="Texture2D" uid="uid://pddxkaos3k2u" path="res://Assets/tutorial(textures)/Tiles015_4K-JPG_Color.jpg" id="10_djl3p"]
 [ext_resource type="AudioStream" uid="uid://c50opam7yod65" path="res://Scripts/VoiceLine/Ratchet Wrench - Sound Effect - onlysounds.mp3" id="11_t6ver"]
 [ext_resource type="AudioStream" uid="uid://cij3gnspv1eik" path="res://Scripts/VoiceLine/Impact Wrench - Sound Effect - onlysounds.mp3" id="12_2nb4t"]
 [ext_resource type="Script" uid="uid://bb1rdf30itqv0" path="res://Scripts/TriggerScript/label.gd" id="12_koko0"]
@@ -72,7 +73,7 @@ albedo_texture = ExtResource("1_p8jf4")
 uv1_triplanar = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dhbxl"]
-albedo_texture = ExtResource("2_1cu4j")
+albedo_texture = ExtResource("10_djl3p")
 metallic = 1.0
 metallic_texture = ExtResource("4_73805")
 roughness_texture = ExtResource("6_a2i7a")
@@ -82,16 +83,6 @@ heightmap_enabled = true
 heightmap_texture = ExtResource("3_djl3p")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b5uxt"]
-albedo_texture = ExtResource("2_1cu4j")
-metallic = 1.0
-metallic_texture = ExtResource("4_73805")
-roughness_texture = ExtResource("6_a2i7a")
-normal_enabled = true
-normal_texture = ExtResource("5_lh8ri")
-heightmap_enabled = true
-heightmap_texture = ExtResource("3_djl3p")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mi3ry"]
 albedo_texture = ExtResource("2_1cu4j")
 metallic = 1.0
 metallic_texture = ExtResource("4_73805")
@@ -178,7 +169,28 @@ size = Vector3(2.441986, 2.2086182, 1.3613281)
 [sub_resource type="BoxShape3D" id="BoxShape3D_jb51l"]
 size = Vector3(3.1660843, 3.746338, 2.4358368)
 
-[node name="Tutorial" type="Node3D"]
+[sub_resource type="Gradient" id="Gradient_djl3p"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_73805"]
+gradient = SubResource("Gradient_djl3p")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lh8ri"]
+transparency = 1
+no_depth_test = true
+albedo_texture = SubResource("GradientTexture2D_73805")
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 16.0
+emission_texture = SubResource("GradientTexture2D_73805")
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_a2i7a"]
+
+[node name="Tutorial" type="Node3D" groups=["Dangerous"]]
 script = ExtResource("1_koko0")
 next_level_path = "uid://lfmqx8w7ufxn"
 
@@ -242,9 +254,9 @@ size = Vector3(10, 0.497, 16)
 material = SubResource("StandardMaterial3D_b5uxt")
 
 [node name="CSGBox3D22" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, -1, -8.940697e-08, 0, 8.940697e-08, -1, 9.705671, -0.24848977, -14.894473)
+transform = Transform3D(1, 0, 0, 0, -1, -8.940697e-08, 0, 8.940697e-08, -1, 9.705671, -0.24848977, -14.982971)
 size = Vector3(10, 0.497, 16)
-material = SubResource("StandardMaterial3D_mi3ry")
+material = SubResource("StandardMaterial3D_b5uxt")
 
 [node name="CSGBox3D23" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1.3311836e-07, -1, 0, 1, 1.3311836e-07, 9.705671, 0.3929899, -10.866105)
@@ -448,6 +460,11 @@ script = ExtResource("17_2nb4t")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Interact Door"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.48756027, 1.7033012, -0.77576494)
 shape = SubResource("BoxShape3D_jb51l")
+
+[node name="HighlightMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -11.454205, -24.474218)
+material_override = SubResource("StandardMaterial3D_lh8ri")
+mesh = SubResource("QuadMesh_a2i7a")
 
 [connection signal="body_entered" from="ResetZone" to="ResetZone" method="_on_body_entered"]
 [connection signal="body_entered" from="IntroArea" to="IntroArea" method="_on_body_entered"]
