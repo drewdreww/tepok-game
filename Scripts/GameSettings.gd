@@ -7,18 +7,22 @@ var global_position: Vector3
 
 var cfg := ConfigFile.new()	
 
+func _ready():
+	load_settings()
+
 func load_settings():
 	if cfg.load("user://settings.cfg") == OK:
 		sensitivity = cfg.get_value("controls", "mouse_sensitivity", sensitivity)
 		master_volume = cfg.get_value("audio", "master_volume", master_volume)
 	_apply_volume()
 
-func save_sensitivity(value):
+func save_sensitivity(value: float):
 	sensitivity = value
 	cfg.set_value("controls", "mouse_sensitivity", value)
 	cfg.save("user://settings.cfg")
+	get_tree().call_group("player", "set_sensitivity", value)
 
-func save_volume(value):
+func save_volume(value: float):
 	master_volume = value
 	cfg.set_value("audio", "master_volume", value)
 	cfg.save("user://settings.cfg")
