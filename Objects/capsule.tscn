@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://di0okaan0r0sw"]
+
+[ext_resource type="PackedScene" uid="uid://dncqao6aqa58l" path="res://Assets/capsule/xyz_hw_details_sci-fi_capsule.glb" id="1_ejxvw"]
+
+[node name="Sketchfab_Scene" instance=ExtResource("1_ejxvw")]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0, 0, 0)
+
+[node name="Capsule_pSphere1_BananaY_0" parent="Sketchfab_model/f42293658d9d411ca2db1ae54813b1e5_fbx/RootNode/Capsule_Capsule/Capsule_Middle/Capsule_Inside/Capsule_pSphere1" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1665.2526, 14.414641, -0.007112424)
