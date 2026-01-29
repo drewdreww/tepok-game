@@ -45,6 +45,8 @@ var sprint_step_interval := 0.30
 @onready var nv_bar = $Head/FirstPOV/NightVisionLayer/ProgressBar
 #@onready var nv_sound = $NightVisionSound
 
+var guard_target: Node3D = null 
+
 var max_battery : float = 5.0
 var current_battery : float = 5.0
 var is_nv_on : bool = false
@@ -139,6 +141,19 @@ func _process(delta: float) -> void:
 	_handle_night_vision_battery(delta)
 	
 func _physics_process(delta: float) -> void:
+	if guard_target != null:
+		var target_head = guard_target.global_position + Vector3(0, 0.7, 0)
+		
+		camera.look_at(target_head)
+		
+		var dir = camera.global_position.direction_to(target_head)
+		var zoom_pos = target_head - (dir * 0.5)
+		
+		camera.global_position = camera.global_position.lerp(zoom_pos, 5.0 * delta)
+		
+		return 
+		
+		
 	if is_cutscene:
 		return
 	
@@ -391,6 +406,9 @@ func respawn():
 	player_collider.disabled = false
 	is_dead = false
 	set_physics_process(true)
+	
+func respawn_real():
+	get_tree().reload_current_scene()
 
 func set_sensitivity(value):
 	SENSITIVITY = value
@@ -424,3 +442,19 @@ func _turn_off_nv():
 	nv_layer.visible = false
 	
 	get_tree().call_group("Dangerous", "toggle_xray", false)
+	
+	
+# --- JUMPSCARE FUNCTION ---
+func trigger_caught(guard_node):
+	if is_dead: return 
+	
+	print("Guard Caught You!")
+	is_cutscene = true
+	velocity = Vector3.ZERO
+	
+	guard_target = guard_node
+	
+	set_physics_process(true)
+	
+	await get_tree().create_timer(2).timeout
+	respawn_real()

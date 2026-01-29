@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cyffio1abqiu6"]
+[gd_scene load_steps=18 format=3 uid="uid://cyffio1abqiu6"]
 
 [ext_resource type="Script" uid="uid://b33rqkpnm1fy0" path="res://Scripts/player.gd" id="1_y0qk3"]
 [ext_resource type="Script" uid="uid://cvrxhc3q1sw4y" path="res://Scripts/first_pov.gd" id="2_3y5cq"]
@@ -76,6 +76,7 @@ script = ExtResource("1_y0qk3")
 shape = SubResource("CapsuleShape3D_ojbdc")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("CapsuleMesh_y0qk3")
 skeleton = NodePath("../CollisionShape3D")
 

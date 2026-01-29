@@ -10,7 +10,6 @@ extends Node3D
 
 # --- 2. AUDIO FILE ASSIGNMENTS ---
 var audio_mc_intro = preload("res://Assets/voice records/mcwhereami.mp3")
-
 var audio_ben1 = preload("res://Assets/voice records/ben1.mp3")
 var audio_aris1 = preload("res://Assets/voice records/aris1.mp3")
 var audio_ben2 = preload("res://Assets/voice records/ben2.mp3")
@@ -21,7 +20,7 @@ var audio_mc2 = preload("res://Assets/voice records/mc2.mp3")
 var audio_mc3 = preload("res://Assets/voice records/mc3.mp3")
 
 # --- 3. NEXT LEVEL ---
-var next_scene = preload("res://Scenes/tutorial.tscn")
+var next_scene = preload("res://Scenes/world.tscn")
 
 func _ready():
 	if blink_overlay:
