@@ -126,7 +126,7 @@ size = Vector3(13.104996, 7.0209045, 10.528687)
 
 [node name="Level3" type="Node3D" groups=["Dangerous"]]
 script = SubResource("GDScript_qf6rc")
-next_level_path = "uid://dflx8sxmx1ssd"
+next_level_path = "uid://bmbcjse7vcsap"
 
 [node name="ResetZone" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -45.50666)
@@ -137,7 +137,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.021484375, 0.49529982, -1.1
 shape = SubResource("BoxShape3D_fxnjf")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.692584, 0.7213373, 0, -0.7213373, 0.692584, 0, 6.9854136, -32.933556)
+transform = Transform3D(1, 0, 0, 0, 0.692584, 0.7213373, 0, -0.7213373, 0.692584, 0, 6.4855256, -33.413517)
 spot_range = 49.259014
 
 [node name="Drone" parent="." instance=ExtResource("7_5e78q")]

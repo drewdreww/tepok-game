@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cyffio1abqiu6"]
+[gd_scene load_steps=17 format=3 uid="uid://cyffio1abqiu6"]
 
 [ext_resource type="Script" uid="uid://b33rqkpnm1fy0" path="res://Scripts/player.gd" id="1_y0qk3"]
 [ext_resource type="Script" uid="uid://cvrxhc3q1sw4y" path="res://Scripts/first_pov.gd" id="2_3y5cq"]
@@ -7,6 +7,8 @@
 [ext_resource type="FontFile" uid="uid://s756v0yn0c5v" path="res://Scripts/Font/wheaton-capitals/wheaton capitals.otf" id="5_0ar0x"]
 [ext_resource type="Shader" uid="uid://dht7ai5qkov64" path="res://Shader/night_vision.gdshader" id="5_x20fu"]
 [ext_resource type="PackedScene" uid="uid://dliw2ju7h2c4x" path="res://UI/pause_menu.tscn" id="6_0ar0x"]
+[ext_resource type="AudioStream" uid="uid://q13r1ef4w34r" path="res://Scripts/SounEffect/audiomass-output (1).mp3" id="7_ng3n2"]
+[ext_resource type="AudioStream" uid="uid://b60c155g4q542" path="res://Scripts/SounEffect/audiomass-output.mp3" id="7_slvmq"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ojbdc"]
 
@@ -42,6 +44,28 @@ shader_parameter/block_size = 9.6550002211125
 shader_parameter/block_rate = 0.010000000475
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_3y5cq"]
+
+[sub_resource type="Animation" id="Animation_f7am4"]
+resource_name = "footstep"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.26666668),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_play_footstep_audio"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3n8j0"]
+_data = {
+&"footstep": SubResource("Animation_f7am4")
+}
 
 [node name="Player" type="CharacterBody3D" groups=["Player", "player"]]
 collision_layer = 3
@@ -87,7 +111,7 @@ anchor_right = 0.5
 offset_left = -192.0
 offset_top = 19.0
 offset_right = 195.0
-offset_bottom = 59.0
+offset_bottom = 46.0
 grow_horizontal = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
@@ -144,6 +168,25 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 
+[node name="TutorialLabel" type="Label" parent="Head/FirstPOV/PlayerHUD"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -162.5
+offset_top = -217.5
+offset_right = 162.5
+offset_bottom = -194.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("5_0ar0x")
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="GlitchLayer" type="CanvasLayer" parent="Head/FirstPOV"]
 layer = 2
 visible = false
@@ -166,3 +209,19 @@ shape = SubResource("SphereShape3D_3y5cq")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("6_0ar0x")]
+
+[node name="PlayerAudios" type="Node3D" parent="."]
+
+[node name="AudiomassOutput(1)" type="AudioStreamPlayer" parent="PlayerAudios"]
+stream = ExtResource("7_ng3n2")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="PlayerAudios"]
+stream = ExtResource("7_slvmq")
+volume_db = -15.0
+
+[node name="AnimationPlayer" type="Node" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimationPlayer"]
+libraries = {
+&"": SubResource("AnimationLibrary_3n8j0")
+}

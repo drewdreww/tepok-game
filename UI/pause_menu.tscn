@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://dliw2ju7h2c4x"]
+[gd_scene load_steps=7 format=3 uid="uid://dliw2ju7h2c4x"]
 
 [ext_resource type="Script" uid="uid://denr33vu5vowo" path="res://Scripts/UI SCRIPT/pause.gd" id="1_pqlge"]
 [ext_resource type="FontFile" uid="uid://cjv430sio2rok" path="res://Assets/Videos/Angora-1G3BB.otf" id="3_xv4gp"]
-[ext_resource type="AudioStream" uid="uid://ctraab4js74nj" path="res://Assets/Videos/AudioBG.mp3" id="4_mxjhc"]
 [ext_resource type="FontFile" uid="uid://d3yq727ihrghs" path="res://Assets/Videos/TarrgetAcademyItalic-qzmx.otf" id="5_k6dah"]
 [ext_resource type="PackedScene" uid="uid://bpwft51e6sgtj" path="res://UI/Settings_Pause.tscn" id="5_pqlge"]
 
@@ -75,13 +74,10 @@ theme_override_font_sizes/font_size = 38
 theme_override_styles/normal = SubResource("StyleBoxEmpty_fu28r")
 text = "Exit"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="MarginContainer"]
-stream = ExtResource("4_mxjhc")
-autoplay = true
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="SettingsPause" parent="CanvasLayer" instance=ExtResource("5_pqlge")]
 visible = false
 
 [connection signal="pressed" from="MarginContainer/CenterContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="MarginContainer/CenterContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b34x8li18gxeg"
+path="res://.godot/imported/Military Submarine Alarm Sound Effect.mp3-6ad960cddaf8767051554a18ebd6205f.mp3str"
+
+[deps]
+
+source_file="res://Scripts/SounEffect/Military Submarine Alarm Sound Effect.mp3"
+dest_files=["res://.godot/imported/Military Submarine Alarm Sound Effect.mp3-6ad960cddaf8767051554a18ebd6205f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

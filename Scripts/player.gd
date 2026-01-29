@@ -36,7 +36,10 @@ var holding_object = false
 @onready var default_hold_position = hold_point.position
 @onready var crosshair : Control = $Head/FirstPOV/PlayerHUD/CrossHair
 var ray_col : Object
-
+@onready var footstep: AudioStreamPlayer3D = $PlayerAudios/AudioStreamPlayer3D
+var step_timer := 0.0
+var walk_step_interval := 0.45
+var sprint_step_interval := 0.30
 # --- NIGHT VISION SETTINGS ---
 @onready var nv_layer = $Head/FirstPOV/NightVisionLayer/ColorRect
 @onready var nv_bar = $Head/FirstPOV/NightVisionLayer/ProgressBar
@@ -46,6 +49,8 @@ var max_battery : float = 5.0
 var current_battery : float = 5.0
 var is_nv_on : bool = false
 var recharge_speed : float = 0.5
+
+var push_force : float = 2.0
 
 func _ready() -> void:
 	GameSettings.load_settings()
@@ -60,11 +65,42 @@ func _ready() -> void:
 	
 	start_position = global_position
 	print("Game Ready. Camera Height Saved:", initial_camera_pos)
+	
 
+func _play_footstep_audio():
+	if footstep.playing:
+		return
+
+	footstep.pitch_scale = randf_range(0.9, 1.1)
+	footstep.play()
+
+func _handle_footsteps(delta: float) -> void:
+	if not is_on_floor():
+		step_timer = 0.0
+		return
+
+	var horizontal_speed := Vector3(velocity.x, 0, velocity.z).length()
+
+	if horizontal_speed < 1.2:
+		step_timer = 0.0
+		return
+
+	var interval := walk_step_interval
+	if can_sprint and Input.is_action_pressed("sprint"):
+		interval = sprint_step_interval
+
+	step_timer -= delta
+	if step_timer <= 0.0:
+		_play_footstep_audio()
+		step_timer = interval
+		
 	
 func activate_sprint():
 	print("Sprint Activated")
 	can_sprint = true
+	
+	crosshair.show_tutorial_warning("⚠ ALARM TRIGGERED! FIND EXIT\n[HOLD SHIFT] TO RUN", 7.0)
+	
 	
 func _unhandled_input(event: InputEvent):
 	if is_cutscene and event is InputEventMouseMotion:
@@ -108,11 +144,29 @@ func _physics_process(delta: float) -> void:
 	
 	_handle_grabbing_and_interacting()
 	_handle_movement(delta)
+	_handle_footsteps(delta)
 	
 	move_and_slide()
 	
+	_handle_pushing_rigid_bodies()
+	
 	_handle_fov(delta)
 	
+	
+func _handle_pushing_rigid_bodies():
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		var collider = collision.get_collider()
+		
+		if collider is RigidBody3D:
+			var push_dir = -collision.get_normal()
+			push_dir.y = 0 
+			push_dir = push_dir.normalized()
+			
+			var velocity_diff = velocity.dot(push_dir)
+			
+			if velocity_diff > 0:
+				collider.apply_central_impulse(push_dir * push_force * collider.mass * 0.1)
 	
 func _handle_grabbing_and_interacting():
 	if holding_object and held_object != null:
@@ -297,19 +351,15 @@ func _try_load_next_level():
 		print("No next level found. Respawning in current level.")
 		respawn()
 
-# Level Swap
 func _perform_level_swap(world_node, old_level_node, new_level_path):
-	# Load the new level
 	var new_level_resource = load(new_level_path)
 	var new_level_instance = new_level_resource.instantiate()
 	
-	# Add it to the world
 	world_node.add_child(new_level_instance)
 	
-	# Delete the old level
 	old_level_node.queue_free()
 	
-	respawn()
+	respawn()	
 	
 	print("Level Swapped Successfully!")
 	

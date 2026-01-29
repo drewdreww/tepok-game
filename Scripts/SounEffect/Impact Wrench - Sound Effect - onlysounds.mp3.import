@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cij3gnspv1eik"
+path="res://.godot/imported/Impact Wrench - Sound Effect - onlysounds.mp3-8304c5b84241f0ba9ccc0e36ce99014a.mp3str"
+
+[deps]
+
+source_file="res://Scripts/SounEffect/Impact Wrench - Sound Effect - onlysounds.mp3"
+dest_files=["res://.godot/imported/Impact Wrench - Sound Effect - onlysounds.mp3-8304c5b84241f0ba9ccc0e36ce99014a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

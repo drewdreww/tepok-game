@@ -7,9 +7,7 @@ extends Area3D
 func _on_body_entered(body: Node3D):
 	if body.is_in_group("player"):
 		set_deferred("monitoring", false)
-		
-		owner.player.activate_sprint()
-		
+	
 		var parent_node = get_parent()
 		print("Player entered! Calling Parent Sequence...")
 		parent_node.look_at_scientist()
@@ -20,12 +18,13 @@ func _on_body_entered(body: Node3D):
 				sliding_door.unlock()
 				
 		await get_tree().create_timer(3.0).timeout
-
+		
 		if spotlights_holder:
 			for light in spotlights_holder.get_children():
 				if light.has_method("set_lights_active"):
 					light.set_lights_active(true)
-					
+		owner.player.activate_sprint()
+		
 		await get_tree().create_timer(3.0).timeout
 					
 		if guard_to_activate:
