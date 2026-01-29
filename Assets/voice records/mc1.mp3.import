@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cmfnt1m5xmkjf"
+path="res://.godot/imported/mc1.mp3-e731e0c16b6098f8f8cabaf6590c8f8a.mp3str"
+
+[deps]
+
+source_file="res://Assets/voice records/mc1.mp3"
+dest_files=["res://.godot/imported/mc1.mp3-e731e0c16b6098f8f8cabaf6590c8f8a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

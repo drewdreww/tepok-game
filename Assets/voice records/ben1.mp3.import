@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://babs7un06lujf"
+path="res://.godot/imported/ben1.mp3-fe490ee2873bbabc6a8e0b4c263aabd4.mp3str"
+
+[deps]
+
+source_file="res://Assets/voice records/ben1.mp3"
+dest_files=["res://.godot/imported/ben1.mp3-fe490ee2873bbabc6a8e0b4c263aabd4.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

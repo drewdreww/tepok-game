@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dx8ydydeoe5l6"
+path="res://.godot/imported/aris1.mp3-fc0fcabfdca54082e9da00f7c421e659.mp3str"
+
+[deps]
+
+source_file="res://Assets/voice records/aris1.mp3"
+dest_files=["res://.godot/imported/aris1.mp3-fc0fcabfdca54082e9da00f7c421e659.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

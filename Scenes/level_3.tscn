@@ -126,6 +126,7 @@ size = Vector3(13.104996, 7.0209045, 10.528687)
 
 [node name="Level3" type="Node3D" groups=["Dangerous"]]
 script = SubResource("GDScript_qf6rc")
+next_level_path = "uid://dflx8sxmx1ssd"
 
 [node name="ResetZone" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -45.50666)
