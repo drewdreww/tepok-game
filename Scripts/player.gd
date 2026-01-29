@@ -36,7 +36,10 @@ var holding_object = false
 @onready var default_hold_position = hold_point.position
 @onready var crosshair : Control = $Head/FirstPOV/PlayerHUD/CrossHair
 var ray_col : Object
-
+@onready var footstep: AudioStreamPlayer3D = $PlayerAudios/AudioStreamPlayer3D
+var step_timer := 0.0
+var walk_step_interval := 0.45
+var sprint_step_interval := 0.30
 # --- NIGHT VISION SETTINGS ---
 @onready var nv_layer = $Head/FirstPOV/NightVisionLayer/ColorRect
 @onready var nv_bar = $Head/FirstPOV/NightVisionLayer/ProgressBar
@@ -63,6 +66,36 @@ func _ready() -> void:
 	start_position = global_position
 	print("Game Ready. Camera Height Saved:", initial_camera_pos)
 
+	_check_zone_for_sprint()
+
+
+func _play_footstep_audio():
+	if footstep.playing:
+		return
+
+	footstep.pitch_scale = randf_range(0.9, 1.1)
+	footstep.play()
+
+func _handle_footsteps(delta: float) -> void:
+	if not is_on_floor():
+		step_timer = 0.0
+		return
+
+	var horizontal_speed := Vector3(velocity.x, 0, velocity.z).length()
+
+	if horizontal_speed < 1.2:
+		step_timer = 0.0
+		return
+
+	var interval := walk_step_interval
+	if can_sprint and Input.is_action_pressed("sprint"):
+		interval = sprint_step_interval
+
+	step_timer -= delta
+	if step_timer <= 0.0:
+		_play_footstep_audio()
+		step_timer = interval
+		
 	
 func activate_sprint():
 	print("Sprint Activated")
@@ -113,6 +146,7 @@ func _physics_process(delta: float) -> void:
 	
 	_handle_grabbing_and_interacting()
 	_handle_movement(delta)
+	_handle_footsteps(delta)
 	
 	move_and_slide()
 	

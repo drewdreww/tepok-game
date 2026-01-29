@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ct7hdq861kroh"
+path="res://.godot/imported/intro ai.mp3-cc76aa357737a8f14c5a53f63a6a7fb6.mp3str"
+
+[deps]
+
+source_file="res://Cutscene/IntroSequence/intro ai.mp3"
+dest_files=["res://.godot/imported/intro ai.mp3-cc76aa357737a8f14c5a53f63a6a7fb6.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
