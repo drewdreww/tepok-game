@@ -5,12 +5,17 @@ extends Node3D
 @onready var platform_object: Node3D = $Platform
 @onready var jump_detector: Area3D = $Platform/JumpDetector
 @onready var trigger_safe_zone: Area3D = $TriggerSafe
+@onready var highlight = $HighlightMesh
 
 @export var max_jumps: int = 3
 
 var current_jumps: int = 0
 var original_position: Vector3
 var is_shaking: bool = false
+
+
+func toggle_xray(is_active: bool):
+	highlight.visible = is_active
 
 func _ready() -> void:
 	if platform_object:

@@ -5,7 +5,7 @@ extends Node3D
 @onready var male_scientist = $MaleScientist
 @onready var female_scientist = $FemaleScientist
 
-@export var player: CharacterBody3D     
+@onready var player: CharacterBody3D = get_node("/root/World/Player")
 @export var desired_angle: Marker3D       
 
 var target_pos: Vector3 = Vector3(0, 6.181, 0)
@@ -33,7 +33,7 @@ func move_elevator_up() -> void:
 
 func look_at_scientist() -> void:
 	if not player or not desired_angle:
-		printerr("Walay Player o Marker nga naka-assign!")
+		print("Walay Player o Marker nga naka-assign!")
 		return
 
 	var player_cam = player.get_node_or_null("Head/FirstPOV")
@@ -60,7 +60,7 @@ func look_at_scientist() -> void:
 			0.5
 		)
 		
-		tween.tween_interval(2.0)
+		tween.tween_interval(3.0)
 		
 		tween.tween_method(
 			func(new_basis: Basis): player_cam.transform.basis = new_basis,

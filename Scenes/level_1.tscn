@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://lfmqx8w7ufxn"]
+[gd_scene load_steps=55 format=3 uid="uid://lfmqx8w7ufxn"]
 
 [ext_resource type="Texture2D" uid="uid://dyso7rrc2gh0u" path="res://Assets/PNG/Light/texture_08.png" id="1_6444e"]
 [ext_resource type="Script" uid="uid://d3op4vm6ecw7w" path="res://Scenes/level_1.gd" id="1_wrinw"]
@@ -258,7 +258,28 @@ size = Vector3(2.441986, 2.2086182, 1.3613281)
 [sub_resource type="BoxShape3D" id="BoxShape3D_imks0"]
 size = Vector3(3.1660843, 3.746338, 2.4358368)
 
-[node name="Level1" type="Node3D"]
+[sub_resource type="Gradient" id="Gradient_1fal7"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1fal7"]
+gradient = SubResource("Gradient_1fal7")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gcla0"]
+transparency = 1
+no_depth_test = true
+albedo_texture = SubResource("GradientTexture2D_1fal7")
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 16.0
+emission_texture = SubResource("GradientTexture2D_1fal7")
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_vr6f4"]
+
+[node name="Level1" type="Node3D" groups=["Dangerous"]]
 script = ExtResource("1_wrinw")
 next_level_path = "uid://b4on05tkph3dv"
 
@@ -587,6 +608,12 @@ transform = Transform3D(0.00019530933, -2.8571454e-05, -0.24999993, 3.6334277e-0
 
 [node name="Spikes7" parent="." instance=ExtResource("19_yltlr")]
 transform = Transform3D(0.00019530933, -2.8571454e-05, -0.24999993, 3.6334277e-05, 0.25, -2.8543076e-05, 0.24999993, -3.6311965e-05, 0.00019531348, 11.210506, -12.925853, -18.78267)
+
+[node name="HighlightMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8404014, -0.6948724, -22.661322)
+visible = false
+material_override = SubResource("StandardMaterial3D_gcla0")
+mesh = SubResource("QuadMesh_vr6f4")
 
 [connection signal="body_entered" from="ResetZone" to="ResetZone" method="_on_body_entered"]
 [connection signal="body_entered" from="TriggerSafe" to="TriggerSafe" method="_on_body_entered"]

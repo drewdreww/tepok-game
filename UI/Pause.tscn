@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://bhtutby4bccm5"]
 
 [ext_resource type="Script" uid="uid://denr33vu5vowo" path="res://Scripts/UI SCRIPT/pause.gd" id="1_y8g20"]
-[ext_resource type="VideoStream" uid="uid://jahe3glyfgt7" path="res://Assets/Videos/MenuBG.ogv" id="2_ww0nq"]
 [ext_resource type="FontFile" uid="uid://cjv430sio2rok" path="res://Assets/Videos/Angora-1G3BB.otf" id="3_scvpf"]
 [ext_resource type="AudioStream" uid="uid://ctraab4js74nj" path="res://Assets/Videos/AudioBG.mp3" id="4_d403u"]
 [ext_resource type="FontFile" uid="uid://d3yq727ihrghs" path="res://Assets/Videos/TarrgetAcademyItalic-qzmx.otf" id="5_d85b8"]
+[ext_resource type="PackedScene" uid="uid://bpwft51e6sgtj" path="res://UI/Settings_Pause.tscn" id="6_ww0nq"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nxs1w"]
 
@@ -22,34 +22,21 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_y8g20")
 
-[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -14.0
-offset_top = -3.0
-offset_right = 8.0
-offset_bottom = 6.0
-grow_horizontal = 2
-grow_vertical = 2
-stream = ExtResource("2_ww0nq")
-autoplay = true
-expand = true
-loop = true
-
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.035
-anchor_bottom = 0.062000003
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
 offset_left = 376.0
-offset_top = 257.0
-offset_right = 756.68
-offset_bottom = 376.824
+offset_top = 328.0
+offset_right = 416.0
+offset_bottom = 368.0
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/CenterContainer"]
+layout_mode = 2
 theme_override_constants/separation = 32
 
-[node name="ResumeButton" type="Button" parent="VBoxContainer"]
+[node name="ResumeButton" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer"]
 process_mode = 3
 layout_mode = 2
 theme_override_colors/font_color = Color(0.40982172, 0.8718304, 0.7597758, 1)
@@ -59,7 +46,7 @@ theme_override_font_sizes/font_size = 38
 theme_override_styles/normal = SubResource("StyleBoxEmpty_nxs1w")
 text = "RESUME GAME"
 
-[node name="SettingsButton" type="Button" parent="VBoxContainer"]
+[node name="SettingsButton" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.40982172, 0.8718304, 0.7597758, 1)
 theme_override_colors/font_hover_color = Color(0.5890881, 0.8329736, 0.90688515, 1)
@@ -68,7 +55,7 @@ theme_override_font_sizes/font_size = 38
 theme_override_styles/normal = SubResource("StyleBoxEmpty_nxs1w")
 text = "SETTINGS"
 
-[node name="ExitButton" type="Button" parent="VBoxContainer"]
+[node name="ExitButton" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.40982172, 0.8718304, 0.7597758, 1)
 theme_override_colors/font_hover_color = Color(0.5890881, 0.8329736, 0.90688515, 1)
@@ -90,3 +77,7 @@ offset_bottom = 191.0
 text = "TEPOK"
 label_settings = SubResource("LabelSettings_8vpyk")
 vertical_alignment = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="SettingsPause" parent="CanvasLayer" instance=ExtResource("6_ww0nq")]    
