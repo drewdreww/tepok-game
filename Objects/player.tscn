@@ -1,15 +1,25 @@
-[gd_scene load_steps=13 format=3 uid="uid://cyffio1abqiu6"]
+[gd_scene load_steps=14 format=3 uid="uid://cyffio1abqiu6"]
 
 [ext_resource type="Script" uid="uid://b33rqkpnm1fy0" path="res://Scripts/player.gd" id="1_y0qk3"]
 [ext_resource type="Script" uid="uid://cvrxhc3q1sw4y" path="res://Scripts/first_pov.gd" id="2_3y5cq"]
 [ext_resource type="Shader" uid="uid://xtxdfwhekj8h" path="res://Shader/player.gdshader" id="3_2i4gt"]
 [ext_resource type="Script" uid="uid://f74y5giohtwd" path="res://Scripts/player_scripts/cross_hair.gd" id="4_0ad8t"]
+[ext_resource type="FontFile" uid="uid://s756v0yn0c5v" path="res://Scripts/Font/wheaton-capitals/wheaton capitals.otf" id="5_0ar0x"]
 [ext_resource type="Shader" uid="uid://dht7ai5qkov64" path="res://Shader/night_vision.gdshader" id="5_x20fu"]
 [ext_resource type="PackedScene" uid="uid://dliw2ju7h2c4x" path="res://UI/pause_menu.tscn" id="6_0ar0x"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ojbdc"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_y0qk3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0ar0x"]
+shader = ExtResource("5_x20fu")
+shader_parameter/night_vision_color = Color(0.1, 1, 0.1, 1)
+shader_parameter/brightness_boost = 2.0
+shader_parameter/noise_amount = 0.2
+shader_parameter/scanline_count = 200.0
+shader_parameter/vignette_strength = 1.0
+shader_parameter/white_hot_threshold = 1.5
 
 [sub_resource type="QuadMesh" id="QuadMesh_0ad8t"]
 size = Vector2(2, 2)
@@ -30,15 +40,6 @@ shader_parameter/idle_shake_power = 0.01
 shader_parameter/idle_shake_speed = 1.50000007125
 shader_parameter/block_size = 9.6550002211125
 shader_parameter/block_rate = 0.010000000475
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0ar0x"]
-shader = ExtResource("5_x20fu")
-shader_parameter/night_vision_color = Color(0.1, 1, 0.1, 1)
-shader_parameter/brightness_boost = 2.0
-shader_parameter/noise_amount = 0.2
-shader_parameter/scanline_count = 200.0
-shader_parameter/vignette_strength = 1.0
-shader_parameter/white_hot_threshold = 1.5
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_3y5cq"]
 
@@ -65,18 +66,34 @@ target_position = Vector3(0, 0, -2)
 collision_mask = 5
 collide_with_areas = true
 
-[node name="Shader" type="MeshInstance3D" parent="Head/FirstPOV"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.59885895)
-visible = false
-extra_cull_margin = 16380.0
-mesh = SubResource("QuadMesh_0ad8t")
-surface_material_override/0 = SubResource("ShaderMaterial_x20fu")
-
 [node name="Hand" type="Node3D" parent="Head/FirstPOV"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0007599592, 0)
 
 [node name="HoldPosition" type="Node3D" parent="Head/FirstPOV/Hand" groups=["Player", "player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5)
+
+[node name="NightVisionLayer" type="CanvasLayer" parent="Head/FirstPOV"]
+
+[node name="ColorRect" type="ColorRect" parent="Head/FirstPOV/NightVisionLayer"]
+material = SubResource("ShaderMaterial_0ar0x")
+offset_right = 1152.0
+offset_bottom = 648.0
+mouse_filter = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="Head/FirstPOV/NightVisionLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -192.0
+offset_top = 19.0
+offset_right = 195.0
+offset_bottom = 59.0
+grow_horizontal = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.39607844, 1, 0.39607844, 1)
+max_value = 5.0
+value = 5.0
 
 [node name="PlayerHUD" type="Control" parent="Head/FirstPOV"]
 layout_mode = 3
@@ -104,28 +121,40 @@ mouse_filter = 2
 expand_mode = 1
 script = ExtResource("4_0ad8t")
 
-[node name="NightVisionLayer" type="CanvasLayer" parent="Head/FirstPOV"]
-
-[node name="ColorRect" type="ColorRect" parent="Head/FirstPOV/NightVisionLayer"]
-material = SubResource("ShaderMaterial_0ar0x")
-offset_right = 1152.0
-offset_bottom = 648.0
-mouse_filter = 2
-
-[node name="ProgressBar" type="ProgressBar" parent="Head/FirstPOV/NightVisionLayer"]
-anchors_preset = 5
+[node name="InteractionLabel" type="Label" parent="Head/FirstPOV/PlayerHUD"]
+layout_mode = 1
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-offset_left = -192.0
-offset_top = 19.0
-offset_right = 195.0
-offset_bottom = 59.0
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = 15.0
+offset_right = 55.0
+offset_bottom = 38.0
 grow_horizontal = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-theme_override_colors/font_color = Color(0.39607844, 1, 0.39607844, 1)
-max_value = 5.0
-value = 5.0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_0ar0x")
+text = "INTERACT [E]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NotifLabel" type="Label" parent="Head/FirstPOV/PlayerHUD"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="GlitchLayer" type="CanvasLayer" parent="Head/FirstPOV"]
+layer = 2
+visible = false
+
+[node name="Shader" type="MeshInstance3D" parent="Head/FirstPOV/GlitchLayer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5082488, -0.59885895)
+visible = false
+extra_cull_margin = 16380.0
+mesh = SubResource("QuadMesh_0ad8t")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_x20fu")
 
 [node name="DeathRagdoll" type="RigidBody3D" parent="."]
 collision_layer = 2

@@ -54,17 +54,18 @@ func _ready() -> void:
 	add_to_group("Player")
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
-	# Saves Camera Position
 	initial_camera_pos = camera.position
 	
-	# PREVENT CAMERA STUCK IN STOMACH AFTER DIED
 	add_collision_exception_with(death_ragdoll)
 	
 	start_position = global_position
 	print("Game Ready. Camera Height Saved:", initial_camera_pos)
 
-	_check_zone_for_sprint()
-
+	
+func activate_sprint():
+	print("Sprint Activated")
+	can_sprint = true
+	
 func _unhandled_input(event: InputEvent):
 	if is_cutscene and event is InputEventMouseMotion:
 		return
@@ -101,7 +102,6 @@ func _process(delta: float) -> void:
 
 	_handle_night_vision_battery(delta)
 	
-	
 func _physics_process(delta: float) -> void:
 	if is_cutscene:
 		return
@@ -115,35 +115,60 @@ func _physics_process(delta: float) -> void:
 	
 	
 func _handle_grabbing_and_interacting():
-	if raycast.is_colliding():
-		if head.global_position.distance_to(raycast.get_collision_point()) <= 1.0:
+	if holding_object and held_object != null:
+		if raycast.is_colliding() and head.global_position.distance_to(raycast.get_collision_point()) <= 1.0:
 			hold_point.position.z = -head.global_position.distance_to(raycast.get_collision_point()) * 0.75
-			clamp(hold_point.position.z, -1, -0.2)
-	else:
-		hold_point.position = default_hold_position
-	if holding_object and (Input.is_action_just_pressed("primary_action") or Input.is_action_just_pressed("throw")) and held_object != null:
-		_drop_or_throw_item(Input.is_action_just_pressed("throw"))
-	
-	ray_col = raycast.get_collider()
-	if ray_col != null:
-		if ray_col.is_in_group("Grabbable"):
-			crosshair._update_crosshair("open")
-		elif ray_col.is_in_group("Interactable"):
-			crosshair._update_crosshair("point")
-		elif holding_object == false:
-			crosshair._update_crosshair("none")
-		if Input.is_action_just_pressed("primary_action"):
-			if ray_col.is_in_group("Grabbable") and holding_object == false:
+			hold_point.position.z = clamp(hold_point.position.z, -1.0, -0.2)
+		else:
+			hold_point.position = default_hold_position
+
+		if Input.is_action_just_pressed("primary_action") or Input.is_action_just_pressed("throw"):
+			_drop_or_throw_item(Input.is_action_just_pressed("throw"))
+		
+		crosshair._update_crosshair("closed")
+		crosshair.hide_prompt()
+		return 
+
+	if raycast.is_colliding():
+		ray_col = raycast.get_collider()
+		
+		if ray_col == null: 
+			return
+			
+		if ray_col.has_method("interact") or ray_col.is_in_group("interactable"):
+			crosshair._update_crosshair("point") 
+			
+			if "prompt_message" in ray_col:
+				crosshair.show_prompt("[E] " + ray_col.prompt_message)
+			else:
+				crosshair.show_prompt("[E] Interact")
+				
+			if Input.is_action_just_pressed("interact"):
+				if ray_col.has_method("interact"): ray_col.interact()
+				elif ray_col.has_method("_interact"): ray_col._interact()
+
+		elif ray_col.is_in_group("Grabbable"):
+			crosshair._update_crosshair("open") 
+			crosshair.show_prompt("[LMB] Grab")
+			
+			if Input.is_action_just_pressed("primary_action"):
 				holding_object = true
-				held_object = raycast.get_collider()
+				held_object = ray_col
 				crosshair._update_crosshair("closed")
-				held_object.set_collision_layer_value(3, false)
+				
+				if held_object.has_method("set_collision_layer_value"):
+					held_object.set_collision_layer_value(3, false)
 				held_object.freeze = false
-			if ray_col.is_in_group("Interactable"):
-				ray_col._interact()
-				crosshair._update_crosshair("closed")
+
+		else:
+			crosshair._update_crosshair("none")
+			crosshair.hide_prompt()
+			
 	else:
 		crosshair._update_crosshair("none")
+		crosshair.hide_prompt()
+		hold_point.position = default_hold_position
+		
 		
 
 func _attempt_grab():
@@ -211,16 +236,6 @@ func _handle_movement(delta: float) -> void:
 	
 	camera.position = initial_camera_pos + _headBob(t_bob)
 	
-func _check_zone_for_sprint():
-	can_sprint = false 
-	
-	var parent = get_parent()
-	if not parent: return
-	
-	if parent.scene_file_path.contains("laboratory_big"):
-		can_sprint = true
-		print("Sprint Enabled: Inside Laboratory Big")
-		return
 	
 func _headBob(time) -> Vector3:
 	var pos = Vector3.ZERO

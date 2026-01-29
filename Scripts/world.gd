@@ -12,6 +12,7 @@ func _ready() -> void:
 
 func _load_first_level():
 	print("Loading Start Level: ", start_level_path)
+	
 	var level_res = load(start_level_path)
 	var level_instance = level_res.instantiate()
 	add_child(level_instance)

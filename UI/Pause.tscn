@@ -80,4 +80,4 @@ vertical_alignment = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="SettingsPause" parent="CanvasLayer" instance=ExtResource("6_ww0nq")]
+[node name="SettingsPause" parent="CanvasLayer" instance=ExtResource("6_ww0nq")]    

@@ -1,0 +1,114 @@
+[gd_scene load_steps=13 format=4 uid="uid://dcqo62m54dws3"]
+
+[ext_resource type="Texture2D" uid="uid://blakvt8djci8d" path="res://Assets/Laboratory/low-poly_exit_light_ceiling_sign_light_0.jpg" id="1_rps20"]
+[ext_resource type="Texture2D" uid="uid://dyuo7if3gbdqp" path="res://Assets/Laboratory/low-poly_exit_light_ceiling_sign_light_1.png" id="2_xurme"]
+[ext_resource type="Texture2D" uid="uid://dh46k84lgs5dh" path="res://Assets/Laboratory/low-poly_exit_light_ceiling_sign_light_2.png" id="3_gyi5s"]
+[ext_resource type="Texture2D" uid="uid://cdffsoccngo5f" path="res://Assets/Laboratory/low-poly_exit_light_ceiling_sign_light_3.png" id="4_dhqvj"]
+[ext_resource type="Texture2D" uid="uid://chrb6gfcatdxv" path="res://Assets/Laboratory/low-poly_exit_light_ceiling_sign_light_4.png" id="5_vuifn"]
+[ext_resource type="Texture2D" uid="uid://0fgjvvxh1wqc" path="res://Assets/Laboratory/low-poly_exit_light_ceiling_sign_light_5.png" id="6_melqv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mrg1n"]
+resource_name = "ExitLightWhite"
+cull_mode = 2
+albedo_texture = ExtResource("1_rps20")
+metallic = 1.0
+metallic_texture = ExtResource("2_xurme")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_xurme")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_gyi5s")
+ao_enabled = true
+ao_texture = ExtResource("2_xurme")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ce7h7"]
+_surfaces = [{
+"aabb": AABB(-3.702978, 3.887954, -9.975816, 7.405956, 4.949868, 20.180992),
+"format": 34896613377,
+"index_count": 168,
+"index_data": PackedByteArray("AAABAAIAAwACAAEAAgADAAQAAQAFAAMABAAGAAIABgAEAAcACAAHAAUABwAIAAYABQABAAgACQACAAYAAgAJAAAACgAGAAgABgAKAAkACwAIAAEAAQAAAAsACAALAAoADAAJAAoADQALAAAADgAAAAkAAAAOAA0ACQAMAA4ACwANAA8ADwAKAAsADgAPAA0ACgAPAAwADwAOAAwAEAARABIAEQAQABMAEwAUABEAEgAVABAAFQASABYAEAAXABMAFQAXABAAFAATABgAEwAXABgAGAAZABQAFgAaABUAGgAXABUAGgAWABsAGQAYABwAGAAXABwAHAAdABkAGwAeABoAHgAXABoAHgAbAB8AHQAcACAAHAAXACAAIAAhAB0AHwAiAB4AIgAXAB4AIgAfACMAIAAXACQAJAAXACIAIQAgACQAIwAkACIAJAAjACEA"),
+"name": "ExitLightWhite",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 37,
+"vertex_data": PackedByteArray("AAD//xb9AAD//wAAFv0AAAAAAAAW/QAAC+0AACH2AADzEgAAIfYAAAvtAAD0BgAAAAAAAAAAAADzEgAA9AYAAP//AAAAAAAAAAD//wAAAAD/////AAAAAP////8W/QAAC+3///QGAADzEv//IfYAAPMS///0BgAAC+3//yH2AAB4xGNk//8AAPm7n220+wAAeMRjZLT7AAD5u59t//8AAHmxn220+wAAt8dyVf//AAC3x3JVtPsAALm2clX//wAAebGfbf//AAD6qGNktPsAAHjEgUb//wAAeMSBRrT7AAD6qGNk//8AALylclW0+wAA+btFPf//AAD5u0U9tPsAALylclX//wAA+qiBRrT7AAB5sUU9//8AAHmxRT20+wAA+qiBRv//AAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_tfonn"]
+resource_name = "Sketchfab_Scene_defaultMaterial"
+_surfaces = [{
+"aabb": AABB(-3.702978, 3.887954, -9.975816, 7.405956, 4.949868, 20.180992),
+"attribute_data": PackedByteArray("fh9z/YIAF8+CAHP9fh8Xz/ED9XlvK/AD8QPwA94ugQCCAIEA3i5kfYIAZH1vK/V5eEBz/X0hF899IXP9eEAXz3BPZH10MIEAdDBkfXBPgQBecGR9YlGBAGJRZH1ecIEAvXENUyiOx1ADdMdQbpANU71xXgAojqMCA3SjAm6QXgDmSdPTBUzx1AVM09PmSfHUyVMXz+JRNdHJUzXR4lEXzwJQ8dTkTdPT5E3x1AJQ09MCUNPT5E0E0uRN09MCUATSAlAE0uRNNdDkTQTSAlA10AJQNdDkTRfP5E010AJQF89gVTXRR1cXz2BVF89HVzXR5kkXzwVMNdAFTBfP5kk10OZJNdAFTATSBUw10OZJBNLmSQTSBUzT0wVMBNLmSdPTJkeuz1hFK9JFSDfRRUge01hFF88mR6jUiUOuz1hFPtVqQjfRiUOo1GpCHtM="),
+"format": 34896613399,
+"index_count": 168,
+"index_data": PackedByteArray("AAABAAIAAQAAAAMABAAFAAYABwAGAAUABgAHAAgACAAEAAYABQAJAAcABAAIAAoACQAFAAsABQAEAAsACwAKAAkACgALAAQADAANAA4ADQAMAA8AEAARABIAEQAQABMAFAAVABYAFQAUABcAGAAZABoAGQAYABsAGgAcABgAGwAdABkAHAAaAB4AHQAbAB8AHgAfABwAHwAeAB0AIAAhACIAIQAgACMAJAAlACYAJQAkACcAKAApACoAKQAoACsALAAtAC4ALQAsAC8AMAAxADIAMQAwADMANAA1ADYANQA0ADcAOAA5ADoAOQA4ADsAPAA9AD4APQA8AD8AQABBAEIAQQBAAEMARABFAEYARQBEAEcASABJAEoASgBJAEsATABJAEgASwBJAE0ATgBJAEwATQBJAE8AUABJAE4ATwBJAFEAUgBJAFAAUQBJAFIA"),
+"material": SubResource("StandardMaterial3D_mrg1n"),
+"name": "ExitLightWhite",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 83,
+"vertex_data": PackedByteArray("AAD//xb9/7///wAAFv3/vwAAAAAW/f+//////xb9/7/zEv//9Ab/vwvt//8h9v+/8xL//yH2/7//////Fv3/vwAA//8W/f+//////wAA/78AAP//AAD/vwvt///0Bv+/AAAAAAAA////////AAD//wAA//8AAP////8AAAAA////////Fv1U1f//AAAAAFTV//8AABb9VNX/////AABU1QAA//8AAFTVAAAAABb9VNUAAAAAAABU1QAA//8W/VTVAAAAABb9/78L7QAAIfb/v/MSAAAh9v+///8AABb9/78AAAAAAAD/vwvtAAD0Bv+/8xIAAPQG/7///wAAAAD/v3jEY2T//3TI+bufbbT7dMh4xGNktPt0yPm7n23//3TI+bufbf///795sZ9ttPv/v/m7n220+/+/ebGfbf///795sZ9t//90yPqoY2S0+3TIebGfbbT7dMj6qGNk//90yPqoY2T///7AvKVyVbT7/sD6qGNktPv+wLylclX///7AvKVyVf///sD6qIFGtPv+wLylclW0+/7A+qiBRv///sD6qIFG//90yHmxRT20+3TI+qiBRrT7dMh5sUU9//90yHmxRT3///+/+btFPbT7/795sUU9tPv/v/m7RT3///+/+btFPf//dMh4xIFGtPt0yPm7RT20+3TIeMSBRv//dMh4xIFG///+wLfHclW0+/7AeMSBRrT7/sC3x3JV///+wLfHclX///7AeMRjZLT7/sC3x3JVtPv+wHjEY2T///7AeMRjZP///r+5tnJV////v/m7n23///+/ebGfbf///7+3x3JV////v/qoY2T///6/eMSBRv///7+8pXJV////v/m7RT3///+/+qiBRv///795sUU9////v//////////////////////+//9//v//f/7//3/+//9//v//f/7//3/+//9//v//f/8//7//P/+//z//v/8//7+qKqoqqiqqKqoqqiqqKqoqVNVU1VTVVNVU1VTVVNVU1QAAAIAAAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAACAmcBNIJnATSCZwE0gmcBNIP///3////9/////f////39MoGS/TKBkv0ygZL9MoGS/ZI804WSPNOFkjzThZI804TRhmfA0YZnwNGGZ8DRhmfBlP7HfZT+x32U/sd9lP7HfAAD/fwAA/38AAP9/AAD/f7JfmkCyX5pAsl+aQLJfmkCacMoemnDKHppwyh6acMoeyp5lD8qeZQ/KnmUPyp5lDwAAAAD/////AAAAAP7//v///////v/+/wAAAAD/////AAAAAP7//v/+//7/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_ce7h7")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wy0mu"]
+resource_name = "ExitLightPanel"
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("4_dhqvj")
+metallic = 1.0
+metallic_texture = ExtResource("5_vuifn")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("5_vuifn")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("6_melqv")
+ao_enabled = true
+ao_texture = ExtResource("5_vuifn")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_0ojw8"]
+_surfaces = [{
+"aabb": AABB(-3.154668, -8.837822, -9.427505, 6.309336, 12.725776, 18.85501),
+"format": 34896613377,
+"index_count": 30,
+"index_data": PackedByteArray("AAABAAIAAwACAAEAAgADAAQABAAAAAIAAQAFAAMAAAAEAAYABQABAAcAAQAAAAcABwAGAAUABgAHAAAA"),
+"name": "ExitLightPanel",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("dzgAAP//AACHxwAAAAAAAHc4AAAAAAAA/////wAAAAAAAP//AAAAAP///////wAAAAD/////AACHxwAA//8AAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_5o66v"]
+resource_name = "Sketchfab_Scene_defaultMaterial2"
+_surfaces = [{
+"aabb": AABB(-3.154668, -8.837822, -9.427505, 6.309336, 12.725776, 18.85501),
+"attribute_data": PackedByteArray("VpKHdmiogQBWkoEAaKiHdok1Es5SVGp+QD5qfghdEs5w/lCPy6miEBCqe48r/ncQLxUSzvczan55DGp+QSsSzi31BKRrdjb5A/V1+ZV2xaM="),
+"format": 34896613399,
+"index_count": 30,
+"index_data": PackedByteArray("AAABAAIAAQAAAAMABAAFAAYABQAEAAcACAAJAAoACQAIAAsADAANAA4ADQAMAA8AEAARABIAEQAQABMA"),
+"material": SubResource("StandardMaterial3D_wy0mu"),
+"name": "ExitLightPanel",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 20,
+"vertex_data": PackedByteArray("dzgAAP///7+HxwAAAAD/v3c4AAAAAP+/h8cAAP///78AAP////8AgIfHAAD//wCAdzgAAP//AID///////8AgP///////9zSh8cAAAAA3NKHxwAA///c0v////8AANzSdzgAAAAA////////AAD//wAA//8AAP//h8cAAAAA//8AAP//AADq/Hc4AAD//+r8dzgAAAAA6vwAAP/////q/AAA/38AAP9/AAD/fwAA/3//f////3////9/////f///BynZLQcp2S0HKdktBynZLf///3////9/////f////3+6QYp8ukGKfLpBiny6QYp8")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_0ojw8")
+
+[node name="ExitArrowSign" type="Node3D"]
+
+[node name="ExitLight" type="Node3D" parent="."]
+transform = Transform3D(-2.1855695e-09, 2.1855697e-09, 0.05, 0, 0.05, -2.1855697e-09, -0.05, -9.5534285e-17, -2.1855695e-09, 0, 0, 0)
+
+[node name="defaultMaterial" type="MeshInstance3D" parent="ExitLight"]
+mesh = SubResource("ArrayMesh_tfonn")
+skeleton = NodePath("")
+
+[node name="defaultMaterial2" type="MeshInstance3D" parent="ExitLight"]
+mesh = SubResource("ArrayMesh_5o66v")
+skeleton = NodePath("")

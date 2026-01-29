@@ -2,15 +2,23 @@ extends Area3D
 
 @onready var guard_to_activate: CharacterBody3D = $"../Guards"
 @onready var spotlights_holder : Node3D = $"../SpotLights"
+@onready var sliding_door = $"../Lab/SlidingDoor2"
 
 func _on_body_entered(body: Node3D):
 	if body.is_in_group("player"):
 		set_deferred("monitoring", false)
 		
+		owner.player.activate_sprint()
+		
 		var parent_node = get_parent()
 		print("Player entered! Calling Parent Sequence...")
 		parent_node.look_at_scientist()
 			
+		if sliding_door:
+			if sliding_door.has_method("unlock"):
+				print("Sequence: Unlocking the Door!")
+				sliding_door.unlock()
+				
 		await get_tree().create_timer(3.0).timeout
 
 		if spotlights_holder:
@@ -18,7 +26,7 @@ func _on_body_entered(body: Node3D):
 				if light.has_method("set_lights_active"):
 					light.set_lights_active(true)
 					
-		await get_tree().create_timer(4.0).timeout
+		await get_tree().create_timer(3.0).timeout
 					
 		if guard_to_activate:
 			print("Guard Activated!")

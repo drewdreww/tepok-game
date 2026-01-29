@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://vlw07mise2uh"]
+[gd_scene load_steps=47 format=3 uid="uid://vlw07mise2uh"]
 
 [ext_resource type="Script" uid="uid://xsbe0w8qyq4c" path="res://Scripts/tutorial.gd" id="1_koko0"]
 [ext_resource type="Texture2D" uid="uid://dyso7rrc2gh0u" path="res://Assets/PNG/Light/texture_08.png" id="1_p8jf4"]
@@ -23,7 +23,6 @@
 [ext_resource type="Script" uid="uid://bb1rdf30itqv0" path="res://Scripts/TriggerScript/label.gd" id="12_koko0"]
 [ext_resource type="FontFile" uid="uid://s756v0yn0c5v" path="res://Scripts/Font/wheaton-capitals/wheaton capitals.otf" id="14_2nb4t"]
 [ext_resource type="Script" uid="uid://nxudpdnmvlaa" path="res://Scripts/color_rect.gd" id="14_lsb8r"]
-[ext_resource type="Script" uid="uid://crvnact13sk8f" path="res://Scripts/TriggerScript/interact_door.gd" id="17_2nb4t"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0upaw"]
 albedo_texture = ExtResource("2_1cu4j")
@@ -165,9 +164,6 @@ size = Vector3(25.874725, 2.3248901, 3.479126)
 size = Vector3(2.441986, 2.2086182, 1.3613281)
 
 [sub_resource type="Theme" id="Theme_lsb8r"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_jb51l"]
-size = Vector3(3.1660843, 3.746338, 2.4358368)
 
 [sub_resource type="Gradient" id="Gradient_djl3p"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
@@ -453,16 +449,9 @@ offset_bottom = 659.0
 color = Color(0, 0, 0, 1)
 script = ExtResource("14_lsb8r")
 
-[node name="Interact Door" type="Area3D" parent="."]
-transform = Transform3D(-0.056344263, 0, 0.9984114, 0, 1, 0, -0.9984114, 0, -0.056344263, 0.6289325, 0, -44.41427)
-script = ExtResource("17_2nb4t")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Interact Door"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.48756027, 1.7033012, -0.77576494)
-shape = SubResource("BoxShape3D_jb51l")
-
 [node name="HighlightMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -11.454205, -24.474218)
+visible = false
 material_override = SubResource("StandardMaterial3D_lh8ri")
 mesh = SubResource("QuadMesh_a2i7a")
 
@@ -470,5 +459,3 @@ mesh = SubResource("QuadMesh_a2i7a")
 [connection signal="body_entered" from="IntroArea" to="IntroArea" method="_on_body_entered"]
 [connection signal="body_entered" from="SpikeArea" to="SpikeArea" method="_on_body_entered2"]
 [connection signal="body_entered" from="DoorArea" to="DoorArea" method="_on_body_entered"]
-[connection signal="body_entered" from="Interact Door" to="Interact Door" method="_on_body_entered"]
-[connection signal="body_exited" from="Interact Door" to="Interact Door" method="_on_body_exited"]
