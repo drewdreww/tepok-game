@@ -10,7 +10,7 @@
 [ext_resource type="Script" uid="uid://dxfpubnayh5fs" path="res://Scenes/platform_lvl2.gd" id="8_fmsuk"]
 [ext_resource type="Texture2D" uid="uid://wec7pnmmu2uw" path="res://Assets/PNG/Orange/texture_05.png" id="9_3oae0"]
 [ext_resource type="Script" uid="uid://bqoyapihothbd" path="res://Scripts/TriggerScript/area_3d.gd" id="10_a51ki"]
-[ext_resource type="AudioStream" uid="uid://bl0bmw0lv55gc" path="res://Scripts/VoiceLine/Video_Ready_For_Viewing.mp3" id="11_6xecf"]
+[ext_resource type="AudioStream" uid="uid://bl0bmw0lv55gc" path="res://Scripts/SounEffect/Video_Ready_For_Viewing.mp3" id="11_6xecf"]
 [ext_resource type="Script" uid="uid://cxclgywxgc8k7" path="res://Scripts/TriggerScript/area_3d_3.gd" id="12_qh6br"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nqprj"]

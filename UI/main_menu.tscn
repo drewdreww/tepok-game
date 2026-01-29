@@ -85,10 +85,6 @@ theme_override_font_sizes/font_size = 38
 theme_override_styles/normal = SubResource("StyleBoxEmpty_rcf31")
 text = "Exit"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_k0a0m")
-autoplay = true
-
 [node name="Title" type="Label" parent="."]
 layout_mode = 0
 offset_left = 319.0
@@ -98,3 +94,7 @@ offset_bottom = 191.0
 text = "TEPOK"
 label_settings = SubResource("LabelSettings_fluo8")
 vertical_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_k0a0m")
+autoplay = true

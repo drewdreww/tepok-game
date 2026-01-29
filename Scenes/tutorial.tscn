@@ -14,12 +14,12 @@
 [ext_resource type="Texture2D" uid="uid://dltfogr5e3egr" path="res://Assets/Lab Map (w texture)/floor texture/Metal055B_4K-JPG_Roughness.jpg" id="6_a2i7a"]
 [ext_resource type="PackedScene" uid="uid://d3snu2sbpkn6c" path="res://Objects/fan.tscn" id="7_ys4pu"]
 [ext_resource type="Script" uid="uid://bqoyapihothbd" path="res://Scripts/TriggerScript/area_3d.gd" id="8_h2ono"]
-[ext_resource type="AudioStream" uid="uid://bl0bmw0lv55gc" path="res://Scripts/VoiceLine/Video_Ready_For_Viewing.mp3" id="9_on4kn"]
+[ext_resource type="AudioStream" uid="uid://bl0bmw0lv55gc" path="res://Scripts/SounEffect/Video_Ready_For_Viewing.mp3" id="9_on4kn"]
 [ext_resource type="Script" uid="uid://cxclgywxgc8k7" path="res://Scripts/TriggerScript/area_3d_3.gd" id="10_8va2t"]
 [ext_resource type="Script" uid="uid://b005fjwfhpcla" path="res://Scripts/TriggerScript/area_3d_2.gd" id="10_70gml"]
 [ext_resource type="Texture2D" uid="uid://pddxkaos3k2u" path="res://Assets/tutorial(textures)/Tiles015_4K-JPG_Color.jpg" id="10_djl3p"]
-[ext_resource type="AudioStream" uid="uid://c50opam7yod65" path="res://Scripts/VoiceLine/Ratchet Wrench - Sound Effect - onlysounds.mp3" id="11_t6ver"]
-[ext_resource type="AudioStream" uid="uid://cij3gnspv1eik" path="res://Scripts/VoiceLine/Impact Wrench - Sound Effect - onlysounds.mp3" id="12_2nb4t"]
+[ext_resource type="AudioStream" uid="uid://c50opam7yod65" path="res://Scripts/SounEffect/Ratchet Wrench - Sound Effect - onlysounds.mp3" id="11_t6ver"]
+[ext_resource type="AudioStream" uid="uid://cij3gnspv1eik" path="res://Scripts/SounEffect/Impact Wrench - Sound Effect - onlysounds.mp3" id="12_2nb4t"]
 [ext_resource type="Script" uid="uid://bb1rdf30itqv0" path="res://Scripts/TriggerScript/label.gd" id="12_koko0"]
 [ext_resource type="FontFile" uid="uid://s756v0yn0c5v" path="res://Scripts/Font/wheaton-capitals/wheaton capitals.otf" id="14_2nb4t"]
 [ext_resource type="Script" uid="uid://nxudpdnmvlaa" path="res://Scripts/color_rect.gd" id="14_lsb8r"]
@@ -463,6 +463,7 @@ shape = SubResource("BoxShape3D_jb51l")
 
 [node name="HighlightMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -11.454205, -24.474218)
+visible = false
 material_override = SubResource("StandardMaterial3D_lh8ri")
 mesh = SubResource("QuadMesh_a2i7a")
 
