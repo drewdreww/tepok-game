@@ -2,12 +2,11 @@ extends Area3D
 
 @export var cutscene_scene: PackedScene 
 @onready var black_screen = $"../CanvasLayer/ColorRect"
-@onready var intro_area = $"../IntroTrigger"
+@onready var intro_area = $"../IntroArea"
 
 var triggered := false
 
 func _ready() -> void:
-	body_entered.connect(_on_body_entered)
 	if black_screen: 
 		black_screen.visible = false
 		black_screen.modulate.a = 0.0
@@ -21,10 +20,6 @@ func _on_body_entered(body: Node3D) -> void:
 
 func _start_cutscene_sequence(player) -> void:
 	print(">>> CUTSCENE START <<<")
-
-	if player.has_method("set_physics_process"):
-		player.set_physics_process(false)
-		player.velocity = Vector3.ZERO
 	
 	await _fade_to_black(4.0)
 	
@@ -53,8 +48,8 @@ func _start_cutscene_sequence(player) -> void:
 	_nuke_existing_cutscenes()
 	
 
-	if player.has_node("Head/FirstPOV"):
-		player.get_node("Head/FirstPOV").current = true
+	if player.has_node("Head/FirstPOV/Camera3D"):
+		player.get_node("Head/FirstPOV/Camera3D").current = true
 
 	_return_to_game(player)
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://b4on05tkph3dv"]
+[gd_scene load_steps=52 format=3 uid="uid://b4on05tkph3dv"]
 
 [ext_resource type="Texture2D" uid="uid://dyso7rrc2gh0u" path="res://Assets/PNG/Light/texture_08.png" id="1_2mgoq"]
 [ext_resource type="Script" uid="uid://dth7nkxxcvn83" path="res://Scenes/level_2.gd" id="1_cggpd"]
@@ -18,12 +18,14 @@
 [ext_resource type="PackedScene" uid="uid://bfy6d7r0vstn8" path="res://Objects/platformmm.tscn" id="10_i6dbo"]
 [ext_resource type="Script" uid="uid://bb1rdf30itqv0" path="res://Scripts/TriggerScript/label.gd" id="12_hj5x7"]
 [ext_resource type="Script" uid="uid://nxudpdnmvlaa" path="res://Scripts/color_rect.gd" id="13_hj5x7"]
+[ext_resource type="FontFile" uid="uid://cuan3t5utbm2a" path="res://Scripts/Font/Space_Grotesk/SpaceGrotesk-VariableFont_wght.ttf" id="13_nx14l"]
 [ext_resource type="Script" uid="uid://cwux6qjmdsw3i" path="res://Scenes/area_3d.gd" id="15_fhuy1"]
 [ext_resource type="AudioStream" uid="uid://c50opam7yod65" path="res://Scripts/SounEffect/Ratchet Wrench - Sound Effect - onlysounds.mp3" id="15_yvrk7"]
 [ext_resource type="Script" uid="uid://16d62wowxcbk" path="res://Scripts/TriggerScript/spike_area_level_2.gd" id="16_e2piv"]
 [ext_resource type="AudioStream" uid="uid://cij3gnspv1eik" path="res://Scripts/SounEffect/Impact Wrench - Sound Effect - onlysounds.mp3" id="16_fhuy1"]
 [ext_resource type="Script" uid="uid://bc1g27gar426" path="res://Scripts/TriggerScript/intro_area_level_2.gd" id="17_5jii6"]
 [ext_resource type="FontFile" uid="uid://dv358mshcd1u4" path="res://Scripts/Font/subtitle/Rajdhani-Regular.ttf" id="18_5jii6"]
+[ext_resource type="PackedScene" uid="uid://bi6gknvh6525p" path="res://Cutscene/Repair Cutscene/repair.tscn" id="23_d42f2"]
 [ext_resource type="AudioStream" uid="uid://c5alfmy18g0bg" path="res://Assets/voice records/benlevell2.wav" id="25_5jii6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5s1wx"]
@@ -165,7 +167,7 @@ size = Vector3(2.441986, 2.2086182, 1.3613281)
 size = Vector3(20.595917, 0.8696289, 7.877014)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i6dbo"]
-size = Vector3(4.0367494, 0.4707365, 3.6144295)
+size = Vector3(4.0367494, 3.6204267, 3.71987)
 
 [sub_resource type="Gradient" id="Gradient_5jii6"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
@@ -367,6 +369,30 @@ script = ExtResource("5_ait6c")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.021484375, 0.49529982, -1.1877441)
 shape = SubResource("BoxShape3D_c5xoi")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="ResetZone"]
+
+[node name="ColorRect" type="ColorRect" parent="ResetZone/CanvasLayer"]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="ResetZone/CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("13_nx14l")
+theme_override_font_sizes/font_size = 23
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.692584, 0.7213373, 0, -0.7213373, 0.692584, 0, 6.318017, -32.933556)
 spot_range = 49.259014
@@ -390,22 +416,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3845749, 0, 0.053344727)
 shape = SubResource("BoxShape3D_uhnj4")
 
 [node name="Spikes2" parent="Spikes" instance=ExtResource("8_i6dbo")]
-transform = Transform3D(0.00019530933, -2.8571454e-05, -0.24999993, 3.6334277e-05, 0.25, -2.8543076e-05, 0.24999993, -3.6311965e-05, 0.00019531348, -0.28998494, 0.039232254, -2.8904343)
+transform = Transform3D(0.00019530933, -2.8571454e-05, -0.24999993, 3.6334277e-05, 0.25, -2.8543076e-05, 0.24999993, -3.6311965e-05, 0.00019531348, -0.28998494, -0.08763504, -2.8904343)
 
 [node name="Spikes3" parent="Spikes" instance=ExtResource("8_i6dbo")]
-transform = Transform3D(0.00019530933, -2.8571454e-05, -0.24999993, 3.6334277e-05, 0.25, -2.8543076e-05, 0.24999993, -3.6311965e-05, 0.00019531348, 11.210506, 0.039232254, -2.8904343)
+transform = Transform3D(0.00019530933, -2.8571454e-05, -0.24999993, 3.6334277e-05, 0.25, -2.8543076e-05, 0.24999993, -3.6311965e-05, 0.00019531348, 11.210506, -0.08763504, -2.8904343)
 
 [node name="Spikes4" parent="Spikes" instance=ExtResource("8_i6dbo")]
-transform = Transform3D(0.00019530933, -2.8571454e-05, -0.24999993, 3.6334277e-05, 0.25, -2.8543076e-05, 0.24999993, -3.6311965e-05, 0.00019531348, -0.28998494, 0.039232254, -0.061710358)
+transform = Transform3D(0.00019530933, -2.8571454e-05, -0.24999993, 3.6334277e-05, 0.25, -2.8543076e-05, 0.24999993, -3.6311965e-05, 0.00019531348, -0.28998494, -0.08763504, -0.061710358)
 
 [node name="Spikes5" parent="Spikes" instance=ExtResource("8_i6dbo")]
-transform = Transform3D(0.00019530933, -2.8571454e-05, -0.24999993, 3.6334277e-05, 0.25, -2.8543076e-05, 0.24999993, -3.6311965e-05, 0.00019531348, 11.210506, 0.039232254, -0.061710358)
+transform = Transform3D(0.00019530933, -2.8571454e-05, -0.24999993, 3.6334277e-05, 0.25, -2.8543076e-05, 0.24999993, -3.6311965e-05, 0.00019531348, 11.210506, -0.08763504, -0.061710358)
 
 [node name="Spikes6" parent="Spikes" instance=ExtResource("8_i6dbo")]
-transform = Transform3D(0.00019530933, -2.8571454e-05, -0.24999993, 3.6334277e-05, 0.25, -2.8543076e-05, 0.24999993, -3.6311965e-05, 0.00019531348, -0.28998494, 0.039232254, 2.778614)
+transform = Transform3D(0.00019530933, -2.8571454e-05, -0.24999993, 3.6334277e-05, 0.25, -2.8543076e-05, 0.24999993, -3.6311965e-05, 0.00019531348, -0.28998494, -0.08763504, 2.778614)
 
 [node name="Spikes7" parent="Spikes" instance=ExtResource("8_i6dbo")]
-transform = Transform3D(0.00019530933, -2.8571454e-05, -0.24999993, 3.6334277e-05, 0.25, -2.8543076e-05, 0.24999993, -3.6311965e-05, 0.00019531348, 11.210506, 0.039232254, 2.778614)
+transform = Transform3D(0.00019530933, -2.8571454e-05, -0.24999993, 3.6334277e-05, 0.25, -2.8543076e-05, 0.24999993, -3.6311965e-05, 0.00019531348, 11.210506, -0.08763504, 2.778614)
 
 [node name="Platform" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3537035, -0.48773336, -21.937551)
@@ -473,9 +499,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2.449111, 0, 0, 0)
 
 [node name="CutSCreen" type="Area3D" parent="."]
 script = ExtResource("15_fhuy1")
+cutscene_scene = ExtResource("23_d42f2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CutSCreen"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6097014, 8.995121, -9.953985)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6097014, 10.569966, -10.006705)
 shape = SubResource("BoxShape3D_i6dbo")
 
 [node name="Ratchet" type="AudioStreamPlayer3D" parent="CutSCreen"]
