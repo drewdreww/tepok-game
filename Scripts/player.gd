@@ -361,7 +361,7 @@ func die():
 		if cutscene_node:
 			cutscene_node.trigger_death_sequence()
 	else:
-		await do_ragdoll(11)
+		await do_ragdoll(10.0)
 		nv_bar.visible = true
 	
 		# Next Level or Respawn
