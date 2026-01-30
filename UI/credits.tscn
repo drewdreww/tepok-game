@@ -1,11 +1,11 @@
 [gd_scene load_steps=5 format=3 uid="uid://bacuqm2c0o3t0"]
 
-[ext_resource type="Script" uid="uid://bmg7pvs1773bn" path="res://credits.gd" id="1_g4wvt"]
-[ext_resource type="FontFile" uid="uid://dv358mshcd1u4" path="res://Scripts/Font/subtitle/Rajdhani-Regular.ttf" id="2_c1t8d"]
-[ext_resource type="FontFile" uid="uid://d3yq727ihrghs" path="res://Assets/Videos/TarrgetAcademyItalic-qzmx.otf" id="3_g4wvt"]
+[ext_resource type="Script" uid="uid://bmg7pvs1773bn" path="res://UI/credits.gd" id="1_kk2ga"]
+[ext_resource type="FontFile" uid="uid://d3yq727ihrghs" path="res://Assets/Videos/TarrgetAcademyItalic-qzmx.otf" id="2_2g780"]
+[ext_resource type="FontFile" uid="uid://dv358mshcd1u4" path="res://Scripts/Font/subtitle/Rajdhani-Regular.ttf" id="3_ftffn"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_pjc1l"]
-font = ExtResource("3_g4wvt")
+font = ExtResource("2_2g780")
 font_size = 109
 shadow_size = 20
 shadow_color = Color(0, 0, 0, 0.50980395)
@@ -18,7 +18,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_g4wvt")
+script = ExtResource("1_kk2ga")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -47,7 +47,7 @@ vertical_alignment = 1
 [node name="CreditsText" type="RichTextLabel" parent="ScrollingGroup"]
 custom_minimum_size = Vector2(800, 1000)
 layout_mode = 2
-theme_override_fonts/normal_font = ExtResource("2_c1t8d")
+theme_override_fonts/normal_font = ExtResource("3_ftffn")
 theme_override_font_sizes/normal_font_size = 30
 text = "
    

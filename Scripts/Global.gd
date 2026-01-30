@@ -1,6 +1,6 @@
 extends Node
 
-var current_level_path: String = "res://Scenes/level_2.tscn" 
+var current_level_path: String = "res://Scenes/tutorial.tscn" 
 
 var color_rect: ColorRect = null
 var canvas_layer: CanvasLayer = null

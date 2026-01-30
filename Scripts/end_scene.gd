@@ -58,7 +58,10 @@ func trigger_death_sequence():
 	tween.tween_property(final_screen, "modulate:a", 1.0, 2.0) 
 	await tween.finished
 	
-	await get_tree().create_timer(3.0).timeout
+	await get_tree().create_timer(2.0).timeout
+	Global.change_level("res://UI/credits.tscn")
+	
+	await get_tree().create_timer(2.0).timeout
 	
 	print("Going to Main Menu...")
 	Global.change_level("res://UI/main_menu.tscn")
