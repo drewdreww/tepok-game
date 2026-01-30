@@ -45,10 +45,10 @@ var sprint_step_interval := 0.01
 # --- NIGHT VISION SETTINGS ---
 @onready var nv_layer = $Head/FirstPOV/NightVisionLayer/ColorRect
 @onready var nv_bar = $Head/FirstPOV/NightVisionLayer/ProgressBar
-#@onready var nv_sound = $NightVisionSound
 
 @onready var pauseMenu = $CanvasLayer/PauseMenu
 @onready var die_sound = $PlayerAudios/Die
+@onready var nightVision = $Head/FirstPOV/NightVisionLayer
 
 var guard_target: Node3D = null 
 
@@ -62,6 +62,7 @@ var push_force : float = 2.0
 func _ready() -> void:
 	GameSettings.load_settings()
 	nv_layer.visible = false
+	nightVision.visible = true
 	add_to_group("player")
 	add_to_group("Player")
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -72,8 +73,6 @@ func _ready() -> void:
 	
 	start_position = global_position
 	print("Game Ready. Camera Height Saved:", initial_camera_pos)
-
-
 	
 
 func _play_footstep_audio():
@@ -357,11 +356,11 @@ func die():
 	if Global.current_level_path.contains("laboratory_big.tscn"):
 		print("Detected Laboratory Level! Switching to CCTV...")
 		var cutscene_node = get_tree().get_first_node_in_group("DeathCutscene")
-		await do_ragdoll(4)
+		await do_ragdoll(4.0)
 		if cutscene_node:
 			cutscene_node.trigger_death_sequence()
 	else:
-		await do_ragdoll(10.0)
+		await do_ragdoll(12.5)
 		nv_bar.visible = true
 	
 		# Next Level or Respawn

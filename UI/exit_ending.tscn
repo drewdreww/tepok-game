@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://djqiw368jlbcr"]
+[gd_scene load_steps=4 format=3 uid="uid://djqiw368jlbcr"]
 
 [ext_resource type="Script" uid="uid://dcxq8evc0chb" path="res://Scripts/exit_ending.gd" id="1_lawdg"]
+[ext_resource type="FontFile" uid="uid://cuan3t5utbm2a" path="res://Scripts/Font/Space_Grotesk/SpaceGrotesk-VariableFont_wght.ttf" id="2_c3ffg"]
 [ext_resource type="AudioStream" uid="uid://bjo5ncvkb2yuw" path="res://Scripts/SounEffect/crash_sound.mp3" id="2_l8dcw"]
 
 [node name="ExitEnding" type="Control"]
@@ -31,6 +32,9 @@ offset_right = 20.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_c3ffg")
+theme_override_font_sizes/font_size = 23
+text = "ASDASDADASDASDASDASD"
 
 [node name="Crash" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_l8dcw")

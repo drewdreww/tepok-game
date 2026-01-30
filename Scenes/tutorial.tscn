@@ -453,6 +453,7 @@ offset_right = 1156.0
 offset_bottom = 659.0
 color = Color(0, 0, 0, 1)
 script = ExtResource("14_lsb8r")
+metadata/_edit_use_anchors_ = true
 
 [node name="ControlsPanel" type="PanelContainer" parent="CanvasLayer"]
 offset_left = 20.0

@@ -100,6 +100,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0007599592, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5)
 
 [node name="NightVisionLayer" type="CanvasLayer" parent="Head/FirstPOV"]
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="Head/FirstPOV/NightVisionLayer"]
 material = SubResource("ShaderMaterial_0ar0x")

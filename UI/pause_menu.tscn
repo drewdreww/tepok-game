@@ -8,7 +8,9 @@
 [sub_resource type="LabelSettings" id="LabelSettings_pwekk"]
 font = ExtResource("5_k6dah")
 font_size = 109
-font_color = Color(0, 0, 0, 1)
+shadow_size = 20
+shadow_color = Color(0, 0, 0, 0.7411765)
+shadow_offset = Vector2(4, 4)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fu28r"]
 

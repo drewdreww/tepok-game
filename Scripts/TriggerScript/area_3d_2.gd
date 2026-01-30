@@ -16,6 +16,8 @@ func _on_body_entered(body: Node3D) -> void:
 	if (body.is_in_group("player") or body.is_in_group("Player")) and not triggered:
 		triggered = true
 		
+		$"../CanvasLayer/ControlsPanel".visible = false
+		
 		intro_area.force_stop_sequence()
 	
 		_start_cutscene_sequence(body)
