@@ -20,12 +20,13 @@ var audio_mc2 = preload("res://Assets/voice records/mc2.mp3")
 var audio_mc3 = preload("res://Assets/voice records/mc3.mp3")
 
 # --- 3. NEXT LEVEL ---
-var next_scene = preload("res://Scenes/world.tscn")
+@onready var next_scene: String = "res://Scenes/world.tscn"
 
 func _ready():
 	if blink_overlay:
 		blink_overlay.modulate.a = 1.0
 	start_cutscene()
+
 
 func start_cutscene():
 	subtitle_label.text = ""
@@ -107,7 +108,7 @@ func start_cutscene():
 	subtitle_label.text = ""
 	await get_tree().create_timer(0.2).timeout
 	if next_scene:
-		get_tree().change_scene_to_packed(next_scene)
+		Global.change_level(next_scene)
 
 # --- HELPER FUNCTIONS ---
 

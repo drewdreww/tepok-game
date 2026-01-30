@@ -22,3 +22,7 @@ func interact():
 			
 	else:
 		print("Error: Ang Level walay 'next_level_path' nga variable!")
+		
+		
+func is_door_locked():
+	return false

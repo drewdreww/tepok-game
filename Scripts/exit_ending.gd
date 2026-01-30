@@ -6,8 +6,7 @@ var dialogue_lines: Array[String] = [
 	"CRITICAL DAMAGE DETECTED.",
 	"...",                             
 	"Salvage Team Deployed.",          
-	"Securing Neural Core...",           
-	"Asset Retrieved.",                  
+	"Test Continuous.",                  
 ]
  
 @onready var label = $Label

@@ -7,7 +7,9 @@
 [sub_resource type="LabelSettings" id="LabelSettings_yo6r1"]
 font = ExtResource("2_a68ui")
 font_size = 109
-font_color = Color(0, 0, 0, 1)
+shadow_size = 20
+shadow_color = Color(0, 0, 0, 0.73333335)
+shadow_offset = Vector2(4, 4)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a68ui"]
 
