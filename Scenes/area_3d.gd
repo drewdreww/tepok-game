@@ -8,7 +8,7 @@ var triggered := false
 
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)
-	if black_screen:
+	if black_screen: 
 		black_screen.visible = false
 		black_screen.modulate.a = 0.0
 

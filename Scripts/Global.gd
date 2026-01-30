@@ -42,3 +42,22 @@ func reload_game(world_node = null):
 		get_tree().reload_current_scene()
 	
 	_fade_in()
+	
+
+func change_level(next_scene_path: String):
+	print("Global: Changing level to -> ", next_scene_path)
+	
+	color_rect.visible = true
+	var tween = create_tween()
+	tween.tween_property(color_rect, "modulate:a", 1.0, 0.5) 
+	await tween.finished
+	
+	await get_tree().create_timer(1.0).timeout 
+	
+	get_tree().change_scene_to_file(next_scene_path)
+	
+	tween = create_tween()
+	tween.tween_property(color_rect, "modulate:a", 0.0, 0.5)
+	await tween.finished
+	color_rect.visible = false
+	
