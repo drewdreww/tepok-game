@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dexsmo8w87o2l"
+path="res://.godot/imported/benmegaphone.mp3-094821b2ccbc282d6a10275ce9224ef1.mp3str"
+
+[deps]
+
+source_file="res://Assets/voice records/benmegaphone.mp3"
+dest_files=["res://.godot/imported/benmegaphone.mp3-094821b2ccbc282d6a10275ce9224ef1.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
