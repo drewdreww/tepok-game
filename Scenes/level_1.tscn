@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://lfmqx8w7ufxn"]
+[gd_scene load_steps=55 format=3 uid="uid://lfmqx8w7ufxn"]
 
 [ext_resource type="Texture2D" uid="uid://dyso7rrc2gh0u" path="res://Assets/PNG/Light/texture_08.png" id="1_6444e"]
 [ext_resource type="Script" uid="uid://d3op4vm6ecw7w" path="res://Scenes/level_1.gd" id="1_wrinw"]
@@ -153,39 +153,6 @@ size = Vector3(19.963623, 1, 7.9416656)
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_wrinw"]
 points = PackedVector3Array(-10, -0.5, -5, -10, 0.5, -5, 10, -0.5, -5, -10, -0.5, 5, -10, 0.5, 5, 10, 0.5, -5, 10, -0.5, 5, 10, 0.5, 5)
 
-[sub_resource type="GDScript" id="GDScript_6ssoq"]
-script/source = "extends Area3D
-
-@onready var narration = $DeathVoicee
-@onready var subtitle_label = $\"../CanvasLayer/Label\"
-@onready var intro_trigger = $\"../IntroTrigger\"
-
-
-func _ready() -> void:
-	body_entered.connect(_on_body_entered)
-
-func _on_body_entered(body: Node3D) -> void:
-	if body is CharacterBody3D:
-		_play_sequence()
-
-func _play_sequence() -> void:
-	narration.stop()
-	narration.play()
-	
-	subtitle_label.visible = true
-
-	subtitle_label.text = \"S.A.F.E.: Spike hazard detected. Impact absorbed by safety platform.\"
-	await get_tree().create_timer(3.0).timeout
-
-	subtitle_label.text = \"S.A.F.E.: Unit 77 remains intact. Metrics stable.\"
-	await get_tree().create_timer(3.0).timeout
-
-	subtitle_label.text = \"S.A.F.E.: Warning — repeated misuse of safety systems may trigger unintended failure.\"
-	await get_tree().create_timer(2.5).timeout
-
-	subtitle_label.visible = false
-"
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_yltlr"]
 size = Vector3(20.595917, 1.3001709, 7.877014)
 
@@ -204,12 +171,6 @@ func _play_sequence() -> void:
 	narration.play()
 
 	subtitle_label.visible = true
-
-	subtitle_label.text = \"Dr. Aris: Initiating Unit 77 stress test. Remember, this prototype cost six billion credits. Let’s not break it in the first five minutes.\"
-	await get_tree().create_timer(4.0).timeout
-
-	subtitle_label.text = \"Dr. Ben: Relax. I’ve enabled S.A.F.E. protocols. The lab will practically play the game for it. Unit 77, please proceed to the exit.\"
-	await get_tree().create_timer(4.0).timeout
 
 	subtitle_label.visible = false
 "
@@ -504,7 +465,6 @@ shape = SubResource("ConvexPolygonShape3D_wrinw")
 
 [node name="SpikeArea" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7.858904, -22.170385)
-script = SubResource("GDScript_6ssoq")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SpikeArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.26434684, -1.7511444, 0.17425346)
