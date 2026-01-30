@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://vlw07mise2uh"]
+[gd_scene load_steps=56 format=3 uid="uid://vlw07mise2uh"]
 
 [ext_resource type="Script" uid="uid://xsbe0w8qyq4c" path="res://Scripts/tutorial.gd" id="1_koko0"]
 [ext_resource type="Texture2D" uid="uid://dyso7rrc2gh0u" path="res://Assets/PNG/Light/texture_08.png" id="1_p8jf4"]
@@ -21,9 +21,16 @@
 [ext_resource type="Script" uid="uid://nxudpdnmvlaa" path="res://Scripts/color_rect.gd" id="14_lsb8r"]
 [ext_resource type="PackedScene" uid="uid://bi6gknvh6525p" path="res://Cutscene/Repair Cutscene/repair.tscn" id="18_73805"]
 [ext_resource type="FontFile" uid="uid://dv358mshcd1u4" path="res://Scripts/Font/subtitle/Rajdhani-Regular.ttf" id="21_djl3p"]
+[ext_resource type="Texture2D" uid="uid://wga1ds45hww5" path="res://Assets/input prompts/keyboard_w_outline.png" id="22_0upaw"]
+[ext_resource type="Texture2D" uid="uid://bu0ij72si0cb5" path="res://Assets/input prompts/keyboard_a_outline.png" id="23_1l0bo"]
 [ext_resource type="AudioStream" uid="uid://dexsmo8w87o2l" path="res://Assets/voice records/benmegaphone.mp3" id="24_73805"]
 [ext_resource type="PackedScene" uid="uid://dt22p4bwdc78d" path="res://Objects/cctv.tscn" id="24_djl3p"]
+[ext_resource type="Texture2D" uid="uid://b1qa7s2r4bf1k" path="res://Assets/input prompts/keyboard_s_outline.png" id="24_q25lh"]
 [ext_resource type="AudioStream" uid="uid://4187dkkj65dc" path="res://Assets/voice records/mctutorial.mp3" id="25_73805"]
+[ext_resource type="Texture2D" uid="uid://duq48pwxk2ts" path="res://Assets/input prompts/keyboard_d_outline.png" id="25_nsxev"]
+[ext_resource type="FontFile" uid="uid://cuan3t5utbm2a" path="res://Scripts/Font/Space_Grotesk/SpaceGrotesk-VariableFont_wght.ttf" id="26_nsxev"]
+[ext_resource type="Texture2D" uid="uid://13wqqkvx8css" path="res://Assets/input prompts/keyboard_space_outline.png" id="26_q25lh"]
+[ext_resource type="Texture2D" uid="uid://b8qwiddf0bpfc" path="res://Assets/input prompts/keyboard_tab_outline.png" id="27_nsxev"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0upaw"]
 albedo_texture = ExtResource("2_1cu4j")
@@ -165,6 +172,9 @@ size = Vector3(25.874725, 2.4454193, 3.479126)
 size = Vector3(2.441986, 2.2086182, 1.3613281)
 
 [sub_resource type="Theme" id="Theme_lsb8r"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dhbxl"]
+bg_color = Color(0.3647059, 0.3647059, 0.3647059, 0)
 
 [sub_resource type="Gradient" id="Gradient_djl3p"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
@@ -438,10 +448,87 @@ metadata/_edit_use_anchors_ = true
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 modulate = Color(1, 1, 1, 0)
 self_modulate = Color(0.10747976, 0.10747973, 0.10747973, 1)
+custom_minimum_size = Vector2(32, 32)
 offset_right = 1156.0
 offset_bottom = 659.0
 color = Color(0, 0, 0, 1)
 script = ExtResource("14_lsb8r")
+
+[node name="ControlsPanel" type="PanelContainer" parent="CanvasLayer"]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 60.0
+offset_bottom = 60.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_dhbxl")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ControlsPanel"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/ControlsPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ControlsPanel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+texture = ExtResource("22_0upaw")
+expand_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/ControlsPanel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+texture = ExtResource("23_1l0bo")
+expand_mode = 2
+
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/ControlsPanel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+texture = ExtResource("24_q25lh")
+expand_mode = 2
+
+[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/ControlsPanel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+texture = ExtResource("25_nsxev")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/ControlsPanel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("26_nsxev")
+theme_override_font_sizes/font_size = 18
+text = "MOVE"
+vertical_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/ControlsPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ControlsPanel/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(120, 48)
+layout_mode = 2
+texture = ExtResource("26_q25lh")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/ControlsPanel/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("26_nsxev")
+theme_override_font_sizes/font_size = 18
+text = "JUMP"
+vertical_alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer/ControlsPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ControlsPanel/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(67, 50)
+layout_mode = 2
+texture = ExtResource("27_nsxev")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/ControlsPanel/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("26_nsxev")
+theme_override_font_sizes/font_size = 18
+text = "SUPER A.I."
+vertical_alignment = 1
 
 [node name="HighlightMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -11.454205, -24.474218)
