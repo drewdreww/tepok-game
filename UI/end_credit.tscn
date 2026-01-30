@@ -1,0 +1,104 @@
+[gd_scene load_steps=5 format=3 uid="uid://d4cipa1r4mfv4"]
+
+[ext_resource type="Script" uid="uid://ckebg43ywsif3" path="res://Scripts/UI SCRIPT/end_credit.gd" id="1_xp18x"]
+[ext_resource type="Script" uid="uid://bb1rdf30itqv0" path="res://Scripts/TriggerScript/label.gd" id="2_stl1g"]
+[ext_resource type="Script" uid="uid://beftl88m2f8qb" path="res://Scripts/UI SCRIPT/credits_container.gd" id="3_4m1wn"]
+[ext_resource type="FontFile" uid="uid://s756v0yn0c5v" path="res://Scripts/Font/wheaton-capitals/wheaton capitals.otf" id="4_5momt"]
+
+[node name="End_Credit" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xp18x")
+
+[node name="FadeReact" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1153.0
+offset_bottom = 652.0
+color = Color(0, 0, 0, 1)
+
+[node name="DialogueLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 538.0
+offset_right = 1150.0
+offset_bottom = 645.0
+text = "\\"
+script = ExtResource("2_stl1g")
+
+[node name="CreditsContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 324.0
+offset_right = 1149.0
+offset_bottom = 1599.0
+script = ExtResource("3_4m1wn")
+
+[node name="GAME_TITLE" type="Label" parent="CreditsContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_5momt")
+theme_override_font_sizes/font_size = 73
+text = "TEPOK"
+
+[node name="Label" type="Label" parent="CreditsContainer"]
+layout_mode = 2
+text = "
+
+
+
+
+
+
+
+"
+
+[node name="Team" type="Label" parent="CreditsContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_5momt")
+theme_override_font_sizes/font_size = 48
+text = "Member:
+Alido, Jexter
+Libron, christian niel
+salvame, ralph andew
+Villarazo, john kyle"
+
+[node name="Label2" type="Label" parent="CreditsContainer"]
+layout_mode = 2
+text = "
+
+
+
+
+
+
+
+
+
+"
+
+[node name="Special_Thanks" type="Label" parent="CreditsContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_5momt")
+theme_override_font_sizes/font_size = 48
+text = "WASHO production"
+
+[node name="Label3" type="Label" parent="CreditsContainer"]
+layout_mode = 2
+text = "
+
+
+
+
+
+
+
+"
+
+[node name="Komsai_Week_2026" type="Label" parent="CreditsContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_5momt")
+theme_override_font_sizes/font_size = 48
+text = "Created for Komsai Week 2026"

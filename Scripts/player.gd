@@ -64,7 +64,6 @@ func _ready() -> void:
 	start_position = global_position
 	print("Game Ready. Camera Height Saved:", initial_camera_pos)
 
-	_check_zone_for_sprint()
 
 
 func _play_footstep_audio():
