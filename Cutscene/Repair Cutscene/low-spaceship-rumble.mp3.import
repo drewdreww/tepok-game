@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://tc348n31pyvh"
+path="res://.godot/imported/low-spaceship-rumble.mp3-95a28b914dad8a16630faa84d0403aaf.mp3str"
+
+[deps]
+
+source_file="res://Cutscene/Repair Cutscene/low-spaceship-rumble.mp3"
+dest_files=["res://.godot/imported/low-spaceship-rumble.mp3-95a28b914dad8a16630faa84d0403aaf.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

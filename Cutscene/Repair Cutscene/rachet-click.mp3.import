@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://du6766i7n25ki"
+path="res://.godot/imported/rachet-click.mp3-94e65773988e61416184a4d98aa1d75f.mp3str"
+
+[deps]
+
+source_file="res://Cutscene/Repair Cutscene/rachet-click.mp3"
+dest_files=["res://.godot/imported/rachet-click.mp3-94e65773988e61416184a4d98aa1d75f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

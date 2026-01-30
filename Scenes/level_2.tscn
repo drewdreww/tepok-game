@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://b4on05tkph3dv"]
+[gd_scene load_steps=50 format=3 uid="uid://b4on05tkph3dv"]
 
 [ext_resource type="Texture2D" uid="uid://dyso7rrc2gh0u" path="res://Assets/PNG/Light/texture_08.png" id="1_2mgoq"]
 [ext_resource type="Script" uid="uid://dth7nkxxcvn83" path="res://Scenes/level_2.gd" id="1_cggpd"]
@@ -204,9 +204,6 @@ size = Vector3(20.595917, 0.8696289, 7.877014)
 [sub_resource type="BoxShape3D" id="BoxShape3D_i6dbo"]
 size = Vector3(5.4168015, 4.4197693, 3.7712555)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_e2piv"]
-size = Vector3(3.1660843, 3.746338, 2.4358368)
-
 [sub_resource type="Gradient" id="Gradient_5jii6"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
 
@@ -407,7 +404,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.021484375, 0.49529982, -1.1
 shape = SubResource("BoxShape3D_c5xoi")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.692584, 0.7213373, 0, -0.7213373, 0.692584, 0, 6.9854136, -32.933556)
+transform = Transform3D(1, 0, 0, 0, 0.692584, 0.7213373, 0, -0.7213373, 0.692584, 0, 6.318017, -32.933556)
 spot_range = 49.259014
 
 [node name="Spikes" type="Node3D" parent="."]
@@ -526,14 +523,6 @@ stream = ExtResource("15_yvrk7")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.476672, -9.136835)
 stream = ExtResource("16_fhuy1")
 
-[node name="Interact Door" type="Area3D" parent="."]
-transform = Transform3D(-0.056344263, 0, 0.9984114, 0, 1, 0, -0.9984114, 0, -0.056344263, 0.6289325, 0, -44.41427)
-script = ExtResource("18_fhuy1")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Interact Door"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.48756027, 1.7033012, -0.77576494)
-shape = SubResource("BoxShape3D_e2piv")
-
 [node name="HighlightMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6417742, 10.475484, -10.528931)
 visible = false
@@ -546,5 +535,3 @@ mesh = SubResource("QuadMesh_nx14l")
 [connection signal="body_entered" from="DoorArea" to="DoorArea" method="_on_body_entered"]
 [connection signal="body_entered" from="SpikeArea" to="SpikeArea" method="_on_body_entered"]
 [connection signal="body_entered" from="CutSCreen" to="CutSCreen" method="_on_body_entered"]
-[connection signal="body_entered" from="Interact Door" to="Interact Door" method="_on_body_entered"]
-[connection signal="body_exited" from="Interact Door" to="Interact Door" method="_on_body_exited"]

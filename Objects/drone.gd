@@ -25,7 +25,6 @@ func _ready() -> void:
 			player_camera = cameras[0]
 
 func _physics_process(_delta: float) -> void:
-	# ACTIVATION LOGIC 
 	if is_active == false:
 		if player_in_zone:
 			check_player_vision()
@@ -37,7 +36,6 @@ func _physics_process(_delta: float) -> void:
 			is_being_watched = false
 
 
-	# MOVEMENT LOGIC 
 	var target_pos: Vector3
 	var current_speed: float
 	
