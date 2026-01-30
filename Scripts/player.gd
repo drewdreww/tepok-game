@@ -358,7 +358,7 @@ func die():
 	
 	camera.reparent(death_ragdoll)
 	
-	await get_tree().create_timer(12).timeout
+	await get_tree().create_timer(11.5).timeout
 	nv_bar.visible = true
 	
 	# Next Level or Respawn
@@ -390,15 +390,6 @@ func _perform_level_swap(world_node, old_level_node, new_level_path):
 	world_node.add_child(new_level_instance)
 	
 	old_level_node.queue_free()
-	
-	var new_spawn = new_level_instance.get_node_or_null("SpawnPoint")
-	
-	if new_spawn:
-		print("New SpawnPoint found at: ", new_spawn.global_position)
-		start_position = new_spawn.global_position
-	else:
-		print("WARNING: Walay 'SpawnPoint' sa next level! Using fallback pos.")
-		start_position = Vector3(0, 2, 0)
 	
 	respawn()	
 	
@@ -438,7 +429,6 @@ func respawn_real():
 
 func set_sensitivity(value):
 	SENSITIVITY = value
-	
 
 func _handle_night_vision_battery(delta):
 	if is_nv_on:

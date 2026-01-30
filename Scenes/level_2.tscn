@@ -201,7 +201,7 @@ size = Vector3(2.441986, 2.2086182, 1.3613281)
 size = Vector3(20.595917, 0.8696289, 7.877014)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i6dbo"]
-size = Vector3(2.980567, 3.113753, 3.2571135)
+size = Vector3(4.0367494, 0.4707365, 3.6144295)
 
 [sub_resource type="Gradient" id="Gradient_5jii6"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
@@ -512,7 +512,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2.449111, 0, 0, 0)
 script = ExtResource("15_fhuy1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CutSCreen"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.61378765, 10.316629, -9.775328)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6097014, 8.995121, -9.953985)
 shape = SubResource("BoxShape3D_i6dbo")
 
 [node name="Ratchet" type="AudioStreamPlayer3D" parent="CutSCreen"]
