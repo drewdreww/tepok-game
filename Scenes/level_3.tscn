@@ -19,7 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://bexlt6noerfm0" path="res://Assets/Lab Map (w texture)/wall texture/MetalPlates001_4K-JPG_Metalness.jpg" id="14_n8e0l"]
 [ext_resource type="Texture2D" uid="uid://brbqbgq1tb47l" path="res://Assets/Lab Map (w texture)/wall texture/MetalPlates001_4K-JPG_NormalGL.jpg" id="15_3oi3s"]
 [ext_resource type="Texture2D" uid="uid://bux0ec2tg0gd1" path="res://Assets/Lab Map (w texture)/wall texture/MetalPlates001_4K-JPG_Roughness.jpg" id="16_rybab"]
-[ext_resource type="Script" uid="uid://biv5s3tbnfnj2" path="res://Scenes/intro_area_level_3.gd" id="20_8jhox"]
+[ext_resource type="Script" path="res://Scenes/intro_area_level_3.gd" id="20_8jhox"]
 [ext_resource type="AudioStream" uid="uid://d2glfg8ekkpog" path="res://Assets/voice records/benlevel3.wav" id="20_s80er"]
 [ext_resource type="FontFile" uid="uid://dv358mshcd1u4" path="res://Scripts/Font/subtitle/Rajdhani-Regular.ttf" id="22_hed5s"]
 
