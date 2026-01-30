@@ -19,4 +19,4 @@ func _on_volume_changed(value):
 	GameSettings.save_volume(value / 100.0)
 
 func _on_back_pressed():
-	get_tree().change_scene_to_file("res://UI/main_menu.tscn")
+	owner._on_back_pressed()

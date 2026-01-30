@@ -2,14 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7afjggjf4san"
+uid="uid://5gryu0citgcu"
 path.s3tc="res://.godot/imported/Breathing Idle_0.png-4f1fbe957ccae8bc475ddc035b652e00.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "eed41457802b6be25ae02d7acb60e6a0"
 }
 
 [deps]

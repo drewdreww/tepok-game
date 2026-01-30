@@ -12,8 +12,8 @@ func _ready() -> void:
 
 	settings_button.pressed.connect(_on_settings_pressed)
 	
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_cancel"):
+func escape_clicked(event: InputEvent) -> void:
+	if event.is_action_pressed("escape"):
 		if not visible:
 			toggle_pause()
 		elif settings_panel.visible:

@@ -55,7 +55,7 @@ func start_boot_text():
 	
 	# Line 5 (RED COLOR)
 	# NOTE: Ensure "BBCode Enabled" is ON in the Inspector for colors to work
-	boot_text.text = "[color=red]ERROR: MORALITY CORE FOUND.[/color]" 
+	boot_text.text = "[color=white]ERROR: MORALITY CORE FOUND.[/color]" 
 	
 	# --- ENDING FADE OUT ---
 	# Your old code waited 7 seconds here.

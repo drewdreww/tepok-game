@@ -3,6 +3,7 @@ extends Area3D
 @onready var guard_to_activate: CharacterBody3D = $"../Guards"
 @onready var spotlights_holder : Node3D = $"../SpotLights"
 @onready var sliding_door = $"../Lab/SlidingDoor2"
+@onready var alarm_sound = $PanicCodeRedAlertAlarmSoundEffect
 
 func _on_body_entered(body: Node3D):
 	if body.is_in_group("player"):
@@ -19,10 +20,14 @@ func _on_body_entered(body: Node3D):
 				
 		await get_tree().create_timer(3.0).timeout
 		
+			
 		if spotlights_holder:
 			for light in spotlights_holder.get_children():
 				if light.has_method("set_lights_active"):
 					light.set_lights_active(true)
+					
+		play_alarm_sound()
+		
 		owner.player.activate_sprint()
 		
 		await get_tree().create_timer(3.0).timeout
@@ -31,4 +36,8 @@ func _on_body_entered(body: Node3D):
 			print("Guard Activated!")
 			guard_to_activate.is_active = true
 			
-		queue_free()
+		
+func play_alarm_sound():
+	if alarm_sound:
+			alarm_sound.play()
+			print("ALARM ACTIVATED!")

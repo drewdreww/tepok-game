@@ -22,6 +22,7 @@
 [ext_resource type="Script" uid="uid://nxudpdnmvlaa" path="res://Scripts/color_rect.gd" id="15_yltlr"]
 [ext_resource type="FontFile" uid="uid://dv358mshcd1u4" path="res://Scripts/Font/subtitle/Rajdhani-Regular.ttf" id="16_sda17"]
 [ext_resource type="PackedScene" uid="uid://dfapk031fuvah" path="res://Objects/spikesssss.tscn" id="19_yltlr"]
+[ext_resource type="PackedScene" uid="uid://bi6gknvh6525p" path="res://Cutscene/Repair Cutscene/repair.tscn" id="21_1fal7"]
 [ext_resource type="AudioStream" uid="uid://bkqajdyasotjk" path="res://Assets/voice records/benlevel1.wav" id="23_1fal7"]
 [ext_resource type="Script" uid="uid://duuv6eh33ny5h" path="res://Scripts/intro_trigger_level_1.gd" id="24_1fal7"]
 [ext_resource type="AudioStream" uid="uid://dltdcwvr86ul1" path="res://Assets/voice records/benlevel1wew.wav" id="25_gcla0"]
@@ -523,6 +524,7 @@ script = ExtResource("15_yltlr")
 
 [node name="CutSCreen" type="Area3D" parent="."]
 script = ExtResource("14_8i23i")
+cutscene_scene = ExtResource("21_1fal7")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CutSCreen"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.270864, -12.616998, -22.206488)

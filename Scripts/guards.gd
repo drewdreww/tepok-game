@@ -8,12 +8,28 @@ extends CharacterBody3D
 @export var jump_force: float = 4.5
 @export var is_active: bool = false
 
+@onready var animation = $RealGuard/Guard/AnimationPlayer
+@onready var catch_player = $CatchPlayer
+
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 var stuck_timer: float = 0.0
 var jump_cooldown: float = 0.0 
 var last_position: Vector3 = Vector3.ZERO
 
+func _ready():
+	if catch_player.has_signal("body_entered"):
+		if not catch_player.body_entered.is_connected(_on_player_caught):
+			catch_player.body_entered.connect(_on_player_caught)
+			
+func _on_player_caught(body):
+	if body.is_in_group("player") or body.is_in_group("Player"):
+		print("Caught Player! Triggering Death...")
+		
+		if body.has_method("trigger_caught"):
+			body.trigger_caught(self)
+		
+			
 func _physics_process(delta: float):
 	if not is_on_floor():
 		velocity.y -= gravity * delta
@@ -33,6 +49,9 @@ func _physics_process(delta: float):
 		velocity.x = 0
 		velocity.z = 0
 		stuck_timer = 0.0 
+		
+		if is_on_floor():
+			animation.play("guard/anim_idle")
 		move_and_slide()
 		return
 
@@ -44,17 +63,27 @@ func _physics_process(delta: float):
 	velocity.x = direction.x * speed
 	velocity.z = direction.z * speed
 	
+	if not is_on_floor() and is_on_wall():
+		velocity.x *= 0.1 
+		velocity.z *= 0.1
+		
 	if direction.length() > 0.001:
 		var target_look = Vector3(next_path_pos.x, global_position.y, next_path_pos.z)
 		look_at_smooth(target_look, delta)
 	
+	if is_on_floor():
+		animation.play("guard/anim_run")
+	else:
+		if animation.current_animation != "guard/anim_jump":
+			animation.play("guard/anim_jump")
+			
 	move_and_slide()
 	
 	check_if_stuck(delta)
 	handle_door_interaction()
 
 func check_if_stuck(delta):
-	if not is_on_floor() or jump_cooldown > 0:
+	if jump_cooldown > 0:
 		stuck_timer = 0.0
 		last_position = global_position 
 		return
@@ -68,8 +97,9 @@ func check_if_stuck(delta):
 	
 	if stuck_timer > 0.5:
 		print("Enemy Stuck! Jumping...")
-		velocity.y = jump_force
 		
+		velocity.y = jump_force
+		animation.play("guard/anim_jump")
 		jump_cooldown = 1.0 
 		stuck_timer = 0.0 
 

@@ -165,7 +165,7 @@ size = Vector3(2.441986, 2.2086182, 1.3613281)
 size = Vector3(20.595917, 0.8696289, 7.877014)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i6dbo"]
-size = Vector3(5.4168015, 4.4197693, 3.7712555)
+size = Vector3(4.0367494, 0.4707365, 3.6144295)
 
 [sub_resource type="Gradient" id="Gradient_5jii6"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
@@ -190,6 +190,7 @@ billboard_mode = 1
 
 [node name="Level2" type="Node3D" groups=["Dangerous"]]
 script = ExtResource("1_cggpd")
+next_level_path = "uid://bmns60sack8yh"
 
 [node name="Fan" parent="." instance=ExtResource("3_v36qu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6216011, 10.479364, -11.133338)
@@ -474,7 +475,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2.449111, 0, 0, 0)
 script = ExtResource("15_fhuy1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CutSCreen"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7375655, 10.662106, -10.032397)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6097014, 8.995121, -9.953985)
 shape = SubResource("BoxShape3D_i6dbo")
 
 [node name="Ratchet" type="AudioStreamPlayer3D" parent="CutSCreen"]

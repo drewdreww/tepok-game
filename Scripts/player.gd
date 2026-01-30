@@ -36,14 +36,20 @@ var holding_object = false
 @onready var default_hold_position = hold_point.position
 @onready var crosshair : Control = $Head/FirstPOV/PlayerHUD/CrossHair
 var ray_col : Object
+
 @onready var footstep: AudioStreamPlayer3D = $PlayerAudios/AudioStreamPlayer3D
 var step_timer := 0.0
-var walk_step_interval := 0.45
-var sprint_step_interval := 0.30
+var walk_step_interval := 0.2
+var sprint_step_interval := 0.1
+
 # --- NIGHT VISION SETTINGS ---
 @onready var nv_layer = $Head/FirstPOV/NightVisionLayer/ColorRect
 @onready var nv_bar = $Head/FirstPOV/NightVisionLayer/ProgressBar
 #@onready var nv_sound = $NightVisionSound
+
+@onready var pauseMenu = $CanvasLayer/PauseMenu
+
+var guard_target: Node3D = null 
 
 var max_battery : float = 5.0
 var current_battery : float = 5.0
@@ -105,8 +111,19 @@ func activate_sprint():
 	
 	
 func _unhandled_input(event: InputEvent):
+	if is_dead or is_cutscene:
+		if event.is_action_pressed("escape"): 
+			get_viewport().set_input_as_handled()
+			
+		if event.is_action_pressed("tab"):
+			get_viewport().set_input_as_handled()
+			
+		return
+		
 	if is_cutscene and event is InputEventMouseMotion:
 		return
+		
+	pauseMenu.escape_clicked(event)
 		
 	if Input.is_action_just_pressed("tab"):
 		if is_nv_on:
@@ -141,6 +158,19 @@ func _process(delta: float) -> void:
 	_handle_night_vision_battery(delta)
 	
 func _physics_process(delta: float) -> void:
+	if guard_target != null:
+		var target_head = guard_target.global_position + Vector3(0, 0.7, 0)
+		
+		camera.look_at(target_head)
+		
+		var dir = camera.global_position.direction_to(target_head)
+		var zoom_pos = target_head - (dir * 0.5)
+		
+		camera.global_position = camera.global_position.lerp(zoom_pos, 5.0 * delta)
+		
+		return 
+		
+		
 	if is_cutscene:
 		return
 	
@@ -307,9 +337,10 @@ func _handle_fov(delta):
 # --- Die Function ---
 func die():
 	if is_dead: return
+	nv_bar.visible = false
+	
 	is_dead = true
 	print("Player Died!")
-	
 	# Disable Player
 	set_physics_process(false)
 	player_collider.disabled = true 
@@ -329,7 +360,8 @@ func die():
 	
 	camera.reparent(death_ragdoll)
 	
-	await get_tree().create_timer(5.0).timeout
+	await get_tree().create_timer(11.5).timeout
+	nv_bar.visible = true
 	
 	# Next Level or Respawn
 	_try_load_next_level()
@@ -393,10 +425,12 @@ func respawn():
 	player_collider.disabled = false
 	is_dead = false
 	set_physics_process(true)
+	
+func respawn_real():
+	get_tree().reload_current_scene()
 
 func set_sensitivity(value):
 	SENSITIVITY = value
-	
 
 func _handle_night_vision_battery(delta):
 	if is_nv_on:
@@ -426,3 +460,19 @@ func _turn_off_nv():
 	nv_layer.visible = false
 	
 	get_tree().call_group("Dangerous", "toggle_xray", false)
+	
+	
+# --- JUMPSCARE FUNCTION ---
+func trigger_caught(guard_node):
+	if is_dead: return 
+	
+	print("Guard Caught You!")
+	is_cutscene = true
+	velocity = Vector3.ZERO
+	
+	guard_target = guard_node
+	
+	set_physics_process(true)
+	
+	await get_tree().create_timer(2).timeout
+	respawn_real()
