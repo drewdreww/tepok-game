@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bkqajdyasotjk"
+path="res://.godot/imported/benlevel1.wav-2319ca09a616ee9c984e7f97c083a2c6.sample"
+
+[deps]
+
+source_file="res://Assets/voice records/benlevel1.wav"
+dest_files=["res://.godot/imported/benlevel1.wav-2319ca09a616ee9c984e7f97c083a2c6.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

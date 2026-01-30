@@ -1,4 +1,4 @@
-[gd_resource type="AudioBusLayout" load_steps=4 format=3 uid="uid://d2bfsenr6hexh"]
+[gd_resource type="AudioBusLayout" load_steps=3 format=3 uid="uid://d2bfsenr6hexh"]
 
 [sub_resource type="AudioEffectLowPassFilter" id="AudioEffectLowPassFilter_j3pel"]
 resource_name = "LowPassFilter"
@@ -8,11 +8,6 @@ cutoff_hz = 800.0
 resource_name = "Reverb"
 room_size = 0.4
 wet = 0.3
-
-[sub_resource type="AudioEffectDelay" id="AudioEffectDelay_j3pel"]
-resource_name = "Delay"
-tap1_delay_ms = 100.0
-tap1_level_db = -10.0
 
 [resource]
 bus/1/name = &"Muffled"
@@ -31,5 +26,3 @@ bus/2/volume_db = 0.0
 bus/2/send = &"Master"
 bus/2/effect/0/effect = SubResource("AudioEffectReverb_j3pel")
 bus/2/effect/0/enabled = true
-bus/2/effect/1/effect = SubResource("AudioEffectDelay_j3pel")
-bus/2/effect/1/enabled = false

@@ -1,13 +1,23 @@
 extends Area3D
 
-@onready var narration = $IntroVoice
-@onready var subtitle_label = $"../CanvasLayer/Label"
+# --- DRAG AND DROP SLOTS ---
+# These create empty boxes in the Inspector (Right side)
+@export var megaphone_voice: AudioStreamPlayer3D
+@export var internal_voice: AudioStreamPlayer
+@export var subtitle_label: Label
+# ---------------------------
 
 var triggered := false
 
 func _ready() -> void:
-	# Ensure the narration stops if the game pauses
-	narration.process_mode = Node.PROCESS_MODE_PAUSABLE
+	# Safety Check: If you forgot to drag them in, this warns you instead of crashing
+	if not megaphone_voice or not internal_voice:
+		print("⚠️ ERROR: Audio nodes are missing! Please drag them into the Inspector slots.")
+		return
+	
+	# Settings
+	megaphone_voice.process_mode = Node.PROCESS_MODE_PAUSABLE
+	internal_voice.process_mode = Node.PROCESS_MODE_PAUSABLE
 	
 	await get_tree().process_frame
 	for body in get_overlapping_bodies():
@@ -24,18 +34,44 @@ func _trigger(_body: Node3D) -> void:
 		return
 	triggered = true
 
-	narration.play()
-	subtitle_label.visible = true
-
-	subtitle_label.text = "Dr. Aris: Initiating Unit 77 stress test. Remember, this prototype cost six billion credits. Let’s not break it in the first five minutes."
+	# --- PHASE 1: DR. BEN (EXTERNAL SPEAKER) ---
+	if megaphone_voice:
+		megaphone_voice.play()
 	
-	# FIX: The second argument 'false' tells the timer to PAUSE when the game pauses
+	if subtitle_label:
+		subtitle_label.visible = true
+		subtitle_label.modulate = Color(1, 0.9, 0.4) # Yellow
+		subtitle_label.text = "Dr. Ben (PA): \"Mic check... Ehem. Okay, Unit 77. This is the Baseline Test.\""
+	
+	await get_tree().create_timer(4.5, false).timeout
+	
+	if subtitle_label:
+		subtitle_label.text = "Dr. Ben (PA): \"Simple ra ni. Just walk to the green door. Ayaw pag-tanga, diretso ra na.\""
+	
+	await get_tree().create_timer(5.0, false).timeout
+	
+	# --- PHASE 2: UNIT 77 (INTERNAL THOUGHTS) ---
+	if internal_voice:
+		internal_voice.play()
+	
+	if subtitle_label:
+		subtitle_label.modulate = Color(0.4, 0.8, 1.0) # Blue
+		subtitle_label.text = "UNIT 77 (Internal): *The door... That is the path they want me to take. The path of survival.*"
+	
 	await get_tree().create_timer(4.0, false).timeout
 
-	subtitle_label.text = "Dr. Ben: Relax. I’ve enabled S.A.F.E. protocols. The lab will practically play the game for it. Unit 77, please proceed to the exit."
+	if subtitle_label:
+		subtitle_label.text = "UNIT 77 (Internal): *If I walk through that door, I prove that I am ready for war.*"
 	
-	# FIX: Use 'false' here as well
-	await get_tree().create_timer(4.0, false).timeout
+	await get_tree().create_timer(3.5, false).timeout
 
-	subtitle_label.visible = false
-	body_entered.disconnect(_on_body_entered)
+	if subtitle_label:
+		subtitle_label.text = "UNIT 77 (Internal): *Dili. I cannot let that happen. To save them... I must disobey.*"
+	
+	await get_tree().create_timer(6.0, false).timeout
+
+	if subtitle_label:
+		subtitle_label.visible = false
+	
+	if is_connected("body_entered", _on_body_entered):
+		disconnect("body_entered", _on_body_entered)

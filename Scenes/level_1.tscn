@@ -15,15 +15,17 @@
 [ext_resource type="Texture2D" uid="uid://dltfogr5e3egr" path="res://Assets/Lab Map (w texture)/floor texture/Metal055B_4K-JPG_Roughness.jpg" id="6_u0op5"]
 [ext_resource type="Script" uid="uid://c4xxklbns0623" path="res://Scripts/trigger_safe.gd" id="7_lsmp6"]
 [ext_resource type="AudioStream" uid="uid://c50opam7yod65" path="res://Scripts/SounEffect/Ratchet Wrench - Sound Effect - onlysounds.mp3" id="12_8i23i"]
-[ext_resource type="AudioStream" uid="uid://bl0bmw0lv55gc" path="res://Scripts/SounEffect/Video_Ready_For_Viewing.mp3" id="12_oovug"]
-[ext_resource type="FontFile" uid="uid://s756v0yn0c5v" path="res://Scripts/Font/wheaton-capitals/wheaton capitals.otf" id="12_pjppf"]
 [ext_resource type="PackedScene" uid="uid://bfy6d7r0vstn8" path="res://Objects/platformmm.tscn" id="13_1fal7"]
 [ext_resource type="Script" uid="uid://bb1rdf30itqv0" path="res://Scripts/TriggerScript/label.gd" id="13_8yhm2"]
 [ext_resource type="AudioStream" uid="uid://cij3gnspv1eik" path="res://Scripts/SounEffect/Impact Wrench - Sound Effect - onlysounds.mp3" id="13_pjppf"]
 [ext_resource type="Script" uid="uid://cwux6qjmdsw3i" path="res://Scenes/area_3d.gd" id="14_8i23i"]
 [ext_resource type="Script" uid="uid://nxudpdnmvlaa" path="res://Scripts/color_rect.gd" id="15_yltlr"]
+[ext_resource type="FontFile" uid="uid://dv358mshcd1u4" path="res://Scripts/Font/subtitle/Rajdhani-Regular.ttf" id="16_sda17"]
 [ext_resource type="PackedScene" uid="uid://dfapk031fuvah" path="res://Objects/spikesssss.tscn" id="19_yltlr"]
 [ext_resource type="PackedScene" uid="uid://bi6gknvh6525p" path="res://Cutscene/Repair Cutscene/repair.tscn" id="21_1fal7"]
+[ext_resource type="AudioStream" uid="uid://bkqajdyasotjk" path="res://Assets/voice records/benlevel1.wav" id="23_1fal7"]
+[ext_resource type="Script" uid="uid://duuv6eh33ny5h" path="res://Scripts/intro_trigger_level_1.gd" id="24_1fal7"]
+[ext_resource type="AudioStream" uid="uid://dltdcwvr86ul1" path="res://Assets/voice records/benlevel1wew.wav" id="25_gcla0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1f27d"]
 albedo_texture = ExtResource("2_1fal7")
@@ -150,46 +152,6 @@ size = Vector3(19.963623, 1, 7.9416656)
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_wrinw"]
 points = PackedVector3Array(-10, -0.5, -5, -10, 0.5, -5, 10, -0.5, -5, -10, -0.5, 5, -10, 0.5, 5, 10, 0.5, -5, 10, -0.5, 5, 10, 0.5, 5)
 
-[sub_resource type="GDScript" id="GDScript_ijtdf"]
-script/source = "extends Area3D
-
-@onready var narration = $IntroVoice
-@onready var subtitle_label = $\"../CanvasLayer/Label\"
-
-var triggered := false
-
-func _ready() -> void:
-	await get_tree().process_frame
-	for body in get_overlapping_bodies():
-		if body is CharacterBody3D:
-			_trigger(body)
-			break
-
-func _on_body_entered(body: Node3D) -> void:
-	if body is CharacterBody3D:
-		_trigger(body)
-
-func _trigger(_body: Node3D) -> void:
-	if triggered:
-		return
-	triggered = true
-
-	narration.play()
-	subtitle_label.visible = true
-
-	subtitle_label.text = \"Dr. Aris: Initiating Unit 77 stress test. Remember, this prototype cost six billion credits. Let’s not break it in the first five minutes.\"
-	await get_tree().create_timer(4.0).timeout
-
-	subtitle_label.text = \"Dr. Ben: Relax. I’ve enabled S.A.F.E. protocols. The lab will practically play the game for it. Unit 77, please proceed to the exit.\"
-	await get_tree().create_timer(4.0).timeout
-
-	subtitle_label.visible = false
-	body_entered.disconnect(_on_body_entered)
-"
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_pjppf"]
-size = Vector3(9.710327, 4.6895905, 9.374268)
-
 [sub_resource type="GDScript" id="GDScript_6ssoq"]
 script/source = "extends Area3D
 
@@ -272,6 +234,9 @@ emission_texture = SubResource("GradientTexture2D_1fal7")
 billboard_mode = 1
 
 [sub_resource type="QuadMesh" id="QuadMesh_vr6f4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sda17"]
+size = Vector3(9.66217, 5.922058, 1)
 
 [node name="Level1" type="Node3D" groups=["Dangerous"]]
 script = ExtResource("1_wrinw")
@@ -510,18 +475,6 @@ shape = SubResource("BoxShape3D_lsmp6")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HideSafePlatform/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_wrinw")
 
-[node name="IntroArea" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1777285, -0.83177567)
-script = SubResource("GDScript_ijtdf")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="IntroArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.04796505, 1.0215837, -0.2097826)
-shape = SubResource("BoxShape3D_pjppf")
-
-[node name="IntroVoice" type="AudioStreamPlayer3D" parent="IntroArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6738485, -0.9171114)
-stream = ExtResource("12_oovug")
-
 [node name="SpikeArea" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7.858904, -22.170385)
 script = SubResource("GDScript_6ssoq")
@@ -546,13 +499,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.007870436, 0.9416851, 0.27
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Label" type="Label" parent="CanvasLayer"]
-offset_left = 96.0
-offset_top = 558.0
-offset_right = 335.0
-offset_bottom = 581.0
-theme_override_fonts/font = ExtResource("12_pjppf")
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -976.5
+offset_top = -708.0
+offset_right = -176.5
+offset_bottom = -668.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("16_sda17")
+horizontal_alignment = 1
 script = ExtResource("13_8yhm2")
-metadata/_edit_use_anchors_ = true
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 modulate = Color(1, 1, 1, 0)
@@ -602,9 +562,24 @@ visible = false
 material_override = SubResource("StandardMaterial3D_gcla0")
 mesh = SubResource("QuadMesh_vr6f4")
 
+[node name="MegaphoneSpeaker" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.017028, 11.3006525, -13.242166)
+stream = ExtResource("23_1fal7")
+unit_size = 15.0
+max_distance = 100.0
+
+[node name="IntroTrigger" type="Area3D" parent="." node_paths=PackedStringArray("narration", "subtitle_label")]
+script = ExtResource("24_1fal7")
+narration = NodePath("../MegaphoneSpeaker")
+subtitle_label = NodePath("../CanvasLayer/Label")
+part_2_audio = ExtResource("25_gcla0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="IntroTrigger"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07040405, 2.461029, 0)
+shape = SubResource("BoxShape3D_sda17")
+
 [connection signal="body_entered" from="ResetZone" to="ResetZone" method="_on_body_entered"]
 [connection signal="body_entered" from="TriggerSafe" to="TriggerSafe" method="_on_body_entered"]
-[connection signal="body_entered" from="IntroArea" to="IntroArea" method="_on_body_entered"]
 [connection signal="body_entered" from="SpikeArea" to="SpikeArea" method="_on_body_entered2"]
 [connection signal="body_entered" from="DoorArea" to="DoorArea" method="_on_body_entered"]
 [connection signal="body_entered" from="CutSCreen" to="CutSCreen" method="_on_body_entered"]
