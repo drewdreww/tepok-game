@@ -65,6 +65,8 @@ func _ready() -> void:
 	
 	start_position = global_position
 	print("Game Ready. Camera Height Saved:", initial_camera_pos)
+
+
 	
 
 func _play_footstep_audio():
