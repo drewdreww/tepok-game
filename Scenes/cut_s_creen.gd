@@ -2,7 +2,7 @@ extends Area3D
 
 @export var cutscene_scene: PackedScene 
 @onready var black_screen = $"../CanvasLayer/ColorRect"
-@onready var intro_area = $"../IntroTrigger"
+@onready var intro_area = $"../IntroArea"
 
 var triggered := false
 

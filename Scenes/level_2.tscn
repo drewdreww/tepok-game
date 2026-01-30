@@ -19,13 +19,13 @@
 [ext_resource type="Script" uid="uid://bb1rdf30itqv0" path="res://Scripts/TriggerScript/label.gd" id="12_hj5x7"]
 [ext_resource type="Script" uid="uid://nxudpdnmvlaa" path="res://Scripts/color_rect.gd" id="13_hj5x7"]
 [ext_resource type="FontFile" uid="uid://cuan3t5utbm2a" path="res://Scripts/Font/Space_Grotesk/SpaceGrotesk-VariableFont_wght.ttf" id="13_nx14l"]
-[ext_resource type="Script" uid="uid://cwux6qjmdsw3i" path="res://Scenes/area_3d.gd" id="15_fhuy1"]
 [ext_resource type="AudioStream" uid="uid://c50opam7yod65" path="res://Scripts/SounEffect/Ratchet Wrench - Sound Effect - onlysounds.mp3" id="15_yvrk7"]
 [ext_resource type="Script" uid="uid://16d62wowxcbk" path="res://Scripts/TriggerScript/spike_area_level_2.gd" id="16_e2piv"]
 [ext_resource type="AudioStream" uid="uid://cij3gnspv1eik" path="res://Scripts/SounEffect/Impact Wrench - Sound Effect - onlysounds.mp3" id="16_fhuy1"]
 [ext_resource type="Script" uid="uid://bc1g27gar426" path="res://Scripts/TriggerScript/intro_area_level_2.gd" id="17_5jii6"]
 [ext_resource type="FontFile" uid="uid://dv358mshcd1u4" path="res://Scripts/Font/subtitle/Rajdhani-Regular.ttf" id="18_5jii6"]
-[ext_resource type="PackedScene" uid="uid://bi6gknvh6525p" path="res://Cutscene/Repair Cutscene/repair.tscn" id="23_d42f2"]
+[ext_resource type="Script" uid="uid://bw0q6smxq8t0t" path="res://Scenes/cut_s_creen.gd" id="23_d42f2"]
+[ext_resource type="PackedScene" uid="uid://bi6gknvh6525p" path="res://Cutscene/Repair Cutscene/repair.tscn" id="24_nx14l"]
 [ext_resource type="AudioStream" uid="uid://c5alfmy18g0bg" path="res://Assets/voice records/benlevell2.wav" id="25_5jii6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5s1wx"]
@@ -498,8 +498,8 @@ shape = SubResource("BoxShape3D_d42f2")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2.449111, 0, 0, 0)
 
 [node name="CutSCreen" type="Area3D" parent="."]
-script = ExtResource("15_fhuy1")
-cutscene_scene = ExtResource("23_d42f2")
+script = ExtResource("23_d42f2")
+cutscene_scene = ExtResource("24_nx14l")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CutSCreen"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6097014, 10.569966, -10.006705)
