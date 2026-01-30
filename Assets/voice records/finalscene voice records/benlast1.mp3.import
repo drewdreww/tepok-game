@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://guo8d8tvhlmn"
+path="res://.godot/imported/benlast1.mp3-a0b2e00c597c12a1c56991d0a484a5b1.mp3str"
+
+[deps]
+
+source_file="res://Assets/voice records/finalscene voice records/benlast1.mp3"
+dest_files=["res://.godot/imported/benlast1.mp3-a0b2e00c597c12a1c56991d0a484a5b1.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

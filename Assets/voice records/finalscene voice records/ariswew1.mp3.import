@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://nst57nnq43sn"
+path="res://.godot/imported/ariswew1.mp3-b6df852a51b3f90f1934b4de414240f3.mp3str"
+
+[deps]
+
+source_file="res://Assets/voice records/finalscene voice records/ariswew1.mp3"
+dest_files=["res://.godot/imported/ariswew1.mp3-b6df852a51b3f90f1934b4de414240f3.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
