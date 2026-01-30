@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://lfmqx8w7ufxn"]
+[gd_scene load_steps=54 format=3 uid="uid://lfmqx8w7ufxn"]
 
 [ext_resource type="Texture2D" uid="uid://dyso7rrc2gh0u" path="res://Assets/PNG/Light/texture_08.png" id="1_6444e"]
 [ext_resource type="Script" uid="uid://d3op4vm6ecw7w" path="res://Scenes/level_1.gd" id="1_wrinw"]
@@ -23,6 +23,7 @@
 [ext_resource type="Script" uid="uid://cwux6qjmdsw3i" path="res://Scenes/area_3d.gd" id="14_8i23i"]
 [ext_resource type="Script" uid="uid://nxudpdnmvlaa" path="res://Scripts/color_rect.gd" id="15_yltlr"]
 [ext_resource type="PackedScene" uid="uid://dfapk031fuvah" path="res://Objects/spikesssss.tscn" id="19_yltlr"]
+[ext_resource type="PackedScene" uid="uid://bi6gknvh6525p" path="res://Cutscene/Repair Cutscene/repair.tscn" id="21_1fal7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1f27d"]
 albedo_texture = ExtResource("2_1fal7")
@@ -168,7 +169,7 @@ func _on_body_entered(body: Node3D) -> void:
 	if body is CharacterBody3D:
 		_trigger(body)
 
-func _trigger(body: Node3D) -> void:
+func _trigger(_body: Node3D) -> void:
 	if triggered:
 		return
 	triggered = true
@@ -563,6 +564,7 @@ script = ExtResource("15_yltlr")
 
 [node name="CutSCreen" type="Area3D" parent="."]
 script = ExtResource("14_8i23i")
+cutscene_scene = ExtResource("21_1fal7")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CutSCreen"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.270864, -12.616998, -22.206488)

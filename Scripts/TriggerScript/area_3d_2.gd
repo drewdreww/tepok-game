@@ -1,60 +1,101 @@
 extends Area3D
 
-@onready var narration = $DeathVoicee
-@onready var narration1 = $Ratchet
-@onready var narration2 = $Impact
-@onready var subtitle_label = $"../CanvasLayer/Label"
+@export var cutscene_scene: PackedScene 
 @onready var black_screen = $"../CanvasLayer/ColorRect"
 
 var triggered := false
 
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)
-	black_screen.modulate.a = 0.0
-	black_screen.visible = false
-	
-	# Ensure audio players pause when the game pauses
-	narration.process_mode = Node.PROCESS_MODE_PAUSABLE
-	narration1.process_mode = Node.PROCESS_MODE_PAUSABLE
-	narration2.process_mode = Node.PROCESS_MODE_PAUSABLE
+	if black_screen:
+		black_screen.visible = false
+		black_screen.modulate.a = 0.0
 
 func _on_body_entered(body: Node3D) -> void:
-	if body is CharacterBody3D and not triggered:
+	if (body.is_in_group("player") or body.is_in_group("Player")) and not triggered:
 		triggered = true
-		_play_sequence()
+		_start_cutscene_sequence(body)
 
-func _play_sequence() -> void:
-	await _fade_to_black(1.0)
+func _start_cutscene_sequence(player) -> void:
+	print(">>> CUTSCENE START <<<")
 
-	narration.stop()
-	narration1.stop()
-	narration2.stop()
+	if player.has_method("set_physics_process"):
+		player.set_physics_process(false)
+		player.velocity = Vector3.ZERO
 	
-	narration.play()
-	narration1.play(5.0)
-	narration2.play(5.0)
+	await _fade_to_black(4.0)
+	
+	_nuke_existing_cutscenes()
 
-	subtitle_label.visible = true
-	subtitle_label.text = "Test subject failure detected. Repairing unit."
+	if cutscene_scene:
+		var instance = cutscene_scene.instantiate()
+		instance.name = "THE_CUTSCENE" 
+		get_tree().root.add_child(instance)
+		
+		var cam = _find_camera(instance)
+		if cam: cam.current = true
+	else:
+		print("ERROR: Empty cutscene slot!")
+		_return_to_game(player)
+		return
 
-	# FIX: Setting the second argument to 'false' makes the timer PAUSABLE
-	await get_tree().create_timer(4.0, false).timeout
+	await _fade_out(1.0)
+	
+	print(">>> Watching... (5s) <<<")
+	await get_tree().create_timer(5.0).timeout
+	
+	await _fade_to_black(1.0)
+	
+	print(">>> KILLING CUTSCENE <<<")
+	_nuke_existing_cutscenes()
+	
 
-	subtitle_label.visible = false
-	await _fade_out(5.0)
+	if player.has_node("Head/FirstPOV/Camera3D"):
+		player.get_node("Head/FirstPOV/Camera3D").current = true
 
-func _fade_to_black(time: float) -> void:
+	await _fade_out(1.0)
+	
+	_return_to_game(player)
+
+
+func _nuke_existing_cutscenes():
+	var existing = get_tree().root.get_node_or_null("THE_CUTSCENE")
+	
+	if existing:
+		print("Nakitan ang Cutscene! Deleting now...")
+		existing.queue_free()
+		
+		get_tree().root.remove_child(existing) 
+		existing.free()
+	else:
+		print("Walay cutscene nga nakit-an (Already clean).")
+
+
+func _return_to_game(player):
+	print(">>> PLAYER CONTROL RETURNED <<<")
+	if player.has_method("set_physics_process"):
+		player.set_physics_process(true)
+	
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	queue_free() 
+
+func _fade_to_black(time):
+	if !black_screen: return
 	black_screen.visible = true
-	var tween = get_tree().create_tween()
-	# FIX: Tell the tween to stop processing if the game is paused
-	tween.set_pause_mode(Tween.TWEEN_PAUSE_STOP) 
-	tween.tween_property(black_screen, "modulate:a", 1.0, time)
-	await tween.finished
+	var t = create_tween()
+	t.tween_property(black_screen, "modulate:a", 1.0, time)
+	await t.finished
 
-func _fade_out(time: float) -> void:
-	var tween = get_tree().create_tween()
-	# FIX: Tell the tween to stop processing if the game is paused
-	tween.set_pause_mode(Tween.TWEEN_PAUSE_STOP)
-	tween.tween_property(black_screen, "modulate:a", 0.0, time)
-	await tween.finished
+func _fade_out(time):
+	if !black_screen: return
+	var t = create_tween()
+	t.tween_property(black_screen, "modulate:a", 0.0, time)
+	await t.finished
 	black_screen.visible = false
+
+func _find_camera(node):
+	if node is Camera3D: return node
+	for child in node.get_children():
+		var found = _find_camera(child)
+		if found: return found
+	return null

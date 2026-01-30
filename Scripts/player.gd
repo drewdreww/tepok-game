@@ -36,14 +36,18 @@ var holding_object = false
 @onready var default_hold_position = hold_point.position
 @onready var crosshair : Control = $Head/FirstPOV/PlayerHUD/CrossHair
 var ray_col : Object
+
 @onready var footstep: AudioStreamPlayer3D = $PlayerAudios/AudioStreamPlayer3D
 var step_timer := 0.0
-var walk_step_interval := 0.45
-var sprint_step_interval := 0.30
+var walk_step_interval := 0.2
+var sprint_step_interval := 0.1
+
 # --- NIGHT VISION SETTINGS ---
 @onready var nv_layer = $Head/FirstPOV/NightVisionLayer/ColorRect
 @onready var nv_bar = $Head/FirstPOV/NightVisionLayer/ProgressBar
 #@onready var nv_sound = $NightVisionSound
+
+@onready var pauseMenu = $CanvasLayer/PauseMenu
 
 var guard_target: Node3D = null 
 
@@ -105,8 +109,19 @@ func activate_sprint():
 	
 	
 func _unhandled_input(event: InputEvent):
+	if is_dead or is_cutscene:
+		if event.is_action_pressed("escape"): 
+			get_viewport().set_input_as_handled()
+			
+		if event.is_action_pressed("tab"):
+			get_viewport().set_input_as_handled()
+			
+		return
+		
 	if is_cutscene and event is InputEventMouseMotion:
 		return
+		
+	pauseMenu.escape_clicked(event)
 		
 	if Input.is_action_just_pressed("tab"):
 		if is_nv_on:
@@ -320,9 +335,10 @@ func _handle_fov(delta):
 # --- Die Function ---
 func die():
 	if is_dead: return
+	nv_bar.visible = false
+	
 	is_dead = true
 	print("Player Died!")
-	
 	# Disable Player
 	set_physics_process(false)
 	player_collider.disabled = true 
@@ -342,7 +358,8 @@ func die():
 	
 	camera.reparent(death_ragdoll)
 	
-	await get_tree().create_timer(5.0).timeout
+	await get_tree().create_timer(12).timeout
+	nv_bar.visible = true
 	
 	# Next Level or Respawn
 	_try_load_next_level()
@@ -373,6 +390,15 @@ func _perform_level_swap(world_node, old_level_node, new_level_path):
 	world_node.add_child(new_level_instance)
 	
 	old_level_node.queue_free()
+	
+	var new_spawn = new_level_instance.get_node_or_null("SpawnPoint")
+	
+	if new_spawn:
+		print("New SpawnPoint found at: ", new_spawn.global_position)
+		start_position = new_spawn.global_position
+	else:
+		print("WARNING: Walay 'SpawnPoint' sa next level! Using fallback pos.")
+		start_position = Vector3(0, 2, 0)
 	
 	respawn()	
 	

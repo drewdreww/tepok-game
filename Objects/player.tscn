@@ -47,6 +47,7 @@ shader_parameter/block_rate = 0.010000000475
 
 [sub_resource type="Animation" id="Animation_f7am4"]
 resource_name = "footstep"
+length = 0.5
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true

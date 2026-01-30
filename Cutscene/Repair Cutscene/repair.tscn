@@ -272,6 +272,9 @@ dof_blur_far_distance = 5.0
 
 [node name="Repair Cutscene" instance=ExtResource("1_epkew")]
 
+[node name="Sketchfab_model" parent="." index="0"]
+transform = Transform3D(1, 2.8327693e-16, 0, -6.2900115e-32, 2.220446e-16, 1, 2.8327693e-16, -1, 2.220446e-16, 0, 16.870682, 0)
+
 [node name="Object_33" type="MeshInstance3D" parent="Sketchfab_model/enviro_lab_obj_cleaner_materialmerger_gles" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1191619e-15, -3.9507697, 8.772471e-16)
 mesh = SubResource("ArrayMesh_3f54u")
@@ -315,18 +318,18 @@ mesh = SubResource("ArrayMesh_pt25w")
 skeleton = NodePath("")
 
 [node name="Talking" parent="." index="1" instance=ExtResource("21_xh78d")]
-transform = Transform3D(0.043148544, 0, -0.9990687, 0, 1, 0, 0.9990687, 0, 0.043148544, 6.3240466, 0, -1.3112508)
+transform = Transform3D(0.043148544, 0, -0.9990687, 0, 1, 0, 0.9990687, 0, 0.043148544, 6.3240466, 16.870682, -1.3112508)
 
 [node name="robotzz" parent="." index="2" instance=ExtResource("23_ljvmh")]
-transform = Transform3D(-0.9999986, 0, 0.001762798, 0.0017600803, 0.0555078, 0.9984569, -9.784904e-05, 0.99845827, -0.055507727, 7.942317, 0.7058215, -1.7224883)
+transform = Transform3D(-0.9999986, 0, 0.001762798, 0.0017600803, 0.0555078, 0.9984569, -9.784904e-05, 0.99845827, -0.055507727, 7.942317, 17.576504, -1.7224883)
 
 [node name="Camera3D" type="Camera3D" parent="." index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.9350176, 1.0876329, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.9350176, 17.958315, 0)
 attributes = SubResource("CameraAttributesPractical_cn1ug")
 script = ExtResource("23_cn1ug")
 
 [node name="Using A Filing Cabinet" parent="." index="4" instance=ExtResource("23_xh78d")]
-transform = Transform3D(0.39756435, 0, -0.9175743, 0, 1, 0, 0.9175743, 0, 0.39756435, 9.112293, -0.5826415, -0.56182736)
+transform = Transform3D(0.39756435, 0, -0.9175743, 0, 1, 0, 0.9175743, 0, 0.39756435, 9.112293, 16.28804, -0.56182736)
 
 [node name="SFX_Repair" type="AudioStreamPlayer" parent="." index="5"]
 stream = ExtResource("24_ljvmh")
