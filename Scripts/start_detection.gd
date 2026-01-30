@@ -4,6 +4,8 @@ extends Area3D
 @onready var spotlights_holder : Node3D = $"../SpotLights"
 @onready var sliding_door = $"../Lab/SlidingDoor2"
 @onready var alarm_sound = $PanicCodeRedAlertAlarmSoundEffect
+@onready var scientist_sound_1 = $"../Voices/1st"
+@onready var scientist_sound_2 = $"../Voices/2nd"
 
 func _on_body_entered(body: Node3D):
 	if body.is_in_group("player"):
@@ -18,9 +20,10 @@ func _on_body_entered(body: Node3D):
 				print("Sequence: Unlocking the Door!")
 				sliding_door.unlock()
 				
+		scientist_sound_1.play()
 		await get_tree().create_timer(3.0).timeout
+		scientist_sound_2.play()
 		
-			
 		if spotlights_holder:
 			for light in spotlights_holder.get_children():
 				if light.has_method("set_lights_active"):
