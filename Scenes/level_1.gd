@@ -18,6 +18,7 @@ func toggle_xray(is_active: bool):
 	highlight.visible = is_active
 
 func _ready() -> void:
+	Global.set_level("res://Scenes/level_1.tscn")
 	if platform_object:
 		original_position = platform_object.position
 	

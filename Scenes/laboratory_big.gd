@@ -14,6 +14,7 @@ var scientists_active: bool = false
 @export var duration: float = 2.0
 
 func _ready() -> void:
+	Global.set_level("res://Scenes/laboratory_big.tscn")
 	move_elevator_up()
 	
 func _process(delta: float) -> void:

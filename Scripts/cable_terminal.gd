@@ -6,6 +6,7 @@ var state = false
 @onready var player = get_tree().get_first_node_in_group("Player")
 var prev_node = null
 @onready var animation = $"../../../AnimationPlayer"
+@onready var audiostream = $"../../../AudioStreamPlayer3D"
 
 @export var blades_parent : Node3D
 var all_blades : Array[Node] = []
@@ -27,6 +28,7 @@ func _on_body_entered(body: Node3D) -> void:
 		player._drop_or_throw_item(false)
 		current_node = body
 		animation.play("on")
+		audiostream.play()
 		lock_body()
 		
 		toggle_blades(true)

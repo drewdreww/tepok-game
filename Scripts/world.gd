@@ -1,6 +1,6 @@
 extends Node3D
 
-@export_file("*.tscn") var start_level_path: String = "res://Scenes/level_2.tscn"
+var start_level_path: String = Global.current_level_path
 
 func _ready() -> void:
 	if _has_level_loaded():

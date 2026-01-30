@@ -40,7 +40,7 @@ var ray_col : Object
 @onready var footstep: AudioStreamPlayer3D = $PlayerAudios/AudioStreamPlayer3D
 var step_timer := 0.0
 var walk_step_interval := 0.2
-var sprint_step_interval := 0.1
+var sprint_step_interval := 0.04
 
 # --- NIGHT VISION SETTINGS ---
 @onready var nv_layer = $Head/FirstPOV/NightVisionLayer/ColorRect

@@ -27,6 +27,9 @@ script/source = "extends Node3D
 
 @onready var highlight = $CSGCombiner3D/HighlightMesh
 
+func _ready() -> void:
+	Global.set_level(\"res://Scenes/level_3.tscn\")
+	
 func toggle_xray(is_active: bool):
 	highlight.visible = is_active
 "

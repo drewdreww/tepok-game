@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://d0to541w0gvdm"]
+[gd_scene load_steps=43 format=3 uid="uid://d0to541w0gvdm"]
 
 [ext_resource type="PackedScene" uid="uid://d1onfybck4xec" path="res://Objects/blades.tscn" id="1_45m41"]
 [ext_resource type="Script" uid="uid://8n2ikofwavnh" path="res://Objects/grinder.gd" id="1_nwwrl"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://5juwywk0ujfw" path="res://Scripts/pluggable_cable.gd" id="12_retj2"]
 [ext_resource type="PackedScene" uid="uid://7fbmk1lqs0gp" path="res://Scenes/mesh_instance_3d.tscn" id="13_xbf1b"]
 [ext_resource type="Material" uid="uid://dyx3fiqhnwqa3" path="res://XRayRed.tres" id="14_retj2"]
+[ext_resource type="AudioStream" uid="uid://be570cygllsxc" path="res://Scripts/SounEffect/Shredder.mp3" id="15_bvjkk"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_desfx"]
 albedo_texture = ExtResource("1_q5a2n")
@@ -630,3 +631,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.08337045, -0.27281183, 0)
 visible = false
 material_override = ExtResource("14_retj2")
 mesh = SubResource("SphereMesh_bvjkk")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.821991, 0)
+stream = ExtResource("15_bvjkk")
+volume_db = 20.0
+max_distance = 100.0
