@@ -1,7 +1,8 @@
-[gd_scene load_steps=40 format=3 uid="uid://bmns60sack8yh"]
+[gd_scene load_steps=46 format=3 uid="uid://bmns60sack8yh"]
 
 [ext_resource type="Texture2D" uid="uid://dyso7rrc2gh0u" path="res://Assets/PNG/Light/texture_08.png" id="1_vwg62"]
 [ext_resource type="Texture2D" uid="uid://bo44bapdnf5co" path="res://Assets/PNG/Orange/texture_03.png" id="2_qf6rc"]
+[ext_resource type="FontFile" uid="uid://cuan3t5utbm2a" path="res://Scripts/Font/Space_Grotesk/SpaceGrotesk-VariableFont_wght.ttf" id="2_yykrm"]
 [ext_resource type="Script" uid="uid://c1070xnylfgha" path="res://Scenes/lasers.gd" id="3_5e78q"]
 [ext_resource type="PackedScene" uid="uid://bjxwqe64spwid" path="res://Objects/door.tscn" id="3_53xsp"]
 [ext_resource type="Script" uid="uid://btb8exwohefpc" path="res://Scripts/reset_zone.gd" id="4_5e78q"]
@@ -19,9 +20,12 @@
 [ext_resource type="Texture2D" uid="uid://bexlt6noerfm0" path="res://Assets/Lab Map (w texture)/wall texture/MetalPlates001_4K-JPG_Metalness.jpg" id="14_n8e0l"]
 [ext_resource type="Texture2D" uid="uid://brbqbgq1tb47l" path="res://Assets/Lab Map (w texture)/wall texture/MetalPlates001_4K-JPG_NormalGL.jpg" id="15_3oi3s"]
 [ext_resource type="Texture2D" uid="uid://bux0ec2tg0gd1" path="res://Assets/Lab Map (w texture)/wall texture/MetalPlates001_4K-JPG_Roughness.jpg" id="16_rybab"]
-[ext_resource type="Script" path="res://Scenes/intro_area_level_3.gd" id="20_8jhox"]
+[ext_resource type="Script" uid="uid://biv5s3tbnfnj2" path="res://Scenes/intro_area_level_3.gd" id="20_8jhox"]
 [ext_resource type="AudioStream" uid="uid://d2glfg8ekkpog" path="res://Assets/voice records/benlevel3.wav" id="20_s80er"]
+[ext_resource type="Script" uid="uid://ckeiv4nfbu3w0" path="res://Scripts/kill_zone.gd" id="21_2awvy"]
+[ext_resource type="PackedScene" uid="uid://bi6gknvh6525p" path="res://Cutscene/Repair Cutscene/repair.tscn" id="22_gmj2a"]
 [ext_resource type="FontFile" uid="uid://dv358mshcd1u4" path="res://Scripts/Font/subtitle/Rajdhani-Regular.ttf" id="22_hed5s"]
+[ext_resource type="Script" uid="uid://nxudpdnmvlaa" path="res://Scripts/color_rect.gd" id="24_nrv0r"]
 
 [sub_resource type="GDScript" id="GDScript_qf6rc"]
 script/source = "extends Node3D
@@ -133,6 +137,12 @@ size = Vector3(13.104996, 7.0209045, 10.528687)
 [sub_resource type="BoxShape3D" id="BoxShape3D_8jhox"]
 size = Vector3(8.355743, 1, 7.624687)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nrv0r"]
+albedo_color = Color(0.98424715, 0.98424715, 1.00111965e-05, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_gmj2a"]
+size = Vector3(10, 1, 0.3)
+
 [node name="Level3" type="Node3D" groups=["Dangerous"]]
 script = SubResource("GDScript_qf6rc")
 next_level_path = "uid://bmbcjse7vcsap"
@@ -144,6 +154,30 @@ script = ExtResource("4_5e78q")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ResetZone"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.021484375, 0.49529982, -1.1877441)
 shape = SubResource("BoxShape3D_fxnjf")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="ResetZone"]
+
+[node name="ColorRect" type="ColorRect" parent="ResetZone/CanvasLayer"]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="ResetZone/CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_yykrm")
+theme_override_font_sizes/font_size = 23
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.692584, 0.7213373, 0, -0.7213373, 0.692584, 0, 6.4855256, -33.413517)
@@ -245,6 +279,8 @@ skeleton = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05274141, 1.1654887, -44.58361)
 
 [node name="KillZone" type="Area3D" parent="."]
+script = ExtResource("21_2awvy")
+cutscene_scene = ExtResource("22_gmj2a")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="KillZone"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.287632, 3.0133667, -32.40674)
@@ -288,6 +324,20 @@ theme_override_fonts/font = ExtResource("22_hed5s")
 horizontal_alignment = 1
 vertical_alignment = 2
 
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(0.10747976, 0.10747973, 0.10747973, 1)
+offset_right = 1156.0
+offset_bottom = 659.0
+color = Color(0, 0, 0, 1)
+script = ExtResource("24_nrv0r")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.48166, -14.294129)
+material_override = SubResource("StandardMaterial3D_nrv0r")
+mesh = SubResource("BoxMesh_gmj2a")
+
 [connection signal="body_entered" from="ResetZone" to="ResetZone" method="_on_body_entered"]
 [connection signal="body_entered" from="DroneTrigger" to="DroneTrigger" method="_on_body_entered"]
 [connection signal="body_exited" from="DroneTrigger" to="DroneTrigger" method="_on_body_exited"]
+[connection signal="body_entered" from="IntroArea" to="IntroArea" method="_on_body_entered"]

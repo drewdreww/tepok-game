@@ -1,6 +1,7 @@
-[gd_scene load_steps=36 format=3 uid="uid://bmbcjse7vcsap"]
+[gd_scene load_steps=37 format=3 uid="uid://bmbcjse7vcsap"]
 
 [ext_resource type="Texture2D" uid="uid://dyso7rrc2gh0u" path="res://Assets/PNG/Light/texture_08.png" id="2_3v663"]
+[ext_resource type="FontFile" uid="uid://cuan3t5utbm2a" path="res://Scripts/Font/Space_Grotesk/SpaceGrotesk-VariableFont_wght.ttf" id="2_6xecf"]
 [ext_resource type="Texture2D" uid="uid://bo44bapdnf5co" path="res://Assets/PNG/Orange/texture_03.png" id="3_w8kbg"]
 [ext_resource type="PackedScene" uid="uid://bjxwqe64spwid" path="res://Objects/door.tscn" id="4_gxyip"]
 [ext_resource type="Script" uid="uid://btb8exwohefpc" path="res://Scripts/reset_zone.gd" id="5_b8ytw"]
@@ -20,7 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://dt22p4bwdc78d" path="res://Objects/cctv.tscn" id="18_cxe20"]
 [ext_resource type="FontFile" uid="uid://dv358mshcd1u4" path="res://Scripts/Font/subtitle/Rajdhani-Regular.ttf" id="19_a51ki"]
 [ext_resource type="AudioStream" uid="uid://c1ox2cmuedm3q" path="res://Assets/voice records/benlevel4.wav" id="19_fmsuk"]
-[ext_resource type="Script" uid="uid://t50ljhkvhjwy" path="res://Scenes/intro_area_level_4.gd" id="20_3oae0"]
+[ext_resource type="Script" path="res://Scenes/intro_area_level_4.gd" id="20_3oae0"]
 
 [sub_resource type="GDScript" id="GDScript_qf6rc"]
 script/source = "extends Node3D
@@ -135,6 +136,30 @@ script = ExtResource("5_b8ytw")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ResetZone"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.021484375, 0.49529982, -1.1877441)
 shape = SubResource("BoxShape3D_fxnjf")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="ResetZone"]
+
+[node name="ColorRect" type="ColorRect" parent="ResetZone/CanvasLayer"]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="ResetZone/CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_6xecf")
+theme_override_font_sizes/font_size = 23
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.692584, 0.7213373, 0, -0.7213373, 0.692584, 0, 6.2206855, -32.933556)

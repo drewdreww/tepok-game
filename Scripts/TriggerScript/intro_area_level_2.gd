@@ -8,6 +8,7 @@ extends Area3D
 # ------------------------
 
 var triggered := false
+var is_sequence_active := false 
 
 func _ready() -> void:
 	# Safety Check: Warn if you forgot to drag them in
@@ -56,3 +57,13 @@ func _trigger(_body: Node3D) -> void:
 	
 	if is_connected("body_entered", _on_body_entered):
 		disconnect("body_entered", _on_body_entered)
+		
+		
+func force_stop_sequence():
+	print("Stopping Dialogue Sequence...")
+	is_sequence_active = false
+	
+	if narration: narration.stop()
+	
+	if subtitle_label: subtitle_label.visible = false
+		

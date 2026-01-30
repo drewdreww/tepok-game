@@ -7,19 +7,15 @@ extends Area3D
 var triggered := false
 
 func _ready() -> void:
-	body_entered.connect(_on_body_entered)
-	if black_screen:
+	if black_screen: 
 		black_screen.visible = false
 		black_screen.modulate.a = 0.0
 
-func _on_body_entered(body: Node3D) -> void:
+func on_body_inside(body: Node3D) -> void:
 	if (body.is_in_group("player") or body.is_in_group("Player")) and not triggered:
 		triggered = true
 		
-		$"../CanvasLayer/ControlsPanel".visible = false
-		
 		intro_area.force_stop_sequence()
-	
 		_start_cutscene_sequence(body)
 
 func _start_cutscene_sequence(player) -> void:

@@ -53,6 +53,7 @@ func _on_kill_zone_touched(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		if laser_meshes.size() > 0 and laser_meshes[0].visible:
 			if body.has_method("die"):	
+				kill_zone.on_body_inside(body)
 				body.die()
 			else:
 				print("Player died!")
@@ -65,3 +66,4 @@ func set_lasers_active(is_active: bool) -> void:
 			
 	if kill_zone:
 		kill_zone.set_deferred("monitoring", is_active)
+		

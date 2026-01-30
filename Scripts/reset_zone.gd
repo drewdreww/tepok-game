@@ -3,7 +3,6 @@ extends Area3D
 @onready var label = $CanvasLayer/Label
 @onready var canvas = $CanvasLayer
 @onready var color_rect = $CanvasLayer/ColorRect
-@onready var player: CharacterBody3D = get_node("/root/World/Player")
 
 var dialogue_lines: Array[String] = [
 	"OBJECTIVE COMPLETE.",
@@ -59,16 +58,16 @@ func start_text_sequence():
 		# Fade In
 		var tween = create_tween()
 		if tween:
-			tween.tween_property(label, "modulate:a", 0.5, 1.0)
+			tween.tween_property(label, "modulate:a", 1.0, 0.5)
 			await tween.finished
 		
 		# Hold
-		await get_tree().create_timer(3.0).timeout
+		await get_tree().create_timer(1).timeout
 		
 		# Fade Out
 		tween = create_tween()
 		if tween:
-			tween.tween_property(label, "modulate:a", 0.0, 1.5)
+			tween.tween_property(label, "modulate:a", 0.0, 0.5)
 			await tween.finished
 		
 		await get_tree().create_timer(1.0).timeout
