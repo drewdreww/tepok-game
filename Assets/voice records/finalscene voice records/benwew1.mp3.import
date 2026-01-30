@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://brl7i4r6iytdp"
+path="res://.godot/imported/benwew1.mp3-9aa3a324bce0c3c7d0ad177b849c2e76.mp3str"
+
+[deps]
+
+source_file="res://Assets/voice records/finalscene voice records/benwew1.mp3"
+dest_files=["res://.godot/imported/benwew1.mp3-9aa3a324bce0c3c7d0ad177b849c2e76.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

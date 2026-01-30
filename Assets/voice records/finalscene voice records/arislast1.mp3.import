@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c2w3w4bpii6t1"
+path="res://.godot/imported/arislast1.mp3-cf045a99bb4c3fb5d74ecdfa01aed8a6.mp3str"
+
+[deps]
+
+source_file="res://Assets/voice records/finalscene voice records/arislast1.mp3"
+dest_files=["res://.godot/imported/arislast1.mp3-cf045a99bb4c3fb5d74ecdfa01aed8a6.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
