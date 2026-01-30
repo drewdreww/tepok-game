@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://bmbcjse7vcsap"]
+[gd_scene load_steps=36 format=3 uid="uid://bmbcjse7vcsap"]
 
 [ext_resource type="Texture2D" uid="uid://dyso7rrc2gh0u" path="res://Assets/PNG/Light/texture_08.png" id="2_3v663"]
 [ext_resource type="Texture2D" uid="uid://bo44bapdnf5co" path="res://Assets/PNG/Orange/texture_03.png" id="3_w8kbg"]
@@ -18,7 +18,9 @@
 [ext_resource type="Texture2D" uid="uid://bux0ec2tg0gd1" path="res://Assets/Lab Map (w texture)/wall texture/MetalPlates001_4K-JPG_Roughness.jpg" id="16_wfb3u"]
 [ext_resource type="PackedScene" uid="uid://vgdir0xhfm38" path="res://Objects/vent.tscn" id="17_mbnb1"]
 [ext_resource type="PackedScene" uid="uid://dt22p4bwdc78d" path="res://Objects/cctv.tscn" id="18_cxe20"]
-[ext_resource type="PackedScene" uid="uid://cyffio1abqiu6" path="res://Objects/player.tscn" id="19_fmsuk"]
+[ext_resource type="FontFile" uid="uid://dv358mshcd1u4" path="res://Scripts/Font/subtitle/Rajdhani-Regular.ttf" id="19_a51ki"]
+[ext_resource type="AudioStream" uid="uid://c1ox2cmuedm3q" path="res://Assets/voice records/benlevel4.wav" id="19_fmsuk"]
+[ext_resource type="Script" uid="uid://t50ljhkvhjwy" path="res://Scenes/intro_area_level_4.gd" id="20_3oae0"]
 
 [sub_resource type="GDScript" id="GDScript_qf6rc"]
 script/source = "extends Node3D
@@ -119,6 +121,9 @@ emission_texture = SubResource("GradientTexture2D_1fal7")
 billboard_mode = 1
 
 [sub_resource type="QuadMesh" id="QuadMesh_3oae0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3oae0"]
+size = Vector3(9.810745, 3.1534424, 4.2581787)
 
 [node name="Level4" type="Node3D" groups=["Dangerous"]]
 script = SubResource("GDScript_qf6rc")
@@ -230,7 +235,33 @@ visible = false
 material_override = SubResource("StandardMaterial3D_fmsuk")
 mesh = SubResource("QuadMesh_3oae0")
 
-[node name="Player" parent="." instance=ExtResource("19_fmsuk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0943773, -1.0203714)
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -50.0
+offset_right = 2.0
+offset_bottom = -27.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("19_a51ki")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="MegaphoneSpeaker" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("19_fmsuk")
+
+[node name="IntroArea" type="Area3D" parent="." node_paths=PackedStringArray("narration", "subtitle_label")]
+script = ExtResource("20_3oae0")
+narration = NodePath("../MegaphoneSpeaker")
+subtitle_label = NodePath("../CanvasLayer/Label")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="IntroArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.013548911, 1.6792091, -2.0225658)
+shape = SubResource("BoxShape3D_3oae0")
 
 [connection signal="body_entered" from="ResetZone" to="ResetZone" method="_on_body_entered"]
