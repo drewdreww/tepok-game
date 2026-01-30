@@ -63,6 +63,10 @@ func _physics_process(delta: float):
 	velocity.x = direction.x * speed
 	velocity.z = direction.z * speed
 	
+	if not is_on_floor() and is_on_wall():
+		velocity.x *= 0.1 
+		velocity.z *= 0.1
+		
 	if direction.length() > 0.001:
 		var target_look = Vector3(next_path_pos.x, global_position.y, next_path_pos.z)
 		look_at_smooth(target_look, delta)
@@ -79,7 +83,7 @@ func _physics_process(delta: float):
 	handle_door_interaction()
 
 func check_if_stuck(delta):
-	if not is_on_floor() or jump_cooldown > 0:
+	if jump_cooldown > 0:
 		stuck_timer = 0.0
 		last_position = global_position 
 		return

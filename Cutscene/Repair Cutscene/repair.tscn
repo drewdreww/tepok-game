@@ -326,7 +326,7 @@ attributes = SubResource("CameraAttributesPractical_cn1ug")
 script = ExtResource("23_cn1ug")
 
 [node name="Using A Filing Cabinet" parent="." index="4" instance=ExtResource("23_xh78d")]
-transform = Transform3D(0.39756435, 0, -0.9175743, 0, 1, 0, 0.9175743, 0, 0.39756435, 9.112293, -0.5826415, -0.45051938)
+transform = Transform3D(0.39756435, 0, -0.9175743, 0, 1, 0, 0.9175743, 0, 0.39756435, 9.112293, -0.5826415, -0.56182736)
 
 [node name="SFX_Repair" type="AudioStreamPlayer" parent="." index="5"]
 stream = ExtResource("24_ljvmh")
