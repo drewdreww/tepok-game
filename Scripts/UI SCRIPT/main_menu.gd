@@ -1,9 +1,14 @@
 extends Node3D
 
-@onready var exit_button = $CanvasLayer/VBoxContainer/ExitButton
-@onready var start_button = $CanvasLayer/VBoxContainer/StartButton
-@onready var settings_button = $CanvasLayer/VBoxContainer/SettingsButton
+@onready var exit_button = $CanvasLayer/MainMenuBox/ExitButton
+@onready var start_button = $CanvasLayer/MainMenuBox/StartButton
+@onready var settings_button = $CanvasLayer/MainMenuBox/SettingsButton
 @onready var camera = $Camera3D
+@onready var title = $CanvasLayer/Title
+
+@onready var main_menu_box = $CanvasLayer/MainMenuBox
+@onready var settings_box = $CanvasLayer/Settings
+
 
 var sway_speed = 0.0005 
 var sway_amount = 5.0 
@@ -31,8 +36,16 @@ func _on_start_pressed():
 	get_tree().change_scene_to_file("res://Scenes/world.tscn")
 
 func _on_settings_pressed():
-	get_tree().change_scene_to_file("res://UI/settings.tscn")
+	main_menu_box.visible = false
+	settings_box.visible = true
+	title.visible = false
+	
+func _on_back_pressed():
+	settings_box.visible = false
+	main_menu_box.visible = true
+	title.visible = true
 	
 func _on_exit_pressed():
 	get_tree().quit()
+	
 	
