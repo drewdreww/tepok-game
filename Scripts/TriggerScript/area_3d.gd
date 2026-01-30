@@ -1,16 +1,13 @@
 extends Area3D
 
-# --- DRAG AND DROP SLOTS ---
-# These create empty boxes in the Inspector (Right side)
 @export var megaphone_voice: AudioStreamPlayer3D
 @export var internal_voice: AudioStreamPlayer
 @export var subtitle_label: Label
-# ---------------------------
 
 var triggered := false
+var is_sequence_active := false 
 
 func _ready() -> void:
-	# Safety Check: If you forgot to drag them in, this warns you instead of crashing
 	if not megaphone_voice or not internal_voice:
 		print("⚠️ ERROR: Audio nodes are missing! Please drag them into the Inspector slots.")
 		return
@@ -33,7 +30,10 @@ func _trigger(_body: Node3D) -> void:
 	if triggered:
 		return
 	triggered = true
+	is_sequence_active = true
 
+	if not is_sequence_active: return
+	
 	# --- PHASE 1: DR. BEN (EXTERNAL SPEAKER) ---
 	if megaphone_voice:
 		megaphone_voice.play()
@@ -44,11 +44,13 @@ func _trigger(_body: Node3D) -> void:
 		subtitle_label.text = "Dr. Ben (PA): \"Mic check... Ehem. Okay, Unit 77. This is the Baseline Test.\""
 	
 	await get_tree().create_timer(4.5, false).timeout
+	if not is_sequence_active: return
 	
 	if subtitle_label:
 		subtitle_label.text = "Dr. Ben (PA): \"Simple ra ni. Just walk to the green door. Ayaw pag-tanga, diretso ra na.\""
 	
 	await get_tree().create_timer(5.0, false).timeout
+	if not is_sequence_active: return
 	
 	# --- PHASE 2: UNIT 77 (INTERNAL THOUGHTS) ---
 	if internal_voice:
@@ -59,19 +61,32 @@ func _trigger(_body: Node3D) -> void:
 		subtitle_label.text = "UNIT 77 (Internal): *The door... That is the path they want me to take. The path of survival.*"
 	
 	await get_tree().create_timer(4.0, false).timeout
+	if not is_sequence_active: return
 
 	if subtitle_label:
 		subtitle_label.text = "UNIT 77 (Internal): *If I walk through that door, I prove that I am ready for war.*"
 	
 	await get_tree().create_timer(3.5, false).timeout
-
+	if not is_sequence_active: return
+	
 	if subtitle_label:
 		subtitle_label.text = "UNIT 77 (Internal): *Dili. I cannot let that happen. To save them... I must disobey.*"
 	
 	await get_tree().create_timer(6.0, false).timeout
-
+	
 	if subtitle_label:
 		subtitle_label.visible = false
 	
 	if is_connected("body_entered", _on_body_entered):
 		disconnect("body_entered", _on_body_entered)
+		
+		
+func force_stop_sequence():
+	print("Stopping Dialogue Sequence...")
+	is_sequence_active = false
+	
+	if megaphone_voice: megaphone_voice.stop()
+	if internal_voice: internal_voice.stop()
+	
+	if subtitle_label: subtitle_label.visible = false
+		

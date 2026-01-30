@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cyffio1abqiu6"]
+[gd_scene load_steps=19 format=3 uid="uid://cyffio1abqiu6"]
 
 [ext_resource type="Script" uid="uid://b33rqkpnm1fy0" path="res://Scripts/player.gd" id="1_y0qk3"]
 [ext_resource type="Script" uid="uid://cvrxhc3q1sw4y" path="res://Scripts/first_pov.gd" id="2_3y5cq"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dliw2ju7h2c4x" path="res://UI/pause_menu.tscn" id="6_0ar0x"]
 [ext_resource type="AudioStream" uid="uid://q13r1ef4w34r" path="res://Scripts/SounEffect/audiomass-output (1).mp3" id="7_ng3n2"]
 [ext_resource type="AudioStream" uid="uid://b60c155g4q542" path="res://Scripts/SounEffect/audiomass-output.mp3" id="7_slvmq"]
+[ext_resource type="AudioStream" uid="uid://ccvvb5hwn2rw6" path="res://Scripts/SounEffect/die.mp3" id="10_3n8j0"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ojbdc"]
 
@@ -220,6 +221,9 @@ stream = ExtResource("7_ng3n2")
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="PlayerAudios"]
 stream = ExtResource("7_slvmq")
 volume_db = -15.0
+
+[node name="Die" type="AudioStreamPlayer3D" parent="PlayerAudios"]
+stream = ExtResource("10_3n8j0")
 
 [node name="AnimationPlayer" type="Node" parent="."]
 

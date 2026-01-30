@@ -4,10 +4,8 @@ extends Node3D
 
 @onready var highlight = $HighlightMesh
 
-
 func _ready() -> void:
 	Global.set_level("res://Scenes/level_2.tscn")
-
 
 func toggle_xray(is_active: bool):
 	highlight.visible = is_active

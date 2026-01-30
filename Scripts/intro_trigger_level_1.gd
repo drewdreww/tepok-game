@@ -7,6 +7,7 @@ extends Area3D
 # -----------------
 
 var triggered := false
+var is_sequence_active := false 
 
 func _ready() -> void:
 	if narration:
@@ -26,7 +27,10 @@ func _trigger(_body: Node3D) -> void:
 	if triggered:
 		return
 	triggered = true
+	is_sequence_active = true
 
+	if not is_sequence_active: return
+	
 	# --- PART 1: The Intro ---
 	if narration:
 		narration.play()
@@ -38,11 +42,13 @@ func _trigger(_body: Node3D) -> void:
 		# Line 1
 		subtitle_label.text = "Dr. Ben (PA): \"Test 1: Motor Functions. Simple ra, Unit 77.\""
 		await get_tree().create_timer(5.0, false).timeout
-
+		if not is_sequence_active: return
+		
 		# Line 2
 		subtitle_label.text = "Dr. Ben (PA): \"Jump to the platform, then jump again to go to the door.\""
 		await get_tree().create_timer(5.0, false).timeout
-
+		if not is_sequence_active: return
+		
 		# Line 3
 		subtitle_label.text = "Dr. Ben (PA): \"Ayaw’g kahulog sa spikes—hait raba na!\""
 		
@@ -68,3 +74,13 @@ func _trigger(_body: Node3D) -> void:
 	
 	if is_connected("body_entered", _on_body_entered):
 		disconnect("body_entered", _on_body_entered)
+		
+		
+func force_stop_sequence():
+	print("Stopping Dialogue Sequence...")
+	is_sequence_active = false
+	
+	if narration: narration.stop()
+	
+	if subtitle_label: subtitle_label.visible = false
+		

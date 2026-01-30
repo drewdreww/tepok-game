@@ -2,6 +2,7 @@ extends Area3D
 
 @export var cutscene_scene: PackedScene 
 @onready var black_screen = $"../CanvasLayer/ColorRect"
+@onready var intro_area = $"../IntroArea"
 
 var triggered := false
 
@@ -14,6 +15,9 @@ func _ready() -> void:
 func _on_body_entered(body: Node3D) -> void:
 	if (body.is_in_group("player") or body.is_in_group("Player")) and not triggered:
 		triggered = true
+		
+		intro_area.force_stop_sequence()
+	
 		_start_cutscene_sequence(body)
 
 func _start_cutscene_sequence(player) -> void:

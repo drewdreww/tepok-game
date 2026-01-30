@@ -43,6 +43,7 @@ func lock_body():
 	
 func _on_body_exited(body: Node3D) -> void:
 	animation.play("RESET")
+	audiostream.stop()
 	
 	toggle_blades(false)
 		

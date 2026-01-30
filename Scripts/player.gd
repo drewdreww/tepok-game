@@ -39,8 +39,8 @@ var ray_col : Object
 
 @onready var footstep: AudioStreamPlayer3D = $PlayerAudios/AudioStreamPlayer3D
 var step_timer := 0.0
-var walk_step_interval := 0.2
-var sprint_step_interval := 0.04
+var walk_step_interval := 0.05
+var sprint_step_interval := 0.01
 
 # --- NIGHT VISION SETTINGS ---
 @onready var nv_layer = $Head/FirstPOV/NightVisionLayer/ColorRect
@@ -48,6 +48,7 @@ var sprint_step_interval := 0.04
 #@onready var nv_sound = $NightVisionSound
 
 @onready var pauseMenu = $CanvasLayer/PauseMenu
+@onready var die_sound = $PlayerAudios/Die
 
 var guard_target: Node3D = null 
 
@@ -226,6 +227,11 @@ func _handle_grabbing_and_interacting():
 			
 			if "prompt_message" in ray_col:
 				crosshair.show_prompt("[E] " + ray_col.prompt_message)
+			if ray_col.has_method("is_door_locked"):
+				if ray_col.is_door_locked() == true:
+					crosshair.show_prompt("Door Locked")
+				else:
+					crosshair.show_prompt("[E] Interact")
 			else:
 				crosshair.show_prompt("[E] Interact")
 				
@@ -346,7 +352,23 @@ func die():
 	player_collider.disabled = true 
 	velocity = Vector3.ZERO
 	
-	# Enable Ragdoll
+	die_sound.play(0.81)
+	
+	if Global.current_level_path.contains("laboratory_big.tscn"):
+		print("Detected Laboratory Level! Switching to CCTV...")
+		var cutscene_node = get_tree().get_first_node_in_group("DeathCutscene")
+		await do_ragdoll(4)
+		if cutscene_node:
+			cutscene_node.trigger_death_sequence()
+	else:
+		await do_ragdoll(11)
+		nv_bar.visible = true
+	
+		# Next Level or Respawn
+		_try_load_next_level()
+	
+	
+func do_ragdoll(seconds: float):
 	death_ragdoll.process_mode = Node.PROCESS_MODE_INHERIT
 	death_ragdoll.freeze = false 
 	death_ragdoll.lock_rotation = false 
@@ -357,14 +379,9 @@ func die():
 	death_ragdoll.linear_velocity = velocity 
 	# Spin effect
 	death_ragdoll.angular_velocity = Vector3(randf_range(-4,4), randf_range(-4,4), randf_range(-4,4))
-	
 	camera.reparent(death_ragdoll)
-	
-	await get_tree().create_timer(11.5).timeout
-	nv_bar.visible = true
-	
-	# Next Level or Respawn
-	_try_load_next_level()
+	await get_tree().create_timer(seconds).timeout
+
 
 func _try_load_next_level():
 	var world = get_parent()
@@ -427,7 +444,10 @@ func respawn():
 	set_physics_process(true)
 	
 func respawn_real():
-	get_tree().reload_current_scene()
+	if Global.has_method("reload_game"):
+		Global.reload_game(get_parent().get_parent())
+	else:
+		get_tree().reload_current_scene()
 
 func set_sensitivity(value):
 	SENSITIVITY = value

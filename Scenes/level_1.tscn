@@ -24,7 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://dfapk031fuvah" path="res://Objects/spikesssss.tscn" id="19_yltlr"]
 [ext_resource type="PackedScene" uid="uid://bi6gknvh6525p" path="res://Cutscene/Repair Cutscene/repair.tscn" id="21_1fal7"]
 [ext_resource type="AudioStream" uid="uid://bkqajdyasotjk" path="res://Assets/voice records/benlevel1.wav" id="23_1fal7"]
-[ext_resource type="Script" path="res://Scripts/intro_trigger_level_1.gd" id="24_1fal7"]
+[ext_resource type="Script" uid="uid://duuv6eh33ny5h" path="res://Scripts/intro_trigger_level_1.gd" id="24_1fal7"]
 [ext_resource type="AudioStream" uid="uid://dltdcwvr86ul1" path="res://Assets/voice records/benlevel1wew.wav" id="25_gcla0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1f27d"]
@@ -157,6 +157,8 @@ script/source = "extends Area3D
 
 @onready var narration = $DeathVoicee
 @onready var subtitle_label = $\"../CanvasLayer/Label\"
+@onready var intro_trigger = $\"../IntroTrigger\"
+
 
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)

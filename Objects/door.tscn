@@ -1,9 +1,11 @@
-[gd_scene load_steps=13 format=4 uid="uid://bjxwqe64spwid"]
+[gd_scene load_steps=15 format=4 uid="uid://bjxwqe64spwid"]
 
 [ext_resource type="Script" uid="uid://dmgvxtji1sivy" path="res://Objects/door.gd" id="1_2fpl1"]
 [ext_resource type="Texture2D" uid="uid://c7ro2lluohlr1" path="res://Assets/PNG/Purple/texture_10.png" id="1_vkudc"]
 [ext_resource type="Texture2D" uid="uid://dhtwlitsk3tf4" path="res://Assets/minimal house textures/RoomTextureExtras.png" id="2_2fpl1"]
 [ext_resource type="Script" uid="uid://ded2xjsrinmf3" path="res://Scripts/static_body_3d.gd" id="4_y1mhi"]
+[ext_resource type="AudioStream" uid="uid://dy84cweun235d" path="res://Scripts/SounEffect/Door Opening Sound Effect.mp3" id="5_6phg8"]
+[ext_resource type="AudioStream" uid="uid://3tnnbygwg2v" path="res://Scripts/SounEffect/close-door.mp3" id="6_fc2a2"]
 
 [sub_resource type="Animation" id="Animation_y1mhi"]
 length = 0.001
@@ -107,3 +109,11 @@ script = ExtResource("4_y1mhi")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DoorRotation/wall door_001/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_fc2a2")
+
+[node name="Open" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_6phg8")
+max_distance = 40.0
+
+[node name="Close" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("6_fc2a2")
+max_distance = 40.53
