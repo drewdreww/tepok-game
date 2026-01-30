@@ -1,0 +1,76 @@
+[gd_scene load_steps=5 format=3 uid="uid://bacuqm2c0o3t0"]
+
+[ext_resource type="Script" uid="uid://bmg7pvs1773bn" path="res://credits.gd" id="1_g4wvt"]
+[ext_resource type="FontFile" uid="uid://dv358mshcd1u4" path="res://Scripts/Font/subtitle/Rajdhani-Regular.ttf" id="2_c1t8d"]
+[ext_resource type="FontFile" uid="uid://d3yq727ihrghs" path="res://Assets/Videos/TarrgetAcademyItalic-qzmx.otf" id="3_g4wvt"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_pjc1l"]
+font = ExtResource("3_g4wvt")
+font_size = 109
+shadow_size = 20
+shadow_color = Color(0, 0, 0, 0.50980395)
+shadow_offset = Vector2(4, 4)
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_g4wvt")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ScrollingGroup" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 150.0
+offset_top = 550.0
+offset_right = 950.0
+offset_bottom = 1654.0
+alignment = 1
+
+[node name="Title" type="Label" parent="ScrollingGroup"]
+layout_mode = 2
+text = "TEPOK"
+label_settings = SubResource("LabelSettings_pjc1l")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CreditsText" type="RichTextLabel" parent="ScrollingGroup"]
+custom_minimum_size = Vector2(800, 1000)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_c1t8d")
+theme_override_font_sizes/normal_font_size = 30
+text = "
+   
+   WASHO PRODUCTIONS
+
+   --- DEVELOPERS ---
+   Jexter Alido
+   Christian Neil Libron
+   John Kyle Villarazo
+   Ralph Andrew Salvame
+
+   --- SPECIAL THANKS ---
+   Godot Engine
+   Gemini AI hihi
+   CHATGPT hihi
+
+   --- COPYRIGHT ---
+   Assets belong to the rightful owner.
+Full credits & attributions are
+available in the GitHub repository.
+
+   ---
+
+   Thank you for playing!"
+fit_content = true
+horizontal_alignment = 1
