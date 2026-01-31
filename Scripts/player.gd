@@ -143,6 +143,8 @@ func _unhandled_input(event: InputEvent):
 		if camera.has_method("try_interact"):
 			camera.try_interact()
 
+func setIsDead(ambot: bool):
+	is_cutscene = ambot
 
 # --- HOLD WIRE ---
 func _process(delta: float) -> void:

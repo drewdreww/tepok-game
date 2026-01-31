@@ -21,6 +21,8 @@ func _on_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Player") or body.has_method("respawn_real"):
 		print("Player entered ending zone...")
 		
+		body.setIsDead(true)
+		
 		if canvas:
 			canvas.visible = true
 		else:
@@ -41,6 +43,7 @@ func _on_body_entered(body: Node3D) -> void:
 		print("Sequence done. Respawning/Ending...")
 		
 		if body.has_method("respawn_real"):
+			body.setIsDead(false)
 			body.respawn_real()
 
 func start_text_sequence():
