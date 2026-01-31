@@ -29,5 +29,7 @@ func save_volume(value: float):
 	_apply_volume()
 
 func _apply_volume():
-	var db = linear_to_db(master_volume)
+	var final_volume = master_volume * 50.0
+	
+	var db = linear_to_db(final_volume)
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), db)

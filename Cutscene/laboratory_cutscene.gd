@@ -27,7 +27,11 @@ func _ready():
 		blink_overlay.modulate.a = 1.0
 	start_cutscene()
 
+func _unhandled_input(event: InputEvent):
+	if event.is_action_pressed("T"): 
+		get_tree().change_scene_to_file("res://Scenes/world.tscn")
 
+			
 func start_cutscene():
 	subtitle_label.text = ""
 	

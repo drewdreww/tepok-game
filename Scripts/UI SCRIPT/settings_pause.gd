@@ -44,4 +44,4 @@ func _on_sens_changed(value):
 	GameSettings.save_sensitivity(value)
 
 func _on_volume_changed(value):
-	GameSettings.save_volume(value / 100.0)
+	GameSettings.save_volume(value * 10000.0)
